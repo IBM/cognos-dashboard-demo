@@ -1,27 +1,45 @@
-# Ng5bstrap4fb
+# dde-angnode-app
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.
 
-## Development server
+This repo shows a Angular 5.0.0 + Boostrap 4.0.0 Node.js app that will be used to demo the Bluemix DDE service.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Repo setup
 
-## Code scaffolding
+Getting started:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+$ npm install
+```
 
-## Build
+### Running
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+```bash
+$ npm run dist
+$ node sever.js
+```
 
-## Running unit tests
+## Angular setup
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Code scaffolding
+Run ng generate component component-name to generate a new component. You can also use ng generate directive|pipe|service|class|guard|interface|enum|module.
 
-## Running end-to-end tests
+### Build
+Run ng build to build the project. The build artifacts will be stored in the dist/ directory. Use the -prod flag for a production build.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Development server
 
-## Further help
+Run ng serve for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Resources
+
+* [DDE in Bluemix](https://console-regional.stage1.ng.bluemix.net/docs/services/dynamic-dashboard-embedded/index.html#overview-of-dynamic-dashboard-embedded)
+* [Sample app](https://jdcluster.us-south.containers.mybluemix.net/daas/DashboardAPI.html)
+* [Swagger](https://jdcluster.us-south.containers.mybluemix.net/api-docs)
+
+## Deployment
+
+Deploy into Bluemix:
+1. Create a new Node.JS Cloud Foundry application in bluemix (https://console.stage1.bluemix.net/)
+1. cf api <API-endpoint> (US South https://api.STAGE1.ng.bluemix.net)
+1. cf login --sso (will ask for one-time passcode from login.stage1.ng.bluemix.net/UAALoginServerWAR/passcode)
+1. cf push
