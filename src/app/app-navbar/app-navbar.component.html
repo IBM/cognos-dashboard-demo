@@ -14,14 +14,29 @@
         <li class="nav-item">
           <a class="nav-link disabled" href="#">Disabled</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+
+        <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle>DDE APIs
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+                <button class="dropdown-item" (click)="createSession">Create Session</button>
+                <button class="dropdown-item" (click)="createAndInitApiFramework">Create and Init API framework</button>
+                <button class="dropdown-item" (click)="createDDEDashboard">Create DDE Dashboard</button>
+            </div>
+
+        </div>
+
+        <li class="nav-item dropdown" ngbDropdown>
+          <a class="nav-link dropdown-toggle" id="dropdown01" ngbDropdownToggle>DDE Docs</a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdown01" ngbDropdownMenu>
+            <a class="dropdown-item" href="#">doc 1</a>
+            <a class="dropdown-item" href="#">doc 2</a>
+            <a class="dropdown-item" href="#">doc 3</a>
           </div>
         </li>
+
+
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
