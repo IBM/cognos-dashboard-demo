@@ -1,0 +1,15 @@
+<p>
+  Connecting to db and get list of names:
+</p>
+
+<ul>
+  <div *ngFor="let name of namesObservable | async">
+      <ngb-alert type="info" [dismissible]="false">
+          <h3><a href="#">{{name.title}}</a> </h3>
+          <p>{{name.desc}}</p>
+          <div>
+              <a href="{{name.url}}" target="_blank" class="btn btn-danger">Go To name</a>
+          </div>
+      </ngb-alert>
+  </div>
+</ul>
