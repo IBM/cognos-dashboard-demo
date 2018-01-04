@@ -13,8 +13,8 @@
 
 <div class="row">
    <div class="col-md-12">
-    <p>
-      <button class="btn btn-primary" (click)='getDDECred()' type="button">
+    <!--p>
+      <button class="btn btn-link" (click)='getDDECred()' type="button">
           Show DDE Credentials
       </button>
     </p>
@@ -25,11 +25,11 @@
     <div>
       <label>client secret:</label>
       <label id="DDE_client_secret">{{client_secret}}</label>
-    </div>
+    </div-->
 
     <!--h3>Session information</h3-->
     <p>
-      <button class="btn btn-primary"  (click)='createNewSession()' type="button">
+      <button class="btn btn-sm btn-link"  (click)='createNewSession()' type="button">
         Create New Session
       </button>
     </p>
@@ -39,14 +39,17 @@
     </div>
 
     <!--h3>Create and Init API Framework</h3-->
-    <button class="btn btn-primary"  (click)='createAndInitApiFramework()' type="button">
-      Create & init API framework / Create Dashboard
+    <button class="btn btn-sm btn-link"  (click)='createAndInitApiFramework()' type="button">
+      Create & init API framework
     </button>
     <div>
       <label>{{create_init_api_framework_result}}</label>
     </div>
-    <div class="iframeContainer" id="containerDivId2">
-    </div>
+
+    <button class="btn btn-sm btn-link"  (click)='createDashboard()' type="button">
+      Create Dashboard
+    </button>
+
 </div>
 
 <div class="col-md-0">

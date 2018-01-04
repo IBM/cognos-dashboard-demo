@@ -20,6 +20,7 @@ export class DdeSessionComponent implements OnInit {
   public client_secret: string;
   public session_code: string;
   public session_info: string;
+  public api;
 
   constructor(private http: Http, private script: ScriptService ) {
   }
@@ -63,15 +64,15 @@ export class DdeSessionComponent implements OnInit {
 
   createAndInitApiFramework() {
     console.log("in create and init api framework");
-    var api = new CognosApi({
+    this.api = new CognosApi({
           cognosRootURL: 'https://jdcluster.us-south.containers.mybluemix.net/daas/',
           sessionCode: this.session_code,
           node: document.getElementById('containerDivId3')
           });
 
-    api.initialize().then(function() {
+    this.api.initialize().then(function() {
         console.log('API created successfully.');
-
+/*
         // TODO; extract
         api.dashboard.createNew().then(
             function(dashboardAPI) {
@@ -83,8 +84,23 @@ export class DdeSessionComponent implements OnInit {
                 console.log('User hit cancel on the template picker page.');
             }
         );
+*/
+
       });
-
-
   }
+
+  createDashboard() {
+    console.log("in create dashboard");
+
+        this.api.dashboard.createNew().then(
+            function(dashboardAPI) {
+                console.log('Dashboard created successfully.');
+                var dashboardAPI = dashboardAPI;
+            }
+        ).catch(
+            function(err) {
+                console.log('User hit cancel on the template picker page.');
+            }
+        );
+      }
 }
