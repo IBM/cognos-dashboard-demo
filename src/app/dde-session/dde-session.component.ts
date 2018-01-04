@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
+import { ScriptService } from '../script.service';
+declare var CognosApi;
+
 
 export const contentHeaders = new Headers();
 contentHeaders.append('Accept', 'application/json');
@@ -8,7 +11,8 @@ contentHeaders.append('Content-Type', 'application/json');
 @Component({
   selector: 'dde-session',
   templateUrl: './dde-session.component.html',
-  styleUrls: ['./dde-session.component.css']
+  styleUrls: ['./dde-session.component.css'],
+  providers: [ ScriptService ]
 })
 export class DdeSessionComponent implements OnInit {
 
@@ -17,10 +21,17 @@ export class DdeSessionComponent implements OnInit {
   public session_code: string;
   public session_info: string;
 
-  constructor(private http: Http ) { }
+  constructor(private http: Http, private script: ScriptService ) {
+  }
 
   ngOnInit() {
     // this.getDDECred();
+  }
+
+  ngAfterContentInit() {
+      this.script.load('cognosapijs').then(data => {
+      console.log('script loaded ', data);
+      }).catch(error => console.log(error));
   }
 
   getDDECred() {
@@ -48,5 +59,31 @@ export class DdeSessionComponent implements OnInit {
               this.session_info = JSON.stringify(data, undefined, 4);
             }
     );
+  }
+
+  createAndInitApiFramework() {
+    var api = new CognosApi({
+          cognosRootURL: 'https://jdcluster.us-south.containers.mybluemix.net/daas/',
+          sessionCode: this.session_code,
+          node: document.getElementById('containerDivId3')
+          });
+
+    api.initialize().then(function() {
+        console.log('API created successfully.');
+
+        // TODO; extract
+        api.dashboard.createNew().then(
+            function(dashboardAPI) {
+                console.log('Dashboard created successfully.');
+                var dashboardAPI = dashboardAPI;
+            }
+        ).catch(
+            function(err) {
+                console.log('User hit cancel on the template picker page.');
+            }
+        );
+      });
+
+
   }
 }

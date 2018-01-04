@@ -1,0 +1,23 @@
+.panel-body {
+background:#FFCCFF;
+height:100%;
+}
+
+.iframeContainer {
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+}
+
+.iframeContainer pre {
+  display: flex;
+  font-size: medium;
+  white-space: pre-wrap;
+}
+
+.iframe
+{ flex-grow: 1;
+  border: none;
+  margin: 0;
+  padding: 0;
+}

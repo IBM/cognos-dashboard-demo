@@ -11,32 +11,58 @@
   <label id="DDE_client_secret" class="dde text-left">{{client_secret}}</label>
 </div-->
 
-<p>
-  <button class="btn btn-primary" (click)='getDDECred()' type="button">
-      Show DDE Credentials
-  </button>
-</p>
-<div>
-  <label>client id:</label>
-  <label id="DDE_client_id">{{client_id}}</label>
-</div>
-<div>
-  <label>client secret:</label>
-  <label id="DDE_client_secret">{{client_secret}}</label>
+<div class="row">
+   <div class="col-md-4">
+    <p>
+      <button class="btn btn-primary" (click)='getDDECred()' type="button">
+          Show DDE Credentials
+      </button>
+    </p>
+    <div>
+      <label>client id:</label>
+      <label id="DDE_client_id">{{client_id}}</label>
+    </div>
+    <div>
+      <label>client secret:</label>
+      <label id="DDE_client_secret">{{client_secret}}</label>
+    </div>
+
+    <h3>Session information</h3>
+    <p>
+      <button class="btn btn-primary"  (click)='createNewSession()' type="button">
+        Create New Session
+      </button>
+    </p>
+    <div>
+      <label>session code:</label>
+      <label id="DDE_session_code">{{session_code}}</label>
+    </div>
+
+    <h3>Create and Init API Framework</h3>
+    <button class="btn btn-primary"  (click)='createAndInitApiFramework()' type="button">
+      Create and initialize API framework
+    </button>
+    <div>
+      <label>{{create_init_api_framework_result}}</label>
+    </div>
+    <div class="iframeContainer" id="containerDivId2">
+    </div>
 </div>
 
+<!--div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-body">Panel content
+        <div class="iframeContainer" id="containerDivId3">
+            <pre>{{session_info}}</pre>
+        </div>
+      </div>
+    </div>
+</div-->
 
-<h3>Session information</h3>
-
-<p>
-  <button class="btn btn-primary"  (click)='createNewSession()' type="button">
-    Create New Session
-  </button>
-</p>
-<div class="iframeContainer" id="containerDivId">
-    <pre>{{session_info}}</pre>
+<div class="col-md-8">
+        <div class="iframeContainer" id="containerDivId3">
+            <pre>{{session_info}}</pre>
+        </div>
 </div>
-<div>
-  <label>session code:</label>
-  <label id="DDE_session_code">{{session_code}}</label>
+
 </div>
