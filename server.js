@@ -34,6 +34,48 @@ app.get("/api/dde/credentials", function(request, response) {
 });
 
 
+/* Endpoint to create a new DDE session.
+* Send a POST request to https://jdcluster.us-south.containers.mybluemix.net/daas/v1/session with body
+* {
+* 	"expiresIn": 3600,
+*   "webDomain": "https://myportal.mybluemix.net"
+* }
+*/
+app.post("/api/dde/session", function(request, response) {
+  console.log("in api/dde/session");
+  console.log(dde_client_id);
+
+  var options = {
+      method: 'POST',
+      uri: 'https://jdcluster.us-south.containers.mybluemix.net/daas/v1/session',
+      headers: {
+        'Authorization': 'Basic ' + new Buffer(dde_client_id + ':' + dde_client_secret).toString('base64'),
+         'content-type': 'application/json'
+      },
+      body: {
+          "expiresIn": 3600,
+          "webDomain": "http://localhost:3000" // for local testing
+          //"webDomain": "https://dde-angnode-app.stage1.mybluemix.net" // for deployment
+      },
+      json: true // Automatically stringifies the body to JSON
+  };
+
+  rp(options)
+      .then(function (parsedBody) {
+          // POST succeeded...
+          console.log("post suceeded");
+          console.log(JSON.stringify(parsedBody));
+          response.send(parsedBody);
+      })
+      .catch(function (err) {
+          // POST failed...
+          console.log("post failed!");
+            console.log(JSON.stringify(err));
+          response.send(err);
+      });
+
+});
+
 /* Endpoint to greet and add a new visitor to database.
 * Send a POST request to localhost:3000/api/visitors with body
 * {

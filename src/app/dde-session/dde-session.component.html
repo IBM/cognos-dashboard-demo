@@ -1,6 +1,6 @@
-<p>
-  Connecting to DDE instance and get credentials:
-</p>
+
+<h3>Show credentials</h3>
+
 <!--button class="btn btn-outline-success my-2 my-sm-0" (click)='getDDECred()'>Show DDE Credentials</button>
 <div>
   <label>client id:</label>
@@ -23,4 +23,20 @@
 <div>
   <label>client secret:</label>
   <label id="DDE_client_secret">{{client_secret}}</label>
+</div>
+
+
+<h3>Session information</h3>
+
+<p>
+  <button class="btn btn-primary"  (click)='createNewSession()' type="button">
+    Create New Session
+  </button>
+</p>
+<div class="iframeContainer" id="containerDivId">
+    <pre>{{session_info}}</pre>
+</div>
+<div>
+  <label>session code:</label>
+  <label id="DDE_session_code">{{session_code}}</label>
 </div>

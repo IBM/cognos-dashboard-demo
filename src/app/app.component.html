@@ -1,12 +1,35 @@
+
 <app-navbar></app-navbar>
+
 <div class="container">
     <div class="starter-template">
         <h1>DDE demo app</h1>
-        <p class="lead">Demo app written using Angular 5.0.0 + Bootstrap 4.0.0 beta 2.  <br>App shall be updated to consume ba-ui-toolkit: https://pages.github.ibm.com/BusinessAnalytics/ba-ui-toolkit/#/components/truncated-text </p>
-        <h3>Session</h3>
-        <dde-session></dde-session>
-
-        <h3>Names List</h3>
-        <dde-list></dde-list>
     </div>
 </div>
+
+<ngb-accordion  #acc="ngbAccordion" activeIds="ngb-panel-0">
+  <ngb-panel title="Session">
+    <ng-template ngbPanelContent>
+      <dde-session></dde-session>
+    </ng-template>
+  </ngb-panel>
+  <ngb-panel>
+    <ng-template ngbPanelTitle>
+      <span>Create and Init API Framework</span>
+    </ng-template>
+    <ng-template ngbPanelContent>
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+      aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+      sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+      craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+      occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+      labore sustainable VHS.
+    </ng-template>
+  </ngb-panel>
+  <ngb-panel title="DB">
+    <ng-template ngbPanelContent>
+      <h3>Names List</h3>
+      <dde-list></dde-list>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
