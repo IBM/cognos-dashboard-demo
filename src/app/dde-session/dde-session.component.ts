@@ -62,6 +62,7 @@ export class DdeSessionComponent implements OnInit {
   }
 
   createAndInitApiFramework() {
+    console.log("in create and init api framework");
     var api = new CognosApi({
           cognosRootURL: 'https://jdcluster.us-south.containers.mybluemix.net/daas/',
           sessionCode: this.session_code,
