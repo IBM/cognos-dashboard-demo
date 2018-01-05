@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  public parent_session_info: string;
+  public parent_api_framework_info: string;
+
+  parentSessionInfoCreated(event) {
+    this.parent_session_info = event;
+  }
+
+  parentApiFrameworkCreated(event) {
+      this.parent_api_framework_info = event;
+  }
+
 }

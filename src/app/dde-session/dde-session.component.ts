@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import { ScriptService } from '../script.service';
 declare var CognosApi;
@@ -15,12 +15,17 @@ contentHeaders.append('Content-Type', 'application/json');
   providers: [ ScriptService ]
 })
 export class DdeSessionComponent implements OnInit {
+  @Output()
+  sessionInfoCreated: EventEmitter<String> = new EventEmitter<String>();
+  @Output()
+  apiFrameworkCreated: EventEmitter<String> = new EventEmitter<String>();
 
   public client_id : string;
   public client_secret: string;
   public session_code: string;
   public session_info: string;
   public api;
+  public api_framework_created_info: string;
 
   constructor(private http: Http, private script: ScriptService ) {
   }
@@ -48,45 +53,51 @@ export class DdeSessionComponent implements OnInit {
     );
   }
 
-  createNewSession() {
+  createNewSession(event) {
     console.log("in create new session");
-    let options = new RequestOptions({headers: contentHeaders});
 
+    // nullify prevoius statuses and api
+    this.sessionInfoCreated.emit(null);
+    this.apiFrameworkCreated.emit(null);
+    if (this.api != null) {
+      console.log("there was already an api object");
+      this.api._node.hidden = true;
+      this.api = null;
+    }
+
+    let options = new RequestOptions({headers: contentHeaders});
+    let self = this;
     this.http.post('/api/dde/session', options).subscribe(
             data => {
               console.log("in dde-session createNewSession");
               console.log(JSON.stringify(data));
-              this.session_code = data.json().sessionCode;
-              this.session_info = JSON.stringify(data, undefined, 4);
+              self.session_code = data.json().sessionCode;
+              self.session_info = JSON.stringify(data.json(), undefined, 4);
+              self.sessionInfoCreated.emit(self.session_info);
             }
     );
+
   }
 
-  createAndInitApiFramework() {
+  createAndInitApiFramework(event) {
+
     console.log("in create and init api framework");
+
     this.api = new CognosApi({
           cognosRootURL: 'https://jdcluster.us-south.containers.mybluemix.net/daas/',
           sessionCode: this.session_code,
           node: document.getElementById('containerDivId3')
           });
+    this.api._node.hidden = false;
 
+    let self = this;
     this.api.initialize().then(function() {
+        self.api_framework_created_info = "successfullll"
+        self.apiFrameworkCreated.emit(self.session_code);
         console.log('API created successfully.');
-/*
-        // TODO; extract
-        api.dashboard.createNew().then(
-            function(dashboardAPI) {
-                console.log('Dashboard created successfully.');
-                var dashboardAPI = dashboardAPI;
-            }
-        ).catch(
-            function(err) {
-                console.log('User hit cancel on the template picker page.');
-            }
-        );
-*/
 
       });
+
   }
 
   createDashboard() {

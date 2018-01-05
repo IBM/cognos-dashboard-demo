@@ -41,7 +41,7 @@
      <ngb-accordion  #acc="ngbAccordion" activeIds="ngb-panel-0">
        <ngb-panel title="Session">
          <ng-template ngbPanelContent>
-           <dde-session></dde-session>
+           <dde-session  (sessionInfoCreated)="parentSessionInfoCreated($event)" (apiFrameworkCreated)="parentApiFrameworkCreated($event)"></dde-session>
          </ng-template>
        </ngb-panel>
        <ngb-panel>
@@ -67,8 +67,15 @@
    </div>
 
 <div class="col-md-10">
+      <div *ngIf="parent_api_framework_info" class="alert alert-success box-msg" role="alert">
+        <strong>API created successfuly!</strong> session_code: {{parent_api_framework_info}}
+      </div>
+      <div *ngIf="parent_session_info" class="alert alert-success box-msg" role="alert">
+        <strong>Session created!</strong> {{parent_session_info}}
+      </div>
+
         <div class="iframeContainer" id="containerDivId3">
-            <pre>{{session_info}}</pre>
+            <!--pre>{{parent_session_info}}</pre-->
         </div>
 </div>
 

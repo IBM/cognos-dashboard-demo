@@ -28,23 +28,14 @@
     </div-->
 
     <!--h3>Session information</h3-->
-    <p>
-      <button class="btn btn-sm btn-link"  (click)='createNewSession()' type="button">
-        Create New Session
-      </button>
-    </p>
-    <div>
-      <label>session code:</label>
-      <label id="DDE_session_code">{{session_code}}</label>
-    </div>
+    <button class="btn btn-sm btn-link"  (click)='createNewSession($event)' type="button">
+      Create New Session
+    </button>
 
     <!--h3>Create and Init API Framework</h3-->
-    <button class="btn btn-sm btn-link"  (click)='createAndInitApiFramework()' type="button">
+    <button class="btn btn-sm btn-link"  (click)='createAndInitApiFramework($event)' type="button">
       Create & init API framework
     </button>
-    <div>
-      <label>{{create_init_api_framework_result}}</label>
-    </div>
 
     <button class="btn btn-sm btn-link"  (click)='createDashboard()' type="button">
       Create Dashboard
