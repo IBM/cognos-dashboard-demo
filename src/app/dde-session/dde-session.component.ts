@@ -19,6 +19,9 @@ export class DdeSessionComponent implements OnInit {
   sessionInfoCreated: EventEmitter<String> = new EventEmitter<String>();
   @Output()
   apiFrameworkCreated: EventEmitter<String> = new EventEmitter<String>();
+  @Output()
+  moduleDefinitionUpdated: EventEmitter<String> = new EventEmitter<String>();
+
 
   public client_id : string;
   public client_secret: string;
@@ -27,7 +30,20 @@ export class DdeSessionComponent implements OnInit {
   public api;
   public api_framework_created_info: string;
 
+  public sample_db_spec : string;
+  public updated_db_spec : string;
+
+
   constructor(private http: Http, private script: ScriptService ) {
+
+    // get the sampleSepc json ready
+    this.http.get('/assets/ddeSampleSpec.json').subscribe(
+            data => {
+              console.log("in dde-session constructor");
+              this.sample_db_spec = data.json();
+              console.log(data.json());
+            }
+        );
   }
 
   ngOnInit() {
@@ -59,6 +75,7 @@ export class DdeSessionComponent implements OnInit {
     // nullify prevoius statuses and api
     this.sessionInfoCreated.emit(null);
     this.apiFrameworkCreated.emit(null);
+    this.moduleDefinitionUpdated.emit(null);
     if (this.api != null) {
       console.log("there was already an api object");
       this.api._node.hidden = true;
@@ -83,6 +100,7 @@ export class DdeSessionComponent implements OnInit {
 
     console.log("in create and init api framework");
 
+    // Create an instance of the CognosApi
     this.api = new CognosApi({
           cognosRootURL: 'https://jdcluster.us-south.containers.mybluemix.net/daas/',
           sessionCode: this.session_code,
@@ -91,10 +109,13 @@ export class DdeSessionComponent implements OnInit {
     this.api._node.hidden = false;
 
     let self = this;
+
+    // initialize the CognosApi in order to obtain the service APIs
     this.api.initialize().then(function() {
-        self.api_framework_created_info = "successfullll"
+        //self.api_framework_created_info = "successful";
         self.apiFrameworkCreated.emit(self.session_code);
         console.log('API created successfully.');
+        console.log(self.api.dashboard);
 
       });
 
@@ -103,15 +124,54 @@ export class DdeSessionComponent implements OnInit {
   createDashboard() {
     console.log("in create dashboard");
 
-        this.api.dashboard.createNew().then(
-            function(dashboardAPI) {
-                console.log('Dashboard created successfully.');
-                var dashboardAPI = dashboardAPI;
-            }
-        ).catch(
-            function(err) {
-                console.log('User hit cancel on the template picker page.');
-            }
-        );
-      }
+    let self = this;
+    this.api.dashboard.createNew().then(
+        function(dashboardAPI) {
+            console.log('Dashboard created successfully.');
+            var dashboardAPI = dashboardAPI;
+            console.log(self.api.dashboard);
+        }
+    ).catch(
+        function(err) {
+            console.log('User hit cancel on the template picker page.');
+        }
+    );
+  }
+
+  updateModuleDefinitions() {
+    console.log("in update module definitions");
+
+    var dbSpec = JSON.parse(JSON.stringify(this.sample_db_spec));
+    console.log(dbSpec);
+
+    var getNewModulesCallback = function(ids) {
+        var newModules = [];
+        ids.forEach(function(id) {
+            newModules.push({
+                id: id,
+                module: {
+                    newModuleDefinition: true
+                },
+                name: 'newModuleName',
+            });
+        });
+        return Promise.resolve(newModules);
+    };
+
+    /* Log the before */
+    console.log("before:");
+    console.log(dbSpec.dataSources.sources);
+
+    let self = this;
+    this.api.updateModuleDefinitions(dbSpec, getNewModulesCallback).then(function(newDBSpec) {
+        self.updated_db_spec = JSON.stringify(newDBSpec);
+        //console.log("updated dbspec:" + self.updated_db_spec);
+        console.log("after:");
+        console.log(newDBSpec.dataSources.sources);
+        self.moduleDefinitionUpdated.emit("test");
+    });
+
+
+    }
+
 }

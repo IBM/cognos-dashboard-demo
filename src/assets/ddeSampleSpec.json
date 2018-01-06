@@ -1,0 +1,176 @@
+{
+  "name": "New dashboard",
+  "layout": {
+    "id": "page0",
+    "items": [
+      {
+        "id": "page1",
+        "items": [
+          {
+            "id": "model0000015f112a1b00_00000004",
+            "style": {
+              "left": "65px",
+              "top": "21px",
+              "height": "420px",
+              "width": "500px"
+            },
+            "type": "widget"
+          }
+        ],
+        "type": "absolute",
+        "title": "Tab 1",
+        "templateName": "NoTemplate"
+      }
+    ],
+    "style": {
+      "height": "100%"
+    },
+    "type": "tab"
+  },
+  "theme": "defaultTheme",
+  "version": 1006,
+  "eventGroups": [
+    {
+      "id": "page1:1",
+      "widgetIds": [
+        "model0000015f112a1b00_00000004"
+      ]
+    }
+  ],
+  "pageContext": [
+
+  ],
+  "dataSources": {
+    "version": "1.0",
+    "sources": [
+      {
+        "id": "model0000015f1129e423_00000001",
+        "assetId": "http:\/\/localhost:9080\/temp-service\/1606964b316d466fab46fc3240187044",
+        "type": "url",
+        "clientId": "myUniqueId123",
+        "module": {
+          "xsd": "https:\/\/ibm.com\/daas\/module\/1.0\/module.xsd",
+          "source": {
+            "id": "StringID",
+            "jdbc": {
+              "jdbcUrl": "jdbc:db2:\/\/dashdb-txn-flex-yp-dal09-300.services.dal.bluemix.net:50000\/BLUDB",
+              "driverClassName": "com.ibm.db2.jcc.DB2Driver",
+              "schema": "GOSALEST"
+            },
+            "user": "bluadmin",
+            "password": "YzM3NzI5OTZhNmI2"
+          },
+          "table": {
+            "name": "T1",
+            "description": "description of the table for visual hints ",
+            "column": [
+              {
+                "name": "Year",
+                "description": "String",
+                "datatype": "SMALLINT",
+                "nullable": true,
+                "label": "Year",
+                "usage": "identifier",
+                "regularAggregate": "countDistinct",
+                "taxonomyFamily": "cYear"
+              },
+              {
+                "name": "Product line",
+                "description": "String",
+                "datatype": "VARCHAR(24)",
+                "nullable": true,
+                "label": "Product line",
+                "usage": "identifier",
+                "regularAggregate": "countDistinct"
+              },
+              {
+                "name": "Order method type",
+                "datatype": "VARCHAR(11)",
+                "nullable": true,
+                "label": "Order method type",
+                "usage": "identifier",
+                "regularAggregate": "countDistinct"
+              },
+              {
+                "name": "Retailer country",
+                "datatype": "VARCHAR(14)",
+                "nullable": true,
+                "label": "Retailer country",
+                "usage": "identifier",
+                "regularAggregate": "countDistinct",
+                "taxonomyFamily": "cCountry"
+              },
+              {
+                "name": "Revenue",
+                "datatype": "DECIMAL(11,2)",
+                "nullable": true,
+                "label": "Revenue",
+                "usage": "fact",
+                "regularAggregate": "total"
+              },
+              {
+                "name": "Quantity",
+                "datatype": "SMALLINT",
+                "nullable": true,
+                "label": "Quantity",
+                "usage": "fact",
+                "regularAggregate": "total"
+              }
+            ]
+          },
+          "label": "Module Name",
+          "identifier": "moduleId"
+        },
+        "name": "Test Source",
+        "shaping": {
+          "embeddedModuleUpToDate": true
+        }
+      }
+    ]
+  },
+  "widgets": {
+    "model0000015f112a1b00_00000004": {
+      "id": "model0000015f112a1b00_00000004",
+      "data": {
+        "dataViews": [
+          {
+            "modelRef": "model0000015f1129e423_00000001",
+            "dataItems": [
+              {
+                "id": "model0000015f112a1b00_00000000",
+                "itemId": "T1.Product line",
+                "itemLabel": "Product Line"
+              },
+              {
+                "id": "model0000015f112a1b00_00000001",
+                "itemId": "T1.Revenue",
+                "itemLabel": "Revenue"
+              }
+            ]
+          }
+        ]
+      },
+      "slotmapping": {
+        "slots": [
+          {
+            "name": "categories",
+            "dataItems": [
+              "model0000015f112a1b00_00000000"
+            ],
+            "caption": "Bars"
+          },
+          {
+            "name": "values",
+            "dataItems": [
+              "model0000015f112a1b00_00000001"
+            ],
+            "caption": "Length"
+          }
+        ]
+      },
+      "type": "live",
+      "name": "",
+      "visId": "com.ibm.vis.rave2bundlecolumn"
+    }
+  }
+}
