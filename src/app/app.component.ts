@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { DdeApiService } from './dde-api.service';
+
+interface Window {
+    dashboardAPI: any;
+}
 
 @Component({
   selector: 'app-root',
@@ -11,6 +16,14 @@ export class AppComponent {
   public parent_session_info: string;
   public parent_api_framework_info: string;
   public parent_update_module_def_info: string;
+
+  constructor(private ddeApiService:DdeApiService) {
+
+  }
+
+  ngOnInit() {
+
+    }
 
   parentSessionInfoCreated(event) {
     this.parent_session_info = event;

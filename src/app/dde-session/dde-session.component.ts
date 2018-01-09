@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import { ScriptService } from '../script.service';
+import { DdeApiService } from '../dde-api.service';
 declare var CognosApi;
 
 
@@ -8,11 +9,12 @@ export const contentHeaders = new Headers();
 contentHeaders.append('Accept', 'application/json');
 contentHeaders.append('Content-Type', 'application/json');
 
+
 @Component({
   selector: 'dde-session',
   templateUrl: './dde-session.component.html',
   styleUrls: ['./dde-session.component.css'],
-  providers: [ ScriptService ]
+  providers: [ ScriptService]
 })
 export class DdeSessionComponent implements OnInit {
   @Output()
@@ -33,8 +35,7 @@ export class DdeSessionComponent implements OnInit {
   public sample_db_spec : string;
   public updated_db_spec : string;
 
-
-  constructor(private http: Http, private script: ScriptService ) {
+  constructor(private http: Http, private script: ScriptService, private ddeApiService: DdeApiService ) {
 
     // get the sampleSepc json ready
     this.http.get('/assets/ddeSampleSpec.json').subscribe(
@@ -128,8 +129,9 @@ export class DdeSessionComponent implements OnInit {
     this.api.dashboard.createNew().then(
         function(dashboardAPI) {
             console.log('Dashboard created successfully.');
-            var dashboardAPI = dashboardAPI;
-            console.log(self.api.dashboard);
+          //  self.ddeApiService.dashboardAPI = dashboardAPI;
+           self.ddeApiService.setDashboardApi(dashboardAPI);
+          console.log(self.api.dashboard);
         }
     ).catch(
         function(err) {

@@ -10,7 +10,8 @@
       "assets": [
         "assets",
         "favicon.ico",
-        { "glob": "ddeSampleSpec.json", "input": "./", "output": "./assets/" }
+        { "glob": "ddeSampleSpec.json", "input": "./", "output": "./assets/" },
+        { "glob": "ddeDb2SampleModule.json", "input": "./", "output": "./assets/" }
       ],
       "index": "index.html",
       "main": "main.ts",

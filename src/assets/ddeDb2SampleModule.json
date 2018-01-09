@@ -1,0 +1,73 @@
+{
+  "xsd": "https:\/\/ibm.com\/daas\/module\/1.0\/module.xsd",
+  "source": {
+    "id": "StringID",
+    "jdbc": {
+      "jdbcUrl": "jdbc:db2:\/\/dashdb-txn-flex-yp-dal09-300.services.dal.bluemix.net:50000\/BLUDB",
+      "driverClassName": "com.ibm.db2.jcc.DB2Driver",
+      "schema": "GOSALEST"
+    },
+    "user": "bluadmin",
+    "password": "YzM3NzI5OTZhNmI2"
+  },
+  "table": {
+    "name": "T1",
+    "description": "description of the table for visual hints ",
+    "column": [
+      {
+        "name": "Year",
+        "description": "String",
+        "datatype": "SMALLINT",
+        "nullable": true,
+        "label": "Year",
+        "usage": "identifier",
+        "regularAggregate": "countDistinct",
+        "taxonomyFamily": "cYear"
+      },
+      {
+        "name": "Product line",
+        "description": "String",
+        "datatype": "VARCHAR(24)",
+        "nullable": true,
+        "label": "Product line",
+        "usage": "identifier",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Order method type",
+        "datatype": "VARCHAR(11)",
+        "nullable": true,
+        "label": "Order method type",
+        "usage": "identifier",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Retailer country",
+        "datatype": "VARCHAR(14)",
+        "nullable": true,
+        "label": "Retailer country",
+        "usage": "identifier",
+        "regularAggregate": "countDistinct",
+        "taxonomyFamily": "cCountry"
+      },
+      {
+        "name": "Revenue",
+        "datatype": "DECIMAL(11,2)",
+        "nullable": true,
+        "label": "Revenue",
+        "usage": "fact",
+        "regularAggregate": "total"
+      },
+      {
+        "name": "Quantity",
+        "datatype": "SMALLINT",
+        "nullable": true,
+        "label": "Quantity",
+        "usage": "fact",
+        "regularAggregate": "total"
+      }
+    ]
+  },
+  "label": "Module Name",
+  "identifier": "moduleId"
+}
