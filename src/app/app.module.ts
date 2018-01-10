@@ -16,6 +16,9 @@ import { AngularFireAuthModule } from 'angularfire2/auth';*/
 
 import { DdeSessionComponent } from './dde-session/dde-session.component';
 import { DdeCodeExplorerComponent } from './dde-code-explorer/dde-code-explorer.component';
+import { DdeDashboardComponent } from './dde-dashboard/dde-dashboard.component';
+import { DdeApiService } from './dde-api.service';
+
 /*
 // Define the routes
 const ROUTES = [
@@ -37,6 +40,7 @@ const ROUTES = [
     DdeListComponent,
     DdeSessionComponent,
     DdeCodeExplorerComponent
+    DdeDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,7 @@ const ROUTES = [
     AngularFireAuthModule,*/
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [ DdeApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
