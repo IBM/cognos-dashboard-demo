@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+//import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
 
@@ -13,7 +13,7 @@ export class DdeListComponent implements OnInit {
   namesObservable: Observable<any[]>;
 
   //constructor(private db: AngularFireDatabase) { }
-  constructor(private http: Http, private db: AngularFireDatabase ) { }
+  constructor(private http: Http/*, private db: AngularFireDatabase*/ ) { }
 
   ngOnInit() {
      this.namesObservable = this.getNames('/names');
@@ -38,7 +38,8 @@ export class DdeListComponent implements OnInit {
             }
     );
 
-    return this.db.list(listPath).valueChanges();
+    //return this.db.list(listPath).valueChanges();
+    return null;
 
   }
 

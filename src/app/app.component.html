@@ -42,7 +42,7 @@
        <ngb-panel title="Session">
          <ng-template ngbPanelContent>
            <dde-session
-            (sessionInfoCreated)="parentSessionInfoCreated($event)"
+            (codeToDisplay)="parentSessionInfoCreated($event)"
             (apiFrameworkCreated)="parentApiFrameworkCreated($event)"
             (moduleDefinitionUpdated)="parentModuleDefUpdated($event)">
           </dde-session>
@@ -70,7 +70,12 @@
      </ngb-accordion>
    </div>
 
-<div class="col-md-10">
+<div class="col-md-3">
+  <dde-code-explorer [codeToDisplay]="parent_codeToDisplay">
+  </dde-code-explorer>
+</div>
+
+<div class="col-md-7">
       <div *ngIf="parent_session_info" class="alert alert-success box-msg" role="alert">
         <strong>Session created!</strong> {{parent_session_info}}
       </div>

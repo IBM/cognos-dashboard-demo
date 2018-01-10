@@ -21,6 +21,8 @@ export class DdeSessionComponent implements OnInit {
   apiFrameworkCreated: EventEmitter<String> = new EventEmitter<String>();
   @Output()
   moduleDefinitionUpdated: EventEmitter<String> = new EventEmitter<String>();
+  @Output()
+  codeToDisplay: EventEmitter<string> = new EventEmitter<string>();
 
 
   public client_id : string;
@@ -72,6 +74,7 @@ export class DdeSessionComponent implements OnInit {
   createNewSession(event) {
     console.log("in create new session");
 
+    this.codeToDisplay.emit('You created a new session');
     // nullify prevoius statuses and api
     this.sessionInfoCreated.emit(null);
     this.apiFrameworkCreated.emit(null);
@@ -82,7 +85,7 @@ export class DdeSessionComponent implements OnInit {
       this.api = null;
     }
 
-    let options = new RequestOptions({headers: contentHeaders});
+    /*let options = new RequestOptions({headers: contentHeaders});
     let self = this;
     this.http.post('/api/dde/session', options).subscribe(
             data => {
@@ -92,7 +95,7 @@ export class DdeSessionComponent implements OnInit {
               self.session_info = JSON.stringify(data.json(), undefined, 4);
               self.sessionInfoCreated.emit(self.session_info);
             }
-    );
+    );*/
 
   }
 
@@ -100,8 +103,10 @@ export class DdeSessionComponent implements OnInit {
 
     console.log("in create and init api framework");
 
+    this.codeToDisplay.emit('You initiated an API');
+
     // Create an instance of the CognosApi
-    this.api = new CognosApi({
+    /*this.api = new CognosApi({
           cognosRootURL: 'https://jdcluster.us-south.containers.mybluemix.net/daas/',
           sessionCode: this.session_code,
           node: document.getElementById('containerDivId3')
@@ -117,14 +122,15 @@ export class DdeSessionComponent implements OnInit {
         console.log('API created successfully.');
         console.log(self.api.dashboard);
 
-      });
+      });*/
 
   }
 
   createDashboard() {
     console.log("in create dashboard");
 
-    let self = this;
+this.codeToDisplay.emit('You created a new dashboard');
+  /*  let self = this;
     this.api.dashboard.createNew().then(
         function(dashboardAPI) {
             console.log('Dashboard created successfully.');
@@ -135,7 +141,7 @@ export class DdeSessionComponent implements OnInit {
         function(err) {
             console.log('User hit cancel on the template picker page.');
         }
-    );
+    );*/
   }
 
   updateModuleDefinitions() {

@@ -10,11 +10,12 @@ import { DdeListComponent } from './dde-list/dde-list.component';
 
 import { environment } from './../environments/environment';
 
-import { AngularFireModule } from 'angularfire2';
+/*import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireAuthModule } from 'angularfire2/auth';*/
 
 import { DdeSessionComponent } from './dde-session/dde-session.component';
+import { DdeCodeExplorerComponent } from './dde-code-explorer/dde-code-explorer.component';
 /*
 // Define the routes
 const ROUTES = [
@@ -34,15 +35,16 @@ const ROUTES = [
     AppComponent,
     AppNavbarComponent,
     DdeListComponent,
-    DdeSessionComponent
+    DdeSessionComponent,
+    DdeCodeExplorerComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     //RouterModule.forRoot(ROUTES), // Add routes to the app
-    AngularFireModule.initializeApp(environment.firebase),
+    /*AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule,
+    AngularFireAuthModule,*/
     NgbModule.forRoot()
   ],
   providers: [],
