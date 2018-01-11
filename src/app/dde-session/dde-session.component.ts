@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import { ScriptService } from '../script.service';
 import { DdeApiService } from '../dde-api.service';
+import { CodeSnippet } from '../../model/code-snippet'
 declare var CognosApi;
 
 
@@ -23,8 +24,7 @@ export class DdeSessionComponent implements OnInit {
   apiFrameworkCreated: EventEmitter<String> = new EventEmitter<String>();
   @Output()
   moduleDefinitionUpdated: EventEmitter<String> = new EventEmitter<String>();
-  @Output()
-  codeToDisplay: EventEmitter<string> = new EventEmitter<string>();
+  @Output() codeToRun = new EventEmitter<CodeSnippet>();
 
 
   public client_id : string;
@@ -36,6 +36,7 @@ export class DdeSessionComponent implements OnInit {
 
   public sample_db_spec : string;
   public updated_db_spec : string;
+  public code_snippet = new CodeSnippet();
 
   constructor(private http: Http, private script: ScriptService, private ddeApiService: DdeApiService ) {
 
@@ -72,19 +73,20 @@ export class DdeSessionComponent implements OnInit {
     );
   }
 
-  createNewSession(event) {
-    console.log("in create new session");
+  displayNewSessionCode(event) {
+    this.code_snippet.selection = 1;
+    this.code_snippet.code = 'You created a new session';
+    this.codeToRun.emit(this.code_snippet);
 
-    this.codeToDisplay.emit('You created a new session');
-    // nullify prevoius statuses and api
-    this.sessionInfoCreated.emit(null);
-    this.apiFrameworkCreated.emit(null);
-    this.moduleDefinitionUpdated.emit(null);
-    if (this.api != null) {
-      console.log("there was already an api object");
-      this.api._node.hidden = true;
-      this.api = null;
-    }
+    // // nullify prevoius statuses and api
+    // this.sessionInfoCreated.emit(null);
+    // this.apiFrameworkCreated.emit(null);
+    // this.moduleDefinitionUpdated.emit(null);
+    // if (this.api != null) {
+    //   console.log("there was already an api object");
+    //   this.api._node.hidden = true;
+    //   this.api = null;
+    // }
 
     /*let options = new RequestOptions({headers: contentHeaders});
     let self = this;
@@ -104,7 +106,9 @@ export class DdeSessionComponent implements OnInit {
 
     console.log("in create and init api framework");
 
-    this.codeToDisplay.emit('You initiated an API');
+    this.code_snippet.selection = 2;
+    this.code_snippet.code = 'You initiated an API';
+    this.codeToRun.emit(this.code_snippet);
 
     // Create an instance of the CognosApi
     /*this.api = new CognosApi({
@@ -130,7 +134,9 @@ export class DdeSessionComponent implements OnInit {
   createDashboard() {
     console.log("in create dashboard");
 
-this.codeToDisplay.emit('You created a new dashboard');
+    this.code_snippet.selection = 3;
+    this.code_snippet.code = 'You created a new dashboard';
+    this.codeToRun.emit(this.code_snippet);
   /*  let self = this;
     this.api.dashboard.createNew().then(
         function(dashboardAPI) {

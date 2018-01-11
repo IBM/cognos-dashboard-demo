@@ -9,6 +9,7 @@ import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { DdeListComponent } from './dde-list/dde-list.component';
 
 import { environment } from './../environments/environment';
+import { FormsModule } from '@angular/forms';
 
 /*import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -18,6 +19,7 @@ import { DdeSessionComponent } from './dde-session/dde-session.component';
 import { DdeCodeExplorerComponent } from './dde-code-explorer/dde-code-explorer.component';
 import { DdeDashboardComponent } from './dde-dashboard/dde-dashboard.component';
 import { DdeApiService } from './dde-api.service';
+import { DdeSessionInformationComponent } from './dde-session-information/dde-session-information.component';
 
 /*
 // Define the routes
@@ -39,8 +41,9 @@ const ROUTES = [
     AppNavbarComponent,
     DdeListComponent,
     DdeSessionComponent,
-    DdeCodeExplorerComponent
-    DdeDashboardComponent
+    DdeCodeExplorerComponent,
+    DdeDashboardComponent,
+    DdeSessionInformationComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ const ROUTES = [
     /*AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,*/
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    FormsModule
   ],
   providers: [ DdeApiService],
   bootstrap: [AppComponent]

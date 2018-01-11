@@ -13,10 +13,12 @@ interface Window {
 export class AppComponent {
   title = 'app';
 
-  public parent_session_info: string;
+  private session_code: string;
+  private session_id: string;
   public parent_api_framework_info: string;
   public parent_update_module_def_info: string;
-  public parent_codeToDisplay: string;
+  public codeToDisplay: string;
+  public tabSelection: number;
 
   constructor(private ddeApiService:DdeApiService) {
 
@@ -26,9 +28,15 @@ export class AppComponent {
 
     }
 
+  sessionInfo(event) {
+    this.session_code = event.code;
+    this.session_id = event.id;
+  }
+
   parentSessionInfoCreated(event) {
     //this.parent_session_info = event;
-    this.parent_codeToDisplay = event;
+    this.codeToDisplay = event.code;
+    this.tabSelection = event.selection;
   }
 
   parentApiFrameworkCreated(event) {

@@ -1,8 +1,10 @@
 <div class="explorer-bar">
-  <button class="btn btn-sm" type="button">
+  <button class="btn btn-sm" (click)="runCode($event)" type="button">
     Run
   </button>
 </div>
+<div>
 <textarea readonly>
   {{codeToDisplay}}
 </textarea>
+</div>

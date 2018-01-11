@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { DdeApiService } from '../dde-api.service';
+import { Session } from '../../model/session';
 
 @Component({
   selector: 'dde-code-explorer',
@@ -7,10 +9,19 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DdeCodeExplorerComponent implements OnInit {
 
+  @Output() session: EventEmitter<Session> = new EventEmitter<Session>();
   @Input() codeToDisplay: string;
-  constructor() { }
+  @Input() selection: number;
+
+  constructor(private ddeApiService: DdeApiService) { }
 
   ngOnInit() {
+  }
+
+  async runCode(event) {
+    if (this.selection === 1) {
+      this.session.emit(await this.ddeApiService.createNewSession());
+    }
   }
 
 }
