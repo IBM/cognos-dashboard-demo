@@ -1,6 +1,90 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 
+/* https://bootswatch.com/simplex/ */
+/*@import "https://bootswatch.com/4/simplex/bootstrap.css";*/
+
+/* https://bootswatch.com/cosmo/ */
+/*@import "https://bootswatch.com/4/cosmo/bootstrap.css";*/
+
+/* https://bootswatch.com/cerulean/ */
+/*@import "https://bootswatch.com/4/cerulean/bootstrap.css";*/
+
+/* https://bootswatch.com/lux/ */
+/*@import "https://bootswatch.com/4/lux/bootstrap.css";*/
+
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+
+/* remove default container paddings */
+.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+/* remove default row margins */
+.container-fluid .row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+/* remove default paddings */
+.ngxAccordionCustomContainer {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+/* remove default paddings */
+.mainContentContainer {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+/* make sure list spans whole column height */
+.ngxAccordionCustomContainer .list-group {
+  height: 100%;
+}
+
+/* accordion headers*/
+.ngxAccordionCustomContainer .navbar-brand {
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+/* accordian content*/
+.ngxAccordionCustomContainer .nav-link {
+    font-size: 0.8rem;
+}
+
+/* border radio to remove rounded corners for accordion card */
+.ngxAccordionCustomContainer .card {
+  border-radius: 0rem;
+
+}
+
+/* remove borders for accordion card header  */
+.ngxAccordionCustomContainer .card-header {
+    border-bottom: 0px;
+}
+
+/* indentation for accordion card body
+.ngxAccordionCustomContainer .card .card-body {
+    margin-left: 1.25rem;
+}*/
+
+/* set accordion's card header background to be white instead of light gray */
+/*.ngxAccordionCustomContainer .card .card-header {
+    background-color: #ffffff;
+}*/
+
+/* set background colour to custom colour for accordion
+.ngxAccordionCustomContainer { */
+  /*background-color: #333; /*Hex Gray20*/
+  /*background-color: #ffffff; /*white*/
+/*}*/
+
+
+/*
+
 body {
    padding-top: 80px;
 }
@@ -8,3 +92,4 @@ body {
     padding: 0.5rem 0.5rem;
     text-align: center;
 }
+*/

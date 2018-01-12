@@ -17,6 +17,9 @@ export class AppComponent {
   public parent_api_framework_info: string;
   public parent_update_module_def_info: string;
 
+  //customClass: string = 'ngxAccordianCustom';
+  isFirstOpen: boolean = true;
+
   constructor(private ddeApiService:DdeApiService) {
 
   }
@@ -24,6 +27,12 @@ export class AppComponent {
   ngOnInit() {
 
     }
+
+    collapsed = true;
+      toggleCollapsed(): void {
+        this.collapsed = !this.collapsed;
+      }
+
 
   parentSessionInfoCreated(event) {
     this.parent_session_info = event;

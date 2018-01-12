@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
@@ -10,10 +10,14 @@ import { DdeListComponent } from './dde-list/dde-list.component';
 
 import { environment } from './../environments/environment';
 
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+
+/*
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
+*/
 import { DdeSessionComponent } from './dde-session/dde-session.component';
 import { DdeDashboardComponent } from './dde-dashboard/dde-dashboard.component';
 
@@ -44,11 +48,13 @@ const ROUTES = [
   imports: [
     BrowserModule,
     HttpModule,
+    BsDropdownModule.forRoot(),
+    AccordionModule.forRoot()
     //RouterModule.forRoot(ROUTES), // Add routes to the app
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
-    NgbModule.forRoot()
+    //AngularFireModule.initializeApp(environment.firebase),
+    //AngularFireDatabaseModule,
+    //AngularFireAuthModule,
+    //NgbModule.forRoot()
   ],
   providers: [ DdeApiService],
   bootstrap: [AppComponent]
