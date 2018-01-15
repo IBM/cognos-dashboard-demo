@@ -44,7 +44,4 @@ export class AppComponent {
   getCodeSnippet(event) {
     this.code_snippet = event;
   }
-
-
-
 }

@@ -36,6 +36,9 @@ export class DdeCodeExplorerComponent implements OnInit {
     else if (this.codeSnippet.selection === 2) {
       this.apiId.emit(await this.ddeApiService.createAndInitApiFramework());
     }
+    else if (this.codeSnippet.selection === 3) {
+      await this.ddeApiService.setDashboardApi();
+    }
   }
 
 }

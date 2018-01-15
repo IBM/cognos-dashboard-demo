@@ -58,9 +58,20 @@ export class DdeApiService {
     return this.api.apiId;
   }
 
-  setDashboardApi(dashboardAPI) {
-    this.dashboardAPI = dashboardAPI;
-    console.log(this.dashboardAPI);
+  async setDashboardApi() {
+    console.log("in create dashboard");
+
+     await this.api.dashboard.createNew().then(
+         function(dashboardAPI) {
+             console.log('Dashboard created successfully.');
+             this.dashboardAPI = dashboardAPI;
+             console.log(this.dashboardAPI);
+         }
+     ).catch(
+         function(err) {
+             console.log('User hit cancel on the template picker page.');
+         }
+     );
   }
 
 

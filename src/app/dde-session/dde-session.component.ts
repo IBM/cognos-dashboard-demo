@@ -99,7 +99,7 @@ export class DdeSessionComponent implements OnInit {
 
   }
 
-  createAndInitApiFramework(event) {
+  displayInitApiFrameworkCode() {
     this.code_snippet.selection = 2;
     this.code_snippet.code = 'You initiated an API';
     this.code_snippet.size = 'small';
@@ -126,9 +126,7 @@ export class DdeSessionComponent implements OnInit {
 
   }
 
-  createDashboard() {
-    console.log("in create dashboard");
-
+  displayDashboardCode() {
     this.code_snippet.selection = 3;
     this.code_snippet.code = 'You created a new dashboard';
     this.code_snippet.size = 'large';
