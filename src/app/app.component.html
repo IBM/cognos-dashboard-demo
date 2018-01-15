@@ -42,7 +42,7 @@
        <ngb-panel title="Session">
          <ng-template ngbPanelContent>
            <dde-session
-            (codeToRun)="parentSessionInfoCreated($event)"
+            (codeToRun)="getCodeSnippet($event)"
             (apiFrameworkCreated)="parentApiFrameworkCreated($event)"
             (moduleDefinitionUpdated)="parentModuleDefUpdated($event)">
           </dde-session>
@@ -67,19 +67,19 @@
    </div>
 
 <div class="col-md-3">
-  <dde-code-explorer [codeToDisplay]="codeToDisplay" [selection]="tabSelection" (session)="sessionInfo($event)">
-  </dde-code-explorer>
+<dde-code-explorer [codeSnippet]="code_snippet" (session)="sessionInfo($event)">
+</dde-code-explorer>
 
-  <dde-session-information *ngIf="tabSelection === 2" [sessionCode]="session_code" [sessionId]="session_id">
+  <dde-session-information *ngIf="code_snippet?.selection === 2" [session]="session">
   </dde-session-information>
 </div>
 
 <div class="col-md-7">
-      <div *ngIf="session_code" class="alert alert-success box-msg" role="alert">
+      <div *ngIf="session" class="alert alert-success box-msg" role="alert">
         <strong>Session created!</strong> {{session_code}}
       </div>
-      <div *ngIf="parent_api_framework_info" class="alert alert-success box-msg" role="alert">
-        <strong>API created successfuly!</strong> session_code: {{parent_api_framework_info}}
+      <div *ngIf="apiId !== ''" class="alert alert-success box-msg" role="alert">
+        <strong>API created successfuly!</strong>
       </div>
       <div *ngIf="parent_update_module_def_info" class="alert alert-success box-msg" role="alert">
         <strong>Module definition updated!</strong> see console log for before vs after

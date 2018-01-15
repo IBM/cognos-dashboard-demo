@@ -3,7 +3,7 @@ import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import { ScriptService } from '../script.service';
 import { DdeApiService } from '../dde-api.service';
 import { CodeSnippet } from '../../model/code-snippet'
-declare var CognosApi;
+//declare var CognosApi;
 
 
 export const contentHeaders = new Headers();
@@ -18,10 +18,6 @@ contentHeaders.append('Content-Type', 'application/json');
   providers: [ ScriptService]
 })
 export class DdeSessionComponent implements OnInit {
-  @Output()
-  sessionInfoCreated: EventEmitter<String> = new EventEmitter<String>();
-  @Output()
-  apiFrameworkCreated: EventEmitter<String> = new EventEmitter<String>();
   @Output()
   moduleDefinitionUpdated: EventEmitter<String> = new EventEmitter<String>();
   @Output() codeToRun = new EventEmitter<CodeSnippet>();
@@ -76,6 +72,7 @@ export class DdeSessionComponent implements OnInit {
   displayNewSessionCode(event) {
     this.code_snippet.selection = 1;
     this.code_snippet.code = 'You created a new session';
+    this.code_snippet.size = 'large';
     this.codeToRun.emit(this.code_snippet);
 
     // // nullify prevoius statuses and api
@@ -103,11 +100,9 @@ export class DdeSessionComponent implements OnInit {
   }
 
   createAndInitApiFramework(event) {
-
-    console.log("in create and init api framework");
-
     this.code_snippet.selection = 2;
     this.code_snippet.code = 'You initiated an API';
+    this.code_snippet.size = 'small';
     this.codeToRun.emit(this.code_snippet);
 
     // Create an instance of the CognosApi
@@ -136,6 +131,7 @@ export class DdeSessionComponent implements OnInit {
 
     this.code_snippet.selection = 3;
     this.code_snippet.code = 'You created a new dashboard';
+    this.code_snippet.size = 'large';
     this.codeToRun.emit(this.code_snippet);
   /*  let self = this;
     this.api.dashboard.createNew().then(

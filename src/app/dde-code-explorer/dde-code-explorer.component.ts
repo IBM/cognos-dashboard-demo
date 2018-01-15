@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DdeApiService } from '../dde-api.service';
 import { Session } from '../../model/session';
+import { CodeSnippet } from '../../model/code-snippet';
 
 @Component({
   selector: 'dde-code-explorer',
@@ -10,17 +11,28 @@ import { Session } from '../../model/session';
 export class DdeCodeExplorerComponent implements OnInit {
 
   @Output() session: EventEmitter<Session> = new EventEmitter<Session>();
-  @Input() codeToDisplay: string;
-  @Input() selection: number;
+  @Output() apiId: EventEmitter<string> = new EventEmitter<string>();
+  @Input() codeSnippet : CodeSnippet;
 
   constructor(private ddeApiService: DdeApiService) { }
 
   ngOnInit() {
   }
 
+  setExplorerDiv() {
+      let classes =  {
+          divsmall: this.codeSnippet && this.codeSnippet.size === 'small',
+          divlarge: !this.codeSnippet || this.codeSnippet.size === 'large'
+      };
+      return classes;
+  }
+
   async runCode(event) {
-    if (this.selection === 1) {
+    if (this.codeSnippet.selection === 1) {
       this.session.emit(await this.ddeApiService.createNewSession());
+    }
+    else if (this.codeSnippet.selection === 2) {
+      this.apiId.emit(await this.ddeApiService.createAndInitApiFramework());
     }
   }
 

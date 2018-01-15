@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Session } from '../../model/session';
 
 @Component({
   selector: 'dde-session-information',
@@ -7,8 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DdeSessionInformationComponent implements OnInit {
 
-  @Input() sessionCode: string
-  @Input() sessionId: string
+  @Input() session: Session
+
   constructor() { }
 
   ngOnInit() {

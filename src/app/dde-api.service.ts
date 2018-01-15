@@ -2,14 +2,18 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import { Session } from '../model/session';
+declare var CognosApi;
 
-export const contentHeaders = new Headers();
+const contentHeaders = new Headers();
+contentHeaders.append('Accept', 'application/json');
+contentHeaders.append('Content-Type', 'application/json');
+
 
 @Injectable()
 export class DdeApiService {
   private ddeMyVar: string;
   private dashboardAPI;
-  public api;
+  public api = null;
   session: Session;
 
   constructor(private http: Http) { }
@@ -31,6 +35,27 @@ export class DdeApiService {
     this.session.code = response.json().sessionCode;
     this.session.id = response.json().sessionId;
     return this.session;
+  }
+
+  async createAndInitApiFramework() : Promise<string> {
+    console.log("in create and init api framework");
+
+    // Create an instance of the CognosApi
+    this.api = new CognosApi({
+          cognosRootURL: 'https://jdcluster.us-south.containers.mybluemix.net/daas/',
+          sessionCode: this.session.code,
+          node: document.getElementById('containerDivId3')
+          });
+    this.api._node.hidden = false;
+
+    let self = this;
+
+    // initialize the CognosApi in order to obtain the service APIs
+    await this.api.initialize();
+        console.log('API created successfully.');
+        console.log(self.api.dashboard);
+
+    return this.api.apiId;
   }
 
   setDashboardApi(dashboardAPI) {

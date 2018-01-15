@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { DdeApiService } from './dde-api.service';
+import { CodeSnippet } from '../model/code-snippet';
+import { Session } from '../model/session';
 
 interface Window {
     dashboardAPI: any;
@@ -13,12 +15,10 @@ interface Window {
 export class AppComponent {
   title = 'app';
 
-  private session_code: string;
-  private session_id: string;
-  public parent_api_framework_info: string;
+  private apiId: string = '';
   public parent_update_module_def_info: string;
-  public codeToDisplay: string;
-  public tabSelection: number;
+  private code_snippet: CodeSnippet;
+  private session : Session = null;
 
   constructor(private ddeApiService:DdeApiService) {
 
@@ -29,18 +29,15 @@ export class AppComponent {
     }
 
   sessionInfo(event) {
-    this.session_code = event.code;
-    this.session_id = event.id;
+    this.session = event;
   }
 
-  parentSessionInfoCreated(event) {
-    //this.parent_session_info = event;
-    this.codeToDisplay = event.code;
-    this.tabSelection = event.selection;
+  getCodeSnippet(event) {
+    this.code_snippet = event;
   }
 
   parentApiFrameworkCreated(event) {
-      this.parent_api_framework_info = event;
+    this.apiId = event;
   }
 
   parentModuleDefUpdated(event) {
