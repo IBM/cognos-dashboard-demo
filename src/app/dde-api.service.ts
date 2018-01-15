@@ -52,8 +52,8 @@ export class DdeApiService {
 
     // initialize the CognosApi in order to obtain the service APIs
     await this.api.initialize();
-        console.log('API created successfully.');
-        console.log(self.api.dashboard);
+    console.log('API created successfully.');
+    console.log(self.api.dashboard);
 
     return this.api.apiId;
   }

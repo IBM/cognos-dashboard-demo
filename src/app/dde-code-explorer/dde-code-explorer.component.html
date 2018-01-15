@@ -9,4 +9,20 @@
     {{codeSnippet?.code}}
   </textarea>
 
+  <div class="session-info-div" *ngIf="codeSnippet.selection === 2">
+    <div>
+      <label>Session Information</label>
+    </div>
+
+    <div>
+      <label>sessionCode</label>
+      <input type="text" [(ngModel)]="sessionTest.code"/>
+    </div>
+
+    <div>
+      <label>sessionId</label>
+      <input type="text" [(ngModel)]="sessionTest.id"/>
+    </div>
+  </div>
+
 </div>

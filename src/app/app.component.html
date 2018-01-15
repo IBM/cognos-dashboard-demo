@@ -1,42 +1,105 @@
-
-<app-navbar></app-navbar>
-
-<div class="container">
+<header>
+  <app-navbar></app-navbar>
+</header>
+<!--div class="container">
     <div class="starter-template">
         <h2>DDE demo app</h2>
     </div>
+</div-->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 ngxAccordionCustomContainer nav-bar navbar-expand-lg navbar-dark bg-dark">
+            <div class="list-group text-md-left">
+              <accordion class="ngxAccordionCustom">
+                <!--accordion-group heading="1. Session" [isOpen]="isFirstOpen" (isOpenChange)="log($event)" panelClass="ngxAccordianCustom"-->
+                <accordion-group [isOpen]="isFirstOpen" (isOpenChange)="log($event)" panelClass="bg-dark">
+                  <!--p>Some content</p-->
+                  <div accordion-heading class="navbar-brand">
+                    1. Session
+                    <span class="badge badge-secondary float-right pull-right"></span>
+                  </div>
+                  <dde-session (codeToRun)="getCodeSnippet($event)">
+                 </dde-session>
+                </accordion-group>
+
+                <accordion-group (isOpenChange)="log($event)" panelClass="bg-dark">
+                  <div accordion-heading class="navbar-brand">
+                    2. Create or open Dashboard
+                  </div>
+                  <div class="navbar-nav">
+                    <p class="nav-link">
+                      TODO: move Create dashboard move over here
+                    </p>
+                  </div>
+                </accordion-group>
+
+                <accordion-group (isOpenChange)="log($event)" panelClass="bg-dark">
+                  <div accordion-heading class="navbar-brand">
+                    3. Work with Dashboard
+                  </div>
+                  <dde-dashboard>
+                  </dde-dashboard>
+                </accordion-group>
+
+                <accordion-group (isOpenChange)="log($event)" panelClass="bg-dark">
+                  <div accordion-heading class="navbar-brand">
+                    Documentation
+                    <span class="badge badge-secondary float-right pull-right">some html here</span>
+                  </div>
+                  <div class="navbar-nav">
+                    <p class="nav-link">
+                      This is just some content to illustrate fancy headings.
+                    </p>
+                  </div>
+                </accordion-group>
+                <accordion-group (isOpenChange)="log($event)" panelClass="bg-dark">
+                  <div accordion-heading class="navbar-brand">
+                    Get Started
+                      <i class="fa fa-link float-right"></i>
+                  </div>
+                  <div class="navbar-nav">
+                    <p class="nav-link">
+                      This is just some content to illustrate fancy headings.
+                    </p>
+                  </div>
+                </accordion-group>
+              </accordion>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+          <dde-code-explorer [codeSnippet]="code_snippet" (session)="sessionInfo($event)" (apiId)="getAPIId($event)">
+          </dde-code-explorer>
+        </div>
+
+        <div class="col-md-7 mainContentContainer">
+              <div *ngIf="session" class="alert alert-success box-msg" role="alert">
+                <strong>Session created!</strong>
+              </div>
+              <div *ngIf="apiId !== ''" class="alert alert-success box-msg" role="alert">
+                <strong>API created successfuly!</strong>
+              </div>
+              <div *ngIf="parent_update_module_def_info" class="alert alert-success box-msg" role="alert">
+                <strong>Module definition updated!</strong> see console log for before vs after
+              </div>
+
+                <div class="iframeContainer" id="containerDivId3">
+                    <!--pre>{{parent_session_info}}</pre-->
+                </div>
+        </div>
+
+    </div>
 </div>
 
-<!--ngb-accordion  #acc="ngbAccordion" activeIds="ngb-panel-0">
-  <ngb-panel title="Session">
-    <ng-template ngbPanelContent>
-      <dde-session></dde-session>
-    </ng-template>
-  </ngb-panel>
-  <ngb-panel>
-    <ng-template ngbPanelTitle>
-      <span>Work with dashboard</span>
-    </ng-template>
-    <ng-template ngbPanelContent>
-      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
-      aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-      sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-      craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-      occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-      labore sustainable VHS.
-    </ng-template>
-  </ngb-panel>
-  <ngb-panel title="DB">
-    <ng-template ngbPanelContent>
-      <h3>Names List</h3>
-      <dde-list></dde-list>
-    </ng-template>
-  </ngb-panel>
-</ngb-accordion-->
 
 
-<div class="row">
-   <div class="col-md-2">
+
+
+
+<!--div class="row">
+   <div class="col-md-3">
+
 
      <ngb-accordion  #acc="ngbAccordion" activeIds="ngb-panel-0">
        <ngb-panel title="Session">
@@ -66,17 +129,9 @@
      </ngb-accordion>
    </div>
 
-<div class="col-md-3">
-<dde-code-explorer [codeSnippet]="code_snippet" (session)="sessionInfo($event)">
-</dde-code-explorer>
-
-  <dde-session-information *ngIf="code_snippet?.selection === 2" [session]="session">
-  </dde-session-information>
-</div>
-
-<div class="col-md-7">
-      <div *ngIf="session" class="alert alert-success box-msg" role="alert">
-        <strong>Session created!</strong> {{session_code}}
+<div class="col-md-9">
+      <div *ngIf="parent_session_info" class="alert alert-success box-msg" role="alert">
+        <strong>Session created!</strong> {{parent_session_info}}
       </div>
       <div *ngIf="apiId !== ''" class="alert alert-success box-msg" role="alert">
         <strong>API created successfuly!</strong>
@@ -86,9 +141,8 @@
       </div>
 
         <div class="iframeContainer" id="containerDivId3">
-            <!--pre>{{parent_session_info}}</pre-->
         </div>
 </div>
 
 
-</div>
+</div-->

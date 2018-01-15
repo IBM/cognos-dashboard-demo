@@ -13,6 +13,7 @@ export class DdeCodeExplorerComponent implements OnInit {
   @Output() session: EventEmitter<Session> = new EventEmitter<Session>();
   @Output() apiId: EventEmitter<string> = new EventEmitter<string>();
   @Input() codeSnippet : CodeSnippet;
+  sessionTest : Session;
 
   constructor(private ddeApiService: DdeApiService) { }
 
@@ -29,7 +30,8 @@ export class DdeCodeExplorerComponent implements OnInit {
 
   async runCode(event) {
     if (this.codeSnippet.selection === 1) {
-      this.session.emit(await this.ddeApiService.createNewSession());
+      this.sessionTest = await this.ddeApiService.createNewSession();
+      this.session.emit(this.sessionTest);
     }
     else if (this.codeSnippet.selection === 2) {
       this.apiId.emit(await this.ddeApiService.createAndInitApiFramework());

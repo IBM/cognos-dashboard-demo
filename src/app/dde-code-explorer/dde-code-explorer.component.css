@@ -20,3 +20,8 @@ textarea {
   text-align: right;
   background-color: #000;
 }
+
+.session-info-div {
+  margin-top: 40px;
+  margin-left: 20px;
+}

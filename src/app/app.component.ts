@@ -19,29 +19,32 @@ export class AppComponent {
   public parent_update_module_def_info: string;
   private code_snippet: CodeSnippet;
   private session : Session = null;
+  private collapsed: boolean = true;
+  private isFirstOpen: boolean = true;
 
   constructor(private ddeApiService:DdeApiService) {
-
   }
 
   ngOnInit() {
 
     }
 
+  toggleCollapsed(): void {
+    this.collapsed = !this.collapsed;
+  }
+
   sessionInfo(event) {
     this.session = event;
+  }
+
+  getAPIId(event) {
+    this.apiId = event;
   }
 
   getCodeSnippet(event) {
     this.code_snippet = event;
   }
 
-  parentApiFrameworkCreated(event) {
-    this.apiId = event;
-  }
 
-  parentModuleDefUpdated(event) {
-      this.parent_update_module_def_info = event;
-  }
 
 }

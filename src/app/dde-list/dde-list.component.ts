@@ -13,7 +13,7 @@ export class DdeListComponent implements OnInit {
   namesObservable: Observable<any[]>;
 
   //constructor(private db: AngularFireDatabase) { }
-  constructor(private http: Http/*, private db: AngularFireDatabase*/ ) { }
+  constructor(private http: Http/*, private db: AngularFireDatabase */) { }
 
   ngOnInit() {
      this.namesObservable = this.getNames('/names');
@@ -38,8 +38,8 @@ export class DdeListComponent implements OnInit {
             }
     );
 
-    //return this.db.list(listPath).valueChanges();
     return null;
+    //return this.db.list(listPath).valueChanges();
 
   }
 

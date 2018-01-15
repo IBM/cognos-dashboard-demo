@@ -1,56 +1,25 @@
+<div class="col-md-12">
 
-<!--h3>Show credentials</h3-->
-
-<!--button class="btn btn-outline-success my-2 my-sm-0" (click)='getDDECred()'>Show DDE Credentials</button>
-<div>
-  <label>client id:</label>
-  <label id="DDE_client_id" class="dde text-left">{{client_id}}</label>
-</div>
-<div>
-  <label>client secret:</label>
-  <label id="DDE_client_secret" class="dde text-left">{{client_secret}}</label>
-</div-->
-
-<div class="row">
-   <div class="col-md-12">
-    <!--p>
-      <button class="btn btn-link" (click)='getDDECred()' type="button">
-          Show DDE Credentials
-      </button>
-    </p>
-    <div>
-      <label>client id:</label>
-      <label id="DDE_client_id">{{client_id}}</label>
-    </div>
-    <div>
-      <label>client secret:</label>
-      <label id="DDE_client_secret">{{client_secret}}</label>
-    </div-->
-
-    <!--h3>Session information</h3-->
-    <button class="btn btn-sm btn-link"  (click)='displayNewSessionCode($event)' type="button">
-      Create New Session
-    </button>
-
-    <!--h3>Create and Init API Framework</h3-->
-    <button class="btn btn-sm btn-link"  (click)='createAndInitApiFramework($event)' type="button">
-      Create & init API framework
-    </button>
-
-    <button class="btn btn-sm btn-link"  (click)='updateModuleDefinitions($event)' type="button">
-      Update Module Definitions
-    </button>
-
-    <button class="btn btn-sm btn-link"  (click)='createDashboard()' type="button">
-      Create Dashboard
-    </button>
-
-</div>
-
-<div class="col-md-0">
-        <!--div class="iframeContainer" id="containerDivId3">
-            <pre>{{session_info}}</pre>
-        </div-->
-</div>
+     <div class="row">
+       <ul class="navbar-nav mr-auto">
+         <li>
+           <!--a class="nav-link" href="#" (click)='getDDECred()'>
+             Show DDE Credentials
+           </a-->
+           <a class="nav-link" href="#" (click)='displayNewSessionCode($event)'>
+             Create New Session
+           </a>
+           <a class="nav-link" href="#" (click)='createAndInitApiFramework($event)'>
+             Create & init API framework
+           </a>
+           <a class="nav-link" href="#" (click)='updateModuleDefinitions($event)'>
+             Update Module Definitions
+           </a>
+           <a class="nav-link" href="#" (click)='createDashboard()'>
+             Create Dashboard
+           </a>
+         </li>
+       </ul>
+     </div>
 
 </div>
