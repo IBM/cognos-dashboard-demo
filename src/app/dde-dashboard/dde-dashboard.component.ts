@@ -10,16 +10,26 @@ import { DdeApiService } from '../dde-api.service';
 export class DdeDashboardComponent implements OnInit {
 
   public db2_sample_module : string;
+  public csv_sample_module: string;
 
   constructor(private http: Http, private ddeApiService: DdeApiService ) {
     console.log("in dde dashboad constructor");
     console.log(this.ddeApiService.myVar);
 
-    // get the sampleModule json ready
+    // get the db2 sampleModule json ready
     this.http.get('/assets/ddeDb2SampleModule.json').subscribe(
             data => {
               console.log("in dde-dashboard constructor");
               this.db2_sample_module = data.json();
+              console.log(data.json());
+            }
+        );
+
+    // get the csv sampleModule json ready
+    this.http.get('/assets/ddeCSVSampleModule.json').subscribe(
+            data => {
+              console.log("in dde-dashboard constructor");
+              this.csv_sample_module = data.json();
               console.log(data.json());
             }
         );
@@ -39,6 +49,11 @@ export class DdeDashboardComponent implements OnInit {
       id: 'myUniqueId123'
     }]);*/
     this.ddeApiService.addDb2SampleSource(this.db2_sample_module);
+  }
+
+  addCSVSampleSourceToDashboard(event) {
+    console.log("in addCSVSampleSourceToDashboard");
+    this.ddeApiService.addCSVSampleSource(this.csv_sample_module);
   }
 
 }

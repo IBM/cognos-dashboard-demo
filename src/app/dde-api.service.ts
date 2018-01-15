@@ -30,4 +30,16 @@ export class DdeApiService {
     }]);
   }
 
+  addCSVSampleSource(csv_sample_module) {
+    console.log("in dde-api.service");
+    console.log(this.dashboardAPI);
+
+    this.dashboardAPI.addSources([{
+      module: csv_sample_module,
+      name: 'Test CSV Source',
+      id: 'myUniqueId789'
+    }]);
+
+  }
+
 }
