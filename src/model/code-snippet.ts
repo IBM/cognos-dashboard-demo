@@ -39,7 +39,7 @@ this.code_sample = 'this.dashboardAPI.addSources([{ \n' +
                       '}]);';
 export const DB2SourceCS = new CodeSnippet(5, this.code_sample, 'small');
 
-this.code_sample = 'var protectedSampleModule = this.getProtectedSampleModule(db2_sample_module); \n' +
+this.code_sample = 'var protectedSampleModule = this.getProtectedSampleModule(this.db2_sample_module); \n' +
                         'this.dashboardAPI.addSources([{ \n' +
                         '   module: protectedSampleModule, \n' +
                         '   name:' + `'Protected DB2 Source'` + ', \n' +
