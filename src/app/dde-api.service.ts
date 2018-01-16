@@ -120,6 +120,16 @@ export class DdeApiService {
     }]);
   }
 
+  addProtectedCSVSampleSource() {
+    var protectedSampleModule = this.getProtectedSampleModule(this.csv_sample_module);
+    console.log("protected sample module: " + protectedSampleModule);
+    this.dashboardAPI.addSources([{
+      module: protectedSampleModule,
+      name: 'Protected CSV Source',
+      id: 'myUniqueId987'
+    }]);
+  }
+
   getProtectedSampleModule(sample_module) : string {
     return this.encryptModuleInfo(sample_module);
   }

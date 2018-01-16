@@ -46,3 +46,11 @@ this.code_sample = 'var protectedSampleModule = this.getProtectedSampleModule(th
                         '   id:' + `'myUniqueId456'` + '\n' +
                       '}]);';
 export const ProtectedDB2SourceCS = new CodeSnippet(6, this.code_sample, 'small');
+
+this.code_sample = 'var protectedSampleModule = this.getProtectedSampleModule(this.csv_sample_module); \n' +
+                        'this.dashboardAPI.addSources([{ \n' +
+                        '   module: protectedSampleModule, \n' +
+                        '   name:' + `'Protected CSV Source'` + ', \n' +
+                        '   id:' + `'myUniqueId987'` + '\n' +
+                      '}]);';
+export const ProtectedCSVSourceCS = new CodeSnippet(7, this.code_sample, 'small');
