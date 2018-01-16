@@ -14,11 +14,12 @@ this.code_sample = 'const response = await \n' +
                     '  response.json().sessionId;';
 export const NewSessionCS = new CodeSnippet(1, this.code_sample, 'large');
 
-this.code_sample = 'this.api = new CognosApi({ \n ' +
-                    '   cognosRootURL: ' + 'https://jdcluster.us-south.containers.mybluemix.net/daas/, \n' +
+this.code_sample = 'this.api = new CognosApi({ \n' +
+                    '   cognosRootURL: ' + `'https://jdcluster.us-south.containers.mybluemix.net/daas/',` + '\n' +
                     '   sessionCode: this.session.code, \n' +
-                    '   node: document.getElementById(' + 'containerDivId3' + ')' +
-                    '});';
+                    '   node: document.getElementById(' + `'containerDivId3'` + ') \n' +
+                    '}); \n\n' +
+                    'await this.api.initialize();' ;
 export const InitAPICS = new CodeSnippet(2, this.code_sample, 'small');
 
 this.code_sample = 'this.dashboardAPI = await this.api.dashboard.createNew();';

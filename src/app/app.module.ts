@@ -23,6 +23,7 @@ import { DdeSessionComponent } from './dde-session/dde-session.component';
 import { DdeCodeExplorerComponent } from './dde-code-explorer/dde-code-explorer.component';
 import { DdeDashboardComponent } from './dde-dashboard/dde-dashboard.component';
 import { DdeApiService } from './dde-api.service';
+import { DdeToasterComponent } from './dde-toaster/dde-toaster.component';
 
 /*
 // Define the routes
@@ -45,7 +46,8 @@ const ROUTES = [
     DdeListComponent,
     DdeSessionComponent,
     DdeCodeExplorerComponent,
-    DdeDashboardComponent    
+    DdeDashboardComponent,
+    DdeToasterComponent    
   ],
   imports: [
     BrowserModule,

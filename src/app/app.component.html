@@ -74,9 +74,7 @@
         </div>
 
         <div class="col-md-7 mainContentContainer">
-              <div *ngIf="session" class="alert alert-success box-msg" role="alert">
-                <strong>Session created!</strong>
-              </div>
+              <dde-toaster [toaster]="toaster"></dde-toaster>
               <div *ngIf="apiId !== ''" class="alert alert-success box-msg" role="alert">
                 <strong>API created successfuly!</strong>
               </div>
