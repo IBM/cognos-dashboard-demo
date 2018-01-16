@@ -29,6 +29,11 @@ $ npm install
 $ npm run dist
 $ node sever.js
 ```
+or
+
+```bash
+$ npm run build
+```
 
 ## Angular setup
 

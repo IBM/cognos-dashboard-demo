@@ -14,7 +14,6 @@ export class DdeDashboardComponent implements OnInit {
 
   constructor(private http: Http, private ddeApiService: DdeApiService ) {
     console.log("in dde dashboad constructor");
-    console.log(this.ddeApiService.myVar);
 
     // get the db2 sampleModule json ready
     this.http.get('/assets/ddeDb2SampleModule.json').subscribe(
@@ -51,8 +50,11 @@ export class DdeDashboardComponent implements OnInit {
     this.ddeApiService.addDb2SampleSource(this.db2_sample_module);
   }
 
+  addProtectedDb2SampleSourceToDashboard(event) {
+    //this.ddeApiService.addProtectedDb2SampleSource(this.db2_sample_module);
+  }
+
   addCSVSampleSourceToDashboard(event) {
-    console.log("in addCSVSampleSourceToDashboard");
     this.ddeApiService.addCSVSampleSource(this.csv_sample_module);
   }
 

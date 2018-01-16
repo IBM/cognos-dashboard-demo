@@ -38,6 +38,7 @@
     "cloudant": "^1.7.x",
     "core-js": "^2.4.1",
     "express": "^4.16.2",
+    "jsrsasign": "^8.0.4",
     "ngx-bootstrap": "^2.0.0-rc.0",
     "popper.js": "^1.12.3",
     "request": "^2.83.0",
