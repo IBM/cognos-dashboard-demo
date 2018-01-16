@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import {Http, Response, RequestOptions, Headers} from '@angular/http';
-import { Session } from '../model/session';
-import{ KEYUTIL } from  'jsrsasign';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { Session, SessionKey } from '../model/session';
+import{ KEYUTIL, KJUR, hextob64 } from  'jsrsasign';
 declare var CognosApi;
 
 const contentHeaders = new Headers();
@@ -12,11 +12,13 @@ contentHeaders.append('Content-Type', 'application/json');
 
 @Injectable()
 export class DdeApiService {
-  private dashboardAPI;
+
   public api = null;
-  session: Session;
+
+  private dashboardAPI;
+  private session: Session;
   private db2_sample_module: string;
-  public csv_sample_module: string;
+  private csv_sample_module: string;
   private validPropertiesToEncrypt;
 
   constructor(private http: Http) {
@@ -47,7 +49,9 @@ export class DdeApiService {
     const response = await this.http.post('/api/dde/session', options).toPromise();
     this.session.code = response.json().sessionCode;
     this.session.id = response.json().sessionId;
+    this.session.keys = response.json().keys.map(k => new SessionKey(k));
     return this.session;
+
   }
 
   async createAndInitApiFramework() : Promise<string> {
@@ -106,9 +110,8 @@ export class DdeApiService {
     }]);
   }
 
-/*
-  addProtectedDb2SampleSource(db2_sample_module) {
-    var protectedSampleModule = this.getProtectedSampleModule(db2_sample_module);
+  addProtectedDB2SampleSource() {
+    var protectedSampleModule = this.getProtectedSampleModule(this.db2_sample_module);
     console.log("protected sample module: " + protectedSampleModule);
     this.dashboardAPI.addSources([{
       module: protectedSampleModule,
@@ -117,38 +120,43 @@ export class DdeApiService {
     }]);
   }
 
-  getProtectedSampleModule(sampleModule) :  string {
-    return this._encryptModuleInfo(sampleModule);
+  getProtectedSampleModule(sample_module) : string {
+    return this.encryptModuleInfo(sample_module);
   }
 
-  _encryptModuleInfo(module) : string {
+  encryptModuleInfo(module) : string {
     var sampleProtectedModule = JSON.parse(JSON.stringify(module));
-    return this._encryptObject(sampleProtectedModule, null);
+    return this.encryptObject(sampleProtectedModule, null);
   }
 
-  _encryptObject(obj, name) : string {
+  encryptObject(obj, name) : string {
+    let self = this;
     Object.keys(obj).forEach(function(key) {
       var fullKey = name ? name + '.' + key : key;
       if (typeof obj[key] === 'object') {
         // encrypt the child object
-        this._encryptObject(obj[key], fullKey);
-      } else if (this.validPropertiesToEncrypt.indexOf(fullKey) !== -1) {
-        obj[key] = this._encryptValue(obj[key]);
+        self.encryptObject(obj[key], fullKey);
+      } else if (self.validPropertiesToEncrypt.indexOf(fullKey) !== -1) {
+        obj[key] = self.encryptValue(obj[key]);
       }
     });
     return obj;
   }
 
-  _encryptValue(value) : string {
-    var keyObj = KEYUTIL.getKey(sessionObj.keys[0]);
+  encryptValue(value) : string {
+    var keyObj = KEYUTIL.getKey(this.session.keys[0]);//sessionObj.keys[0]);
     var hex = KJUR.crypto.Cipher.encrypt(value, keyObj);
 
     return '{enc}' + hextob64(hex);
   }
 
+/*
   getUrlParam(name) : string {
       var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
       return (results === null) ? '' : results[1];
   }
 */
+
+
+
 }

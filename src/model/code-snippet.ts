@@ -34,7 +34,15 @@ export const CSVSourceCS = new CodeSnippet(4, this.code_sample, 'small');
 
 this.code_sample = 'this.dashboardAPI.addSources([{ \n' +
                         '   module: db2_sample_module, \n' +
-                        '   name:' + `'Test Source'` + ', \n' +
+                        '   name:' + `'Test DB2 Source'` + ', \n' +
                         '   id:' + `'myUniqueId123'` + '\n' +
                       '}]);';
 export const DB2SourceCS = new CodeSnippet(5, this.code_sample, 'small');
+
+this.code_sample = 'var protectedSampleModule = this.getProtectedSampleModule(db2_sample_module); \n' +
+                        'this.dashboardAPI.addSources([{ \n' +
+                        '   module: protectedSampleModule, \n' +
+                        '   name:' + `'Protected DB2 Source'` + ', \n' +
+                        '   id:' + `'myUniqueId456'` + '\n' +
+                      '}]);';
+export const ProtectedDB2SourceCS = new CodeSnippet(6, this.code_sample, 'small');
