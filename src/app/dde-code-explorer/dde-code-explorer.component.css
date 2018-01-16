@@ -1,0 +1,31 @@
+.divlarge {
+  min-width: 350px;
+  height: 100%;
+}
+
+.divsmall {
+  min-width: 350px;
+  height: 50%;
+}
+
+.code-block-div {
+  width:100%;
+	height:100%;
+	background-color:#595859;
+}
+
+code {
+  color: #fff;
+  display: inline-block;
+  white-space: pre-wrap;
+}
+
+.explorer-bar {
+  text-align: right;
+  background-color: #000;
+}
+
+.secondary-panel {
+  margin-top: 40px;
+  margin-left: 20px;
+}

@@ -19,10 +19,7 @@
                     1. Session
                     <span class="badge badge-secondary float-right pull-right"></span>
                   </div>
-                  <dde-session
-                   (sessionInfoCreated)="parentSessionInfoCreated($event)"
-                   (apiFrameworkCreated)="parentApiFrameworkCreated($event)"
-                   (moduleDefinitionUpdated)="parentModuleDefUpdated($event)">
+                  <dde-session (codeToRun)="getCodeSnippet($event)">
                  </dde-session>
                 </accordion-group>
 
@@ -41,7 +38,7 @@
                   <div accordion-heading class="navbar-brand">
                     3. Work with Dashboard
                   </div>
-                  <dde-dashboard>
+                  <dde-dashboard (codeToRun)="getCodeSnippet($event)">
                   </dde-dashboard>
                 </accordion-group>
 
@@ -71,13 +68,15 @@
             </div>
         </div>
 
+        <div class="col-md-3">
+          <dde-code-explorer [codeSnippet]="code_snippet" (session)="sessionInfo($event)" (apiId)="getAPIId($event)">
+          </dde-code-explorer>
+        </div>
 
-        <div class="col-md-10 mainContentContainer">
-              <div *ngIf="parent_session_info" class="alert alert-success box-msg" role="alert">
-                <strong>Session created!</strong> {{parent_session_info}}
-              </div>
-              <div *ngIf="parent_api_framework_info" class="alert alert-success box-msg" role="alert">
-                <strong>API created successfuly!</strong> session_code: {{parent_api_framework_info}}
+        <div class="col-md-7 mainContentContainer">
+              <dde-toaster [toaster]="toaster"></dde-toaster>
+              <div *ngIf="apiId !== ''" class="alert alert-success box-msg" role="alert">
+                <strong>API created successfuly!</strong>
               </div>
               <div *ngIf="parent_update_module_def_info" class="alert alert-success box-msg" role="alert">
                 <strong>Module definition updated!</strong> see console log for before vs after
@@ -104,7 +103,7 @@
        <ngb-panel title="Session">
          <ng-template ngbPanelContent>
            <dde-session
-            (sessionInfoCreated)="parentSessionInfoCreated($event)"
+            (codeToRun)="getCodeSnippet($event)"
             (apiFrameworkCreated)="parentApiFrameworkCreated($event)"
             (moduleDefinitionUpdated)="parentModuleDefUpdated($event)">
           </dde-session>
@@ -132,8 +131,8 @@
       <div *ngIf="parent_session_info" class="alert alert-success box-msg" role="alert">
         <strong>Session created!</strong> {{parent_session_info}}
       </div>
-      <div *ngIf="parent_api_framework_info" class="alert alert-success box-msg" role="alert">
-        <strong>API created successfuly!</strong> session_code: {{parent_api_framework_info}}
+      <div *ngIf="apiId !== ''" class="alert alert-success box-msg" role="alert">
+        <strong>API created successfuly!</strong>
       </div>
       <div *ngIf="parent_update_module_def_info" class="alert alert-success box-msg" role="alert">
         <strong>Module definition updated!</strong> see console log for before vs after

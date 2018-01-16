@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { DdeApiService } from './dde-api.service';
-
-interface Window {
-    dashboardAPI: any;
-}
+import { CodeSnippet } from '../model/code-snippet';
+import { Session } from '../model/session';
+import { Toaster } from '../model/toaster';
 
 @Component({
   selector: 'app-root',
@@ -13,37 +11,43 @@ interface Window {
 export class AppComponent {
   title = 'app';
 
-  public parent_session_info: string;
-  public parent_api_framework_info: string;
+  private apiId: string = '';
   public parent_update_module_def_info: string;
+  private code_snippet: CodeSnippet;
+  private session : Session = null;
+  private collapsed: boolean = true;
+  private isFirstOpen: boolean = true;
+  private toaster: Toaster;
+  private message : string;
 
-  //customClass: string = 'ngxAccordianCustom';
-  isFirstOpen: boolean = true;
 
-  constructor(private ddeApiService:DdeApiService) {
-
+  constructor() {
   }
 
   ngOnInit() {
 
     }
 
-    collapsed = true;
-      toggleCollapsed(): void {
-        this.collapsed = !this.collapsed;
-      }
-
-
-  parentSessionInfoCreated(event) {
-    this.parent_session_info = event;
+  toggleCollapsed(): void {
+    this.collapsed = !this.collapsed;
   }
 
-  parentApiFrameworkCreated(event) {
-      this.parent_api_framework_info = event;
+  sessionInfo(event) {
+    this.session = event;
+
+    if (this.session !== null) {
+      this.message = 'Session created successfully. <a href=www.google.com>Create and initialize the API framework</a>';
+      this.toaster = new Toaster(this.message, 'alert-success', true);
+    }
   }
 
-  parentModuleDefUpdated(event) {
-      this.parent_update_module_def_info = event;
+  getAPIId(event) {
+    this.apiId = event;
   }
+
+  getCodeSnippet(event) {
+    this.code_snippet = event;
+  }
+
 
 }
