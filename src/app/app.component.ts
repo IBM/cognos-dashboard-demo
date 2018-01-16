@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
-import { DdeApiService } from './dde-api.service';
 import { CodeSnippet } from '../model/code-snippet';
 import { Session } from '../model/session';
-
-interface Window {
-    dashboardAPI: any;
-}
 
 @Component({
   selector: 'app-root',
@@ -22,7 +17,7 @@ export class AppComponent {
   private collapsed: boolean = true;
   private isFirstOpen: boolean = true;
 
-  constructor(private ddeApiService:DdeApiService) {
+  constructor() {
   }
 
   ngOnInit() {
@@ -44,4 +39,6 @@ export class AppComponent {
   getCodeSnippet(event) {
     this.code_snippet = event;
   }
+
+
 }

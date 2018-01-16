@@ -15,6 +15,8 @@ export class DdeApiService {
   private dashboardAPI;
   public api = null;
   session: Session;
+  private db2_sample_module: string;
+  private code_samples: string;
 
   constructor(private http: Http) { }
 
@@ -48,32 +50,27 @@ export class DdeApiService {
           });
     this.api._node.hidden = false;
 
-    let self = this;
-
     // initialize the CognosApi in order to obtain the service APIs
     await this.api.initialize();
     console.log('API created successfully.');
-    console.log(self.api.dashboard);
+    console.log(this.api.dashboard);
 
     return this.api.apiId;
   }
 
-  async setDashboardApi() {
+  async setDashboardApi()  {
     console.log("in create dashboard");
-
-     await this.api.dashboard.createNew().then(
-         function(dashboardAPI) {
-             console.log('Dashboard created successfully.');
-             this.dashboardAPI = dashboardAPI;
-             console.log(this.dashboardAPI);
-         }
-     ).catch(
-         function(err) {
-             console.log('User hit cancel on the template picker page.');
-         }
-     );
+     this.dashboardAPI = await this.api.dashboard.createNew();
+     console.log('Dashboard created successfully.');
+     console.log(this.dashboardAPI);
   }
 
+  async getDB2SampleModule(): Promise<string> {
+    // get the sampleModule json ready
+    const response = await this.http.get('/assets/ddeDb2SampleModule.json').toPromise();
+    this.db2_sample_module = response.json();
+    return this.db2_sample_module;
+  }
 
   addDb2SampleSource(db2_sample_module) {
     console.log("in dde-api.service");

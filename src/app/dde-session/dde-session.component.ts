@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import { ScriptService } from '../script.service';
 import { DdeApiService } from '../dde-api.service';
-import { CodeSnippet } from '../../model/code-snippet'
+import { CodeSnippet, NewSessionCS, InitAPICS, CreateDashBoardCS } from '../../model/code-snippet'
 //declare var CognosApi;
 
 
@@ -25,18 +25,19 @@ export class DdeSessionComponent implements OnInit {
 
   public client_id : string;
   public client_secret: string;
-  public session_code: string;
-  public session_info: string;
-  public api;
-  public api_framework_created_info: string;
+  //public session_code: string;
+  //public session_info: string;
+  //public api;
+//  public api_framework_created_info: string;
 
   public sample_db_spec : string;
   public updated_db_spec : string;
-  public code_snippet = new CodeSnippet();
+  public code_samples: string;
+  //public code_snippet = new CodeSnippet();
 
   constructor(private http: Http, private script: ScriptService, private ddeApiService: DdeApiService ) {
 
-    // get the sampleSepc json ready
+    //get the sampleSepc json ready
     this.http.get('/assets/ddeSampleSpec.json').subscribe(
             data => {
               console.log("in dde-session constructor");
@@ -70,10 +71,10 @@ export class DdeSessionComponent implements OnInit {
   }
 
   displayNewSessionCode(event) {
-    this.code_snippet.selection = 1;
-    this.code_snippet.code = 'You created a new session';
-    this.code_snippet.size = 'large';
-    this.codeToRun.emit(this.code_snippet);
+    // this.code_snippet.selection = 1;
+    // this.code_snippet.code = 'You created a new session';
+    // this.code_snippet.size = 'large';
+    this.codeToRun.emit(NewSessionCS);
 
     // // nullify prevoius statuses and api
     // this.sessionInfoCreated.emit(null);
@@ -100,10 +101,10 @@ export class DdeSessionComponent implements OnInit {
   }
 
   displayInitApiFrameworkCode() {
-    this.code_snippet.selection = 2;
-    this.code_snippet.code = 'You initiated an API';
-    this.code_snippet.size = 'small';
-    this.codeToRun.emit(this.code_snippet);
+    // this.code_snippet.selection = 2;
+    // this.code_snippet.code = 'You initiated an API';
+    // this.code_snippet.size = 'small';
+    this.codeToRun.emit(InitAPICS);
 
     // Create an instance of the CognosApi
     /*this.api = new CognosApi({
@@ -127,10 +128,10 @@ export class DdeSessionComponent implements OnInit {
   }
 
   displayDashboardCode() {
-    this.code_snippet.selection = 3;
-    this.code_snippet.code = 'You created a new dashboard';
-    this.code_snippet.size = 'large';
-    this.codeToRun.emit(this.code_snippet);
+    // this.code_snippet.selection = 3;
+    // this.code_snippet.code = 'You created a new dashboard';
+    // this.code_snippet.size = 'large';
+    this.codeToRun.emit(CreateDashBoardCS);
   /*  let self = this;
     this.api.dashboard.createNew().then(
         function(dashboardAPI) {
@@ -147,39 +148,39 @@ export class DdeSessionComponent implements OnInit {
   }
 
   updateModuleDefinitions() {
-    console.log("in update module definitions");
-
-    var dbSpec = JSON.parse(JSON.stringify(this.sample_db_spec));
-    console.log(dbSpec);
-
-    var getNewModulesCallback = function(ids) {
-        var newModules = [];
-        ids.forEach(function(id) {
-            newModules.push({
-                id: id,
-                module: {
-                    newModuleDefinition: true
-                },
-                name: 'newModuleName',
-            });
-        });
-        return Promise.resolve(newModules);
-    };
-
-    /* Log the before */
-    console.log("before:");
-    console.log(dbSpec.dataSources.sources);
-
-    let self = this;
-    this.api.updateModuleDefinitions(dbSpec, getNewModulesCallback).then(function(newDBSpec) {
-        self.updated_db_spec = JSON.stringify(newDBSpec);
-        //console.log("updated dbspec:" + self.updated_db_spec);
-        console.log("after:");
-        console.log(newDBSpec.dataSources.sources);
-        self.moduleDefinitionUpdated.emit("test");
-    });
-
-
-    }
+    // console.log("in update module definitions");
+    //
+    // var dbSpec = JSON.parse(JSON.stringify(this.sample_db_spec));
+    // console.log(dbSpec);
+    //
+    // var getNewModulesCallback = function(ids) {
+    //     var newModules = [];
+    //     ids.forEach(function(id) {
+    //         newModules.push({
+    //             id: id,
+    //             module: {
+    //                 newModuleDefinition: true
+    //             },
+    //             name: 'newModuleName',
+    //         });
+    //     });
+    //     return Promise.resolve(newModules);
+    // };
+    //
+    // /* Log the before */
+    // console.log("before:");
+    // console.log(dbSpec.dataSources.sources);
+    //
+    // let self = this;
+    // this.api.updateModuleDefinitions(dbSpec, getNewModulesCallback).then(function(newDBSpec) {
+    //     self.updated_db_spec = JSON.stringify(newDBSpec);
+    //     //console.log("updated dbspec:" + self.updated_db_spec);
+    //     console.log("after:");
+    //     console.log(newDBSpec.dataSources.sources);
+    //     self.moduleDefinitionUpdated.emit("test");
+    // });
+    //
+    //
+     }
 
 }

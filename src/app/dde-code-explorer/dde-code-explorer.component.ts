@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DdeApiService } from '../dde-api.service';
 import { Session } from '../../model/session';
 import { CodeSnippet } from '../../model/code-snippet';
+import { DefaultOption, CSVDataSource, DB2DataSource } from '../../model/data-source';
 
 @Component({
   selector: 'dde-code-explorer',
@@ -14,6 +15,8 @@ export class DdeCodeExplorerComponent implements OnInit {
   @Output() apiId: EventEmitter<string> = new EventEmitter<string>();
   @Input() codeSnippet : CodeSnippet;
   sessionTest : Session;
+  dataSources = [DefaultOption, CSVDataSource, DB2DataSource];
+  sampleModule : string;
 
   constructor(private ddeApiService: DdeApiService) { }
 
@@ -39,6 +42,18 @@ export class DdeCodeExplorerComponent implements OnInit {
     else if (this.codeSnippet.selection === 3) {
       await this.ddeApiService.setDashboardApi();
     }
+    else if (this.codeSnippet.selection === 4) {
+      this.sampleModule = await this.ddeApiService.getDB2SampleModule();
+      this.ddeApiService.addDb2SampleSource(this.sampleModule);
+    }
   }
+
+  onSelect(sourceValue) {
+    for (var i = 0; i < this.dataSources.length; i++) {
+      if (this.dataSources[i].value === sourceValue) {
+        this.codeSnippet = this.dataSources[i].codeSnippet;
+      }
+    }
+ }
 
 }
