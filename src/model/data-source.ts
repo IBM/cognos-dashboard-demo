@@ -5,6 +5,6 @@ export class DataSources {
   }
 }
 
-export const DefaultOption = new DataSources('Select an option', '', null);
+export const DefaultOption = new DataSources('Select an option', '', CSVSourceCS);
 export const CSVDataSource = new DataSources('CSV', 'csv', CSVSourceCS);
 export const DB2DataSource = new DataSources('DB2', 'db2', DB2SourceCS);

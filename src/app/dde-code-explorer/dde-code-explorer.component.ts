@@ -43,6 +43,10 @@ export class DdeCodeExplorerComponent implements OnInit {
       await this.ddeApiService.setDashboardApi();
     }
     else if (this.codeSnippet.selection === 4) {
+      this.sampleModule = await this.ddeApiService.getCSVSampleModule();
+      this.ddeApiService.addCSVSampleSource(this.sampleModule);
+    }
+    else if (this.codeSnippet.selection === 5) {
       this.sampleModule = await this.ddeApiService.getDB2SampleModule();
       this.ddeApiService.addDb2SampleSource(this.sampleModule);
     }

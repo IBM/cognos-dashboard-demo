@@ -16,7 +16,7 @@ export class DdeApiService {
   public api = null;
   session: Session;
   private db2_sample_module: string;
-  private code_samples: string;
+  public csv_sample_module: string;
 
   constructor(private http: Http) { }
 
@@ -81,6 +81,25 @@ export class DdeApiService {
       name: 'Test Source',
       id: 'myUniqueId123'
     }]);
+  }
+
+  async getCSVSampleModule(): Promise<string> {
+    // get the sampleModule json ready
+    const response = await this.http.get('/assets/ddeCSVSampleModule.json').toPromise();
+    this.csv_sample_module = response.json();
+    return this.csv_sample_module;
+  }
+
+  addCSVSampleSource(csv_sample_module) {
+    console.log("in dde-api.service");
+    console.log(this.dashboardAPI);
+
+    this.dashboardAPI.addSources([{
+      module: csv_sample_module,
+      name: 'Test CSV Source',
+      id: 'myUniqueId789'
+    }]);
+
   }
 
 }
