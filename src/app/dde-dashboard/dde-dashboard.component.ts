@@ -21,4 +21,8 @@ export class DdeDashboardComponent implements OnInit {
     this.codeToRun.emit(CSVSourceCS);
   }
 
+  addProtectedDb2SampleSourceToDashboard(event) {
+    //this.ddeApiService.addProtectedDb2SampleSource(this.db2_sample_module);
+  }
+
 }

@@ -1,7 +1,19 @@
-# dde-angnode-app
+# Getting Started with DDE on IBM Cloud
+
+This repo shows a Angular 5.0.0 + Node.js app that demos the Bluemix DDE service.
 
 
-This repo shows a Angular 5.0.0 + Boostrap 4.0.0 Node.js app that will be used to demo the Bluemix DDE service.
+ In order to deploy to IBM Cloud, you'll need an [IBM Cloud account](https://console.stage1.ng.bluemix.net/registration/). Once registered, you can automatically deploy the app using the following deploy to IBM Cloud button.
+
+ [![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://console.stage1.bluemix.net/devops/setup/deploy?repository=https://github.ibm.com/GearBox/DDE-ang-node-test&repository_token=a623cbb1534c9f30fb0199bc9ac57e8d3f91afa6&branch=master)
+
+ To run locally and deploy from the command line, follow the instructions below.
+
+ ## Prerequisites
+
+ * [Git](https://git-scm.com/downloads)
+ * [IBM Cloud CLI](https://console.stage1.bluemix.net/docs/cli/reference/bluemix_cli/all_versions.html#bluemix-cli-installer-downloads)
+
 
 ## Repo setup
 
@@ -16,6 +28,11 @@ $ npm install
 ```bash
 $ npm run dist
 $ node sever.js
+```
+or
+
+```bash
+$ npm run build
 ```
 
 ## Angular setup
