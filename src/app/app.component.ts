@@ -1,7 +1,8 @@
-import { Component, OnInit, isDevMode} from '@angular/core';
-import { CodeSnippet } from '../model/code-snippet';
+import { Component, OnInit } from '@angular/core';
+import { CodeSnippetEnum, CodeSnippet } from '../model/code-snippet';
 import { Session } from '../model/session';
 import { Toaster } from '../model/toaster';
+import { CodeSnippetsRepoService } from './services/code-snippets-repo.service';
 import { environment } from '../environments/environment';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/timer';
@@ -24,7 +25,7 @@ export class AppComponent implements OnInit {
   private message : string;
   private timer: Observable<any>;
 
-  constructor() {
+  constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
 
   ngOnInit() {
@@ -59,15 +60,38 @@ export class AppComponent implements OnInit {
     }
   }
 
+  // set the code snippt to what was fired over
   getCodeSnippet(event) {
     this.code_snippet = event;
   }
 
-   setToaster(message: string, cssclass: string, showToaster: boolean) {
-    this.toaster = new Toaster(message, cssclass, showToaster);
+  setToaster(message: string, cssclass: string, showToaster: boolean) {
+   this.toaster = new Toaster(message, cssclass, showToaster);
 
-    this.timer.subscribe(() => {
-          this.toaster.showToaster = false;
-      });
-    }
+   this.timer.subscribe(() => {
+         this.toaster.showToaster = false;
+     });
+   }
+
+  displayCreateDashboardCode() {
+    this.code_snippet = this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.CreateDashboard);
+
+    /*  let self = this;
+      this.api.dashboard.createNew().then(
+          function(dashboardAPI) {
+              console.log('Dashboard created successfully.');
+            //  self.ddeApiService.dashboardAPI = dashboardAPI;
+             self.ddeApiService.setDashboardApi(dashboardAPI);
+            console.log(self.api.dashboard);
+          }
+      ).catch(
+          function(err) {
+              console.log('User hit cancel on the template picker page.');
+          }
+      );*/
   }
+
+  displayOpenDashboardCode() {
+    this.code_snippet = this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.OpenDashboard);
+  }
+}

@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
-import { DdeApiService } from '../dde-api.service';
-import { CodeSnippet, CSVSourceCS, DB2SourceCS } from '../../model/code-snippet'
+import { CodeSnippet, CSVSourceCS, SetDashboardModeEditCS, SetDashboardModeViewCS, SetDashboardModeEditGroupCS } from '../../model/code-snippet'
 
 @Component({
   selector: 'dde-dashboard',
@@ -11,18 +10,30 @@ import { CodeSnippet, CSVSourceCS, DB2SourceCS } from '../../model/code-snippet'
 export class DdeDashboardComponent implements OnInit {
   @Output() codeToRun = new EventEmitter<CodeSnippet>();
 
-  constructor(private http: Http, private ddeApiService: DdeApiService ) {
+  constructor() {
   }
 
   ngOnInit() {
   }
 
-  getAddSourceCode() {
+  addSourcesToDashboard() {
     this.codeToRun.emit(CSVSourceCS);
   }
 
-  addProtectedDb2SampleSourceToDashboard(event) {
-    //this.ddeApiService.addProtectedDb2SampleSource(this.db2_sample_module);
+  setDashboardEditMode() {
+    this.codeToRun.emit(SetDashboardModeEditCS);
+  }
+
+  setDashboardViewMode() {
+    this.codeToRun.emit(SetDashboardModeViewCS);
+  }
+
+  setDashboardEditGroupMode() {
+    this.codeToRun.emit(SetDashboardModeEditGroupCS);
+  }
+
+  setDashboardMode() {
+    this.codeToRun.emit(SetDashboardModeEditCS);
   }
 
 }

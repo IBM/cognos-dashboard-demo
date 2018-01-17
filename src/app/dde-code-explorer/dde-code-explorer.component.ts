@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DdeApiService } from '../dde-api.service';
 import { Session } from '../../model/session';
 import { CodeSnippet } from '../../model/code-snippet';
-import { DefaultOption, CSVDataSource, DB2DataSource } from '../../model/data-source';
+import { DefaultOption, CSVDataSource, DB2DataSource, ProtectedDB2DataSource, ProtectedCSVDataSource } from '../../model/data-source';
 
 @Component({
   selector: 'dde-code-explorer',
@@ -15,7 +15,7 @@ export class DdeCodeExplorerComponent implements OnInit {
   @Output() apiId: EventEmitter<string> = new EventEmitter<string>();
   @Input() codeSnippet : CodeSnippet;
   sessionTest : Session;
-  dataSources = [DefaultOption, CSVDataSource, DB2DataSource];
+  dataSources = [DefaultOption, CSVDataSource, DB2DataSource, ProtectedDB2DataSource, ProtectedCSVDataSource];
   sampleModule : string;
 
   constructor(private ddeApiService: DdeApiService) { }
@@ -43,12 +43,29 @@ export class DdeCodeExplorerComponent implements OnInit {
       await this.ddeApiService.setDashboardApi();
     }
     else if (this.codeSnippet.selection === 4) {
+      // TODO: simplify, ddeApiService can do the get and add in one go
       this.sampleModule = await this.ddeApiService.getCSVSampleModule();
       this.ddeApiService.addCSVSampleSource(this.sampleModule);
     }
     else if (this.codeSnippet.selection === 5) {
+      // TODO: simplify, ddeApiService can do the get and add in one go
       this.sampleModule = await this.ddeApiService.getDB2SampleModule();
       this.ddeApiService.addDb2SampleSource(this.sampleModule);
+    }
+    else if (this.codeSnippet.selection === 6) {
+      this.ddeApiService.addProtectedDB2SampleSource();
+    }
+    else if (this.codeSnippet.selection === 7) {
+      this.ddeApiService.addProtectedCSVSampleSource();
+    }
+    else if (this.codeSnippet.selection === 8) {
+      this.ddeApiService.setDashboardMode_Edit();
+    }
+    else if (this.codeSnippet.selection === 9) {
+      this.ddeApiService.setDashboardMode_View();
+    }
+    else if (this.codeSnippet.selection === 10) {
+      this.ddeApiService.setDashboardMode_EditGroup();
     }
   }
 

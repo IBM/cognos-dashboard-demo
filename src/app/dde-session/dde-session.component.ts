@@ -19,7 +19,8 @@ contentHeaders.append('Content-Type', 'application/json');
 export class DdeSessionComponent implements OnInit {
   @Output()
   moduleDefinitionUpdated: EventEmitter<String> = new EventEmitter<String>();
-  @Output() codeToRun = new EventEmitter<CodeSnippet>();
+  @Output()
+  codeToRun = new EventEmitter<CodeSnippet>();
 
 
   public client_id : string;
@@ -69,10 +70,6 @@ export class DdeSessionComponent implements OnInit {
 
   displayInitApiFrameworkCode() {
     this.codeToRun.emit(InitAPICS);
-  }
-
-  displayDashboardCode() {
-    this.codeToRun.emit(CreateDashBoardCS);
   }
 
   updateModuleDefinitions() {
