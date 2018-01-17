@@ -47,6 +47,7 @@ this.code_sample = 'var protectedSampleModule = this.getProtectedSampleModule(th
                       '}]);';
 export const ProtectedDB2SourceCS = new CodeSnippet(6, this.code_sample, 'small');
 
+
 this.code_sample = 'var protectedSampleModule = this.getProtectedSampleModule(this.csv_sample_module); \n' +
                         'this.dashboardAPI.addSources([{ \n' +
                         '   module: protectedSampleModule, \n' +
@@ -54,3 +55,14 @@ this.code_sample = 'var protectedSampleModule = this.getProtectedSampleModule(th
                         '   id:' + `'myUniqueId987'` + '\n' +
                       '}]);';
 export const ProtectedCSVSourceCS = new CodeSnippet(7, this.code_sample, 'small');
+
+
+// set dashboard mode
+this.code_sample = 'TODO edit mode';
+export const SetDashboardModeEditCS = new CodeSnippet(8, this.code_sample, 'small');
+
+this.code_sample = 'TODO view mode';
+export const SetDashboardModeViewCS = new CodeSnippet(9, this.code_sample, 'small');
+
+this.code_sample = 'TODO edit group mode';
+export const SetDashboardModeEditGroupCS = new CodeSnippet(10, this.code_sample, 'small');

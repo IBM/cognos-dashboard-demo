@@ -137,6 +137,36 @@ export class DdeApiService {
     }]);
   }
 
+  setDashboardMode_Edit() {
+    /**
+    Available modes
+    dashboardAPI.MODES.EDIT (authoring mode)
+    dashboardAPI.MODES.VIEW (consumption mode)
+    dashboardAPI.MODES.EDIT_GROUP (event group mode)
+    */
+    this.dashboardAPI.setMode(this.dashboardAPI.MODES.EDIT);
+  }
+
+  setDashboardMode_View() {
+    /**
+    Available modes
+    dashboardAPI.MODES.EDIT (authoring mode)
+    dashboardAPI.MODES.VIEW (consumption mode)
+    dashboardAPI.MODES.EDIT_GROUP (event group mode)
+    */
+
+    this.dashboardAPI.setMode(this.dashboardAPI.MODES.VIEW);
+  }
+
+  setDashboardMode_EditGroup() {
+    /**
+    Available modes
+    dashboardAPI.MODES.EDIT (authoring mode)
+    dashboardAPI.MODES.VIEW (consumption mode)
+    dashboardAPI.MODES.EDIT_GROUP (event group mode)
+    */
+    this.dashboardAPI.setMode(this.dashboardAPI.MODES.EDIT_GROUP);
+  }
 
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
-import { CodeSnippet, CSVSourceCS, DB2SourceCS } from '../../model/code-snippet'
+import { CodeSnippet, CSVSourceCS, SetDashboardModeEditCS, SetDashboardModeViewCS, SetDashboardModeEditGroupCS } from '../../model/code-snippet'
 
 @Component({
   selector: 'dde-dashboard',
@@ -16,8 +16,24 @@ export class DdeDashboardComponent implements OnInit {
   ngOnInit() {
   }
 
-  getAddSourceCode() {
+  addSourcesToDashboard() {
     this.codeToRun.emit(CSVSourceCS);
+  }
+
+  setDashboardEditMode() {
+    this.codeToRun.emit(SetDashboardModeEditCS);
+  }
+
+  setDashboardViewMode() {
+    this.codeToRun.emit(SetDashboardModeViewCS);
+  }
+
+  setDashboardEditGroupMode() {
+    this.codeToRun.emit(SetDashboardModeEditGroupCS);
+  }
+
+  setDashboardMode() {
+    this.codeToRun.emit(SetDashboardModeEditCS);
   }
 
 }

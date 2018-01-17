@@ -58,6 +58,15 @@ export class DdeCodeExplorerComponent implements OnInit {
     else if (this.codeSnippet.selection === 7) {
       this.ddeApiService.addProtectedCSVSampleSource();
     }
+    else if (this.codeSnippet.selection === 8) {
+      this.ddeApiService.setDashboardMode_Edit();
+    }
+    else if (this.codeSnippet.selection === 9) {
+      this.ddeApiService.setDashboardMode_View();
+    }
+    else if (this.codeSnippet.selection === 10) {
+      this.ddeApiService.setDashboardMode_EditGroup();
+    }
   }
 
   onSelect(sourceValue) {
