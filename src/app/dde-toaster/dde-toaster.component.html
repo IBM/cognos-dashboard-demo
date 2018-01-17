@@ -1,4 +1,4 @@
 <div *ngIf="toaster?.showToaster" class="toaster" role="alert">
-  <i class="fa fa-check-circle"></i>
+  <i class="fa" [ngClass]="getClass()"></i>
   <span [innerHTML]="toaster?.message"> </span>
 </div>

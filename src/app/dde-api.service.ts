@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import { Session } from '../model/session';
 import{ KEYUTIL } from  'jsrsasign';
+import { environment } from '../environments/environment';
 declare var CognosApi;
 
 const contentHeaders = new Headers();
@@ -55,7 +56,7 @@ export class DdeApiService {
 
     // Create an instance of the CognosApi
     this.api = new CognosApi({
-          cognosRootURL: 'https://jdcluster.us-south.containers.mybluemix.net/daas/',
+          cognosRootURL: environment.cognos_root_url,
           sessionCode: this.session.code,
           node: document.getElementById('containerDivId3')
           });
