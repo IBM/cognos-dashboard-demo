@@ -26,7 +26,7 @@ import { DdeToasterComponent } from './dde-toaster/dde-toaster.component';
 
 import { DdeApiService } from './dde-api.service';
 import { EncryptService } from './encrypt.service';
-import { CodeSnippetsRepoService } from './code-snippets-repo.service';
+import { CodeSnippetsRepoService } from './services/code-snippets-repo.service';
 /*
 // Define the routes
 const ROUTES = [

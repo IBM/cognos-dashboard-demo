@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CodeSnippetEnum, CodeSnippet } from '../model/code-snippet';
+import { CodeSnippetEnum, CodeSnippet } from '../../model/code-snippet';
 
 
 

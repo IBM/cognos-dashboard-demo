@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CodeSnippetEnum, CodeSnippet } from '../model/code-snippet';
 import { Session } from '../model/session';
 import { Toaster } from '../model/toaster';
-import { CodeSnippetsRepoService } from './code-snippets-repo.service';
+import { CodeSnippetsRepoService } from './services/code-snippets-repo.service';
 
 @Component({
   selector: 'app-root',
