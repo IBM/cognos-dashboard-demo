@@ -1,6 +1,13 @@
+export enum CodeSnippetEnum {
+  CreateDashboard = 'CreateDashboard',
+  OpenDashboard = 'OpenDashboard'
+  // TODO: Add all other snippets here to avoid hard coding
+}
+
 export class CodeSnippet {
   private code_sample: string = '';
 
+   // TODO: change selection from number to CodeSnippetEnum for easier identification
    constructor(public selection: number, public code: string, public size: string) {
    }
 }

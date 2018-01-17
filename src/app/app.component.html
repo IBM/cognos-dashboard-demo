@@ -13,7 +13,7 @@
             <div class="list-group text-md-left">
               <accordion class="ngxAccordionCustom">
                 <!--accordion-group heading="1. Session" [isOpen]="isFirstOpen" (isOpenChange)="log($event)" panelClass="ngxAccordianCustom"-->
-                <accordion-group [isOpen]="isFirstOpen" (isOpenChange)="log($event)" panelClass="bg-dark">
+                <accordion-group [isOpen]="isFirstOpen" panelClass="bg-dark">
                   <!--p>Some content</p-->
                   <div accordion-heading class="navbar-brand">
                     1. Session
@@ -23,18 +23,28 @@
                  </dde-session>
                 </accordion-group>
 
-                <accordion-group (isOpenChange)="log($event)" panelClass="bg-dark">
+                <accordion-group panelClass="bg-dark">
                   <div accordion-heading class="navbar-brand">
                     2. Create or open Dashboard
                   </div>
                   <div class="navbar-nav">
                     <p class="nav-link">
-                      TODO: move Create dashboard move over here
                     </p>
+                      <ul class="navbar-nav mr-auto">
+                        <li>
+                          <a class="nav-link" href="#" (click)='displayCreateDashboardCode()'>
+                            Create Dashboard
+                          </a>
+                          <a class="nav-link" href="#" (click)='displayOpenDashboardCode()'>
+                            Open Dashboard
+                          </a>
+                        </li>
+                      </ul>
+
                   </div>
                 </accordion-group>
 
-                <accordion-group (isOpenChange)="log($event)" panelClass="bg-dark">
+                <accordion-group panelClass="bg-dark">
                   <div accordion-heading class="navbar-brand">
                     3. Work with Dashboard
                   </div>
@@ -42,7 +52,7 @@
                   </dde-dashboard>
                 </accordion-group>
 
-                <accordion-group (isOpenChange)="log($event)" panelClass="bg-dark">
+                <accordion-group panelClass="bg-dark">
                   <div accordion-heading class="navbar-brand">
                     Documentation
                     <span class="badge badge-secondary float-right pull-right">some html here</span>
@@ -53,7 +63,7 @@
                     </p>
                   </div>
                 </accordion-group>
-                <accordion-group (isOpenChange)="log($event)" panelClass="bg-dark">
+                <accordion-group panelClass="bg-dark">
                   <div accordion-heading class="navbar-brand">
                     Get Started
                       <i class="fa fa-link float-right"></i>

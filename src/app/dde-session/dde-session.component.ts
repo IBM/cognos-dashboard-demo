@@ -20,7 +20,8 @@ contentHeaders.append('Content-Type', 'application/json');
 export class DdeSessionComponent implements OnInit {
   @Output()
   moduleDefinitionUpdated: EventEmitter<String> = new EventEmitter<String>();
-  @Output() codeToRun = new EventEmitter<CodeSnippet>();
+  @Output()
+  codeToRun = new EventEmitter<CodeSnippet>();
 
 
   public client_id : string;
@@ -125,26 +126,6 @@ export class DdeSessionComponent implements OnInit {
 
       });*/
 
-  }
-
-  displayDashboardCode() {
-    // this.code_snippet.selection = 3;
-    // this.code_snippet.code = 'You created a new dashboard';
-    // this.code_snippet.size = 'large';
-    this.codeToRun.emit(CreateDashBoardCS);
-  /*  let self = this;
-    this.api.dashboard.createNew().then(
-        function(dashboardAPI) {
-            console.log('Dashboard created successfully.');
-          //  self.ddeApiService.dashboardAPI = dashboardAPI;
-           self.ddeApiService.setDashboardApi(dashboardAPI);
-          console.log(self.api.dashboard);
-        }
-    ).catch(
-        function(err) {
-            console.log('User hit cancel on the template picker page.');
-        }
-    );*/
   }
 
   updateModuleDefinitions() {
