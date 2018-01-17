@@ -1,3 +1,5 @@
+import { environment } from '../environments/environment';
+
 export class CodeSnippet {
   private code_sample: string = '';
 
@@ -15,7 +17,7 @@ this.code_sample = 'const response = await \n' +
 export const NewSessionCS = new CodeSnippet(1, this.code_sample, 'large');
 
 this.code_sample = 'this.api = new CognosApi({ \n' +
-                    '   cognosRootURL: ' + `'https://jdcluster.us-south.containers.mybluemix.net/daas/',` + '\n' +
+                    '   cognosRootURL: ' + `'` + environment.cognos_root_url + `',` + '\n' +
                     '   sessionCode: this.session.code, \n' +
                     '   node: document.getElementById(' + `'containerDivId3'` + ') \n' +
                     '}); \n\n' +
