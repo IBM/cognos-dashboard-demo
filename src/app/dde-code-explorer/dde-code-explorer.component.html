@@ -28,10 +28,7 @@
     </div>
   </div>
 
-  <div class="secondary-panel" *ngIf="codeSnippet?.selection === 4 ||
-                                      codeSnippet?.selection === 5 ||
-                                      codeSnippet?.selection === 6 ||
-                                      codeSnippet?.selection === 7">
+  <div class="secondary-panel" *ngIf="showSourcesDropDown()">
     <div>
       <label>Data source configuration</label>
     </div>
@@ -44,8 +41,21 @@
         </option>
       </select>
     </div>
+  </div>
 
+  <div class="secondary-panel" *ngIf="showDashboardModesDropDown()">
+    <div>
+      <label>Dashboard Mode</label>
+    </div>
 
+    <div>
+      <label>Mode</label>
+      <select (change)="onSelectMode($event.target.value)">
+        <option *ngFor="let mode of dashboardModes" value={{mode.value}}>
+           {{mode.type}}
+        </option>
+      </select>
+    </div>
   </div>
 
 </div>
