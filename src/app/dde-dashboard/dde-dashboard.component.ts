@@ -36,4 +36,12 @@ export class DdeDashboardComponent implements OnInit {
     this.codeToRun.emit(SetDashboardModeEditCS);
   }
 
+  undoLastAction() {
+    this.code_snippet = this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.UndoLastAction);
+  }
+
+  redoLastAction() {
+    this.code_snippet = this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.RedoLastAction);
+  }
+
 }
