@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
-import { CodeSnippet, CSVSourceCS, SetDashboardModeEditCS, SetDashboardModeViewCS, SetDashboardModeEditGroupCS } from '../../model/code-snippet'
+import { CodeSnippet, CodeSnippetEnum } from '../../model/code-snippet'
+import { CodeSnippetsRepoService } from '../services/code-snippets-repo.service';
 
 @Component({
   selector: 'dde-dashboard',
@@ -10,30 +11,25 @@ import { CodeSnippet, CSVSourceCS, SetDashboardModeEditCS, SetDashboardModeViewC
 export class DdeDashboardComponent implements OnInit {
   @Output() codeToRun = new EventEmitter<CodeSnippet>();
 
-  constructor() {
+  constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
 
   ngOnInit() {
   }
 
   addSourcesToDashboard() {
-    this.codeToRun.emit(CSVSourceCS);
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.AddCSVSource));
   }
 
   setDashboardEditMode() {
-    this.codeToRun.emit(SetDashboardModeEditCS);
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.DashboardEditMode));
   }
 
   setDashboardViewMode() {
-    this.codeToRun.emit(SetDashboardModeViewCS);
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.DashboardViewMode));
   }
 
   setDashboardEditGroupMode() {
-    this.codeToRun.emit(SetDashboardModeEditGroupCS);
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.DashboardEditGroupMode));
   }
-
-  setDashboardMode() {
-    this.codeToRun.emit(SetDashboardModeEditCS);
-  }
-
 }

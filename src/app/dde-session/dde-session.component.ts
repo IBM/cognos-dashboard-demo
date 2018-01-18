@@ -2,7 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import { ScriptService } from '../script.service';
 import { DdeApiService } from '../dde-api.service';
-import { CodeSnippet, NewSessionCS, InitAPICS, CreateDashBoardCS } from '../../model/code-snippet'
+import { CodeSnippet, CodeSnippetEnum } from '../../model/code-snippet'
+import { CodeSnippetsRepoService } from '../services/code-snippets-repo.service';
 
 
 export const contentHeaders = new Headers();
@@ -29,7 +30,8 @@ export class DdeSessionComponent implements OnInit {
   public updated_db_spec : string;
   public code_samples: string;
 
-  constructor(private http: Http, private script: ScriptService, private ddeApiService: DdeApiService ) {
+  constructor(private http: Http, private script: ScriptService,
+              private ddeApiService: DdeApiService, private codeSnippetsRepoService: CodeSnippetsRepoService) {
 
     //get the sampleSepc json ready
     this.http.get('/assets/ddeSampleSpec.json').subscribe(
@@ -65,11 +67,11 @@ export class DdeSessionComponent implements OnInit {
   }
 
   displayNewSessionCode(event) {
-    this.codeToRun.emit(NewSessionCS);
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.CreateSession));
   }
 
   displayInitApiFrameworkCode() {
-    this.codeToRun.emit(InitAPICS);
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.CreateAPIFramework));
   }
 
   updateModuleDefinitions() {

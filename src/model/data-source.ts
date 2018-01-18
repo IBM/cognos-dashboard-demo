@@ -1,12 +1,12 @@
-import { CodeSnippet, CSVSourceCS, DB2SourceCS, ProtectedDB2SourceCS, ProtectedCSVSourceCS } from '../model/code-snippet'
+import { CodeSnippetEnum } from './code-snippet';
 
 export class DataSources {
-  constructor(public type: string, public value: string, public codeSnippet: CodeSnippet) {
+  constructor(public type: string, public value: string) {
   }
 }
 
-export const DefaultOption = new DataSources('Select an option', '', CSVSourceCS);
-export const CSVDataSource = new DataSources('CSV', 'csv', CSVSourceCS);
-export const DB2DataSource = new DataSources('DB2', 'db2', DB2SourceCS);
-export const ProtectedDB2DataSource = new DataSources('Protected DB2', 'protected db2', ProtectedDB2SourceCS);
-export const ProtectedCSVDataSource = new DataSources('Protected CSV', 'protected csv', ProtectedCSVSourceCS);
+export const DefaultOption = new DataSources('Select an option', '');
+export const CSVDataSource = new DataSources('CSV', CodeSnippetEnum.AddCSVSource);
+export const DB2DataSource = new DataSources('DB2', CodeSnippetEnum.AddDB2Source);
+export const ProtectedDB2DataSource = new DataSources('Protected DB2', CodeSnippetEnum.AddProtectedDB2Source);
+export const ProtectedCSVDataSource = new DataSources('Protected CSV', CodeSnippetEnum.AddProtectedCSVSource);
