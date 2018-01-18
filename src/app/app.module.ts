@@ -20,8 +20,8 @@ import { DdeCodeExplorerComponent } from './dde-code-explorer/dde-code-explorer.
 import { DdeDashboardComponent } from './dde-dashboard/dde-dashboard.component';
 import { DdeToasterComponent } from './dde-toaster/dde-toaster.component';
 
-import { DdeApiService } from './dde-api.service';
-import { EncryptService } from './encrypt.service';
+import { DdeApiService } from './services/dde-api.service';
+import { EncryptService } from './services/encrypt.service';
 import { CodeSnippetsRepoService } from './services/code-snippets-repo.service';
 /*
 // Define the routes

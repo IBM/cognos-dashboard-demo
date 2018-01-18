@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
-import { Session, SessionKey } from '../model/session';
+import { Session, SessionKey } from '../../model/session';
 import { EncryptService } from './encrypt.service';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 declare var CognosApi;
 

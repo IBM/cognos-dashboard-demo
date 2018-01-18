@@ -13,8 +13,6 @@ export class CodeSnippetsRepoService {
     // Add snippets as key-value pairs
     this.snippets.set(CodeSnippetEnum.CreateDashboard, new CodeSnippet(3, this.createDashboardCodeSample, 'large'));
     this.snippets.set(CodeSnippetEnum.OpenDashboard, new CodeSnippet(99, this.openDashboardCodeSample, 'large'));
-    this.snippets.set(CodeSnippetEnum.UndoLastAction, new CodeSnippet(99, this.undoLastActionCodeSample, 'large'));
-    this.snippets.set(CodeSnippetEnum.RedoLastAction, new CodeSnippet(99, this.redoLastActionCodeSample, 'large'));
     // TODO: add other snippets here
   }
 

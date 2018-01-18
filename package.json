@@ -14,8 +14,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dist": "ng build",
-    "build": "ng build --env=dev && NODE_ENV=dev node server.js",
-    "build-prod": "ng build --env=prod && NODE_ENV=prod node server.js",
+    "build": "ng build --env=dev && set NODE_ENV=dev&& node server.js",
+    "build-prod": "ng build --env=prod && set NODE_ENV=prod&& node server.js",
     "push": "npm run dist && cd dist && cf push"
   },
   "repository": {

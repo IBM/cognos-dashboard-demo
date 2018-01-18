@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
-import { CodeSnippet, CSVSourceCS, SetDashboardModeEditCS, SetDashboardModeViewCS, SetDashboardModeEditGroupCS } from '../../model/code-snippet'
+import { CodeSnippetEnum, CodeSnippet, CSVSourceCS, SetDashboardModeEditCS, SetDashboardModeViewCS, SetDashboardModeEditGroupCS } from '../../model/code-snippet'
+import { CodeSnippetsRepoService } from '../services/code-snippets-repo.service';
 
 @Component({
   selector: 'dde-dashboard',
@@ -10,7 +11,7 @@ import { CodeSnippet, CSVSourceCS, SetDashboardModeEditCS, SetDashboardModeViewC
 export class DdeDashboardComponent implements OnInit {
   @Output() codeToRun = new EventEmitter<CodeSnippet>();
 
-  constructor() {
+  constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
 
   ngOnInit() {
@@ -37,11 +38,12 @@ export class DdeDashboardComponent implements OnInit {
   }
 
   undoLastAction() {
-    this.code_snippet = this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.UndoLastAction);
+    // TODO: add CodeSnippetEnum.UndoLastAction
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.CreateDashboard));
   }
 
   redoLastAction() {
-    this.code_snippet = this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.RedoLastAction);
+    // TODO: add CodeSnippetEnum.RedoLastAction
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.CreateDashboard));
   }
-
 }
