@@ -5,12 +5,7 @@
 
 export const environment = {
   production: false,
-  firebase: {
-    apiKey: "AIzaSyBvjx4WpjZqX1JZGsT4soYgE97c46PfcLA",
-    authDomain: "angddeapp.firebaseapp.com",
-    databaseURL: "https://angddeapp.firebaseio.com",
-    projectId: "angddeapp",
-    storageBucket: "angddeapp.appspot.com",
-    messagingSenderId: "277847187093"
-  }
+  cognos_api_js: 'https://jdcluster.us-south.containers.mybluemix.net/daas/CognosApi.js',
+  cognos_root_url: 'https://jdcluster.us-south.containers.mybluemix.net/daas/',
+  toaster_timer: 5000
 };

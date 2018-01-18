@@ -1,5 +1,5 @@
 export class Toaster {
 
-  constructor(public message: string, public cssClass: string, public showToaster: boolean) {
+  constructor(public message: string, public type: string, public showToaster: boolean) {
   }
 }

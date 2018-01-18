@@ -1,15 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CodeSnippetEnum, CodeSnippet } from '../model/code-snippet';
 import { Session } from '../model/session';
 import { Toaster } from '../model/toaster';
 import { CodeSnippetsRepoService } from './services/code-snippets-repo.service';
+import { environment } from '../environments/environment';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/timer';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
 
   private apiId: string = '';
@@ -20,13 +23,20 @@ export class AppComponent {
   private isFirstOpen: boolean = true;
   private toaster: Toaster;
   private message : string;
+  private timer: Observable<any>;
 
   constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
 
   ngOnInit() {
-
+    if (!environment.production) {
+      console.log('Development Mode');
+    } else {
+      console.log('Production Mode');
     }
+
+    this.timer = Observable.timer(environment.toaster_timer);
+  }
 
   toggleCollapsed(): void {
     this.collapsed = !this.collapsed;
@@ -37,18 +47,31 @@ export class AppComponent {
 
     if (this.session !== null) {
       this.message = 'Session created successfully. <a href=www.google.com>Create and initialize the API framework</a>';
-      this.toaster = new Toaster(this.message, 'alert-success', true);
+      this.setToaster(this.message, 'success', true);
     }
   }
 
   getAPIId(event) {
     this.apiId = event;
+
+    if (this.apiId !== '') {
+      this.message = 'API created successfully. You can now <a>create</a> or <a>open</a> a dashboard.';
+      this.setToaster(this.message, 'success', true);
+    }
   }
 
   // set the code snippt to what was fired over
   getCodeSnippet(event) {
     this.code_snippet = event;
   }
+
+  setToaster(message: string, cssclass: string, showToaster: boolean) {
+   this.toaster = new Toaster(message, cssclass, showToaster);
+
+   this.timer.subscribe(() => {
+         this.toaster.showToaster = false;
+     });
+   }
 
   displayCreateDashboardCode() {
     this.code_snippet = this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.CreateDashboard);
