@@ -13,12 +13,8 @@ import { FormsModule } from '@angular/forms';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { AngularSplitModule } from 'angular-split';
 
-/*
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-*/
 import { DdeSessionComponent } from './dde-session/dde-session.component';
 import { DdeCodeExplorerComponent } from './dde-code-explorer/dde-code-explorer.component';
 import { DdeDashboardComponent } from './dde-dashboard/dde-dashboard.component';
@@ -56,7 +52,8 @@ const ROUTES = [
     HttpModule,
     BsDropdownModule.forRoot(),
     AccordionModule.forRoot(),
-    FormsModule
+    FormsModule,
+    AngularSplitModule
     //RouterModule.forRoot(ROUTES), // Add routes to the app
     //AngularFireModule.initializeApp(environment.firebase),
     //AngularFireDatabaseModule,
