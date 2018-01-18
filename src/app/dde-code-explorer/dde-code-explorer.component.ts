@@ -88,6 +88,10 @@ export class DdeCodeExplorerComponent implements OnInit {
     }
   }
 
+  showSessionPanel() {
+    return this.codeSnippet && (this.codeSnippet.selection === CodeSnippetEnum.CreateAPIFramework);
+  }
+
   showSourcesDropDown() {
     return this.codeSnippet && (this.codeSnippet.selection === CodeSnippetEnum.AddCSVSource ||
           this.codeSnippet.selection === CodeSnippetEnum.AddDB2Source ||
