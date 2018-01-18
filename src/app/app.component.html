@@ -85,9 +85,6 @@
 
         <div class="col-md-7 mainContentContainer">
               <dde-toaster [toaster]="toaster"></dde-toaster>
-              <div *ngIf="apiId !== ''" class="alert alert-success box-msg" role="alert">
-                <strong>API created successfuly!</strong>
-              </div>
               <div *ngIf="parent_update_module_def_info" class="alert alert-success box-msg" role="alert">
                 <strong>Module definition updated!</strong> see console log for before vs after
               </div>
@@ -99,58 +96,3 @@
 
     </div>
 </div>
-
-
-
-
-
-
-<!--div class="row">
-   <div class="col-md-3">
-
-
-     <ngb-accordion  #acc="ngbAccordion" activeIds="ngb-panel-0">
-       <ngb-panel title="Session">
-         <ng-template ngbPanelContent>
-           <dde-session
-            (codeToRun)="getCodeSnippet($event)"
-            (apiFrameworkCreated)="parentApiFrameworkCreated($event)"
-            (moduleDefinitionUpdated)="parentModuleDefUpdated($event)">
-          </dde-session>
-         </ng-template>
-       </ngb-panel>
-       <ngb-panel>
-         <ng-template ngbPanelTitle>
-           <span>Work with dashboard</span>
-         </ng-template>
-         <ng-template ngbPanelContent>
-           <dde-dashboard>
-           </dde-dashboard>
-         </ng-template>
-       </ngb-panel>
-       <ngb-panel title="DB">
-         <ng-template ngbPanelContent>
-           <h3>Names List</h3>
-           <dde-list></dde-list>
-         </ng-template>
-       </ngb-panel>
-     </ngb-accordion>
-   </div>
-
-<div class="col-md-9">
-      <div *ngIf="parent_session_info" class="alert alert-success box-msg" role="alert">
-        <strong>Session created!</strong> {{parent_session_info}}
-      </div>
-      <div *ngIf="apiId !== ''" class="alert alert-success box-msg" role="alert">
-        <strong>API created successfuly!</strong>
-      </div>
-      <div *ngIf="parent_update_module_def_info" class="alert alert-success box-msg" role="alert">
-        <strong>Module definition updated!</strong> see console log for before vs after
-      </div>
-
-        <div class="iframeContainer" id="containerDivId3">
-        </div>
-</div>
-
-
-</div-->

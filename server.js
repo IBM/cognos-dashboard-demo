@@ -4,9 +4,11 @@ var cfenv = require("cfenv");
 var bodyParser = require('body-parser');
 var rp = require('request-promise');
 
+var env = process.env.NODE_ENV || 'dev';
+var conf = require('./config/config-'+env);
+
 // Get our API routes
 const api = require('./server/routes/api');
-
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -24,6 +26,9 @@ var mydb;
 
 var dde_client_id;
 var dde_client_secret;
+
+
+console.log('ENVIROMENT: '+env);
 
 app.get("/api/dde/credentials", function(request, response) {
   console.log("in api/dde/credentials");
@@ -47,7 +52,7 @@ app.post("/api/dde/session", function(request, response) {
 
   var options = {
       method: 'POST',
-      uri: 'https://jdcluster.us-south.containers.mybluemix.net/daas/v1/session',
+      uri: conf.dde_session_uri,
       headers: {
         'Authorization': 'Basic ' + new Buffer(dde_client_id + ':' + dde_client_secret).toString('base64'),
          'content-type': 'application/json'
