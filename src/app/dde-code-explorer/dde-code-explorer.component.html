@@ -28,21 +28,6 @@
     </div>
   </div>
 
-  <div class="secondary-panel" *ngIf="codeSnippet?.selection === 4">
-    <div>
-      <label>Data source configuration</label>
-    </div>
-
-    <div>
-      <label>Data Source</label>
-      <select (change)="onSelect($event.target.value)">
-        <option *ngFor="let dataSource of dataSources" value={{dataSource.value}}>
-           {{dataSource.type}}
-        </option>
-      </select>
-    </div>
-  </div>
-
   <div class="secondary-panel" *ngIf="showSourcesDropDown()">
     <div>
       <label>Data source configuration</label>

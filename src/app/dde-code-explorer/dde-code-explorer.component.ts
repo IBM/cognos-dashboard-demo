@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { DdeApiService } from '../dde-api.service';
+import { DdeApiService } from '../services/dde-api.service';
 import { Session } from '../../model/session';
 import { CodeSnippet, CodeSnippetEnum } from '../../model/code-snippet';
 import { DefaultOption, CSVDataSource, DB2DataSource, ProtectedDB2DataSource, ProtectedCSVDataSource } from '../../model/data-source';
@@ -89,14 +89,14 @@ export class DdeCodeExplorerComponent implements OnInit {
   }
 
   showSourcesDropDown() {
-    return (this.codeSnippet.selection === CodeSnippetEnum.AddCSVSource ||
+    return this.codeSnippet && (this.codeSnippet.selection === CodeSnippetEnum.AddCSVSource ||
           this.codeSnippet.selection === CodeSnippetEnum.AddDB2Source ||
           this.codeSnippet.selection === CodeSnippetEnum.AddProtectedDB2Source ||
           this.codeSnippet.selection === CodeSnippetEnum.AddProtectedCSVSource);
   }
 
   showDashboardModesDropDown() {
-    return (this.codeSnippet.selection === CodeSnippetEnum.DashboardViewMode ||
+    return this.codeSnippet && (this.codeSnippet.selection === CodeSnippetEnum.DashboardViewMode ||
           this.codeSnippet.selection === CodeSnippetEnum.DashboardEditMode ||
           this.codeSnippet.selection === CodeSnippetEnum.DashboardEditGroupMode);
   }

@@ -32,4 +32,14 @@ export class DdeDashboardComponent implements OnInit {
   setDashboardEditGroupMode() {
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.DashboardEditGroupMode));
   }
+
+  undoLastAction() {
+    // TODO: add CodeSnippetEnum.UndoLastAction
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.CreateDashboard));
+  }
+
+  redoLastAction() {
+    // TODO: add CodeSnippetEnum.RedoLastAction
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.CreateDashboard));
+  }
 }

@@ -42,7 +42,7 @@ export class CodeSnippetsRepoService {
                           '   module: protectedSampleModule, \n' +
                           '   name:' + `'Protected CSV Source'` + ', \n' +
                           '   id:' + `'myUniqueId987'` + '\n' +
-                        '}]);';  
+                        '}]);';
   private openDashboardCodeSample = 'hi there, this is the open dashboard code;';
   private setDashboardModeEditCodeSample = 'set Dashboard Mode Edit Code Sample';
   private setDashboardModeViewCodeSample = 'set Dashboard Mode View Code Sample';
