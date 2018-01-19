@@ -10,14 +10,15 @@
 
 .code-block-div {
   width:100%;
-	height:100%;
 	background-color:#595859;
+  height: 100%;
 }
 
 code {
   color: #fff;
   display: inline-block;
   white-space: pre-wrap;
+  margin-top: 40px;
 }
 
 pre {
@@ -25,8 +26,9 @@ pre {
 }
 
 .explorer-bar {
-  text-align: right;
   background-color: #000;
+  width: 100%;
+  position: absolute;
 }
 
 .secondary-panel {
@@ -41,4 +43,7 @@ pre {
 .button {
   padding: 5px 10px;
   color: #fff;
+  cursor: pointer;
+  width: 75px;
+  float: right;
 }

@@ -68,9 +68,9 @@ export class AppComponent implements OnInit {
   setToaster(message: string, cssclass: string, showToaster: boolean) {
    this.toaster = new Toaster(message, cssclass, showToaster);
 
-   // this.timer.subscribe(() => {
-   //       this.toaster.showToaster = false;
-   //   });
+   this.timer.subscribe(() => {
+         this.toaster.showToaster = false;
+     });
    }
 
   displayCreateDashboardCode() {
