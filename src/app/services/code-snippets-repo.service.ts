@@ -19,8 +19,11 @@ export class CodeSnippetsRepoService {
                       '   sessionCode: this.session.code, \n' +
                       '   node: document.getElementById(' + `'containerDivId3'` + ') \n' +
                       '}); \n\n' +
-                      'await this.api.initialize();';
-  private createDashboardCodeSample = 'this.dashboardAPI = await this.api.dashboard.createNew();';
+                      'await this.api.initialize(); \n' +
+                      'console.log(' + `'API created successfully.'` + ');';
+  private createDashboardCodeSample = 'this.dashboardAPI = await this.api.dashboard.createNew(); \n' +
+                      'console.log(' + `'Dashboard created successfully.'` + ');';
+  private openDashboardCodeSample = 'hi there, this is the open dashboard code;';
   private addCSVSourceCodeSample = 'this.dashboardAPI.addSources([{ \n' +
                           '   module: csv_sample_module, \n' +
                           '   name:' + `'Test CSV Source'` + ', \n' +
@@ -43,10 +46,30 @@ export class CodeSnippetsRepoService {
                           '   name:' + `'Protected CSV Source'` + ', \n' +
                           '   id:' + `'myUniqueId987'` + '\n' +
                         '}]);';
-  private openDashboardCodeSample = 'hi there, this is the open dashboard code;';
-  private setDashboardModeEditCodeSample = 'set Dashboard Mode Edit Code Sample';
-  private setDashboardModeViewCodeSample = 'set Dashboard Mode View Code Sample';
-  private setDashboardModeEditGroupCodeSample = 'set Dashboard Mode Edit Group Code Sample';
+
+  private setDashboardModeEditCodeSample = '/* \n' +
+                          'Available modes \n' +
+                          'dashboardAPI.MODES.EDIT (authoring mode)\n' +
+                          'dashboardAPI.MODES.VIEW (consumption mode)\n' +
+                          'dashboardAPI.MODES.EDIT_GROUP (event group mode)\n' +
+                          '*/ \n\n' +
+                          'this.dashboardAPI.setMode(this.dashboardAPI.MODES.EDIT);';
+  private setDashboardModeViewCodeSample = '/* \n' +
+                          'Available modes \n' +
+                          'dashboardAPI.MODES.EDIT (authoring mode)\n' +
+                          'dashboardAPI.MODES.VIEW (consumption mode)\n' +
+                          'dashboardAPI.MODES.EDIT_GROUP (event group mode)\n' +
+                          '*/ \n\n' +
+                          'this.dashboardAPI.setMode(this.dashboardAPI.MODES.VIEW);';
+  private setDashboardModeEditGroupCodeSample = '/* \n' +
+                          'Available modes \n' +
+                          'dashboardAPI.MODES.EDIT (authoring mode)\n' +
+                          'dashboardAPI.MODES.VIEW (consumption mode)\n' +
+                          'dashboardAPI.MODES.EDIT_GROUP (event group mode)\n' +
+                          '*/ \n\n' +
+                          'this.dashboardAPI.setMode(this.dashboardAPI.MODES.EDIT_GROUP);';
+  private undoLastActionCodeSample = 'this.dashboardAPI.undo();';
+  private redoLastActionCodeSample = 'this.dashboardAPI.redo();';
 
   constructor() {
     this.snippets = new Map<string, CodeSnippet>();
@@ -63,6 +86,8 @@ export class CodeSnippetsRepoService {
     this.snippets.set(CodeSnippetEnum.DashboardEditMode, new CodeSnippet(CodeSnippetEnum.DashboardEditMode, this.setDashboardModeEditCodeSample, 'small'));
     this.snippets.set(CodeSnippetEnum.DashboardViewMode, new CodeSnippet(CodeSnippetEnum.DashboardViewMode, this.setDashboardModeViewCodeSample, 'small'));
     this.snippets.set(CodeSnippetEnum.DashboardEditGroupMode, new CodeSnippet(CodeSnippetEnum.DashboardEditGroupMode, this.setDashboardModeEditGroupCodeSample, 'small'));
+    this.snippets.set(CodeSnippetEnum.UndoLastAction, new CodeSnippet(CodeSnippetEnum.DashboardViewMode, this.undoLastActionCodeSample, 'large'));
+    this.snippets.set(CodeSnippetEnum.RedoLastAction, new CodeSnippet(CodeSnippetEnum.DashboardEditGroupMode, this.redoLastActionCodeSample, 'large'));
   }
 
   getSnippet(name) : CodeSnippet {

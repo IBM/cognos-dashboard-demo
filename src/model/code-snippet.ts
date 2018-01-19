@@ -9,7 +9,9 @@ export enum CodeSnippetEnum {
   AddProtectedCSVSource = 'AddProtectedCSVSource',
   DashboardEditMode = 'DashboardEditMode',
   DashboardViewMode = 'DashboardViewMode',
-  DashboardEditGroupMode = 'DashboardEditGroupMode'
+  DashboardEditGroupMode = 'DashboardEditGroupMode',
+  UndoLastAction = 'UndoLastAction',
+  RedoLastAction = 'RedoLastAction'
 }
 
 export class CodeSnippet {

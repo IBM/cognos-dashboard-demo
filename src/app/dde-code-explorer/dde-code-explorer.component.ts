@@ -43,7 +43,7 @@ export class DdeCodeExplorerComponent implements OnInit {
       this.apiId.emit(await this.ddeApiService.createAndInitApiFramework());
     }
     else if (this.codeSnippet.selection === CodeSnippetEnum.CreateDashboard) {
-      await this.ddeApiService.setDashboardApi();
+      await this.ddeApiService.createDashboard();
     }
     else if (this.codeSnippet.selection === CodeSnippetEnum.AddCSVSource) {
       // TODO: simplify, ddeApiService can do the get and add in one go

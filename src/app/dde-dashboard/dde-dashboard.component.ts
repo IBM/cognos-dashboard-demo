@@ -34,12 +34,10 @@ export class DdeDashboardComponent implements OnInit {
   }
 
   undoLastAction() {
-    // TODO: add CodeSnippetEnum.UndoLastAction
-    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.CreateDashboard));
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.UndoLastAction));
   }
 
   redoLastAction() {
-    // TODO: add CodeSnippetEnum.RedoLastAction
-    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.CreateDashboard));
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.RedoLastAction));
   }
 }

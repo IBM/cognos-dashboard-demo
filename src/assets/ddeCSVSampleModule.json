@@ -3,7 +3,7 @@
   "source": {
     "id": "StringID",
     "srcUrl": {
-      "sourceUrl": "\/daas\/dataSetDemo.csv",
+      "sourceUrl": "https://www.dropbox.com/s/adzmgapo249xf9w/ddeCSVSample.csv?dl=1",
       "mimeType": "text\/csv",
       "property": [
         {
