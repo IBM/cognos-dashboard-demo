@@ -12,14 +12,13 @@ import * as DashboardMode from '../../model/dashboard-mode';
   styleUrls: ['./dde-code-explorer.component.css']
 })
 export class DdeCodeExplorerComponent implements OnInit {
-
   @Output() session: EventEmitter<Session> = new EventEmitter<Session>();
   @Output() apiId: EventEmitter<string> = new EventEmitter<string>();
   @Input() codeSnippet : CodeSnippet;
   sessionTest : Session;
   dataSources = [DefaultOption, CSVDataSource, DB2DataSource, ProtectedDB2DataSource, ProtectedCSVDataSource];
   dashboardModes = [DashboardMode.EditMode, DashboardMode.ViewMode, DashboardMode.EditGroupMode];
-  sampleModule : string;
+  sampleModule : string;  
 
   constructor(private ddeApiService: DdeApiService, private codeSnippetsRepoService: CodeSnippetsRepoService) { }
 

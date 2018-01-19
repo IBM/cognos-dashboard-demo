@@ -20,12 +20,20 @@ code {
   white-space: pre-wrap;
 }
 
+pre {
+  height: 100%;
+}
+
 .explorer-bar {
   text-align: right;
   background-color: #000;
 }
 
 .secondary-panel {
-  margin-top: 40px;
   margin-left: 20px;
+}
+
+.header {
+  padding: 15px 5px 5px 0;
+  font-size: 20px;
 }

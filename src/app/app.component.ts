@@ -68,27 +68,13 @@ export class AppComponent implements OnInit {
   setToaster(message: string, cssclass: string, showToaster: boolean) {
    this.toaster = new Toaster(message, cssclass, showToaster);
 
-   this.timer.subscribe(() => {
-         this.toaster.showToaster = false;
-     });
+   // this.timer.subscribe(() => {
+   //       this.toaster.showToaster = false;
+   //   });
    }
 
   displayCreateDashboardCode() {
     this.code_snippet = this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.CreateDashboard);
-
-    /*  let self = this;
-      this.api.dashboard.createNew().then(
-          function(dashboardAPI) {
-              console.log('Dashboard created successfully.');
-            //  self.ddeApiService.dashboardAPI = dashboardAPI;
-             self.ddeApiService.setDashboardApi(dashboardAPI);
-            console.log(self.api.dashboard);
-          }
-      ).catch(
-          function(err) {
-              console.log('User hit cancel on the template picker page.');
-          }
-      );*/
   }
 
   displayOpenDashboardCode() {

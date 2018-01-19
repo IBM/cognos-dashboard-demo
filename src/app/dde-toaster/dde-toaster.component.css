@@ -16,3 +16,17 @@
   font-size: 15px;
   color: #e62325;
 }
+
+.fa-exclamation-triangle {
+  font-size: 15px;
+  color: #fe8500;
+}
+
+.fa-times {
+  float: right;
+  cursor: pointer;
+}
+
+span {
+  padding-left: 10px;
+}
