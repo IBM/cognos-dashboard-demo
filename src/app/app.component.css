@@ -17,3 +17,8 @@
   margin: 0;
   padding: 0;
 }
+
+.col-md-3,
+.col-md-7 {
+  padding: 0;
+}

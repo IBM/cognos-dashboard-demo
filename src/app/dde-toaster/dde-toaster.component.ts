@@ -24,4 +24,8 @@ export class DdeToasterComponent implements OnInit {
       };
       return classes;
   }
+
+  hideToaster() {
+    this.toaster.showToaster = false;
+  }
 }

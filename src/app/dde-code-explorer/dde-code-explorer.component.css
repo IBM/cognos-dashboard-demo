@@ -10,22 +10,40 @@
 
 .code-block-div {
   width:100%;
-	height:100%;
 	background-color:#595859;
+  height: 100%;
 }
 
 code {
   color: #fff;
   display: inline-block;
   white-space: pre-wrap;
+  margin-top: 40px;
+}
+
+pre {
+  height: 100%;
 }
 
 .explorer-bar {
-  text-align: right;
   background-color: #000;
+  width: 100%;
+  position: absolute;
 }
 
 .secondary-panel {
-  margin-top: 40px;
   margin-left: 20px;
+}
+
+.header {
+  padding: 15px 5px 5px 0;
+  font-size: 20px;
+}
+
+.button {
+  padding: 5px 10px;
+  color: #fff;
+  cursor: pointer;
+  width: 75px;
+  float: right;
 }

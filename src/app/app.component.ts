@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   private toaster: Toaster;
   private message : string;
   private timer: Observable<any>;
+  private showPanel: boolean = true;
 
   constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
@@ -49,6 +50,10 @@ export class AppComponent implements OnInit {
       this.message = 'Session created successfully. <a href=www.google.com>Create and initialize the API framework</a>';
       this.setToaster(this.message, 'success', true);
     }
+    else {
+      this.message = 'An error has occured. Please check the console log for more details.';
+      this.setToaster(this.message, 'failure', true);
+    }
   }
 
   getAPIId(event) {
@@ -57,6 +62,10 @@ export class AppComponent implements OnInit {
     if (this.apiId !== '') {
       this.message = 'API created successfully. You can now <a>create</a> or <a>open</a> a dashboard.';
       this.setToaster(this.message, 'success', true);
+    }
+    else {
+      this.message = 'An error has occured. Please check the console log for more details.';
+      this.setToaster(this.message, 'failure', true);
     }
   }
 

@@ -1,61 +1,63 @@
-<div [ngClass]="setExplorerDiv()">
-  <div class="explorer-bar">
-    <button class="btn btn-sm" (click)="runCode($event)" type="button">
+<div class="explorer-bar" >
+  <div class="button" (click)="runCode($event)">
+    <i class="fa fa-play"></i>
+    <label>
       Run
-    </button>
+    </label>
   </div>
+</div>
 
+<div [ngClass]="setExplorerDiv()">
   <div class="code-block-div">
     <pre>
       <code [innerHTML]=codeSnippet?.code>
       </code>
     </pre>
   </div>
+</div>
 
-  <div class="secondary-panel" *ngIf="showSessionPanel()">
-    <div>
-      <label>Session Information</label>
-    </div>
-
-    <div>
-      <label>sessionCode</label>
-      <input type="text" [(ngModel)]="sessionTest.code"/>
-    </div>
-
-    <div>
-      <label>sessionId</label>
-      <input type="text" [(ngModel)]="sessionTest.id"/>
-    </div>
+<div class="secondary-panel" *ngIf="showSessionPanel()">
+  <div class="header">
+    <label>Session Information</label>
   </div>
 
-  <div class="secondary-panel" *ngIf="showSourcesDropDown()">
-    <div>
-      <label>Data source configuration</label>
-    </div>
-
-    <div>
-      <label>Data Source</label>
-      <select (change)="onSelect($event.target.value)">
-        <option *ngFor="let dataSource of dataSources" value={{dataSource.value}}>
-           {{dataSource.type}}
-        </option>
-      </select>
-    </div>
+  <div>
+    <label>sessionCode</label>
+    <input type="text" [ngModel]="sessionObject?.code"/>
   </div>
 
-  <div class="secondary-panel" *ngIf="showDashboardModesDropDown()">
-    <div>
-      <label>Dashboard Mode</label>
-    </div>
+  <div>
+    <label>sessionId</label>
+    <input type="text" [ngModel]="sessionObject?.id"/>
+  </div>
+</div>
 
-    <div>
-      <label>Mode</label>
-      <select (change)="onSelectMode($event.target.value)">
-        <option *ngFor="let mode of dashboardModes" value={{mode.value}}>
-           {{mode.type}}
-        </option>
-      </select>
-    </div>
+<div class="secondary-panel" *ngIf="showSourcesDropDown()">
+  <div class="header">
+    <label>Data source configuration</label>
   </div>
 
+  <div>
+    <label>Data Source</label>
+    <select (change)="onSelect($event.target.value)">
+      <option *ngFor="let dataSource of dataSources" value={{dataSource.value}}>
+         {{dataSource.type}}
+      </option>
+    </select>
+  </div>
+</div>
+
+<div class="secondary-panel" *ngIf="showDashboardModesDropDown()">
+  <div>
+    <label>Dashboard Mode</label>
+  </div>
+
+  <div>
+    <label>Mode</label>
+    <select (change)="onSelectMode($event.target.value)">
+      <option *ngFor="let mode of dashboardModes" value={{mode.value}}>
+         {{mode.type}}
+      </option>
+    </select>
+  </div>
 </div>

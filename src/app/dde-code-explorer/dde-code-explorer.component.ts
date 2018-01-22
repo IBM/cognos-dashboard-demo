@@ -12,14 +12,13 @@ import * as DashboardMode from '../../model/dashboard-mode';
   styleUrls: ['./dde-code-explorer.component.css']
 })
 export class DdeCodeExplorerComponent implements OnInit {
-
   @Output() session: EventEmitter<Session> = new EventEmitter<Session>();
   @Output() apiId: EventEmitter<string> = new EventEmitter<string>();
   @Input() codeSnippet : CodeSnippet;
-  sessionTest : Session;
   dataSources = [DefaultOption, CSVDataSource, DB2DataSource, ProtectedDB2DataSource, ProtectedCSVDataSource];
   dashboardModes = [DashboardMode.EditMode, DashboardMode.ViewMode, DashboardMode.EditGroupMode];
   sampleModule : string;
+  sessionObject = null;
 
   constructor(private ddeApiService: DdeApiService, private codeSnippetsRepoService: CodeSnippetsRepoService) { }
 
@@ -35,42 +34,47 @@ export class DdeCodeExplorerComponent implements OnInit {
   }
 
   async runCode(event) {
-    if (this.codeSnippet.selection === CodeSnippetEnum.CreateSession) {
-      this.sessionTest = await this.ddeApiService.createNewSession();
-      this.session.emit(this.sessionTest);
+    try {
+      if (this.codeSnippet.selection === CodeSnippetEnum.CreateSession) {
+        this.sessionObject = await this.ddeApiService.createNewSession();
+        this.session.emit(this.sessionObject);
+      }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.CreateAPIFramework) {
+        this.apiId.emit(await this.ddeApiService.createAndInitApiFramework());
+      }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.CreateDashboard) {
+        await this.ddeApiService.createDashboard();
+      }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.AddCSVSource) {
+        this.ddeApiService.addCSVSampleSource();
+      }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.AddDB2Source) {
+        this.ddeApiService.addDb2SampleSource();
+      }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.AddProtectedDB2Source) {
+        this.ddeApiService.addProtectedDB2SampleSource();
+      }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.AddProtectedCSVSource) {
+        this.ddeApiService.addProtectedCSVSampleSource();
+      }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.DashboardEditMode) {
+        this.ddeApiService.setDashboardMode_Edit();
+      }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.DashboardViewMode) {
+        this.ddeApiService.setDashboardMode_View();
+      }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.DashboardEditGroupMode) {
+        this.ddeApiService.setDashboardMode_EditGroup();
+      }
     }
-    else if (this.codeSnippet.selection === CodeSnippetEnum.CreateAPIFramework) {
-      this.apiId.emit(await this.ddeApiService.createAndInitApiFramework());
+    catch(e) {
+      console.log(e);
+      this.session.emit(null);
+      this.apiId.emit('');
     }
-    else if (this.codeSnippet.selection === CodeSnippetEnum.CreateDashboard) {
-      await this.ddeApiService.createDashboard();
-    }
-    else if (this.codeSnippet.selection === CodeSnippetEnum.AddCSVSource) {
-      // TODO: simplify, ddeApiService can do the get and add in one go
-      this.sampleModule = await this.ddeApiService.getCSVSampleModule();
-      this.ddeApiService.addCSVSampleSource(this.sampleModule);
-    }
-    else if (this.codeSnippet.selection === CodeSnippetEnum.AddDB2Source) {
-      // TODO: simplify, ddeApiService can do the get and add in one go
-      this.sampleModule = await this.ddeApiService.getDB2SampleModule();
-      this.ddeApiService.addDb2SampleSource(this.sampleModule);
-    }
-    else if (this.codeSnippet.selection === CodeSnippetEnum.AddProtectedDB2Source) {
-      this.ddeApiService.addProtectedDB2SampleSource();
-    }
-    else if (this.codeSnippet.selection === CodeSnippetEnum.AddProtectedCSVSource) {
-      this.ddeApiService.addProtectedCSVSampleSource();
-    }
-    else if (this.codeSnippet.selection === CodeSnippetEnum.DashboardEditMode) {
-      this.ddeApiService.setDashboardMode_Edit();
-    }
-    else if (this.codeSnippet.selection === CodeSnippetEnum.DashboardViewMode) {
-      this.ddeApiService.setDashboardMode_View();
-    }
-    else if (this.codeSnippet.selection === CodeSnippetEnum.DashboardEditGroupMode) {
-      this.ddeApiService.setDashboardMode_EditGroup();
-    }
-  }
+}
+
+
 
   onSelect(sourceValue) {
     for (var i = 0; i < this.dataSources.length; i++) {
