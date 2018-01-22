@@ -7,84 +7,85 @@
     </div>
 </div-->
 
+
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-2 ngxAccordionCustomContainer nav-bar navbar-expand-lg navbar-dark bg-dark">
-            <div class="list-group text-md-left">
-              <accordion class="ngxAccordionCustom">
-                <!--accordion-group heading="1. Session" [isOpen]="isFirstOpen" (isOpenChange)="log($event)" panelClass="ngxAccordianCustom"-->
-                <accordion-group [isOpen]="isFirstOpen" panelClass="bg-dark">
-                  <!--p>Some content</p-->
-                  <div accordion-heading class="navbar-brand">
-                    1. Session
-                    <span class="badge badge-secondary float-right pull-right"></span>
-                  </div>
-                  <dde-session (codeToRun)="getCodeSnippet($event)">
-                 </dde-session>
-                </accordion-group>
+      <div class="col-md-2 ngxAccordionCustomContainer nav-bar navbar-expand-lg navbar-dark bg-dark">
+          <div class="list-group text-md-left">
+            <accordion class="ngxAccordionCustom">
+              <!--accordion-group heading="1. Session" [isOpen]="isFirstOpen" (isOpenChange)="log($event)" panelClass="ngxAccordianCustom"-->
+              <accordion-group [isOpen]="isFirstOpen" panelClass="bg-dark">
+                <!--p>Some content</p-->
+                <div accordion-heading class="navbar-brand">
+                  1. Session
+                  <span class="badge badge-secondary float-right pull-right"></span>
+                </div>
+                <dde-session (codeToRun)="getCodeSnippet($event)">
+               </dde-session>
+              </accordion-group>
 
-                <accordion-group panelClass="bg-dark">
-                  <div accordion-heading class="navbar-brand">
-                    2. Create or open Dashboard
-                  </div>
-                  <div class="navbar-nav">
-                    <ul class="navbar-nav mr-auto">
-                      <li>
-                        <a class="nav-link" href="#" (click)='displayCreateDashboardCode()'>
-                          Create Dashboard
-                        </a>
-                        <a class="nav-link" href="#" (click)='displayOpenDashboardCode()'>
-                          Open Dashboard
-                        </a>
-                      </li>
-                    </ul>
+              <accordion-group panelClass="bg-dark">
+                <div accordion-heading class="navbar-brand">
+                  2. Create or open Dashboard
+                </div>
+                <div class="navbar-nav">
+                  <ul class="navbar-nav mr-auto">
+                    <li>
+                      <a class="nav-link" href="#" (click)='displayCreateDashboardCode()'>
+                        Create Dashboard
+                      </a>
+                      <a class="nav-link" href="#" (click)='displayOpenDashboardCode()'>
+                        Open Dashboard
+                      </a>
+                    </li>
+                  </ul>
 
-                  </div>
-                </accordion-group>
+                </div>
+              </accordion-group>
 
-                <accordion-group panelClass="bg-dark">
-                  <div accordion-heading class="navbar-brand">
-                    3. Work with Dashboard
-                  </div>
-                  <dde-dashboard (codeToRun)="getCodeSnippet($event)">
-                  </dde-dashboard>
-                </accordion-group>
+              <accordion-group panelClass="bg-dark">
+                <div accordion-heading class="navbar-brand">
+                  3. Work with Dashboard
+                </div>
+                <dde-dashboard (codeToRun)="getCodeSnippet($event)">
+                </dde-dashboard>
+              </accordion-group>
 
-                <accordion-group panelClass="bg-dark">
-                  <div accordion-heading class="navbar-brand">
-                    Documentation
-                    <span class="badge badge-secondary float-right pull-right">some html here</span>
-                  </div>
-                  <div class="navbar-nav">
-                    <p class="nav-link">
-                      This is just some content to illustrate fancy headings.
-                    </p>
+              <accordion-group panelClass="bg-dark">
+                <div accordion-heading class="navbar-brand">
+                  Documentation
+                  <span class="badge badge-secondary float-right pull-right">some html here</span>
+                </div>
+                <div class="navbar-nav">
+                  <p class="nav-link">
+                    This is just some content to illustrate fancy headings.
+                  </p>
 
-                  </div>
-                </accordion-group>
-                <accordion-group [isOpen]="isFirstOpen" panelClass="bg-dark">
-                  <div accordion-heading class="navbar-brand">
-                    Get Started
-                      <i class="fa fa-link float-right" ></i>
-                  </div>
-                  <div class="navbar-nav">
-                    <ul class="navbar-nav mr-auto">
-                      <li>
-                        <a class="nav-link" href="https://console.stage1.bluemix.net/catalog/services/dynamic-dashboard-embedded" target="_blank">
-                          DDE in Bluemix
-                        </a>
-                        <a class="nav-link" href="https://github.ibm.com/GearBox/DDE-ang-node-test" target="_blank">
-                          Github
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </accordion-group>
-              </accordion>
-            </div>
-        </div>
+                </div>
+              </accordion-group>
+              <accordion-group [isOpen]="isFirstOpen" panelClass="bg-dark">
+                <div accordion-heading class="navbar-brand">
+                  Get Started
+                    <i class="fa fa-link float-right" ></i>
+                </div>
+                <div class="navbar-nav">
+                  <ul class="navbar-nav mr-auto">
+                    <li>
+                      <a class="nav-link" href="https://console.stage1.bluemix.net/catalog/services/dynamic-dashboard-embedded" target="_blank">
+                        DDE in Bluemix
+                      </a>
+                      <a class="nav-link" href="https://github.ibm.com/GearBox/DDE-ang-node-test" target="_blank">
+                        Github
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </accordion-group>
+            </accordion>
+          </div>
+      </div>
 
-        <div class="col-md-3">
+      <div class="col-md-3">
            <dde-code-explorer [codeSnippet]="code_snippet" (session)="sessionInfo($event)" (apiId)="getAPIId($event)">
            </dde-code-explorer>
         </div>

@@ -1,4 +1,4 @@
-<div class="explorer-bar">
+<div class="explorer-bar" >
   <div class="button" (click)="runCode($event)">
     <i class="fa fa-play"></i>
     <label>
@@ -23,12 +23,12 @@
 
   <div>
     <label>sessionCode</label>
-    <input type="text" [(ngModel)]="sessionTest.code"/>
+    <input type="text" [ngModel]="sessionObject?.code"/>
   </div>
 
   <div>
     <label>sessionId</label>
-    <input type="text" [(ngModel)]="sessionTest.id"/>
+    <input type="text" [ngModel]="sessionObject?.id"/>
   </div>
 </div>
 

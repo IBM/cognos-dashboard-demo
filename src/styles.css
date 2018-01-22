@@ -70,7 +70,7 @@
 }
 
 input {
-  width: 70%;
+  width: 95%;
   background-color: #eaeaea;
   border: 0;
   outline: 0;
@@ -84,6 +84,9 @@ select {
   display: block;
 }
 
+.fa-arrow-right {
+  font-size: 15px;
+}
 /* indentation for accordion card body
 .ngxAccordionCustomContainer .card .card-body {
     margin-left: 1.25rem;

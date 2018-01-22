@@ -23,10 +23,9 @@ export class DdeApiService {
   private csv_sample_module: string;
 
   constructor(private http: Http, private encryptService: EncryptService) {
-
   }
 
-  async createNewSession() : Promise<Session> {
+  async createNewSession() {
     this.session = new Session();
     console.log("in create new session");
 
@@ -42,12 +41,10 @@ export class DdeApiService {
     this.session.id = response.json().sessionId;
     this.session.keys = response.json().keys.map(k => new SessionKey(k));
     return this.session;
-
   }
 
-  async createAndInitApiFramework() : Promise<string> {
+  async createAndInitApiFramework() {
     console.log("in create and init api framework");
-
     // Create an instance of the CognosApi
     this.api = new CognosApi({
           cognosRootURL: environment.cognos_root_url,
@@ -56,10 +53,18 @@ export class DdeApiService {
           });
     this.api._node.hidden = false;
 
-    // initialize the CognosApi in order to obtain the service APIs
-    await this.api.initialize();
-    console.log('API created successfully.');
-    console.log(this.api.dashboard);
+   //  try {
+   //   var test = await this.api.initialize();
+   //   test;
+   // }
+   // catch (e) {
+   //   return 'in here';
+   // }
+
+      await this.api.initialize();
+
+      console.log('API created successfully.');
+      console.log(this.api.dashboard);
 
     return this.api.apiId;
   }
@@ -67,13 +72,13 @@ export class DdeApiService {
   async setDashboardApi()  {
     console.log("in create dashboard");
      this.dashboardAPI = await this.api.dashboard.createNew();
+
      console.log('Dashboard created successfully.');
      console.log(this.dashboardAPI);
   }
 
-  async getDB2SampleModule(): Promise<string> {
-
-    // return if it was already fetched from before
+  async getDB2SampleModule() {
+    // return if it was already  fetched from before
     if (this.db2_sample_module != null) {
       return this.db2_sample_module;
     }
@@ -83,16 +88,15 @@ export class DdeApiService {
     return this.db2_sample_module;
   }
 
-  addDb2SampleSource(db2_sample_module) {
+  addDb2SampleSource() {
     this.dashboardAPI.addSources([{
-      module: db2_sample_module,
+      module: this.getDB2SampleModule(),
       name: 'Test DB2 Source',
       id: 'myUniqueId123'
     }]);
   }
 
-  async getCSVSampleModule(): Promise<string> {
-
+  async getCSVSampleModule() {
     // return if it was already fetched from before
     if (this.csv_sample_module != null) {
       return this.csv_sample_module;
@@ -103,16 +107,15 @@ export class DdeApiService {
     return this.csv_sample_module;
   }
 
-  addCSVSampleSource(csv_sample_module) {
+  addCSVSampleSource() {
     this.dashboardAPI.addSources([{
-      module: csv_sample_module,
+      module: this.getCSVSampleModule(),
       name: 'Test CSV Source',
       id: 'myUniqueId789'
     }]);
   }
 
   async addProtectedDB2SampleSource() {
-
     const sampleModule = await this.getDB2SampleModule();
     this.encryptService.setKey(this.session.keys[0]);
     const encryptedSampleModule = this.encryptService.encryptModuleInfo(sampleModule);
@@ -131,6 +134,7 @@ export class DdeApiService {
     const encryptedSampleModule = this.encryptService.encryptModuleInfo(sampleModule);
 
     console.log("protected CSV sample module: " + encryptedSampleModule);
+
     this.dashboardAPI.addSources([{
       module: encryptedSampleModule,
       name: 'Protected CSV Source',
@@ -168,6 +172,4 @@ export class DdeApiService {
     */
     this.dashboardAPI.setMode(this.dashboardAPI.MODES.EDIT_GROUP);
   }
-
-
 }
