@@ -19,6 +19,7 @@ export class DdeApiService {
 
   private dashboardAPI;
   private session: Session;
+  private sample_db_spec: string;
   private db2_sample_module: string;
   private csv_sample_module: string;
 
@@ -69,12 +70,63 @@ export class DdeApiService {
     return this.api.apiId;
   }
 
-  async setDashboardApi()  {
+  async createDashboard()  {
+  /*  let self = this;
+    this.api.dashboard.createNew().then(
+        function(dashboardAPI) {
+            console.log('Dashboard created successfully.');
+          //  self.ddeApiService.dashboardAPI = dashboardAPI;
+           self.ddeApiService.setDashboardApi(dashboardAPI);
+          console.log(self.api.dashboard);
+        }
+    ).catch(
+        function(err) {
+            console.log('User hit cancel on the template picker page.');
+        }
+    );*/
     console.log("in create dashboard");
-     this.dashboardAPI = await this.api.dashboard.createNew();
+    this.dashboardAPI = await this.api.dashboard.createNew();
+    console.log('Dashboard created successfully.');
+    console.log(this.dashboardAPI);
+  }
 
-     console.log('Dashboard created successfully.');
-     console.log(this.dashboardAPI);
+  async getDashboardSampleSpec(): Promise<void> {
+
+    // return if it was already fetched from before
+    if (this.sample_db_spec != null) {
+      return; //this.sample_db_spec;
+    }
+
+    //get the sampleSepc json ready
+    const response = await this.http.get('/assets/ddeSampleSpec.json').toPromise();
+    this.sample_db_spec = response.json();
+    //return this.sample_db_spec;
+  }
+
+  async openDashboard() {
+    /*
+    window.api.dashboard.openDashboard({
+    dashboardSpec: sampleSpec
+    }).then(
+        function(dashboardAPI) {
+            console.log('Dashboard created successfully.');
+            window.dashboardAPI = dashboardAPI;
+        }
+    ).catch(
+        function(err) {
+            console.log(err);
+        }
+    );
+    */
+
+    console.log("in open dashboard");
+    await this.getDashboardSampleSpec();
+    console.log("got dashboard: " + this.sample_db_spec);
+    this.dashboardAPI = await this.api.dashboard.openDashboard({
+      dashboardSpec: this.sample_db_spec
+    });
+    console.log('Dashboard opened successfully.');
+    console.log(this.dashboardAPI);
   }
 
   async getDB2SampleModule() {
@@ -153,23 +205,19 @@ export class DdeApiService {
   }
 
   setDashboardMode_View() {
-    /**
-    Available modes
-    dashboardAPI.MODES.EDIT (authoring mode)
-    dashboardAPI.MODES.VIEW (consumption mode)
-    dashboardAPI.MODES.EDIT_GROUP (event group mode)
-    */
-
     this.dashboardAPI.setMode(this.dashboardAPI.MODES.VIEW);
   }
 
   setDashboardMode_EditGroup() {
-    /**
-    Available modes
-    dashboardAPI.MODES.EDIT (authoring mode)
-    dashboardAPI.MODES.VIEW (consumption mode)
-    dashboardAPI.MODES.EDIT_GROUP (event group mode)
-    */
     this.dashboardAPI.setMode(this.dashboardAPI.MODES.EDIT_GROUP);
   }
+
+  undoLastAction() {
+    this.dashboardAPI.undo();
+  }
+
+  redoLastAction() {
+    this.dashboardAPI.redo();
+  }
+
 }

@@ -12,7 +12,8 @@
         "favicon.ico",
         { "glob": "ddeSampleSpec.json", "input": "./", "output": "./assets/" },
         { "glob": "ddeDb2SampleModule.json", "input": "./", "output": "./assets/" },
-        { "glob": "ddeCSVSampleModule.json", "input": "./", "output": "./assets/" }
+        { "glob": "ddeCSVSampleModule.json", "input": "./", "output": "./assets/" },
+        { "glob": "ddeCSVSample.csv", "input": "./", "output": "./assets/" }
       ],
       "index": "index.html",
       "main": "main.ts",

@@ -26,13 +26,13 @@ export class DdeSessionComponent implements OnInit {
 
   public client_id : string;
   public client_secret: string;
-  public sample_db_spec : string;
+  //public sample_db_spec : string;
   public updated_db_spec : string;
   public code_samples: string;
 
   constructor(private http: Http, private script: ScriptService,
               private ddeApiService: DdeApiService, private codeSnippetsRepoService: CodeSnippetsRepoService) {
-
+/*
     //get the sampleSepc json ready
     this.http.get('/assets/ddeSampleSpec.json').subscribe(
             data => {
@@ -41,6 +41,7 @@ export class DdeSessionComponent implements OnInit {
               console.log(data.json());
             }
         );
+*/
   }
 
   ngOnInit() {
