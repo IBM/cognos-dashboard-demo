@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DdeApiService } from '../services/dde-api.service';
 import { Session } from '../../model/session';
 import { CodeSnippet, CodeSnippetEnum } from '../../model/code-snippet';
-import { DefaultOption, CSVDataSource, DB2DataSource, ProtectedDB2DataSource, ProtectedCSVDataSource } from '../../model/data-source';
+import { CSVDataSource, DB2DataSource, ProtectedDB2DataSource, ProtectedCSVDataSource } from '../../model/data-source';
 import { CodeSnippetsRepoService } from '../services/code-snippets-repo.service';
 import * as DashboardMode from '../../model/dashboard-mode';
 
@@ -15,7 +15,7 @@ export class DdeCodeExplorerComponent implements OnInit {
   @Output() session: EventEmitter<Session> = new EventEmitter<Session>();
   @Output() apiId: EventEmitter<string> = new EventEmitter<string>();
   @Input() codeSnippet : CodeSnippet;
-  dataSources = [DefaultOption, CSVDataSource, DB2DataSource, ProtectedDB2DataSource, ProtectedCSVDataSource];
+  dataSources = [CSVDataSource, DB2DataSource, ProtectedDB2DataSource, ProtectedCSVDataSource];
   dashboardModes = [DashboardMode.EditMode, DashboardMode.ViewMode, DashboardMode.EditGroupMode];
   sampleModule : string;
   sessionObject = null;
@@ -65,6 +65,12 @@ export class DdeCodeExplorerComponent implements OnInit {
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.DashboardEditGroupMode) {
         this.ddeApiService.setDashboardMode_EditGroup();
+      }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.UndoLastAction) {
+        this.ddeApiService.undoLastAction();
+      }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.RedoLastAction) {
+        this.ddeApiService.redoLastAction();
       }
     }
     catch(e) {

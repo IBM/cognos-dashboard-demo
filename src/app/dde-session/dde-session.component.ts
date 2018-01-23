@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
-import { ScriptService } from '../script.service';
+import { ScriptService } from '../services/script.service';
 import { DdeApiService } from '../services/dde-api.service';
 import { CodeSnippet, CodeSnippetEnum } from '../../model/code-snippet'
 import { CodeSnippetsRepoService } from '../services/code-snippets-repo.service';

@@ -5,7 +5,6 @@ export class DataSources {
   }
 }
 
-export const DefaultOption = new DataSources('Select an option', '');
 export const CSVDataSource = new DataSources('CSV', CodeSnippetEnum.AddCSVSource);
 export const DB2DataSource = new DataSources('DB2', CodeSnippetEnum.AddDB2Source);
 export const ProtectedDB2DataSource = new DataSources('Protected DB2', CodeSnippetEnum.AddProtectedDB2Source);

@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
     this.session = event;
 
     if (this.session !== null) {
-      this.message = 'Session created successfully. <a href=www.google.com>Create and initialize the API framework</a>';
+      this.message = 'Session created successfully. Create and initialize the API framework.';
       this.setToaster(this.message, 'success', true);
     }
     else {
@@ -60,7 +60,7 @@ export class AppComponent implements OnInit {
     this.apiId = event;
 
     if (this.apiId !== '') {
-      this.message = 'API created successfully. You can now <a>create</a> or <a>open</a> a dashboard.';
+      this.message = 'API created successfully. You can now create or open a dashboard.';
       this.setToaster(this.message, 'success', true);
     }
     else {

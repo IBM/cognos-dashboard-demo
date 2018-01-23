@@ -140,9 +140,10 @@ export class DdeApiService {
     return this.db2_sample_module;
   }
 
-  addDb2SampleSource() {
+  async addDb2SampleSource() {
+    const sampleModule = await this.getDB2SampleModule();
     this.dashboardAPI.addSources([{
-      module: this.getDB2SampleModule(),
+      module: sampleModule,
       name: 'Test DB2 Source',
       id: 'myUniqueId123'
     }]);
@@ -159,9 +160,10 @@ export class DdeApiService {
     return this.csv_sample_module;
   }
 
-  addCSVSampleSource() {
+  async addCSVSampleSource() {
+    const sampleModule = await this.getCSVSampleModule();
     this.dashboardAPI.addSources([{
-      module: this.getCSVSampleModule(),
+      module: sampleModule,
       name: 'Test CSV Source',
       id: 'myUniqueId789'
     }]);
