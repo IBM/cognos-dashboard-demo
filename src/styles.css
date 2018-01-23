@@ -91,6 +91,10 @@ select {
 .fa {
   cursor: pointer;
 }
+
+ul, li {
+  width: 100%;
+}
 /* indentation for accordion card body
 .ngxAccordionCustomContainer .card .card-body {
     margin-left: 1.25rem;
