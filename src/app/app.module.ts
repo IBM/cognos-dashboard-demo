@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
-import { AngularSplitModule } from 'angular-split';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { DdeSessionComponent } from './dde-session/dde-session.component';
 import { DdeCodeExplorerComponent } from './dde-code-explorer/dde-code-explorer.component';
@@ -23,6 +23,7 @@ import { DdeToasterComponent } from './dde-toaster/dde-toaster.component';
 import { DdeApiService } from './services/dde-api.service';
 import { EncryptService } from './services/encrypt.service';
 import { CodeSnippetsRepoService } from './services/code-snippets-repo.service';
+import { DdeDialogComponent } from './dde-dialog/dde-dialog.component';
 /*
 // Define the routes
 const ROUTES = [
@@ -45,15 +46,16 @@ const ROUTES = [
     DdeSessionComponent,
     DdeCodeExplorerComponent,
     DdeDashboardComponent,
-    DdeToasterComponent
+    DdeToasterComponent,
+    DdeDialogComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     BsDropdownModule.forRoot(),
     AccordionModule.forRoot(),
-    FormsModule,
-    AngularSplitModule
+    ModalModule.forRoot(),
+    FormsModule    
     //RouterModule.forRoot(ROUTES), // Add routes to the app
     //AngularFireModule.initializeApp(environment.firebase),
     //AngularFireDatabaseModule,
