@@ -87,6 +87,10 @@ select {
 .fa-arrow-right {
   font-size: 15px;
 }
+
+.fa {
+  cursor: pointer;
+}
 /* indentation for accordion card body
 .ngxAccordionCustomContainer .card .card-body {
     margin-left: 1.25rem;
