@@ -16,15 +16,15 @@ export class AppComponent implements OnInit {
   title = 'app';
 
   private apiId: string = '';
+  private dashboardApi: string = '';
   public parent_update_module_def_info: string;
   private code_snippet: CodeSnippet;
   private session : Session = null;
-  //private collapsed: boolean = true;
-  //private isFirstOpen: boolean = true;
   private toaster: Toaster;
   private message : string;
   private timer: Observable<any>;
   private showPanel: boolean = true;
+  private nextStep: CodeSnippetEnum = CodeSnippetEnum.CreateSession;
 
   constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
@@ -39,18 +39,13 @@ export class AppComponent implements OnInit {
     this.timer = Observable.timer(environment.toaster_timer);
   }
 
-/*
-  toggleCollapsed(): void {
-    this.collapsed = !this.collapsed;
-  }
-*/
-
   sessionInfo(event) {
     this.session = event;
 
     if (this.session !== null) {
       this.message = 'Session created successfully. Create and initialize the API framework.';
       this.setToaster(this.message, 'success', true);
+      this.nextStep = CodeSnippetEnum.CreateAPIFramework;
     }
     else {
       this.message = 'An error has occured. Please check the console log for more details.';
@@ -64,6 +59,19 @@ export class AppComponent implements OnInit {
     if (this.apiId !== '') {
       this.message = 'API created successfully. You can now create or open a dashboard.';
       this.setToaster(this.message, 'success', true);
+      this.nextStep = CodeSnippetEnum.CreateDashboard;
+    }
+    else {
+      this.message = 'An error has occured. Please check the console log for more details.';
+      this.setToaster(this.message, 'failure', true);
+    }
+  }
+
+  getDashboardApi(event) {
+    this.dashboardApi = event;
+
+    if (this.dashboardApi !== '') {
+      this.nextStep = CodeSnippetEnum.None;
     }
     else {
       this.message = 'An error has occured. Please check the console log for more details.';

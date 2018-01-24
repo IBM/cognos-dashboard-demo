@@ -1,6 +1,5 @@
-<!--accordion-group heading="1. Session" [isOpen]="isFirstOpen" (isOpenChange)="log($event)" panelClass="ngxAccordianCustom"-->
 <accordion-group [isOpen]="isFirstOpen" panelClass="bg-dark">
-  <!--p>Some content</p-->
+
   <div accordion-heading class="navbar-brand">
     1. Session
     <span class="badge badge-secondary float-right pull-right"></span>
@@ -10,13 +9,12 @@
        <div class="row">
          <ul class="navbar-nav mr-auto">
            <li>
-             <!--a class="nav-link" href="#" (click)='getDDECred()'>
-               Show DDE Credentials
-             </a-->
              <a class="nav-link" href="#" (click)='displayNewSessionCode()'>
-              Create New Session
+               <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateSession'"></i>
+               Create New Session
              </a>
              <a class="nav-link" href="#" (click)='displayInitApiFrameworkCode()'>
+               <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateAPIFramework'"></i>
                Create & init API framework
              </a>
              <a class="nav-link" href="#" (click)='updateModuleDefinitions($event)'>
@@ -25,15 +23,12 @@
            </li>
          </ul>
        </div>
-
   </div>
-
-  <!--dde-session (codeToRun)="getCodeSnippet($event)">
- </dde-session-->
 </accordion-group>
 
 <accordion-group panelClass="bg-dark">
   <div accordion-heading class="navbar-brand">
+    <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateDashboard'"></i>
     2. Create or open Dashboard
   </div>
   <div class="navbar-nav">
@@ -76,31 +71,5 @@
 
       </ul>
     </div>
-
   </div>
-  <!--dde-dashboard (codeToRun)="getCodeSnippet($event)">
-  </dde-dashboard-->
 </accordion-group>
-<!--div class="col-md-12">
-  <div class="row">
-    <ul class="navbar-nav">
-
-      <li>
-        <a class="nav-link" href="#" (click)='addSourcesToDashboard()'>
-          Add sources to dashboard
-        </a>
-        <a class="nav-link" href="#" (click)='setDashboardEditMode()'>
-          Set Dashboard Mode
-        </a>
-        <a class="nav-link" href="#" (click)='undoLastAction()'>
-          Undo Last Action
-        </a>
-        <a class="nav-link" href="#" (click)='redoLastAction()'>
-          Redo Last Action
-        </a>
-      </li>
-
-    </ul>
-  </div>
-
-</div-->

@@ -10,7 +10,7 @@
       <div class="col-md-2 ngxAccordionCustomContainer nav-bar navbar-expand-lg navbar-dark bg-dark">
           <div class="list-group text-md-left">
             <accordion class="ngxAccordionCustom">
-              <dde-dashboard (codeToRun)="getCodeSnippet($event)">
+              <dde-dashboard (codeToRun)="getCodeSnippet($event)" [nextStep]="nextStep">
               </dde-dashboard>
               <dde-references></dde-references>
             </accordion>
@@ -18,7 +18,8 @@
       </div>
 
       <div class="col-md-3">
-           <dde-code-explorer [codeSnippet]="code_snippet" (session)="sessionInfo($event)" (apiId)="getAPIId($event)">
+           <dde-code-explorer [codeSnippet]="code_snippet" (session)="sessionInfo($event)" (apiId)="getAPIId($event)"
+            (dashboardApi)="getDashboardApi($event)">
            </dde-code-explorer>
         </div>
 

@@ -14,6 +14,7 @@ import * as DashboardMode from '../../model/dashboard-mode';
 export class DdeCodeExplorerComponent implements OnInit {
   @Output() session: EventEmitter<Session> = new EventEmitter<Session>();
   @Output() apiId: EventEmitter<string> = new EventEmitter<string>();
+  @Output() dashboardApi: EventEmitter<string> = new EventEmitter<string>();
   @Input() codeSnippet : CodeSnippet;
   dataSources = [CSVDataSource, ProtectedCSVDataSource, /*DB2DataSource, ProtectedDB2DataSource,*/ CSVDataSource2, BikeShareWeatherCSVSource ];
   dashboardModes = [DashboardMode.EditMode, DashboardMode.ViewMode, DashboardMode.EditGroupMode];
@@ -43,7 +44,7 @@ export class DdeCodeExplorerComponent implements OnInit {
         this.apiId.emit(await this.ddeApiService.createAndInitApiFramework());
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.CreateDashboard) {
-        await this.ddeApiService.createDashboard();
+        this.dashboardApi.emit(await this.ddeApiService.createDashboard());
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddCSVSource) {
         this.ddeApiService.addCSVSampleSource();

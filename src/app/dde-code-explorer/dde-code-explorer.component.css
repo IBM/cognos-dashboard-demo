@@ -59,3 +59,7 @@ pre {
     padding: 1em;
     margin-left: -4em;
 }
+
+.fa {
+  transition: font-size 0.35s ease
+}
