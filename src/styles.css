@@ -95,6 +95,35 @@ select {
 ul, li {
   width: 100%;
 }
+
+pre {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    white-space: pre-wrap;
+}
+pre::before {
+    counter-reset: linenum;
+}
+pre span.tr {
+    display: table-row;
+    counter-increment: linenum;
+}
+pre span.th {
+    display: table-cell;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;    
+}
+pre span.th::before {
+    content: counter(linenum);
+    text-align: center;
+    display: block;
+}
+pre span.th {
+    width: 4em;
+}
+
 /* indentation for accordion card body
 .ngxAccordionCustomContainer .card .card-body {
     margin-left: 1.25rem;

@@ -15,7 +15,7 @@
 }
 
 code {
-  color: #fff;
+  color: #eaeaea;
   display: inline-block;
   white-space: pre-wrap;
   margin-top: 40px;
@@ -46,4 +46,16 @@ pre {
   cursor: pointer;
   width: 75px;
   float: right;
+}
+
+.column-left {
+    width: 8%;
+    padding: 1em;
+    background-color: #343334;
+}
+
+.column-right {
+    width: 92%;
+    padding: 1em;
+    margin-left: -4em;
 }

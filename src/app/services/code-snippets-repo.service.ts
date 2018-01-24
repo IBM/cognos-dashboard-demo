@@ -6,83 +6,103 @@ import { environment } from '../../environments/environment';
 export class CodeSnippetsRepoService {
 
   private snippets;
+//&#9;
+  private createSessionCodeSample =
+                '<span class="tr"><span class="th"></span><code>  const response = await</code></span>' +
+                '<span class="tr"><span class="th"></span><code>    this.http.post(' + `'/api/dde/session'` + '</code></span>' +
+                '<span class="tr"><span class="th"></span><code>    options).toPromise();</code></span>' +
+                '<span class="tr"><span class="th"></span><code></code></span>' +
+                '<span class="tr"><span class="th"></span><code>  this.session.code =</code></span>' +
+                '<span class="tr"><span class="th"></span><code>    response.json().sessionCode;</code></span>' +
+                '<span class="tr"><span class="th"></span><code></code></span>' +
+                '<span class="tr"><span class="th"></span><code>  this.session.id =</code></span>' +
+                '<span class="tr"><span class="th"></span><code>    response.json().sessionId;</code></span>'
 
-  private createSessionCodeSample = 'const response = await \n' +
-                      '  this.http.post(' + `'/api/dde/session'` + ', \n' +
-                      '  options).toPromise(); \n\n' +
-                      'this.session.code = \n' +
-                      '  response.json().sessionCode; \n\n' +
-                      'this.session.id = \n' +
-                      '  response.json().sessionId;';
-  private createAndInitApiFrameworkCodeSample = 'this.api = new CognosApi({ \n' +
-                      '   cognosRootURL: ' + `'` + environment.cognos_root_url + `',` + '\n' +
-                      '   sessionCode: this.session.code, \n' +
-                      '   node: document.getElementById(' + `'containerDivId3'` + ') \n' +
-                      '}); \n\n' +
-                      'await this.api.initialize(); \n' +
-                      'console.log(' + `'API created successfully.'` + ');';
-  private createDashboardCodeSample = 'this.dashboardAPI = await this.api.dashboard.createNew(); \n' +
-                      'console.log(' + `'Dashboard created successfully.'` + ');';
-  private openDashboardCodeSample = 'hi there, this is the open dashboard code;';
-  private addCSVSourceCodeSample = 'this.dashboardAPI.addSources([{ \n' +
-                          '   module: csv_sample_module, \n' +
-                          '   name:' + `'Test CSV Source'` + ', \n' +
-                          '   id:' + `'myUniqueId789'` + '\n' +
-                        '}]);';
-  private addProtectedCSVSourceCodeSample = 'var protectedSampleModule = this.getProtectedSampleModule(this.csv_sample_module); \n' +
-                          'this.dashboardAPI.addSources([{ \n' +
-                          '   module: protectedSampleModule, \n' +
-                          '   name:' + `'Protected CSV Source'` + ', \n' +
-                          '   id:' + `'myUniqueId987'` + '\n' +
-                        '}]);';
-  private addCSVSourceCodeSample2 = 'this.dashboardAPI.addSources([{ \n' +
-                          '   module: csv_sample_module2, \n' +
-                          '   name:' + `'Test CSV2 Source'` + ', \n' +
-                          '   id:' + `'myUniqueId111'` + '\n' +
-                        '}]);';
-  private addBikeShareWeatherCSVSourceCodeSample = 'this.dashboardAPI.addSources([{ \n' +
-                          '   module: bike_share_weather_csv_sample_module, \n' +
-                          '   name:' + `'Test Bike Share Weather Source'` + ', \n' +
-                          '   id:' + `'myUniqueId222'` + '\n' +
-                        '}]);';
-/*
-  private addDB2SourceCodeSample = 'this.dashboardAPI.addSources([{ \n' +
-                          '   module: db2_sample_module, \n' +
-                          '   name:' + `'Test DB2 Source'` + ', \n' +
-                          '   id:' + `'myUniqueId123'` + '\n' +
-                        '}]);';
-  private addProtectedDB2SourceCodeSample = 'var protectedSampleModule = this.getProtectedSampleModule(this.db2_sample_module); \n' +
-                          'this.dashboardAPI.addSources([{ \n' +
-                          '   module: protectedSampleModule, \n' +
-                          '   name:' + `'Protected DB2 Source'` + ', \n' +
-                          '   id:' + `'myUniqueId456'` + '\n' +
-                        '}]);';
-*/
+  private createAndInitApiFrameworkCodeSample =
+                '<span class="tr"><span class="th"></span><code>  this.api = new CognosApi({</code></span>' +
+                '<span class="tr"><span class="th"></span><code>    cognosRootURL: ' + `'` + environment.cognos_root_url + `',` + '</code></span>' +
+                '<span class="tr"><span class="th"></span><code>    sessionCode: this.session.code,</code></span>' +
+                '<span class="tr"><span class="th"></span><code>    node:</code></span>' +
+                '<span class="tr"><span class="th"></span><code>      document.getElementById(' + `'containerDivId3'` + ')</code></span>' +
+                '<span class="tr"><span class="th"></span><code>  });</code></span>' +
+                '<span class="tr"><span class="th"></span><code></code></span>' +
+                '<span class="tr"><span class="th"></span><code>  await this.api.initialize();</code></span>'
+  private createDashboardCodeSample =
+                '<span class="tr"><span class="th"></span><code>  this.dashboardAPI = </code></span>' +
+                '<span class="tr"><span class="th"></span><code>    await this.api.dashboard.createNew();</code></span>'
+
+  private openDashboardCodeSample =
+                '<span class="tr"><span class="th"></span><code>  hi there, this is the open dashboard code;</code></span>'
+
+  private addCSVSourceCodeSample =
+                '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.addSources([{</code></span>' +
+                '<span class="tr"><span class="th"></span><code>    module: csv_sample_module,</code></span>' +
+                '<span class="tr"><span class="th"></span><code>    name:' + `'Test CSV Source'` + ',</code></span>' +
+                '<span class="tr"><span class="th"></span><code>    id:' + `'myUniqueId789'` + '</code></span>' +
+                '<span class="tr"><span class="th"></span><code>  });</code></span>'
 
 
-  private setDashboardModeEditCodeSample = '/* \n' +
-                          'Available modes \n' +
-                          'dashboardAPI.MODES.EDIT (authoring mode)\n' +
-                          'dashboardAPI.MODES.VIEW (consumption mode)\n' +
-                          'dashboardAPI.MODES.EDIT_GROUP (event group mode)\n' +
-                          '*/ \n\n' +
-                          'this.dashboardAPI.setMode(this.dashboardAPI.MODES.EDIT);';
-  private setDashboardModeViewCodeSample = '/* \n' +
-                          'Available modes \n' +
-                          'dashboardAPI.MODES.EDIT (authoring mode)\n' +
-                          'dashboardAPI.MODES.VIEW (consumption mode)\n' +
-                          'dashboardAPI.MODES.EDIT_GROUP (event group mode)\n' +
-                          '*/ \n\n' +
-                          'this.dashboardAPI.setMode(this.dashboardAPI.MODES.VIEW);';
-  private setDashboardModeEditGroupCodeSample = '/* \n' +
-                          'Available modes \n' +
-                          'dashboardAPI.MODES.EDIT (authoring mode)\n' +
-                          'dashboardAPI.MODES.VIEW (consumption mode)\n' +
-                          'dashboardAPI.MODES.EDIT_GROUP (event group mode)\n' +
-                          '*/ \n\n' +
-                          'this.dashboardAPI.setMode(this.dashboardAPI.MODES.EDIT_GROUP);';
-  private undoLastActionCodeSample = 'this.dashboardAPI.undo();';
-  private redoLastActionCodeSample = 'this.dashboardAPI.redo();';
+  // private addDBSSourceCodeSample =
+  //               '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.addSources([{</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>    module: db2_sample_module,</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>    name:' + `'Test DB2 Source'` + ',</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>    id:' + `'myUniqueId123'` + '</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>  });</code></span>'
+  //
+  // private addProtectedDB2SourceCodeSample =
+  //               '<span class="tr"><span class="th"></span><code>  var protectedSampleModule =</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>    this.getProtectedSampleModule(</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>      this.db2_sample_module);</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code></code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.addSources([{</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>    module: protectedSampleModule,</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>    name:' + `'Protected DB2 Source'` + ',</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>    id:' + `'myUniqueId456'` + '</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>  });</code></span>'
+
+
+  private addProtectedCSVSourceCodeSample =
+                '<span class="tr"><span class="th"></span><code>  var protectedSampleModule =</code></span>' +
+                '<span class="tr"><span class="th"></span><code>    this.getProtectedSampleModule(</code></span>' +
+                '<span class="tr"><span class="th"></span><code>      this.csv_sample_module);</code></span>' +
+                '<span class="tr"><span class="th"></span><code></code></span>' +
+                '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.addSources([{</code></span>' +
+                '<span class="tr"><span class="th"></span><code>    module: protectedSampleModule,</code></span>' +
+                '<span class="tr"><span class="th"></span><code>    name:' + `'Protected CSV Source'` + ',</code></span>' +
+                '<span class="tr"><span class="th"></span><code>    id:' + `'myUniqueId987'` + '</code></span>' +
+                '<span class="tr"><span class="th"></span><code>  });</code></span>'
+
+  private addCSVSourceCodeSample2 =
+              '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.addSources([{</code></span>' +
+               '<span class="tr"><span class="th"></span><code>    module: csv_sample_module2,</code></span>' +
+               '<span class="tr"><span class="th"></span><code>    name:' + `'Test CSV2 Source'` + ',</code></span>' +
+               '<span class="tr"><span class="th"></span><code>    id:' + `'myUniqueId111'` + '</code></span>' +
+               '<span class="tr"><span class="th"></span><code>  });</code></span>'
+
+  private addBikeShareWeatherCSVSourceCodeSample =
+              '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.addSources([{</code></span>' +
+               '<span class="tr"><span class="th"></span><code>    module: bike_share_weather_csv_sample_module,</code></span>' +
+               '<span class="tr"><span class="th"></span><code>    name:' + `'Test Bike Share Weather Source'` + ',</code></span>' +
+               '<span class="tr"><span class="th"></span><code>    id:' + `'myUniqueId222'` + '</code></span>' +
+               '<span class="tr"><span class="th"></span><code>  });</code></span>'
+
+  private setDashboardModeEditCodeSample =
+                '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.setMode(</code></span>' +
+                '<span class="tr"><span class="th"></span><code>    this.dashboardAPI.MODES.EDIT);</code></span>'
+
+  private setDashboardModeViewCodeSample =
+                '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.setMode(</code></span>' +
+                '<span class="tr"><span class="th"></span><code>    this.dashboardAPI.MODES.VIEW);</code></span>'
+
+  private setDashboardModeEditGroupCodeSample =
+                '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.setMode(</code></span>' +
+                '<span class="tr"><span class="th"></span><code>    this.dashboardAPI.MODES.EDIT_GROUP);</code></span>'
+
+  private undoLastActionCodeSample =
+                '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.undo();</code></span>'
+
+  private redoLastActionCodeSample =
+                '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.redo();</code></span>'
 
   constructor() {
     this.snippets = new Map<string, CodeSnippet>();
