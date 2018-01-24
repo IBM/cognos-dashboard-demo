@@ -1,10 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import { CodeSnippet, CodeSnippetEnum } from '../../model/code-snippet'
 import { CodeSnippetsRepoService } from '../services/code-snippets-repo.service';
 import { ScriptService } from '../services/script.service';
 import { DdeApiService } from '../services/dde-api.service';
-
 
 export const contentHeaders = new Headers();
 contentHeaders.append('Accept', 'application/json');
@@ -21,6 +20,8 @@ export class DdeDashboardComponent implements OnInit {
   moduleDefinitionUpdated: EventEmitter<String> = new EventEmitter<String>();
   @Output()
   codeToRun = new EventEmitter<CodeSnippet>();
+  @Input()
+  nextStep: CodeSnippetEnum;
 
   public client_id : string;
   public client_secret: string;
@@ -35,13 +36,16 @@ export class DdeDashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-      // this.getDDECred();
   }
 
   ngAfterContentInit() {
       this.script.load('cognosapijs').then(data => {
       console.log('script loaded ', data);
       }).catch(error => console.log(error));
+  }
+
+  nextStepToProcess() {
+    return this.nextStep;
   }
 
   toggleCollapsed(): void {

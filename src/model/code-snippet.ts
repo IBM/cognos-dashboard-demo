@@ -1,4 +1,5 @@
 export enum CodeSnippetEnum {
+  None = 'None',
   CreateSession = 'CreateSession',
   CreateAPIFramework = 'CreateAPIFramework',
   CreateDashboard = 'CreateDashboard',
