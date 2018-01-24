@@ -24,6 +24,7 @@ export class DdeCodeExplorerComponent implements OnInit {
   constructor(private ddeApiService: DdeApiService, private codeSnippetsRepoService: CodeSnippetsRepoService) { }
 
   ngOnInit() {
+    this.codeSnippet = this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.CreateSession);
   }
 
   setExplorerDiv() {
