@@ -95,6 +95,39 @@ select {
 ul, li {
   width: 100%;
 }
+
+pre {
+    display: table;
+    table-layout: fixed;
+    width: 100%; /* anything but auto, otherwise fixed layout not guaranteed */
+    white-space: pre-wrap;
+}
+pre::before {
+    counter-reset: linenum;
+}
+pre span.tr {
+    display: table-row;
+    counter-increment: linenum;
+}
+pre span.th { /* used for line numbers */
+    display: table-cell;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    background-color: #000;
+}
+pre span.th::before {
+    content: counter(linenum);
+    text-align: center;
+    display: block;
+}
+pre span.th {
+    width: 4em; /* or whatever the desired width of the numbers column is */
+}
+pre code {
+    display: table-cell;
+}
+
 /* indentation for accordion card body
 .ngxAccordionCustomContainer .card .card-body {
     margin-left: 1.25rem;
