@@ -42,23 +42,23 @@ export class CodeSnippetsRepoService {
                 '<span class="tr"><span class="th"></span><code>  });</code></span>'
 
 
-  private addDBSSourceCodeSample =
-                '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.addSources([{</code></span>' +
-                '<span class="tr"><span class="th"></span><code>    module: db2_sample_module,</code></span>' +
-                '<span class="tr"><span class="th"></span><code>    name:' + `'Test DB2 Source'` + ',</code></span>' +
-                '<span class="tr"><span class="th"></span><code>    id:' + `'myUniqueId123'` + '</code></span>' +
-                '<span class="tr"><span class="th"></span><code>  });</code></span>'
-
-  private addProtectedDB2SourceCodeSample =
-                '<span class="tr"><span class="th"></span><code>  var protectedSampleModule =</code></span>' +
-                '<span class="tr"><span class="th"></span><code>    this.getProtectedSampleModule(</code></span>' +
-                '<span class="tr"><span class="th"></span><code>      this.db2_sample_module);</code></span>' +
-                '<span class="tr"><span class="th"></span><code></code></span>' +
-                '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.addSources([{</code></span>' +
-                '<span class="tr"><span class="th"></span><code>    module: protectedSampleModule,</code></span>' +
-                '<span class="tr"><span class="th"></span><code>    name:' + `'Protected DB2 Source'` + ',</code></span>' +
-                '<span class="tr"><span class="th"></span><code>    id:' + `'myUniqueId456'` + '</code></span>' +
-                '<span class="tr"><span class="th"></span><code>  });</code></span>'
+  // private addDBSSourceCodeSample =
+  //               '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.addSources([{</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>    module: db2_sample_module,</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>    name:' + `'Test DB2 Source'` + ',</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>    id:' + `'myUniqueId123'` + '</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>  });</code></span>'
+  //
+  // private addProtectedDB2SourceCodeSample =
+  //               '<span class="tr"><span class="th"></span><code>  var protectedSampleModule =</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>    this.getProtectedSampleModule(</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>      this.db2_sample_module);</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code></code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.addSources([{</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>    module: protectedSampleModule,</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>    name:' + `'Protected DB2 Source'` + ',</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>    id:' + `'myUniqueId456'` + '</code></span>' +
+  //               '<span class="tr"><span class="th"></span><code>  });</code></span>'
 
 
   private addProtectedCSVSourceCodeSample =
@@ -71,6 +71,20 @@ export class CodeSnippetsRepoService {
                 '<span class="tr"><span class="th"></span><code>    name:' + `'Protected CSV Source'` + ',</code></span>' +
                 '<span class="tr"><span class="th"></span><code>    id:' + `'myUniqueId987'` + '</code></span>' +
                 '<span class="tr"><span class="th"></span><code>  });</code></span>'
+
+  private addCSVSourceCodeSample2 =
+              '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.addSources([{</code></span>' +
+               '<span class="tr"><span class="th"></span><code>    module: csv_sample_module2,</code></span>' +
+               '<span class="tr"><span class="th"></span><code>    name:' + `'Test CSV2 Source'` + ',</code></span>' +
+               '<span class="tr"><span class="th"></span><code>    id:' + `'myUniqueId111'` + '</code></span>' +
+               '<span class="tr"><span class="th"></span><code>  });</code></span>'
+
+  private addBikeShareWeatherCSVSourceCodeSample =
+              '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.addSources([{</code></span>' +
+               '<span class="tr"><span class="th"></span><code>    module: bike_share_weather_csv_sample_module,</code></span>' +
+               '<span class="tr"><span class="th"></span><code>    name:' + `'Test Bike Share Weather Source'` + ',</code></span>' +
+               '<span class="tr"><span class="th"></span><code>    id:' + `'myUniqueId222'` + '</code></span>' +
+               '<span class="tr"><span class="th"></span><code>  });</code></span>'
 
   private setDashboardModeEditCodeSample =
                 '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.setMode(</code></span>' +
@@ -99,9 +113,11 @@ export class CodeSnippetsRepoService {
     this.snippets.set(CodeSnippetEnum.CreateDashboard, new CodeSnippet(CodeSnippetEnum.CreateDashboard, this.createDashboardCodeSample, 'large'));
     this.snippets.set(CodeSnippetEnum.OpenDashboard, new CodeSnippet(CodeSnippetEnum.OpenDashboard, this.openDashboardCodeSample, 'large'));
     this.snippets.set(CodeSnippetEnum.AddCSVSource, new CodeSnippet(CodeSnippetEnum.AddCSVSource, this.addCSVSourceCodeSample, 'small'));
-    this.snippets.set(CodeSnippetEnum.AddDB2Source, new CodeSnippet(CodeSnippetEnum.AddDB2Source, this.addDBSSourceCodeSample, 'small'));
     this.snippets.set(CodeSnippetEnum.AddProtectedCSVSource, new CodeSnippet(CodeSnippetEnum.AddProtectedCSVSource, this.addProtectedCSVSourceCodeSample, 'small'));
-    this.snippets.set(CodeSnippetEnum.AddProtectedDB2Source, new CodeSnippet(CodeSnippetEnum.AddProtectedDB2Source, this.addProtectedDB2SourceCodeSample, 'small'));
+    this.snippets.set(CodeSnippetEnum.AddCSVSource2, new CodeSnippet(CodeSnippetEnum.AddCSVSource2, this.addCSVSourceCodeSample2, 'small'));
+    this.snippets.set(CodeSnippetEnum.AddBikeShareWeatherCSVSource, new CodeSnippet(CodeSnippetEnum.AddBikeShareWeatherCSVSource, this.addBikeShareWeatherCSVSourceCodeSample, 'small'));
+    //this.snippets.set(CodeSnippetEnum.AddDB2Source, new CodeSnippet(CodeSnippetEnum.AddDB2Source, this.addDB2SourceCodeSample, 'small'));
+    //this.snippets.set(CodeSnippetEnum.AddProtectedDB2Source, new CodeSnippet(CodeSnippetEnum.AddProtectedDB2Source, this.addProtectedDB2SourceCodeSample, 'small'));
     this.snippets.set(CodeSnippetEnum.DashboardEditMode, new CodeSnippet(CodeSnippetEnum.DashboardEditMode, this.setDashboardModeEditCodeSample, 'small'));
     this.snippets.set(CodeSnippetEnum.DashboardViewMode, new CodeSnippet(CodeSnippetEnum.DashboardViewMode, this.setDashboardModeViewCodeSample, 'small'));
     this.snippets.set(CodeSnippetEnum.DashboardEditGroupMode, new CodeSnippet(CodeSnippetEnum.DashboardEditGroupMode, this.setDashboardModeEditGroupCodeSample, 'small'));

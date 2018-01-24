@@ -22,6 +22,8 @@ export class DdeApiService {
   private sample_db_spec: string;
   private db2_sample_module: string;
   private csv_sample_module: string;
+  private csv_sample_module2: string;
+  private bike_share_weather_csv_sample_module: string;
 
   constructor(private http: Http, private encryptService: EncryptService) {
   }
@@ -129,6 +131,7 @@ export class DdeApiService {
     console.log(this.dashboardAPI);
   }
 
+/*
   async getDB2SampleModule() {
     // return if it was already  fetched from before
     if (this.db2_sample_module != null) {
@@ -148,20 +151,23 @@ export class DdeApiService {
       id: 'myUniqueId123'
     }]);
   }
+*/
 
-  async getCSVSampleModule() {
-    // return if it was already fetched from before
+  async getCSVSampleModule(url) {
+  /*  // return if it was already fetched from before
     if (this.csv_sample_module != null) {
       return this.csv_sample_module;
     }
-
-    const response = await this.http.get('/assets/ddeCSVSampleModule.json').toPromise();
+  */
+    const response = await this.http.get(url).toPromise();
     this.csv_sample_module = response.json();
     return this.csv_sample_module;
   }
 
   async addCSVSampleSource() {
-    const sampleModule = await this.getCSVSampleModule();
+    const sampleModule = this.csv_sample_module != null ?
+      this.csv_sample_module :
+      await this.getCSVSampleModule('/assets/ddeCSVSampleModule.json');
     this.dashboardAPI.addSources([{
       module: sampleModule,
       name: 'Test CSV Source',
@@ -169,6 +175,7 @@ export class DdeApiService {
     }]);
   }
 
+/*
   async addProtectedDB2SampleSource() {
     const sampleModule = await this.getDB2SampleModule();
     this.encryptService.setKey(this.session.keys[0]);
@@ -181,9 +188,12 @@ export class DdeApiService {
       id: 'myUniqueId456'
     }]);
   }
+*/
 
   async addProtectedCSVSampleSource() {
-    const sampleModule = await this.getCSVSampleModule();
+    const sampleModule = this.csv_sample_module != null ?
+      this.csv_sample_module :
+      await this.getCSVSampleModule('/assets/ddeCSVSampleModule.json');
     this.encryptService.setKey(this.session.keys[0]);
     const encryptedSampleModule = this.encryptService.encryptModuleInfo(sampleModule);
 
@@ -195,6 +205,32 @@ export class DdeApiService {
       id: 'myUniqueId987'
     }]);
   }
+
+  async addCSVSampleSource2() {
+    const sampleModule = this.csv_sample_module2 != null ?
+      this.csv_sample_module2 :
+      await this.getCSVSampleModule('/assets/ddeCSVSampleModule2.json');
+    this.dashboardAPI.addSources([{
+      module: sampleModule,
+      name: 'Test CSV2 Source',
+      id: 'myUniqueId111'
+    }]);
+  }
+
+  async addBikeShareWeatherCSVSampleSource() {
+    const sampleModule = this.bike_share_weather_csv_sample_module != null ?
+      this.bike_share_weather_csv_sample_module :
+      await this.getCSVSampleModule('/assets/bikeShareWeatherSampleModule.json');
+    this.dashboardAPI.addSources([{
+      module: sampleModule,
+      name: 'Test Bike Share Weather Source',
+      id: 'myUniqueId222'
+    }]);
+  }
+
+
+
+
 
   setDashboardMode_Edit() {
     /**

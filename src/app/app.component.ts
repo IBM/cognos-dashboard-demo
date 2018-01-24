@@ -19,8 +19,8 @@ export class AppComponent implements OnInit {
   public parent_update_module_def_info: string;
   private code_snippet: CodeSnippet;
   private session : Session = null;
-  private collapsed: boolean = true;
-  private isFirstOpen: boolean = true;
+  //private collapsed: boolean = true;
+  //private isFirstOpen: boolean = true;
   private toaster: Toaster;
   private message : string;
   private timer: Observable<any>;
@@ -39,9 +39,11 @@ export class AppComponent implements OnInit {
     this.timer = Observable.timer(environment.toaster_timer);
   }
 
+/*
   toggleCollapsed(): void {
     this.collapsed = !this.collapsed;
   }
+*/
 
   sessionInfo(event) {
     this.session = event;
@@ -82,11 +84,5 @@ export class AppComponent implements OnInit {
      });
    }
 
-  displayCreateDashboardCode() {
-    this.code_snippet = this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.CreateDashboard);
-  }
 
-  displayOpenDashboardCode() {
-    this.code_snippet = this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.OpenDashboard);
-  }
 }
