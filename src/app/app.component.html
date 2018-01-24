@@ -11,8 +11,7 @@
           <div class="list-group text-md-left">
             <accordion class="ngxAccordionCustom">
               <!--accordion-group heading="1. Session" [isOpen]="isFirstOpen" (isOpenChange)="log($event)" panelClass="ngxAccordianCustom"-->
-              <accordion-group [isOpen]="isFirstOpen" panelClass="bg-dark">
-                <!--p>Some content</p-->
+              <!--accordion-group [isOpen]="isFirstOpen" panelClass="bg-dark">
                 <div accordion-heading class="navbar-brand">
                   1. Session
                   <span class="badge badge-secondary float-right pull-right"></span>
@@ -46,9 +45,10 @@
                 </div>
                 <dde-dashboard (codeToRun)="getCodeSnippet($event)">
                 </dde-dashboard>
-              </accordion-group>
+              </accordion-group-->
 
-
+              <dde-dashboard (codeToRun)="getCodeSnippet($event)">
+              </dde-dashboard>
               <dde-references></dde-references>
             </accordion>
           </div>

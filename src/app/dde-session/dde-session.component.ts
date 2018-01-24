@@ -5,11 +5,11 @@ import { DdeApiService } from '../services/dde-api.service';
 import { CodeSnippet, CodeSnippetEnum } from '../../model/code-snippet'
 import { CodeSnippetsRepoService } from '../services/code-snippets-repo.service';
 
-
+/*
 export const contentHeaders = new Headers();
 contentHeaders.append('Accept', 'application/json');
 contentHeaders.append('Content-Type', 'application/json');
-
+*/
 
 @Component({
   selector: 'dde-session',
@@ -18,7 +18,7 @@ contentHeaders.append('Content-Type', 'application/json');
   providers: [ ScriptService]
 })
 export class DdeSessionComponent implements OnInit {
-  @Output()
+/*  @Output()
   moduleDefinitionUpdated: EventEmitter<String> = new EventEmitter<String>();
   @Output()
   codeToRun = new EventEmitter<CodeSnippet>();
@@ -29,7 +29,7 @@ export class DdeSessionComponent implements OnInit {
   //public sample_db_spec : string;
   public updated_db_spec : string;
   public code_samples: string;
-
+*/
   constructor(private http: Http, private script: ScriptService,
               private ddeApiService: DdeApiService, private codeSnippetsRepoService: CodeSnippetsRepoService) {
 /*
@@ -47,7 +47,7 @@ export class DdeSessionComponent implements OnInit {
   ngOnInit() {
     // this.getDDECred();
   }
-
+/*
   ngAfterContentInit() {
       this.script.load('cognosapijs').then(data => {
       console.log('script loaded ', data);
@@ -74,8 +74,9 @@ export class DdeSessionComponent implements OnInit {
   displayInitApiFrameworkCode() {
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.CreateAPIFramework));
   }
+*/
 
-  updateModuleDefinitions() {
+//  updateModuleDefinitions() {
     // console.log("in update module definitions");
     //
     // var dbSpec = JSON.parse(JSON.stringify(this.sample_db_spec));
@@ -109,6 +110,6 @@ export class DdeSessionComponent implements OnInit {
     // });
     //
     //
-     }
+//     }
 
 }
