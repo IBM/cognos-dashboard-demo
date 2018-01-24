@@ -47,3 +47,15 @@ pre {
   width: 75px;
   float: right;
 }
+
+.column-left {
+    width: 8%;
+    padding: 1em;
+    background-color: #343334;
+}
+
+.column-right {
+    width: 92%;
+    padding: 1em;
+    margin-left: -4em;
+}

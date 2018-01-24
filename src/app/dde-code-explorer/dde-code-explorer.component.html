@@ -8,11 +8,15 @@
 </div>
 
 <div [ngClass]="setExplorerDiv()">
-  <div class="code-block-div">
-    <pre>
-      <code [innerHTML]=codeSnippet?.code>
+  <div class="code-block-div row">
+    <div class="column-left">
+    </div>
+    <div class="column-right">
+    <pre class="code">
+      <code [innerHTML]="codeSnippet?.code">
       </code>
     </pre>
+  </div>
   </div>
 </div>
 

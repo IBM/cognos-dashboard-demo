@@ -99,7 +99,7 @@ ul, li {
 pre {
     display: table;
     table-layout: fixed;
-    width: 100%; /* anything but auto, otherwise fixed layout not guaranteed */
+    width: 100%;
     white-space: pre-wrap;
 }
 pre::before {
@@ -109,12 +109,11 @@ pre span.tr {
     display: table-row;
     counter-increment: linenum;
 }
-pre span.th { /* used for line numbers */
+pre span.th {
     display: table-cell;
     user-select: none;
     -moz-user-select: none;
-    -webkit-user-select: none;
-    background-color: #000;
+    -webkit-user-select: none;    
 }
 pre span.th::before {
     content: counter(linenum);
@@ -122,10 +121,7 @@ pre span.th::before {
     display: block;
 }
 pre span.th {
-    width: 4em; /* or whatever the desired width of the numbers column is */
-}
-pre code {
-    display: table-cell;
+    width: 4em;
 }
 
 /* indentation for accordion card body
