@@ -23,7 +23,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "font-awesome-animation.min.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

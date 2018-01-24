@@ -15,7 +15,6 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
-import { DdeSessionComponent } from './dde-session/dde-session.component';
 import { DdeCodeExplorerComponent } from './dde-code-explorer/dde-code-explorer.component';
 import { DdeDashboardComponent } from './dde-dashboard/dde-dashboard.component';
 import { DdeToasterComponent } from './dde-toaster/dde-toaster.component';
@@ -43,8 +42,7 @@ const ROUTES = [
   declarations: [
     AppComponent,
     AppNavbarComponent,
-    DdeListComponent,
-    DdeSessionComponent,
+    DdeListComponent,    
     DdeCodeExplorerComponent,
     DdeDashboardComponent,
     DdeToasterComponent,
@@ -57,7 +55,7 @@ const ROUTES = [
     BsDropdownModule.forRoot(),
     AccordionModule.forRoot(),
     ModalModule.forRoot(),
-    FormsModule    
+    FormsModule
     //RouterModule.forRoot(ROUTES), // Add routes to the app
     //AngularFireModule.initializeApp(environment.firebase),
     //AngularFireDatabaseModule,

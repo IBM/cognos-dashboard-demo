@@ -90,6 +90,7 @@ export class DdeApiService {
     this.dashboardAPI = await this.api.dashboard.createNew();
     console.log('Dashboard created successfully.');
     console.log(this.dashboardAPI);
+    return this.dashboardAPI;
   }
 
   async getDashboardSampleSpec(): Promise<void> {
