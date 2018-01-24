@@ -1,0 +1,81 @@
+{
+  "xsd": "https:\/\/ibm.com\/daas\/module\/1.0\/module.xsd",
+  "source": {
+    "id": "CSV_File",
+    "srcUrl": {
+      "sourceUrl": "https:\/\/www.dropbox.com\/s\/adzmgapo249xf9w\/ddeCSVSample.csv?dl=1",
+      "mimeType": "text\/csv",
+      "property": [
+        {
+          "name": "separator",
+          "value": ","
+        },
+        {
+          "name": "ColumnNamesLine",
+          "value": "true"
+        }
+      ]
+    }
+  },
+  "table": {
+    "column": [
+      {
+        "name": "Year",
+        "datatype": "BIGINT",
+        "nullable": true,
+        "description": "Year",
+        "label": "Year",
+        "usage": "fact",
+        "regularAggregate": "total"
+      },
+      {
+        "name": "Product_line",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Product line",
+        "label": "Product line",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Order_method_type",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Order method type",
+        "label": "Order method type",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Retailer_country",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Retailer country",
+        "label": "Retailer country",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Revenue",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Revenue",
+        "label": "Revenue",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Quantity",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Quantity",
+        "label": "Quantity",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      }
+    ],
+    "name": "CSV_File"
+  },
+  "label": "CSV File",
+  "identifier": "CSV_File"
+}

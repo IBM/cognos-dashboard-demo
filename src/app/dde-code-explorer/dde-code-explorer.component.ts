@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DdeApiService } from '../services/dde-api.service';
 import { Session } from '../../model/session';
 import { CodeSnippet, CodeSnippetEnum } from '../../model/code-snippet';
-import { CSVDataSource, DB2DataSource, ProtectedDB2DataSource, ProtectedCSVDataSource } from '../../model/data-source';
+import { CSVDataSource, ProtectedCSVDataSource, /*DB2DataSource, ProtectedDB2DataSource,*/ CSVDataSource2, BikeShareWeatherCSVSource } from '../../model/data-source';
 import { CodeSnippetsRepoService } from '../services/code-snippets-repo.service';
 import * as DashboardMode from '../../model/dashboard-mode';
 
@@ -15,7 +15,7 @@ export class DdeCodeExplorerComponent implements OnInit {
   @Output() session: EventEmitter<Session> = new EventEmitter<Session>();
   @Output() apiId: EventEmitter<string> = new EventEmitter<string>();
   @Input() codeSnippet : CodeSnippet;
-  dataSources = [CSVDataSource, DB2DataSource, ProtectedDB2DataSource, ProtectedCSVDataSource];
+  dataSources = [CSVDataSource, ProtectedCSVDataSource, /*DB2DataSource, ProtectedDB2DataSource,*/ CSVDataSource2, BikeShareWeatherCSVSource ];
   dashboardModes = [DashboardMode.EditMode, DashboardMode.ViewMode, DashboardMode.EditGroupMode];
   sampleModule : string;
   sessionObject = null;
@@ -48,14 +48,24 @@ export class DdeCodeExplorerComponent implements OnInit {
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddCSVSource) {
         this.ddeApiService.addCSVSampleSource();
       }
+      /*
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddDB2Source) {
         this.ddeApiService.addDb2SampleSource();
       }
+      */
+      else if (this.codeSnippet.selection === CodeSnippetEnum.AddProtectedCSVSource) {
+        this.ddeApiService.addProtectedCSVSampleSource();
+      }
+      /*
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddProtectedDB2Source) {
         this.ddeApiService.addProtectedDB2SampleSource();
       }
-      else if (this.codeSnippet.selection === CodeSnippetEnum.AddProtectedCSVSource) {
-        this.ddeApiService.addProtectedCSVSampleSource();
+      */
+      else if (this.codeSnippet.selection === CodeSnippetEnum.AddCSVSource2) {
+        this.ddeApiService.addCSVSampleSource2();
+      }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.AddBikeShareWeatherCSVSource) {
+        this.ddeApiService.addBikeShareWeatherCSVSampleSource();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.DashboardEditMode) {
         this.ddeApiService.setDashboardMode_Edit();
@@ -104,9 +114,11 @@ export class DdeCodeExplorerComponent implements OnInit {
 
   showSourcesDropDown() {
     return this.codeSnippet && (this.codeSnippet.selection === CodeSnippetEnum.AddCSVSource ||
-          this.codeSnippet.selection === CodeSnippetEnum.AddDB2Source ||
-          this.codeSnippet.selection === CodeSnippetEnum.AddProtectedDB2Source ||
-          this.codeSnippet.selection === CodeSnippetEnum.AddProtectedCSVSource);
+          this.codeSnippet.selection === CodeSnippetEnum.AddProtectedCSVSource ||
+          //this.codeSnippet.selection === CodeSnippetEnum.AddDB2Source ||
+          //this.codeSnippet.selection === CodeSnippetEnum.AddProtectedDB2Source ||
+          this.codeSnippet.selection === CodeSnippetEnum.AddCSVSource2 ||
+          this.codeSnippet.selection === CodeSnippetEnum.AddBikeShareWeatherCSVSource);
   }
 
   showDashboardModesDropDown() {

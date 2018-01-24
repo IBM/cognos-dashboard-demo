@@ -1,0 +1,117 @@
+{
+  "xsd": "https:\/\/ibm.com\/daas\/module\/1.0\/module.xsd",
+  "source": {
+    "id": "CSV_File",
+    "srcUrl": {
+      "sourceUrl": "https:\/\/www.dropbox.com\/s\/5aiwms03wsy4fy3\/bikeShareWeather.csv?dl=1",
+      "mimeType": "text\/csv",
+      "property": [
+        {
+          "name": "separator",
+          "value": ","
+        },
+        {
+          "name": "ColumnNamesLine",
+          "value": "true"
+        }
+      ]
+    }
+  },
+  "table": {
+    "column": [
+      {
+        "name": "Date",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Date",
+        "label": "Date",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "From_Community",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "From_Community",
+        "label": "From_Community",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Maximum_Temperature",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Maximum_Temperature",
+        "label": "Maximum_Temperature",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Minimum_Temperature",
+        "datatype": "BIGINT",
+        "nullable": true,
+        "description": "Minimum_Temperature",
+        "label": "Minimum_Temperature",
+        "usage": "fact",
+        "regularAggregate": "total"
+      },
+      {
+        "name": "Average_Temperature",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Average_Temperature",
+        "label": "Average_Temperature",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Temperature_Range",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Temperature_Range",
+        "label": "Temperature_Range",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Total_Precipitation",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Total_Precipitation",
+        "label": "Total_Precipitation",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Total_Snow",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Total_Snow",
+        "label": "Total_Snow",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Average_Humidity",
+        "datatype": "BIGINT",
+        "nullable": true,
+        "description": "Average_Humidity",
+        "label": "Average_Humidity",
+        "usage": "fact",
+        "regularAggregate": "total"
+      },
+      {
+        "name": "Maximum_Wind_Speed",
+        "datatype": "BIGINT",
+        "nullable": true,
+        "description": "Maximum_Wind_Speed",
+        "label": "Maximum_Wind_Speed",
+        "usage": "fact",
+        "regularAggregate": "total"
+      }
+    ],
+    "name": "CSV_File"
+  },
+  "label": "CSV File",
+  "identifier": "CSV_File"
+}

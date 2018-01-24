@@ -25,6 +25,7 @@ export class DdeDashboardComponent implements OnInit {
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.DashboardEditMode));
   }
 
+/*
   setDashboardViewMode() {
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.DashboardViewMode));
   }
@@ -32,6 +33,7 @@ export class DdeDashboardComponent implements OnInit {
   setDashboardEditGroupMode() {
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.DashboardEditGroupMode));
   }
+*/
 
   undoLastAction() {
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.UndoLastAction));

@@ -29,7 +29,24 @@ export class CodeSnippetsRepoService {
                           '   name:' + `'Test CSV Source'` + ', \n' +
                           '   id:' + `'myUniqueId789'` + '\n' +
                         '}]);';
-  private addDBSSourceCodeSample = 'this.dashboardAPI.addSources([{ \n' +
+  private addProtectedCSVSourceCodeSample = 'var protectedSampleModule = this.getProtectedSampleModule(this.csv_sample_module); \n' +
+                          'this.dashboardAPI.addSources([{ \n' +
+                          '   module: protectedSampleModule, \n' +
+                          '   name:' + `'Protected CSV Source'` + ', \n' +
+                          '   id:' + `'myUniqueId987'` + '\n' +
+                        '}]);';
+  private addCSVSourceCodeSample2 = 'this.dashboardAPI.addSources([{ \n' +
+                          '   module: csv_sample_module2, \n' +
+                          '   name:' + `'Test CSV2 Source'` + ', \n' +
+                          '   id:' + `'myUniqueId111'` + '\n' +
+                        '}]);';
+  private addBikeShareWeatherCSVSourceCodeSample = 'this.dashboardAPI.addSources([{ \n' +
+                          '   module: bike_share_weather_csv_sample_module, \n' +
+                          '   name:' + `'Test Bike Share Weather Source'` + ', \n' +
+                          '   id:' + `'myUniqueId222'` + '\n' +
+                        '}]);';
+/*
+  private addDB2SourceCodeSample = 'this.dashboardAPI.addSources([{ \n' +
                           '   module: db2_sample_module, \n' +
                           '   name:' + `'Test DB2 Source'` + ', \n' +
                           '   id:' + `'myUniqueId123'` + '\n' +
@@ -40,12 +57,8 @@ export class CodeSnippetsRepoService {
                           '   name:' + `'Protected DB2 Source'` + ', \n' +
                           '   id:' + `'myUniqueId456'` + '\n' +
                         '}]);';
-  private addProtectedCSVSourceCodeSample = 'var protectedSampleModule = this.getProtectedSampleModule(this.csv_sample_module); \n' +
-                          'this.dashboardAPI.addSources([{ \n' +
-                          '   module: protectedSampleModule, \n' +
-                          '   name:' + `'Protected CSV Source'` + ', \n' +
-                          '   id:' + `'myUniqueId987'` + '\n' +
-                        '}]);';
+*/
+
 
   private setDashboardModeEditCodeSample = '/* \n' +
                           'Available modes \n' +
@@ -80,9 +93,11 @@ export class CodeSnippetsRepoService {
     this.snippets.set(CodeSnippetEnum.CreateDashboard, new CodeSnippet(CodeSnippetEnum.CreateDashboard, this.createDashboardCodeSample, 'large'));
     this.snippets.set(CodeSnippetEnum.OpenDashboard, new CodeSnippet(CodeSnippetEnum.OpenDashboard, this.openDashboardCodeSample, 'large'));
     this.snippets.set(CodeSnippetEnum.AddCSVSource, new CodeSnippet(CodeSnippetEnum.AddCSVSource, this.addCSVSourceCodeSample, 'small'));
-    this.snippets.set(CodeSnippetEnum.AddDB2Source, new CodeSnippet(CodeSnippetEnum.AddDB2Source, this.addDBSSourceCodeSample, 'small'));
     this.snippets.set(CodeSnippetEnum.AddProtectedCSVSource, new CodeSnippet(CodeSnippetEnum.AddProtectedCSVSource, this.addProtectedCSVSourceCodeSample, 'small'));
-    this.snippets.set(CodeSnippetEnum.AddProtectedDB2Source, new CodeSnippet(CodeSnippetEnum.AddProtectedDB2Source, this.addProtectedDB2SourceCodeSample, 'small'));
+    this.snippets.set(CodeSnippetEnum.AddCSVSource2, new CodeSnippet(CodeSnippetEnum.AddCSVSource2, this.addCSVSourceCodeSample2, 'small'));
+    this.snippets.set(CodeSnippetEnum.AddBikeShareWeatherCSVSource, new CodeSnippet(CodeSnippetEnum.AddBikeShareWeatherCSVSource, this.addBikeShareWeatherCSVSourceCodeSample, 'small'));
+    //this.snippets.set(CodeSnippetEnum.AddDB2Source, new CodeSnippet(CodeSnippetEnum.AddDB2Source, this.addDB2SourceCodeSample, 'small'));
+    //this.snippets.set(CodeSnippetEnum.AddProtectedDB2Source, new CodeSnippet(CodeSnippetEnum.AddProtectedDB2Source, this.addProtectedDB2SourceCodeSample, 'small'));
     this.snippets.set(CodeSnippetEnum.DashboardEditMode, new CodeSnippet(CodeSnippetEnum.DashboardEditMode, this.setDashboardModeEditCodeSample, 'small'));
     this.snippets.set(CodeSnippetEnum.DashboardViewMode, new CodeSnippet(CodeSnippetEnum.DashboardViewMode, this.setDashboardModeViewCodeSample, 'small'));
     this.snippets.set(CodeSnippetEnum.DashboardEditGroupMode, new CodeSnippet(CodeSnippetEnum.DashboardEditGroupMode, this.setDashboardModeEditGroupCodeSample, 'small'));
