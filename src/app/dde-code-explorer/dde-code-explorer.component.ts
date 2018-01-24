@@ -45,6 +45,9 @@ export class DdeCodeExplorerComponent implements OnInit {
       else if (this.codeSnippet.selection === CodeSnippetEnum.CreateDashboard) {
         await this.ddeApiService.createDashboard();
       }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.OpenDashboard) {
+        await this.ddeApiService.openDashboard();
+      }
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddCSVSource) {
         this.ddeApiService.addCSVSampleSource();
       }

@@ -32,7 +32,10 @@ export class CodeSnippetsRepoService {
                 '<span class="tr"><span class="th"></span><code>    await this.api.dashboard.createNew();</code></span>'
 
   private openDashboardCodeSample =
-                '<span class="tr"><span class="th"></span><code>  hi there, this is the open dashboard code;</code></span>'
+                '<span class="tr"><span class="th"></span><code>  await this.getDashboardSampleSpec(); </code></span>' +
+                '<span class="tr"><span class="th"></span><code>  this.dashboardAPI = await this.api.dashboard.openDashboard({  </code></span>' +
+                '<span class="tr"><span class="th"></span><code>    dashboardSpec: this.sample_db_spec </code></span>' +
+                '<span class="tr"><span class="th"></span><code>  }); </code></span>' 
 
   private addCSVSourceCodeSample =
                 '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.addSources([{</code></span>' +
