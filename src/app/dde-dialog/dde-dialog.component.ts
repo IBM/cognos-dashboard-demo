@@ -8,12 +8,17 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 })
 export class DdeDialogComponent implements AfterViewInit {
   @ViewChild('lgModal') public lgModal: ModalDirective;
+  @ViewChild('ddeVideo') ddeVideo: any;
+
+toggleVideo(event: any) {
+    this.videoplayer.nativeElement.play();
+}
 
   constructor() {
   }
 
   ngAfterViewInit() {
-    //this.showModal();
+    this.showModal();
   }
 
   showModal() {
@@ -22,6 +27,7 @@ export class DdeDialogComponent implements AfterViewInit {
 
   hideModal() {
     this.lgModal.hide();
+    this.ddeVideo.nativeElement.pause();
   }
 
 }
