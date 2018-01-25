@@ -43,9 +43,12 @@ pre {
 .button {
   padding: 5px 10px;
   color: #fff;
-  cursor: pointer;
   width: 75px;
   float: right;
+}
+
+.button > label {
+  cursor: pointer;
 }
 
 .column-left {
