@@ -10,10 +10,6 @@ export class DdeDialogComponent implements AfterViewInit {
   @ViewChild('lgModal') public lgModal: ModalDirective;
   @ViewChild('ddeVideo') ddeVideo: any;
 
-toggleVideo(event: any) {
-    this.videoplayer.nativeElement.play();
-}
-
   constructor() {
   }
 
