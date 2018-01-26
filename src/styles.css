@@ -73,6 +73,18 @@
     border-bottom: 0px;
 }
 
+.panel-open .panel .navbar-brand:after {
+    font-family: 'FontAwesome';
+    content: "\f068";
+    float: right;
+}
+
+.panel .navbar-brand:after {
+  font-family: 'FontAwesome';
+  content: "\f067";
+  float: right;
+}
+
 body {
   font-family: "Helv Neue Light", serif;
  }
@@ -131,31 +143,3 @@ pre span.th::before {
 pre span.th {
     width: 4em;
 }
-
-/* indentation for accordion card body
-.ngxAccordionCustomContainer .card .card-body {
-    margin-left: 1.25rem;
-}*/
-
-/* set accordion's card header background to be white instead of light gray */
-/*.ngxAccordionCustomContainer .card .card-header {
-    background-color: #ffffff;
-}*/
-
-/* set background colour to custom colour for accordion
-.ngxAccordionCustomContainer { */
-  /*background-color: #333; /*Hex Gray20*/
-  /*background-color: #ffffff; /*white*/
-/*}*/
-
-
-/*
-
-body {
-   padding-top: 80px;
-}
-.starter-template {
-    padding: 0.5rem 0.5rem;
-    text-align: center;
-}
-*/
