@@ -120,6 +120,10 @@ select {
   color: #c0bfc0 !important;
 }
 
+.card-header {
+  cursor: pointer;
+}
+
 ul, li {
   width: 100%;
 }
