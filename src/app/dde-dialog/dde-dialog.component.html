@@ -1,4 +1,4 @@
-<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div bsModal #lgModal="bs-modal" class="modal fade" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -6,7 +6,7 @@
         <i class="fa fa-times" (click)="hideModal()"></i>
       </div>
       <div class="modal-body">
-        <video autoplay controls class="embed-responsive-item">
+        <video #ddeVideo autoplay controls class="embed-responsive-item">
           <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4">
         </video>
       </div>
