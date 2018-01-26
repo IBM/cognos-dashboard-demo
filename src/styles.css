@@ -22,6 +22,25 @@
       url('/assets/fonts/HelvNeueCondforIBM.ttf');
 }
 
+body {
+  font-family: "Helv Neue Light", serif;
+ }
+
+input {
+  width: 95%;
+  background-color: #eaeaea;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid #000;
+  padding: 5px 5px 5px 5px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+select {
+  display: block;
+}
+
 /* remove default container paddings */
 .container-fluid {
   padding-left: 0px;
@@ -85,31 +104,20 @@
   float: right;
 }
 
-body {
-  font-family: "Helv Neue Light", serif;
- }
-
-input {
-  width: 95%;
-  background-color: #eaeaea;
-  border: 0;
-  outline: 0;
-  border-bottom: 1px solid #000;
-  padding: 5px 5px 5px 5px;
-  display: block;
-  margin-bottom: 10px;
-}
-
-select {
-  display: block;
-}
-
 .fa-arrow-right {
   font-size: 15px;
 }
 
 .fa {
   cursor: pointer;
+}
+
+.nav-link {
+  color: #000!important;
+}
+
+.nav-link:hover {
+  color: #c0bfc0 !important;
 }
 
 ul, li {
