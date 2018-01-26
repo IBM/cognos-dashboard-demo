@@ -29,18 +29,20 @@
     <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateDashboard'"></i>
     2. Create or open Dashboard
   </div>
-  <div class="navbar-nav">
-    <ul class="navbar-nav mr-auto">
-      <li>
-        <a class="nav-link" href="#" (click)='displayCreateDashboardCode()'>
-          Create Dashboard
-        </a>
-        <a class="nav-link" href="#" (click)='displayOpenDashboardCode()'>
-          Open Dashboard
-        </a>
-      </li>
-    </ul>
 
+  <div class="col-md-12">
+       <div class="row">
+         <ul class="navbar-nav mr-auto">
+           <li>
+             <a class="nav-link" href="#" (click)='displayCreateDashboardCode()'>
+               Create Dashboard
+             </a>
+             <a class="nav-link" href="#" (click)='displayOpenDashboardCode()'>
+               Open Dashboard
+             </a>
+           </li>
+         </ul>
+       </div>
   </div>
 </accordion-group>
 

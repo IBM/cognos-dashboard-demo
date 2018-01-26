@@ -59,7 +59,8 @@ app.post("/api/dde/session", function(request, response) {
       },
       body: {
           "expiresIn": 3600,
-          "webDomain": "http://localhost:3000" // for local testing
+          webDomain: conf.web_domain
+          //"webDomain": "http://localhost:3000" // for local testing
           //"webDomain": "https://dde-angnode-app.stage1.mybluemix.net" // for deployment
       },
       json: true // Automatically stringifies the body to JSON
