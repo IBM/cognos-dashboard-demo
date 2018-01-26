@@ -1,8 +1,7 @@
-<accordion-group [isOpen]="isFirstOpen" panelClass="bg-dark">
+<accordion-group [isOpen]="isFirstOpen" panelClass="bg-light">
 
   <div accordion-heading class="navbar-brand">
-    1. Session
-    <span class="badge badge-secondary float-right pull-right"></span>
+    <a href=#>1. Session</a>
   </div>
   <div class="col-md-12">
 
@@ -26,7 +25,7 @@
   </div>
 </accordion-group>
 
-<accordion-group panelClass="bg-dark">
+<accordion-group panelClass="bg-light">
   <div accordion-heading class="navbar-brand">
     <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateDashboard'"></i>
     2. Create or open Dashboard
@@ -46,7 +45,7 @@
   </div>
 </accordion-group>
 
-<accordion-group panelClass="bg-dark">
+<accordion-group panelClass="bg-light">
   <div accordion-heading class="navbar-brand">
     3. Work with Dashboard
   </div>
