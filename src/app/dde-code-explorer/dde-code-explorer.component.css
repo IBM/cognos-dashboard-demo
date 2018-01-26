@@ -51,6 +51,10 @@ pre {
   cursor: pointer;
 }
 
+.button:hover {
+  color: #c0bfc0;
+}
+
 .column-left {
     width: 8%;
     padding: 1em;
