@@ -12,12 +12,12 @@
   width:100%;
 	background-color:#595859;
   height: 100%;
+  overflow: scroll;
 }
 
 code {
   color: #eaeaea;
   display: inline-block;
-  white-space: pre-wrap;
   margin-top: 40px;
 }
 
@@ -57,19 +57,17 @@ pre {
 
 .column-left {
     width: 8%;
-    padding: 1em;
     background-color: #343334;
 }
 
 .column-right {
     width: 92%;
-    padding: 1em;
     margin-left: -4em;
 }
 
 @media (max-width: 1440px) {
   .column-right {
-    margin-left: -3em;
+    margin-left: -1.5em;
   }
 
 }

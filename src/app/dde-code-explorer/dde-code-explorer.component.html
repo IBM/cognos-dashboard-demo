@@ -7,16 +7,14 @@
   </div>
 </div>
 
-<div [ngClass]="setExplorerDiv()">
-  <div class="code-block-div row">
-    <div class="column-left">
-    </div>
-    <div class="column-right">
+<div class="code-block-div row" [ngClass]="setExplorerDiv()">
+  <div class="column-left">
+  </div>
+  <div class="column-right">
     <pre class="code">
       <code [innerHTML]="codeSnippet?.code">
       </code>
     </pre>
-  </div>
   </div>
 </div>
 

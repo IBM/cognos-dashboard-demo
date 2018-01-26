@@ -132,7 +132,7 @@ pre {
     display: table;
     table-layout: fixed;
     width: 100%;
-    white-space: pre-wrap;
+    /* white-space: pre-wrap; */
 }
 pre::before {
     counter-reset: linenum;
@@ -151,7 +151,4 @@ pre span.th::before {
     content: counter(linenum);
     text-align: center;
     display: block;
-}
-pre span.th {
-    width: 4em;
 }
