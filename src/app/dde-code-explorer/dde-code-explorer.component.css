@@ -43,9 +43,12 @@ pre {
 .button {
   padding: 5px 10px;
   color: #fff;
-  cursor: pointer;
   width: 75px;
   float: right;
+}
+
+.button > label {
+  cursor: pointer;
 }
 
 .column-left {
@@ -58,4 +61,11 @@ pre {
     width: 92%;
     padding: 1em;
     margin-left: -4em;
+}
+
+@media (max-width: 1440px) {
+  .column-right {
+    margin-left: -3em;
+  }
+
 }

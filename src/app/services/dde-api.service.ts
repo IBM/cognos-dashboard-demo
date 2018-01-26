@@ -130,6 +130,7 @@ export class DdeApiService {
     });
     console.log('Dashboard opened successfully.');
     console.log(this.dashboardAPI);
+    return this.dashboardAPI;
   }
 
 /*
