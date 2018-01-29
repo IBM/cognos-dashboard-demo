@@ -6,11 +6,10 @@ import { environment } from '../../environments/environment';
 export class CodeSnippetsRepoService {
 
   private snippets;
-//&#9;
+
   private createSessionCodeSample =
                 '<span class="tr"><span class="th"></span><code>  const response = await</code></span>' +
-                '<span class="tr"><span class="th"></span><code>    this.http.post(' + `'/api/dde/session'` + '</code></span>' +
-                '<span class="tr"><span class="th"></span><code>    options).toPromise();</code></span>' +
+                '<span class="tr"><span class="th"></span><code>    this.http.post(' + `'/api/dde/session'` + ', options).toPromise();</code></span>' +
                 '<span class="tr"><span class="th"></span><code></code></span>' +
                 '<span class="tr"><span class="th"></span><code>  this.session.code =</code></span>' +
                 '<span class="tr"><span class="th"></span><code>    response.json().sessionCode;</code></span>' +
@@ -22,8 +21,7 @@ export class CodeSnippetsRepoService {
                 '<span class="tr"><span class="th"></span><code>  this.api = new CognosApi({</code></span>' +
                 '<span class="tr"><span class="th"></span><code>    cognosRootURL: ' + `'` + environment.cognos_root_url + `',` + '</code></span>' +
                 '<span class="tr"><span class="th"></span><code>    sessionCode: this.session.code,</code></span>' +
-                '<span class="tr"><span class="th"></span><code>    node:</code></span>' +
-                '<span class="tr"><span class="th"></span><code>      document.getElementById(' + `'containerDivId3'` + ')</code></span>' +
+                '<span class="tr"><span class="th"></span><code>    node: document.getElementById(' + `'containerDivId3'` + ')</code></span>' +
                 '<span class="tr"><span class="th"></span><code>  });</code></span>' +
                 '<span class="tr"><span class="th"></span><code></code></span>' +
                 '<span class="tr"><span class="th"></span><code>  await this.api.initialize();</code></span>'
@@ -35,7 +33,7 @@ export class CodeSnippetsRepoService {
                 '<span class="tr"><span class="th"></span><code>  await this.getDashboardSampleSpec(); </code></span>' +
                 '<span class="tr"><span class="th"></span><code>  this.dashboardAPI = await this.api.dashboard.openDashboard({  </code></span>' +
                 '<span class="tr"><span class="th"></span><code>    dashboardSpec: this.sample_db_spec </code></span>' +
-                '<span class="tr"><span class="th"></span><code>  }); </code></span>' 
+                '<span class="tr"><span class="th"></span><code>  }); </code></span>'
 
   private addCSVSourceCodeSample =
                 '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.addSources([{</code></span>' +
