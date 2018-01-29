@@ -89,11 +89,6 @@ export class DdeApiService {
     console.log("in create dashboard");
     this.dashboardAPI = await this.api.dashboard.createNew();
 
-    // TODO: add clicked add button
-    this.dashboardAPI.on("addSource:clicked", function(event) {
-      console.log('addSource:clicked was triggered:' + JSON.stringify(event));
-    });
-
     // TODO: move to seperate call
     this.dashboardAPI.on(this.dashboardAPI.EVENTS.DIRTY, function(event) {
         console.log('onDirty:' + JSON.stringify(event));
@@ -103,7 +98,7 @@ export class DdeApiService {
     console.log(this.dashboardAPI);
     return this.dashboardAPI;
   }
-
+  
   async getDashboardSampleSpec(): Promise<void> {
 
     // return if it was already fetched from before
