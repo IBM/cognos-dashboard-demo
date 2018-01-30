@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-md-2 ngxAccordionCustomContainer nav-bar navbar-expand-lg navbar-light bg-light">
           <div class="list-group text-md-left">
-            <accordion class="ngxAccordionCustom">
+            <accordion [closeOthers]=true class="ngxAccordionCustom">
               <dde-dashboard (codeToRun)="getCodeSnippet($event)" [nextStep]="nextStep">
               </dde-dashboard>
               <dde-references></dde-references>

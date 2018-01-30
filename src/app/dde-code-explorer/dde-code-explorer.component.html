@@ -1,9 +1,9 @@
 <div class="explorer-bar" >
   <div class="button" (click)="runCode($event)">
     <i class="fa fa-play"></i>
-    <label>
+    <span>
       Run
-    </label>
+    </span>
   </div>
 </div>
 
@@ -23,12 +23,12 @@
     <label>Session Information</label>
   </div>
 
-  <div>
+  <div class="panel-info">
     <label>sessionCode</label>
     <input type="text" [ngModel]="sessionObject?.code"/>
   </div>
 
-  <div>
+  <div class="panel-info">
     <label>sessionId</label>
     <input type="text" [ngModel]="sessionObject?.id"/>
   </div>
@@ -39,7 +39,7 @@
     <label>Data source configuration</label>
   </div>
 
-  <div>
+  <div class="panel-info">
     <label>Data Source</label>
     <select (change)="onSelect($event.target.value)">
       <option *ngFor="let dataSource of dataSources" value={{dataSource.value}}>
@@ -54,7 +54,7 @@
     <label>Dashboard Mode</label>
   </div>
 
-  <div>
+  <div class="panel-info">
     <label>Mode</label>
     <select (change)="onSelectMode($event.target.value)">
       <option *ngFor="let mode of dashboardModes" value={{mode.value}}>

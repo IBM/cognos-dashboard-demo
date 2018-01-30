@@ -24,9 +24,8 @@
   </div>
 </accordion-group>
 
-<accordion-group panelClass="bg-light">
+<accordion-group [isOpen]="nextStepToProcess() === 'CreateDashboard'" panelClass="bg-light">
   <div accordion-heading class="navbar-brand">
-    <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateDashboard'"></i>
     2. Create or open Dashboard
   </div>
 
@@ -34,11 +33,12 @@
        <div class="row">
          <ul class="navbar-nav mr-auto">
            <li>
+             <a class="nav-link" href="#" (click)='displayOpenDashboardCode()'>
+               <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateDashboard'"></i>
+               Open Dashboard
+             </a>
              <a class="nav-link" href="#" (click)='displayCreateDashboardCode()'>
                Create Dashboard
-             </a>
-             <a class="nav-link" href="#" (click)='displayOpenDashboardCode()'>
-               Open Dashboard
              </a>
            </li>
          </ul>
