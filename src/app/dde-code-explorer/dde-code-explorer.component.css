@@ -36,7 +36,6 @@ pre {
 
 .header {
   padding: 15px 5px 5px 0;
-  font-size: 20px;
 }
 
 .button {
@@ -46,7 +45,7 @@ pre {
   float: right;
 }
 
-.button > label {
+.button > span {
   cursor: pointer;
 }
 
@@ -62,4 +61,8 @@ pre {
 .column-right {
     width: 92%;
     margin-left: -1.5em;
+}
+
+.panel-info {
+  font-size: 0.75em;
 }

@@ -36,6 +36,10 @@ body {
    font-family: "Helv Neue Roman", serif;
  }
 
+ label {
+   color: #000;
+ }
+
 input {
   width: 95%;
   background-color: #eaeaea;
