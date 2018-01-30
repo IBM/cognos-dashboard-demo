@@ -1,0 +1,171 @@
+{
+  "xsd": "https:\/\/ibm.com\/daas\/module\/1.0\/module.xsd",
+  "source": {
+    "id": "CSV_File",
+    "srcUrl": {
+      "sourceUrl": "https:\/\/www.dropbox.com\/s\/vsaz1725imcko1x\/bikeShareRidesDemographics.csv?dl=1",
+      "mimeType": "text\/csv",
+      "property": [
+        {
+          "name": "separator",
+          "value": ","
+        },
+        {
+          "name": "ColumnNamesLine",
+          "value": "true"
+        }
+      ]
+    }
+  },
+  "table": {
+    "column": [
+      {
+        "name": "Date",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Date",
+        "label": "Date",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "From_Community",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "From_Community",
+        "label": "From_Community",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Year",
+        "datatype": "BIGINT",
+        "nullable": true,
+        "description": "Year",
+        "label": "Year",
+        "usage": "fact",
+        "regularAggregate": "total"
+      },
+      {
+        "name": "YearMonth",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "YearMonth",
+        "label": "YearMonth",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Month",
+        "datatype": "BIGINT",
+        "nullable": true,
+        "description": "Month",
+        "label": "Month",
+        "usage": "fact",
+        "regularAggregate": "total"
+      },
+      {
+        "name": "MonthNameShort",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "MonthNameShort",
+        "label": "MonthNameShort",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "MonthNameLong",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "MonthNameLong",
+        "label": "MonthNameLong",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Weekend",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Weekend",
+        "label": "Weekend",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Day_of_Week",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Day_of_Week",
+        "label": "Day_of_Week",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Number_of_Rides",
+        "datatype": "BIGINT",
+        "nullable": true,
+        "description": "Number_of_Rides",
+        "label": "Number_of_Rides",
+        "usage": "fact",
+        "regularAggregate": "total"
+      },
+      {
+        "name": "Percent_Customers",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Percent_Customers",
+        "label": "Percent_Customers",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Percent_Subscribers",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Percent_Subscribers",
+        "label": "Percent_Subscribers",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Percent_Dependents",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Percent_Dependents",
+        "label": "Percent_Dependents",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Percent_Males",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Percent_Males",
+        "label": "Percent_Males",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Percent_Females",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Percent_Females",
+        "label": "Percent_Females",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Average_Age",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Average_Age",
+        "label": "Average_Age",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      }
+    ],
+    "name": "CSV_File"
+  },
+  "label": "CSV File",
+  "identifier": "CSV_File"
+}
