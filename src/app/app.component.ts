@@ -92,7 +92,7 @@ export class AppComponent implements OnInit {
    this.toaster = new Toaster(message, cssclass, showToaster);
 
    this.timer.subscribe(() => {
-         //this.toaster.showToaster = false;
+         this.toaster.showToaster = false;
      });
    }
 
