@@ -1,5 +1,5 @@
 <div *ngIf="toaster?.showToaster" class="toaster" role="alert">
   <i class="fa" [ngClass]="getClass()"></i>
-  <span [innerHTML]="toaster?.message"></span>
+  <span class="toaster-message" [innerHTML]="toaster?.message"></span>
   <i class="fa fa-times" (click)="hideToaster()"></i>
 </div>

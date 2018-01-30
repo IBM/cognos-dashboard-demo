@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
     this.session = event;
 
     if (this.session !== null) {
-      this.message = 'Session created successfully. Create and initialize the API framework.';
+      this.message = 'Session created successfully. Next, create and initialize the API framework.';
       this.setToaster(this.message, 'success', true);
       this.nextStep = CodeSnippetEnum.CreateAPIFramework;
     }
@@ -81,7 +81,7 @@ export class AppComponent implements OnInit {
       this.message = 'An error has occured. Please check the console log for more details.';
       this.setToaster(this.message, 'failure', true);
     }
-  }  
+  }
 
   // set the code snippt to what was fired over
   getCodeSnippet(event) {
@@ -92,7 +92,7 @@ export class AppComponent implements OnInit {
    this.toaster = new Toaster(message, cssclass, showToaster);
 
    this.timer.subscribe(() => {
-         this.toaster.showToaster = false;
+         //this.toaster.showToaster = false;
      });
    }
 
