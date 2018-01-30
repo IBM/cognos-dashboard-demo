@@ -23,9 +23,10 @@
 }
 
 .fa-times {
-  float: right;  
+  float: right;
 }
 
-span {
+.toaster-message {
   padding-left: 10px;
+  color: #000;
 }

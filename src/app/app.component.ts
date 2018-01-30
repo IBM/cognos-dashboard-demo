@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   title = 'app';
 
   private apiId: string = '';
-  private dashboardApi: string = '';
+  private dashboardApi: any;
   public parent_update_module_def_info: string;
   private code_snippet: CodeSnippet;
   private session : Session = null;
@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
     this.session = event;
 
     if (this.session !== null) {
-      this.message = 'Session created successfully. Create and initialize the API framework.';
+      this.message = 'Session created successfully. Next, create and initialize the API framework.';
       this.setToaster(this.message, 'success', true);
       this.nextStep = CodeSnippetEnum.CreateAPIFramework;
     }
@@ -69,9 +69,13 @@ export class AppComponent implements OnInit {
 
   getDashboardApi(event) {
     this.dashboardApi = event;
+    var self = this;
 
     if (this.dashboardApi !== '') {
       this.nextStep = CodeSnippetEnum.None;
+      this.dashboardApi.on("addSource:clicked", () => {
+        this.code_snippet = this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.AddCSVSource);
+      });
     }
     else {
       this.message = 'An error has occured. Please check the console log for more details.';
