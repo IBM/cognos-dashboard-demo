@@ -17,13 +17,23 @@
 @import "https://bootswatch.com/4/lux/bootstrap.css";
 
 @font-face {
- font-family: "Helv Neue Light";
- src: url('/assets/fonts/HelvNeueCondforIBM.otf'),
-      url('/assets/fonts/HelvNeueCondforIBM.ttf');
+ font-family: "Helv Neue Bold";
+ src: url('/assets/fonts/HelvNeueBoldforIBM.otf'),
+      url('/assets/fonts/HelvNeueBoldforIBM.ttf');
+}
+
+@font-face {
+ font-family: "Helv Neue Roman";
+ src: url('/assets/fonts/HelvNeueRomanforIBM.otf'),
+      url('/assets/fonts/HelvNeueRomanforIBM.ttf');
 }
 
 body {
-  font-family: "Helv Neue Light", serif;
+  font-family: "Helv Neue Bold", serif;
+ }
+
+ a {
+   font-family: "Helv Neue Roman", serif;
  }
 
 input {
