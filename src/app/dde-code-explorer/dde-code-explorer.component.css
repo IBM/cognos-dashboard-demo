@@ -75,3 +75,8 @@ pre {
 .play-image:hover {
   fill: #c0bfc0;
 }
+
+.panel-link {
+  margin-top: 3em;
+  margin-left: -1em;
+}

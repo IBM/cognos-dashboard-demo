@@ -12,12 +12,6 @@
   color: #000;
 }
 
-svg-icon {
-  width: 20px;
-  vertical-align: -webkit-baseline-middle;
-  float: left;
-}
-
 .success-image {
   fill: #00aa5e;
 }
