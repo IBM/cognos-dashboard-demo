@@ -175,6 +175,6 @@ svg-icon {
 
 .link-image {
   width: 15px;
-  float: none;
+  float: right;
   fill: #1f57a4;
 }

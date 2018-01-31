@@ -70,6 +70,7 @@ pre {
 .play-image {
   width: 0.8em;
   fill: #fff;
+  margin-right: 0.3em;
 }
 
 .play-image:hover {
