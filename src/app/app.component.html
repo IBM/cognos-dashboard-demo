@@ -7,7 +7,7 @@
 
 <div class="container-fluid">
     <div class="row">
-      <div class="col-md-2 ngxAccordionCustomContainer nav-bar navbar-expand-lg navbar-light bg-light">
+      <div class="col-md-3 ngxAccordionCustomContainer nav-bar navbar-expand-lg navbar-light bg-light">
           <div class="list-group text-md-left">
             <accordion [closeOthers]=true class="ngxAccordionCustom">
               <dde-dashboard (codeToRun)="getCodeSnippet($event)" [nextStep]="nextStep">
@@ -23,8 +23,8 @@
            </dde-code-explorer>
         </div>
 
-        <div class="col-md-7">
-           <dde-toaster [toaster]="toaster"></dde-toaster>
+        <div class="col-md-6">
+           <dde-toaster></dde-toaster>
            <div *ngIf="parent_update_module_def_info" class="alert alert-success box-msg" role="alert">
              <strong>Module definition updated!</strong> see console log for before vs after
            </div>

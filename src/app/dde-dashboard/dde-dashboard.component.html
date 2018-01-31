@@ -1,7 +1,7 @@
 <accordion-group [isOpen]="isFirstOpen" panelClass="bg-light">
 
   <div accordion-heading class="navbar-brand">
-    1. Session
+    1. Set up an API framework
   </div>
   <div class="col-md-12">
        <div class="row">
@@ -9,7 +9,7 @@
            <li>
              <a class="nav-link" href="#" (click)='displayNewSessionCode()'>
                <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateSession'"></i>
-               Create New Session
+               Create a session for the API
              </a>
              <a class="nav-link" href="#" (click)='displayInitApiFrameworkCode()'>
                <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateAPIFramework'"></i>
@@ -26,7 +26,7 @@
 
 <accordion-group [isOpen]="nextStepToProcess() === 'CreateDashboard'" panelClass="bg-light">
   <div accordion-heading class="navbar-brand">
-    2. Create or open Dashboard
+    2. Open or Create Dashboard
   </div>
 
   <div class="col-md-12">
@@ -48,7 +48,7 @@
 
 <accordion-group panelClass="bg-light">
   <div accordion-heading class="navbar-brand">
-    3. Work with Dashboard
+    3. Interact with Dashboard
   </div>
   <div class="col-md-12">
     <div class="row">

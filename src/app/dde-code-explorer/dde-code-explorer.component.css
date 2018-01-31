@@ -66,3 +66,18 @@ pre {
 .panel-info {
   font-size: 0.75em;
 }
+
+.play-image {
+  width: 0.8em;
+  fill: #fff;
+  margin-right: 0.3em;
+}
+
+.play-image:hover {
+  fill: #c0bfc0;
+}
+
+.panel-link {
+  margin-top: 3em;
+  margin-left: -1em;
+}

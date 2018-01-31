@@ -166,3 +166,15 @@ pre span.th::before {
     text-align: center;
     display: block;
 }
+
+svg-icon {
+  width: 20px;
+  vertical-align: -webkit-baseline-middle;
+  float: left;
+}
+
+.link-image {
+  width: 15px;
+  float: right;
+  fill: #1f57a4;
+}

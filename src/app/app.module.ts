@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
@@ -24,6 +25,9 @@ import { EncryptService } from './services/encrypt.service';
 import { CodeSnippetsRepoService } from './services/code-snippets-repo.service';
 import { DdeDialogComponent } from './dde-dialog/dde-dialog.component';
 import { DdeReferencesComponent } from './dde-references/dde-references.component';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+
+
 /*
 // Define the routes
 const ROUTES = [
@@ -42,7 +46,7 @@ const ROUTES = [
   declarations: [
     AppComponent,
     AppNavbarComponent,
-    DdeListComponent,    
+    DdeListComponent,
     DdeCodeExplorerComponent,
     DdeDashboardComponent,
     DdeToasterComponent,
@@ -55,7 +59,9 @@ const ROUTES = [
     BsDropdownModule.forRoot(),
     AccordionModule.forRoot(),
     ModalModule.forRoot(),
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    AngularSvgIconModule
     //RouterModule.forRoot(ROUTES), // Add routes to the app
     //AngularFireModule.initializeApp(environment.firebase),
     //AngularFireDatabaseModule,

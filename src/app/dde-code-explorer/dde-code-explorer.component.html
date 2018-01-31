@@ -1,6 +1,6 @@
 <div class="explorer-bar" >
   <div class="button" (click)="runCode($event)">
-    <i class="fa fa-play"></i>
+    <svg-icon class="play-image" src="../assets/images/play_16.svg"></svg-icon>
     <span>
       Run
     </span>
@@ -32,6 +32,13 @@
     <label>sessionId</label>
     <input type="text" [ngModel]="sessionObject?.id"/>
   </div>
+
+  <div class="panel-link">
+    <a class="nav-link" href="#" target="_blank">
+      Learn more about creating a valid session
+      <svg-icon class="link-image" src="../assets/images/link_16.svg"></svg-icon>
+    </a>
+  </div>
 </div>
 
 <div class="secondary-panel" *ngIf="showSourcesDropDown()">
@@ -46,6 +53,12 @@
          {{dataSource.type}}
       </option>
     </select>
+  </div>
+
+  <div class="panel-link">
+    <a class="nav-link" href="#" target="_blank">
+      Learn how to work with your own datasource <i class="fa fa-link float-right" ></i>
+    </a>
   </div>
 </div>
 

@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CodeSnippetEnum, CodeSnippet } from '../model/code-snippet';
 import { Session } from '../model/session';
 import { Toaster } from '../model/toaster';
 import { CodeSnippetsRepoService } from './services/code-snippets-repo.service';
+import { DdeToasterComponent } from './dde-toaster/dde-toaster.component';
 import { environment } from '../environments/environment';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/timer';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +12,7 @@ import 'rxjs/add/observable/timer';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  @ViewChild(DdeToasterComponent) public toasterComp: DdeToasterComponent;
   title = 'app';
 
   private apiId: string = '';
@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
   private session : Session = null;
   private toaster: Toaster;
   private message : string;
-  private timer: Observable<any>;
   private showPanel: boolean = true;
   private nextStep: CodeSnippetEnum = CodeSnippetEnum.CreateSession;
 
@@ -35,8 +34,6 @@ export class AppComponent implements OnInit {
     } else {
       console.log('Production Mode');
     }
-
-    this.timer = Observable.timer(environment.toaster_timer);
   }
 
   sessionInfo(event) {
@@ -69,7 +66,6 @@ export class AppComponent implements OnInit {
 
   getDashboardApi(event) {
     this.dashboardApi = event;
-    var self = this;
 
     if (this.dashboardApi !== '') {
       this.nextStep = CodeSnippetEnum.None;
@@ -89,12 +85,9 @@ export class AppComponent implements OnInit {
   }
 
   setToaster(message: string, cssclass: string, showToaster: boolean) {
-   this.toaster = new Toaster(message, cssclass, showToaster);
-
-   this.timer.subscribe(() => {
-         this.toaster.showToaster = false;
-     });
-   }
+    this.toaster = new Toaster(message, cssclass, showToaster);
+    this.toasterComp.showToaster(this.toaster);
+  }
 
 
 }
