@@ -14,7 +14,7 @@ export class DdeDialogComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.showModal();
+    //this.showModal();
   }
 
   showModal() {

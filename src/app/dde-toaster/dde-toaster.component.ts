@@ -16,15 +16,6 @@ export class DdeToasterComponent implements OnInit {
   ngOnInit() {
   }
 
-  getClass() {
-      let classes =  {
-          'fa-check-circle': this.toaster && this.toaster.type === 'success',
-          'fa-exclamation-circle': this.toaster && this.toaster.type === 'failure',
-          'fa-exclamation-triangle': this.toaster && this.toaster.type === 'warning',
-      };
-      return classes;
-  }
-
   hideToaster() {
     this.toaster.showToaster = false;
   }

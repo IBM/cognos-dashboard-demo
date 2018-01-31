@@ -35,6 +35,7 @@
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
     "angular-split": "^1.0.0-rc.1",
+    "angular-svg-icon": "^5.0.0",
     "body-parser": "^1.18.2",
     "bootstrap": "4.0.0-beta.2",
     "cfenv": "^1.0.x",

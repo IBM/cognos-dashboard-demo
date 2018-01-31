@@ -66,3 +66,12 @@ pre {
 .panel-info {
   font-size: 0.75em;
 }
+
+.play-image {
+  width: 0.8em;
+  fill: #fff;
+}
+
+.play-image:hover {
+  fill: #c0bfc0;
+}
