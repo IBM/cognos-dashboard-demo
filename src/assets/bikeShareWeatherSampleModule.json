@@ -18,10 +18,12 @@
     }
   },
   "table": {
+    "name": "Bike Share Weather CSV file",
+    "description": "description of the table for visual hints",
     "column": [
       {
         "name": "Date",
-        "datatype": "NVARCHAR(256)",
+        "datatype": "DATE",
         "nullable": true,
         "description": "Date",
         "label": "Date",
@@ -39,57 +41,57 @@
       },
       {
         "name": "Maximum_Temperature",
-        "datatype": "NVARCHAR(256)",
+        "datatype": "DOUBLE",
         "nullable": true,
         "description": "Maximum_Temperature",
         "label": "Maximum_Temperature",
-        "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "usage": "fact",
+        "regularAggregate": "average"
       },
       {
         "name": "Minimum_Temperature",
-        "datatype": "BIGINT",
+        "datatype": "DOUBLE",
         "nullable": true,
         "description": "Minimum_Temperature",
         "label": "Minimum_Temperature",
         "usage": "fact",
-        "regularAggregate": "total"
+        "regularAggregate": "average"
       },
       {
         "name": "Average_Temperature",
-        "datatype": "NVARCHAR(256)",
+        "datatype": "DOUBLE",
         "nullable": true,
         "description": "Average_Temperature",
         "label": "Average_Temperature",
-        "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "usage": "fact",
+        "regularAggregate": "average"
       },
       {
         "name": "Temperature_Range",
-        "datatype": "NVARCHAR(256)",
+        "datatype": "DOUBLE",
         "nullable": true,
         "description": "Temperature_Range",
         "label": "Temperature_Range",
-        "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "usage": "fact",
+        "regularAggregate": "average"
       },
       {
         "name": "Total_Precipitation",
-        "datatype": "NVARCHAR(256)",
+        "datatype": "DOUBLE",
         "nullable": true,
         "description": "Total_Precipitation",
         "label": "Total_Precipitation",
-        "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "usage": "fact",
+        "regularAggregate": "total"
       },
       {
         "name": "Total_Snow",
-        "datatype": "NVARCHAR(256)",
+        "datatype": "DOUBLE",
         "nullable": true,
         "description": "Total_Snow",
         "label": "Total_Snow",
-        "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "usage": "fact",
+        "regularAggregate": "total"
       },
       {
         "name": "Average_Humidity",
@@ -98,7 +100,7 @@
         "description": "Average_Humidity",
         "label": "Average_Humidity",
         "usage": "fact",
-        "regularAggregate": "total"
+        "regularAggregate": "average"
       },
       {
         "name": "Maximum_Wind_Speed",
@@ -107,11 +109,11 @@
         "description": "Maximum_Wind_Speed",
         "label": "Maximum_Wind_Speed",
         "usage": "fact",
-        "regularAggregate": "total"
+        "regularAggregate": "average"
       }
     ],
-    "name": "CSV_File"
+    "name": "Bike Share Weather CSV"
   },
-  "label": "CSV File",
-  "identifier": "CSV_File"
+  "label": "Module Name",
+  "identifier": "moduleId"
 }

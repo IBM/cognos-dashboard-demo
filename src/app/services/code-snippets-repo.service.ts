@@ -73,19 +73,19 @@ export class CodeSnippetsRepoService {
                 '<span class="tr"><span class="th"></span><code>    id:' + `'myUniqueId987'` + '</code></span>' +
                 '<span class="tr"><span class="th"></span><code>  });</code></span>'
 
-  private addCSVSourceCodeSample2 =
-              '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.addSources([{</code></span>' +
-               '<span class="tr"><span class="th"></span><code>    module: csv_sample_module2,</code></span>' +
-               '<span class="tr"><span class="th"></span><code>    name:' + `'Test CSV2 Source'` + ',</code></span>' +
-               '<span class="tr"><span class="th"></span><code>    id:' + `'myUniqueId111'` + '</code></span>' +
-               '<span class="tr"><span class="th"></span><code>  });</code></span>'
-
   private addBikeShareWeatherCSVSourceCodeSample =
               '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.addSources([{</code></span>' +
                '<span class="tr"><span class="th"></span><code>    module: bike_share_weather_csv_sample_module,</code></span>' +
                '<span class="tr"><span class="th"></span><code>    name:' + `'Test Bike Share Weather Source'` + ',</code></span>' +
-               '<span class="tr"><span class="th"></span><code>    id:' + `'myUniqueId222'` + '</code></span>' +
+               '<span class="tr"><span class="th"></span><code>    id:' + `'myUniqueId111'` + '</code></span>' +
                '<span class="tr"><span class="th"></span><code>  });</code></span>'
+
+  private addBikeShareRidesDemographCSVSourceCodeSample =
+             '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.addSources([{</code></span>' +
+              '<span class="tr"><span class="th"></span><code>    module: bike_share_rides_demograph_csv_sample_module,</code></span>' +
+              '<span class="tr"><span class="th"></span><code>    name:' + `'Test Bike Share Rides Demographics Source'` + ',</code></span>' +
+              '<span class="tr"><span class="th"></span><code>    id:' + `'myUniqueId222'` + '</code></span>' +
+              '<span class="tr"><span class="th"></span><code>  });</code></span>'
 
   private setDashboardModeEditCodeSample =
                 '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.setMode(</code></span>' +
@@ -115,8 +115,8 @@ export class CodeSnippetsRepoService {
     this.snippets.set(CodeSnippetEnum.OpenDashboard, new CodeSnippet(CodeSnippetEnum.OpenDashboard, this.openDashboardCodeSample, 'large'));
     this.snippets.set(CodeSnippetEnum.AddCSVSource, new CodeSnippet(CodeSnippetEnum.AddCSVSource, this.addCSVSourceCodeSample, 'small'));
     this.snippets.set(CodeSnippetEnum.AddProtectedCSVSource, new CodeSnippet(CodeSnippetEnum.AddProtectedCSVSource, this.addProtectedCSVSourceCodeSample, 'small'));
-    this.snippets.set(CodeSnippetEnum.AddCSVSource2, new CodeSnippet(CodeSnippetEnum.AddCSVSource2, this.addCSVSourceCodeSample2, 'small'));
     this.snippets.set(CodeSnippetEnum.AddBikeShareWeatherCSVSource, new CodeSnippet(CodeSnippetEnum.AddBikeShareWeatherCSVSource, this.addBikeShareWeatherCSVSourceCodeSample, 'small'));
+    this.snippets.set(CodeSnippetEnum.AddBikeShareRidesDemographCSVSource, new CodeSnippet(CodeSnippetEnum.AddBikeShareRidesDemographCSVSource, this.addBikeShareRidesDemographCSVSourceCodeSample, 'small'));
     //this.snippets.set(CodeSnippetEnum.AddDB2Source, new CodeSnippet(CodeSnippetEnum.AddDB2Source, this.addDB2SourceCodeSample, 'small'));
     //this.snippets.set(CodeSnippetEnum.AddProtectedDB2Source, new CodeSnippet(CodeSnippetEnum.AddProtectedDB2Source, this.addProtectedDB2SourceCodeSample, 'small'));
     this.snippets.set(CodeSnippetEnum.DashboardEditMode, new CodeSnippet(CodeSnippetEnum.DashboardEditMode, this.setDashboardModeEditCodeSample, 'small'));
