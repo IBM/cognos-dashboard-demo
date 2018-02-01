@@ -9,21 +9,30 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 export class DdeDialogComponent implements AfterViewInit {
   @ViewChild('lgModal') public lgModal: ModalDirective;
   @ViewChild('ddeVideo') ddeVideo: any;
+  isChecked: boolean;
 
   constructor() {
   }
 
   ngAfterViewInit() {
-    //this.showModal();
+    if (JSON.parse(localStorage.getItem('showVideo')) ||
+        JSON.parse(localStorage.getItem('showVideo')) === null)
+      this.showModal();
+    else
+      this.hideModal();
   }
 
   showModal() {
     this.lgModal.show();
   }
 
+  toogleVideo(event) {
+    let showVideo = event.target.checked ? 'false' : 'true';
+    localStorage.setItem('showVideo', showVideo);
+  }
+
   hideModal() {
     this.lgModal.hide();
     this.ddeVideo.nativeElement.pause();
   }
-
 }
