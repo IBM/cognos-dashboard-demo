@@ -18,10 +18,12 @@
     }
   },
   "table": {
+    "name": "Bike Share Rides Demographics CSV file",
+    "description": "description of the table for visual hints",
     "column": [
       {
         "name": "Date",
-        "datatype": "NVARCHAR(256)",
+        "datatype": "DATE",
         "nullable": true,
         "description": "Date",
         "label": "Date",
@@ -40,11 +42,10 @@
       {
         "name": "Year",
         "datatype": "BIGINT",
-        "nullable": true,
         "description": "Year",
         "label": "Year",
-        "usage": "fact",
-        "regularAggregate": "total"
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
       },
       {
         "name": "YearMonth",
@@ -61,8 +62,8 @@
         "nullable": true,
         "description": "Month",
         "label": "Month",
-        "usage": "fact",
-        "regularAggregate": "total"
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
       },
       {
         "name": "MonthNameShort",
@@ -111,61 +112,61 @@
       },
       {
         "name": "Percent_Customers",
-        "datatype": "NVARCHAR(256)",
+        "datatype": "BIGINT",
         "nullable": true,
         "description": "Percent_Customers",
         "label": "Percent_Customers",
-        "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "usage": "fact",
+        "regularAggregate": "average"
       },
       {
         "name": "Percent_Subscribers",
-        "datatype": "NVARCHAR(256)",
+        "datatype": "BIGINT",
         "nullable": true,
         "description": "Percent_Subscribers",
         "label": "Percent_Subscribers",
-        "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "usage": "fact",
+        "regularAggregate": "average"
       },
       {
         "name": "Percent_Dependents",
-        "datatype": "NVARCHAR(256)",
+        "datatype": "BIGINT",
         "nullable": true,
         "description": "Percent_Dependents",
         "label": "Percent_Dependents",
-        "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "usage": "fact",
+        "regularAggregate": "average"
       },
       {
         "name": "Percent_Males",
-        "datatype": "NVARCHAR(256)",
+        "datatype": "BIGINT",
         "nullable": true,
         "description": "Percent_Males",
         "label": "Percent_Males",
-        "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "usage": "fact",
+        "regularAggregate": "average"
       },
       {
         "name": "Percent_Females",
-        "datatype": "NVARCHAR(256)",
+        "datatype": "BIGINT",
         "nullable": true,
         "description": "Percent_Females",
         "label": "Percent_Females",
-        "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "usage": "fact",
+        "regularAggregate": "average"
       },
       {
         "name": "Average_Age",
-        "datatype": "NVARCHAR(256)",
+        "datatype": "BIGINT",
         "nullable": true,
         "description": "Average_Age",
         "label": "Average_Age",
-        "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "usage": "fact",
+        "regularAggregate": "average"
       }
     ],
-    "name": "CSV_File"
+    "name": "Bike Share Rides Demographics CSV"
   },
-  "label": "CSV File",
-  "identifier": "CSV_File"
+  "label": "Module Name",
+  "identifier": "moduleId"
 }
