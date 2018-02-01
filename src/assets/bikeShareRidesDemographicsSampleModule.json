@@ -62,7 +62,7 @@
         "nullable": true,
         "description": "Month",
         "label": "Month",
-        "usage": "fact",
+        "usage": "attribute",
         "regularAggregate": "countDistinct"
       },
       {
