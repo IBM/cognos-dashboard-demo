@@ -7,11 +7,11 @@
        <div class="row">
          <ul class="navbar-nav mr-auto">
            <li>
-             <a class="nav-link" href="#" (click)='displayNewSessionCode()'>
+             <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateSession'}" href="#" (click)='displayNewSessionCode()'>
                <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateSession'"></i>
                Create a session for the API
              </a>
-             <a class="nav-link" href="#" (click)='displayInitApiFrameworkCode()'>
+             <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateAPIFramework'}" href="#" (click)='displayInitApiFrameworkCode()'>
                <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateAPIFramework'"></i>
                Create & Init API framework
              </a>
@@ -33,11 +33,11 @@
        <div class="row">
          <ul class="navbar-nav mr-auto">
            <li>
-             <a class="nav-link" href="#" (click)='displayOpenDashboardCode()'>
+             <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'OpenDashboard'}" href="#" (click)='displayOpenDashboardCode()'>
                <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateDashboard'"></i>
                Open Dashboard
              </a>
-             <a class="nav-link" href="#" (click)='displayCreateDashboardCode()'>
+             <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateDashboard'}" href="#" (click)='displayCreateDashboardCode()'>
                Create Dashboard
              </a>
            </li>
@@ -55,16 +55,16 @@
       <ul class="navbar-nav">
 
         <li>
-          <a class="nav-link" href="#" (click)='addSourcesToDashboard()'>
+          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'AddCSVSource'}" href="#" (click)='addSourcesToDashboard()'>
             Add sources to dashboard
           </a>
-          <a class="nav-link" href="#" (click)='setDashboardEditMode()'>
+          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'DashboardEditMode'}" href="#" (click)='setDashboardEditMode()'>
             Set Dashboard Mode
           </a>
-          <a class="nav-link" href="#" (click)='undoLastAction()'>
+          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UndoLastAction'}" href="#" (click)='undoLastAction()'>
             Undo Last Action
           </a>
-          <a class="nav-link" href="#" (click)='redoLastAction()'>
+          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'RedoLastAction'}" href="#" (click)='redoLastAction()'>
             Redo Last Action
           </a>
           <a class="nav-link" href="#" (click)='getDashboardSpec()'>
