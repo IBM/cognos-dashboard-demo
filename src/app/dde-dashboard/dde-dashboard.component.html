@@ -46,7 +46,7 @@
   </div>
 </accordion-group>
 
-<accordion-group panelClass="bg-light">
+<accordion-group [isOpen]="nextStepToProcess() === 'AddCSVSource'" panelClass="bg-light">
   <div accordion-heading class="navbar-brand">
     3. Interact with Dashboard
   </div>

@@ -68,7 +68,7 @@ export class AppComponent implements OnInit {
     this.dashboardApi = event;
 
     if (this.dashboardApi !== '') {
-      this.nextStep = CodeSnippetEnum.None;
+      this.nextStep = CodeSnippetEnum.AddCSVSource;
       this.dashboardApi.on("addSource:clicked", () => {
         this.code_snippet = this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.AddCSVSource);
       });
