@@ -22,6 +22,7 @@ export class DdeDashboardComponent implements OnInit {
   codeToRun = new EventEmitter<CodeSnippet>();
   @Input()
   nextStep: CodeSnippetEnum;
+  currentSelection: CodeSnippetEnum;
 
   public client_id : string;
   public client_secret: string;
@@ -35,7 +36,8 @@ export class DdeDashboardComponent implements OnInit {
               private ddeApiService: DdeApiService, private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
 
-  ngOnInit() {
+  ngOnInit() {    
+    this.displayNewSessionCode();
   }
 
   ngAfterContentInit() {
@@ -65,12 +67,14 @@ export class DdeDashboardComponent implements OnInit {
     );
   }
 
-  displayNewSessionCode(event) {
-    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.CreateSession));
+  displayNewSessionCode() {
+    this.currentSelection = CodeSnippetEnum.CreateSession;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
 
   displayInitApiFrameworkCode() {
-    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.CreateAPIFramework));
+    this.currentSelection = CodeSnippetEnum.CreateAPIFramework;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
 
   updateModuleDefinitions() {
@@ -111,19 +115,23 @@ export class DdeDashboardComponent implements OnInit {
 
 
   displayCreateDashboardCode() {
-    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.CreateDashboard));
+    this.currentSelection = CodeSnippetEnum.CreateDashboard;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
 
   displayOpenDashboardCode() {
-    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.OpenDashboard));
+    this.currentSelection = CodeSnippetEnum.OpenDashboard;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
 
   addSourcesToDashboard() {
-    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.AddCSVSource));
+    this.currentSelection = CodeSnippetEnum.AddCSVSource;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
 
   setDashboardEditMode() {
-    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.DashboardEditMode));
+    this.currentSelection = CodeSnippetEnum.DashboardEditMode;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
 
 /*
@@ -137,11 +145,13 @@ export class DdeDashboardComponent implements OnInit {
 */
 
   undoLastAction() {
-    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.UndoLastAction));
+    this.currentSelection = CodeSnippetEnum.UndoLastAction;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
 
   redoLastAction() {
-    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.RedoLastAction));
+    this.currentSelection = CodeSnippetEnum.RedoLastAction;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
 
   getDashboardSpec() {

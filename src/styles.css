@@ -28,6 +28,10 @@
       url('/assets/fonts/HelvNeueRomanforIBM.ttf');
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: "Helv Neue Bold", serif;
  }
