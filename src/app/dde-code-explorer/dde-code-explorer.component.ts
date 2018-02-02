@@ -87,6 +87,12 @@ export class DdeCodeExplorerComponent implements OnInit {
       else if (this.codeSnippet.selection === CodeSnippetEnum.RedoLastAction) {
         this.ddeApiService.redoLastAction();
       }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.GetDashboardSpec) {
+        this.ddeApiService.getDashboardSpec();
+      }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.ClearDirtyState) {
+        this.ddeApiService.clearDirtyState();  
+      }
     }
     catch(e) {
       console.log(e);

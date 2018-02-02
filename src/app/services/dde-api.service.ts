@@ -99,7 +99,7 @@ export class DdeApiService {
     console.log(this.dashboardAPI);
     return this.dashboardAPI;
   }
-  
+
   async getDashboardSampleSpec(): Promise<void> {
 
     // return if it was already fetched from before
@@ -263,6 +263,21 @@ export class DdeApiService {
 
   redoLastAction() {
     this.dashboardAPI.redo();
+  }
+
+  async getDashboardSpec() {
+    /*
+    dashboardAPI.getSpec().then(function(spec){
+      console.log(JSON.stringify(spec));
+    });
+    */
+    const spec = await this.dashboardAPI.getSpec();
+    console.log(JSON.stringify(spec));
+  }
+
+
+  clearDirtyState() {
+      this.dashboardAPI.clearDirty();
   }
 
 }
