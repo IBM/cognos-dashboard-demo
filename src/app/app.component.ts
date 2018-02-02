@@ -25,8 +25,7 @@ export class AppComponent implements OnInit {
   private session : Session = null;
   private toaster: Toaster;
   private message : string;
-  private showPanel: boolean = true;
-  private nextStep: CodeSnippetEnum = CodeSnippetEnum.CreateSession;
+  private showPanel: boolean = true;  
 
   constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
