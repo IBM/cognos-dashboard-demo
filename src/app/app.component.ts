@@ -4,6 +4,7 @@ import { Session } from '../model/session';
 import { Toaster } from '../model/toaster';
 import { CodeSnippetsRepoService } from './services/code-snippets-repo.service';
 import { DdeToasterComponent } from './dde-toaster/dde-toaster.component';
+import { DdeDashboardComponent } from './dde-dashboard/dde-dashboard.component';
 import { environment } from '../environments/environment';
 
 @Component({
@@ -12,7 +13,9 @@ import { environment } from '../environments/environment';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  @ViewChild(DdeToasterComponent) public toasterComp: DdeToasterComponent;
+  @ViewChild(DdeToasterComponent) private toasterComp: DdeToasterComponent;
+  @ViewChild(DdeDashboardComponent) private dashBoardComp: DdeDashboardComponent;
+
   title = 'app';
 
   private apiId: string = '';
@@ -42,7 +45,7 @@ export class AppComponent implements OnInit {
     if (this.session !== null) {
       this.message = 'Session created successfully. Next, create and initialize the API framework.';
       this.setToaster(this.message, 'success', true);
-      this.nextStep = CodeSnippetEnum.CreateAPIFramework;
+      this.dashBoardComp.nextStep = CodeSnippetEnum.CreateAPIFramework;
     }
     else {
       this.message = 'An error has occured. Please check the console log for more details.';
@@ -56,7 +59,7 @@ export class AppComponent implements OnInit {
     if (this.apiId !== '') {
       this.message = 'API created successfully. You can now create or open a dashboard.';
       this.setToaster(this.message, 'success', true);
-      this.nextStep = CodeSnippetEnum.CreateDashboard;
+      this.dashBoardComp.nextStep = CodeSnippetEnum.CreateDashboard;
     }
     else {
       this.message = 'An error has occured. Please check the console log for more details.';
@@ -68,8 +71,9 @@ export class AppComponent implements OnInit {
     this.dashboardApi = event;
 
     if (this.dashboardApi !== '') {
-      this.nextStep = CodeSnippetEnum.AddCSVSource;
+      this.dashBoardComp.nextStep = CodeSnippetEnum.AddCSVSource;
       this.dashboardApi.on("addSource:clicked", () => {
+        this.dashBoardComp.currentSelection = CodeSnippetEnum.AddCSVSource;
         this.code_snippet = this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.AddCSVSource);
       });
     }

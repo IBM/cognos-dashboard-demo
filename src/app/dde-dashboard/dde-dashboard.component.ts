@@ -20,7 +20,6 @@ export class DdeDashboardComponent implements OnInit {
   moduleDefinitionUpdated: EventEmitter<String> = new EventEmitter<String>();
   @Output()
   codeToRun = new EventEmitter<CodeSnippet>();
-  @Input()
   nextStep: CodeSnippetEnum;
   currentSelection: CodeSnippetEnum;
 
@@ -37,6 +36,7 @@ export class DdeDashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.nextStep = CodeSnippetEnum.CreateSession;
     this.displayNewSessionCode();
   }
 
