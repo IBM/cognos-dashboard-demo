@@ -270,7 +270,7 @@ export class DdeApiService {
     console.log(JSON.stringify(spec));
   }
 
-
+  // update the boolean that is used for the onDirty events
   clearDirtyState() {
       this.dashboardAPI.clearDirty();
   }
