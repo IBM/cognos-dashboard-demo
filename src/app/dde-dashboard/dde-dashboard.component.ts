@@ -36,7 +36,7 @@ export class DdeDashboardComponent implements OnInit {
               private ddeApiService: DdeApiService, private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
 
-  ngOnInit() {    
+  ngOnInit() {
     this.displayNewSessionCode();
   }
 
@@ -155,10 +155,12 @@ export class DdeDashboardComponent implements OnInit {
   }
 
   getDashboardSpec() {
-    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.GetDashboardSpec));
+    this.currentSelection = CodeSnippetEnum.GetDashboardSpec;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
 
   clearDirtyState() {
-    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.ClearDirtyState));
+    this.currentSelection = CodeSnippetEnum.ClearDirtyState;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
 }
