@@ -46,7 +46,7 @@
   </div>
 </accordion-group>
 
-<accordion-group panelClass="bg-light">
+<accordion-group [isOpen]="nextStepToProcess() === 'AddCSVSource'" panelClass="bg-light">
   <div accordion-heading class="navbar-brand">
     3. Interact with Dashboard
   </div>
@@ -67,10 +67,10 @@
           <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'RedoLastAction'}" href="#" (click)='redoLastAction()'>
             Redo Last Action
           </a>
-          <a class="nav-link" href="#" (click)='getDashboardSpec()'>
+          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'GetDashboardSpec'}" href="#" (click)='getDashboardSpec()'>
             Get Dashboard Spec
           </a>
-          <a class="nav-link" href="#" (click)='clearDirtyState()'>
+          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'ClearDirtyState'}" href="#" (click)='clearDirtyState()'>
             Clear Dashboard Dirty State
           </a>
         </li>
