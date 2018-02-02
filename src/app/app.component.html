@@ -7,14 +7,14 @@
 
 <div class="container-fluid">
     <div class="row">
-      <div class="col-md-3 ngxAccordionCustomContainer nav-bar navbar-expand-lg navbar-light bg-light">
-          <div class="list-group text-md-left">
+      <div class="col-md-3 nav-bar navbar-expand-lg navbar-light bg-light">
+          <div class="ngxAccordionCustomContainer list-group text-md-left">
             <accordion [closeOthers]=true class="ngxAccordionCustom">
               <dde-dashboard (codeToRun)="getCodeSnippet($event)" [nextStep]="nextStep">
               </dde-dashboard>
-              <dde-references></dde-references>
             </accordion>
           </div>
+          <dde-references></dde-references>
       </div>
 
       <div class="col-md-3">
