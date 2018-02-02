@@ -3,7 +3,7 @@
   "source": {
     "id": "StringID",
     "srcUrl": {
-      "sourceUrl": "https://www.dropbox.com/s/adzmgapo249xf9w/ddeCSVSample.csv?dl=1",
+      "sourceUrl": "https:\/\/developer.ibm.com\/static\/site-id\/141\/ddeCSVSample.csv",
       "mimeType": "text\/csv",
       "property": [
         {

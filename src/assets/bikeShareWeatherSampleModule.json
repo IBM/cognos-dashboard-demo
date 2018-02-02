@@ -3,7 +3,7 @@
   "source": {
     "id": "CSV_File",
     "srcUrl": {
-      "sourceUrl": "https:\/\/www.dropbox.com\/s\/5aiwms03wsy4fy3\/bikeShareWeather.csv?dl=1",
+      "sourceUrl": "https:\/\/developer.ibm.com\/static\/site-id\/141\/bikeShareWeather.csv",
       "mimeType": "text\/csv",
       "property": [
         {

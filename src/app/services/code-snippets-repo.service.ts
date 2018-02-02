@@ -105,6 +105,13 @@ export class CodeSnippetsRepoService {
   private redoLastActionCodeSample =
                 '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.redo();</code></span>'
 
+  private getDashboardSpecCodeSample =
+                '<span class="tr"><span class="th"></span><code>  const spec = await this.dashboardAPI.getSpec();</code></span>' +
+                '<span class="tr"><span class="th"></span><code>  console.log(JSON.stringify(spec));</code></span>'
+
+  private clearDirtyStateCodeSample =
+                '<span class="tr"><span class="th"></span><code>  this.dashboardAPI.clearDirty();</code></span>'
+
   constructor() {
     this.snippets = new Map<string, CodeSnippet>();
 
@@ -124,6 +131,8 @@ export class CodeSnippetsRepoService {
     this.snippets.set(CodeSnippetEnum.DashboardEditGroupMode, new CodeSnippet(CodeSnippetEnum.DashboardEditGroupMode, this.setDashboardModeEditGroupCodeSample, 'small'));
     this.snippets.set(CodeSnippetEnum.UndoLastAction, new CodeSnippet(CodeSnippetEnum.UndoLastAction, this.undoLastActionCodeSample, 'large'));
     this.snippets.set(CodeSnippetEnum.RedoLastAction, new CodeSnippet(CodeSnippetEnum.RedoLastAction, this.redoLastActionCodeSample, 'large'));
+    this.snippets.set(CodeSnippetEnum.GetDashboardSpec, new CodeSnippet(CodeSnippetEnum.GetDashboardSpec, this.getDashboardSpecCodeSample, 'large'));
+    this.snippets.set(CodeSnippetEnum.ClearDirtyState, new CodeSnippet(CodeSnippetEnum.ClearDirtyState, this.clearDirtyStateCodeSample, 'large'));
   }
 
   getSnippet(name) : CodeSnippet {

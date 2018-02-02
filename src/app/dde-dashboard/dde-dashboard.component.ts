@@ -153,4 +153,12 @@ export class DdeDashboardComponent implements OnInit {
     this.currentSelection = CodeSnippetEnum.RedoLastAction;
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
+
+  getDashboardSpec() {
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.GetDashboardSpec));
+  }
+
+  clearDirtyState() {
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.ClearDirtyState));
+  }
 }

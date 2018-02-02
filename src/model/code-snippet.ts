@@ -14,7 +14,9 @@ export enum CodeSnippetEnum {
   DashboardViewMode = 'DashboardViewMode',
   DashboardEditGroupMode = 'DashboardEditGroupMode',
   UndoLastAction = 'UndoLastAction',
-  RedoLastAction = 'RedoLastAction'
+  RedoLastAction = 'RedoLastAction',
+  GetDashboardSpec = 'GetDashboardSpec',
+  ClearDirtyState = 'ClearDirtyState'
 }
 
 export class CodeSnippet {
