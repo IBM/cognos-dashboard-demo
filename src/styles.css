@@ -75,7 +75,7 @@ select {
 .ngxAccordionCustomContainer {
   padding-left: 0px;
   padding-right: 0px;
-  min-width: 320px;
+  /* min-width: 320px; */
 }
 
 /* remove default paddings */
