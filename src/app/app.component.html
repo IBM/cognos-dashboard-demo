@@ -1,5 +1,5 @@
 <header>
-  <app-navbar></app-navbar>
+  <app-navbar (showPanels)=showPanels($event)></app-navbar>
 </header>
 
 <dde-dialog>
@@ -7,7 +7,7 @@
 
 <div class="container-fluid">
     <div class="row">
-      <div class="col-md-3 nav-bar navbar-expand-lg navbar-light bg-light">
+      <div *ngIf=showPanel class="col-md-3 nav-bar navbar-expand-lg navbar-light bg-light">
           <div class="ngxAccordionCustomContainer list-group text-md-left">
             <accordion [closeOthers]=true class="ngxAccordionCustom">
               <dde-dashboard (codeToRun)="getCodeSnippet($event)">
@@ -17,13 +17,13 @@
           <dde-references></dde-references>
       </div>
 
-      <div class="col-md-3">
+      <div *ngIf=showPanel class="col-md-3">
            <dde-code-explorer [codeSnippet]="code_snippet" (session)="sessionInfo($event)" (apiId)="getAPIId($event)"
             (dashboardApi)="getDashboardApi($event)">
            </dde-code-explorer>
         </div>
 
-        <div class="col-md-6">
+        <div [ngClass]="colSize">
            <dde-toaster></dde-toaster>
            <div *ngIf="parent_update_module_def_info" class="alert alert-success box-msg" role="alert">
              <strong>Module definition updated!</strong> see console log for before vs after

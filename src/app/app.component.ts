@@ -25,7 +25,8 @@ export class AppComponent implements OnInit {
   private session : Session = null;
   private toaster: Toaster;
   private message : string;
-  private showPanel: boolean = true;  
+  private showPanel: boolean;
+  private colSize: string = 'col-md-6';
 
   constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
@@ -36,6 +37,11 @@ export class AppComponent implements OnInit {
     } else {
       console.log('Production Mode');
     }
+  }
+
+  showPanels(event) {
+    this.showPanel = event;
+    this.colSize = event ? 'col-md-6' : 'col-md-12';
   }
 
   sessionInfo(event) {
