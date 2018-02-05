@@ -23,6 +23,26 @@
   padding: 0;
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  text-align: center;
+  margin-top: 22em;
+}
+
+.grid-item {
+  padding: 10px;
+}
+
+.steps-icons {
+  width: 5em;
+}
+
+.steps-copy {
+  font-family: "Helv Neue Roman";
+  font-size: 12px;
+}
+
 @media (max-width: 1200px) {
   .col-md-3 {
     min-width: 300px;

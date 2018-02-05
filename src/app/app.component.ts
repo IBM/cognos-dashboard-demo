@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   title = 'app';
 
   private apiId: string = '';
-  private dashboardApi: any;
+  private dashboardApi: any = null;
   public parent_update_module_def_info: string;
   private code_snippet: CodeSnippet;
   private session : Session = null;
