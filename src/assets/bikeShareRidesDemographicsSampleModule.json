@@ -41,7 +41,7 @@
       },
       {
         "name": "Latitude",
-        "datatype": "NVARCHAR(256)",
+        "datatype": "DOUBLE",
         "nullable": true,
         "description": "Latitude",
         "label": "Latitude",
@@ -50,7 +50,7 @@
       },
       {
         "name": "Longitude",
-        "datatype": "NVARCHAR(256)",
+        "datatype": "DOUBLE",
         "nullable": true,
         "description": "Longitude",
         "label": "Longitude",
