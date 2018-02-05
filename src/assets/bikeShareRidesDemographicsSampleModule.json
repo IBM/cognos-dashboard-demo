@@ -40,6 +40,24 @@
         "regularAggregate": "countDistinct"
       },
       {
+        "name": "Latitude",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Latitude",
+        "label": "Latitude",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Longitude",
+        "datatype": "NVARCHAR(256)",
+        "nullable": true,
+        "description": "Longitude",
+        "label": "Longitude",
+        "usage": "attribute",
+        "regularAggregate": "countDistinct"
+      },
+      {
         "name": "Year",
         "datatype": "BIGINT",
         "description": "Year",
