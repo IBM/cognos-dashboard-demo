@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppNavbarComponent implements OnInit {
 
-  constructor() { }
+  showPanel: boolean = false;
+  @Output() showPanels: EventEmitter<boolean> = new EventEmitter<boolean>();
+  constructor() {
+  }
 
   ngOnInit() {
+    this.showHidePanels();
+  }
+
+  showHidePanels() {
+    this.showPanel = !this.showPanel;
+    this.showPanels.emit(this.showPanel);
   }
 
 }

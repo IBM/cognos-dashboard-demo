@@ -73,16 +73,16 @@ select {
 
 /* remove default paddings */
 .ngxAccordionCustomContainer {
-  padding-left: 0px;
+  /* padding-left: 0px;
   padding-right: 0px;
-  min-width: 320px;
-}
+  /* min-width: 320px; */
+} */
 
 /* remove default paddings */
-.mainContentContainer {
+/* .mainContentContainer {
   padding-left: 0px;
   padding-right: 0px;
-}
+} */
 
 /* make sure list spans whole column height */
 .ngxAccordionCustomContainer .list-group {
@@ -148,28 +148,12 @@ ul, li {
 }
 
 pre {
-    display: table;
-    table-layout: fixed;
     width: 100%;
-    /* white-space: pre-wrap; */
+    height: 100%;
 }
-pre::before {
-    counter-reset: linenum;
-}
-pre span.tr {
-    display: table-row;
-    counter-increment: linenum;
-}
-pre span.th {
-    display: table-cell;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-}
-pre span.th::before {
-    content: counter(linenum);
-    text-align: center;
-    display: block;
+
+.line-numbers-rows {
+  line-height: 1.67em;
 }
 
 svg-icon {

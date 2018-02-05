@@ -1,0 +1,134 @@
+<pre *ngIf="codeType === 'CreateSession'" class="line-numbers">
+  <code class="language-javascript">
+    const response = await
+        this.http.post('/api/dde/session',
+          options).toPromise();
+
+      this.session.code =
+        response.json().sessionCode;
+
+      this.session.id =
+        response.json().sessionId;
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'CreateAPIFramework'"  class="line-numbers">
+  <code class="language-javascript">
+    this.api = new CognosApi({{ '{' }}
+      cognosRootURL: '{{ cognos_url }}',
+      sessionCode: this.session.code,
+      node: document.getElementById(
+        'containerDivId3')
+    });
+
+    await this.api.initialize();
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'CreateDashboard'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI =
+      await this.api.dashboard.createNew();
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'OpenDashboard'"  class="line-numbers">
+  <code class="language-javascript">
+    await this.getDashboardSampleSpec();
+    this.dashboardAPI = await
+      this.api.dashboard.openDashboard({{ '{' }}
+        dashboardSpec: this.sample_db_spec
+    });
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'AddCSVSource'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.addSources([{{ '{' }}
+      module: csv_sample_module,
+      name: 'Test CSV Source',
+      id: 'myUniqueId789'
+    });
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'AddProtectedCSVSource'"  class="line-numbers">
+  <code class="language-javascript">
+    var protectedSampleModule =
+      this.getProtectedSampleModule(
+      this.csv_sample_module);
+
+    this.dashboardAPI.addSources([{{ '{' }}
+      module: protectedSampleModule,
+      name: 'Protected CSV Source',
+      id: 'myUniqueId987'
+    });
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'AddBikeShareWeatherCSVSource'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.addSources([{{ '{' }}
+      module: bike_share_weather_csv_sample_module,
+      name: 'Test Bike Share Weather Source',
+      id: 'myUniqueId111'
+    });
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'AddBikeShareRidesDemographCSVSource'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.addSources([{{ '{' }}
+      module: bike_share_rides_demograph_csv_sample_module,
+      name: 'Test Bike Share Rides Demographics Source',
+      id: 'myUniqueId222'
+    });
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'DashboardEditMode'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.setMode(
+      this.dashboardAPI.MODES.EDIT);
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'DashboardViewMode'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.setMode(
+      this.dashboardAPI.MODES.VIEW);
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'DashboardEditGroupMode'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.setMode(
+      this.dashboardAPI.MODES.EDIT_GROUP);
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'UndoLastAction'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.undo();
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'RedoLastAction'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.redo();
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'GetDashboardSpec'"  class="line-numbers">
+  <code class="language-javascript">
+    const spec = await
+      this.dashboardAPI.getSpec();
+    console.log(JSON.stringify(spec));
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'ClearDirtyState'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.clearDirty();
+  </code>
+</pre>

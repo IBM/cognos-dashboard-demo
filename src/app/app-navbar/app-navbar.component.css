@@ -1,3 +1,13 @@
 nav {
   height: 2em;
 }
+
+.fa-columns {
+  font-size: 20px;
+  margin-bottom: 0.4em;
+  padding: 1em;
+}
+
+.fa-columns:hover {
+  color: #fff;
+}

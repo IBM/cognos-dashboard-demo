@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { DdeApiService } from '../services/dde-api.service';
 import { Session } from '../../model/session';
 import { CodeSnippet, CodeSnippetEnum } from '../../model/code-snippet';
 import { CSVDataSource, ProtectedCSVDataSource, /*DB2DataSource, ProtectedDB2DataSource,*/ BikeShareWeatherCSVSource, BikeShareRidesDemographCSVSource } from '../../model/data-source';
 import { CodeSnippetsRepoService } from '../services/code-snippets-repo.service';
 import * as DashboardMode from '../../model/dashboard-mode';
+declare var Prism: any;
 
 @Component({
   selector: 'dde-code-explorer',
@@ -23,10 +24,11 @@ export class DdeCodeExplorerComponent implements OnInit {
 
   constructor(private ddeApiService: DdeApiService, private codeSnippetsRepoService: CodeSnippetsRepoService) { }
 
-  ngOnInit() {    
+  ngOnInit() {
   }
 
   setExplorerDiv() {
+      Prism.highlightAll();
       let classes =  {
           divsmall: this.codeSnippet && this.codeSnippet.size === 'small',
           divlarge: !this.codeSnippet || this.codeSnippet.size === 'large'
@@ -90,7 +92,7 @@ export class DdeCodeExplorerComponent implements OnInit {
         this.ddeApiService.getDashboardSpec();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.ClearDirtyState) {
-        this.ddeApiService.clearDirtyState();  
+        this.ddeApiService.clearDirtyState();
       }
     }
     catch(e) {
@@ -98,9 +100,7 @@ export class DdeCodeExplorerComponent implements OnInit {
       this.session.emit(null);
       this.apiId.emit('');
     }
-}
-
-
+  }
 
   onSelect(sourceValue) {
     for (var i = 0; i < this.dataSources.length; i++) {

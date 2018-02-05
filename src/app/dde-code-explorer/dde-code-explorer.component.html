@@ -7,15 +7,8 @@
   </div>
 </div>
 
-<div class="code-block-div row" [ngClass]="setExplorerDiv()">
-  <div class="column-left">
-  </div>
-  <div class="column-right">
-    <pre class="code">
-      <code [innerHTML]="codeSnippet?.code">
-      </code>
-    </pre>
-  </div>
+<div class="row" [ngClass]="setExplorerDiv()">
+  <dde-code-snippet class="code-snippet" [codeType]="codeSnippet.selection"></dde-code-snippet>
 </div>
 
 <div class="secondary-panel" *ngIf="showSessionPanel()">
@@ -57,7 +50,8 @@
 
   <div class="panel-link">
     <a class="nav-link" href="#" target="_blank">
-      Learn how to work with your own datasource <i class="fa fa-link float-right" ></i>
+      Learn how to work with your own datasource
+      <svg-icon class="link-image" src="../assets/images/link_16.svg"></svg-icon>
     </a>
   </div>
 </div>

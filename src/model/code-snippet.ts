@@ -20,6 +20,6 @@ export enum CodeSnippetEnum {
 }
 
 export class CodeSnippet {
-   constructor(public selection: CodeSnippetEnum, public code: string, public size: string) {
+   constructor(public selection: CodeSnippetEnum, public size: string) {
    }
 }

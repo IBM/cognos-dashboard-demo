@@ -1,5 +1,4 @@
 <accordion-group [isOpen]="isFirstOpen" panelClass="bg-light">
-
   <div accordion-heading class="navbar-brand">
     1. Set up an API framework
   </div>
@@ -14,9 +13,6 @@
              <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateAPIFramework'}" href="#" (click)='displayInitApiFrameworkCode()'>
                <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateAPIFramework'"></i>
                Create & Init API framework
-             </a>
-             <a class="nav-link" href="#" (click)='updateModuleDefinitions($event)'>
-               Update Module Definitions
              </a>
            </li>
          </ul>
@@ -69,6 +65,9 @@
           </a>
           <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'GetDashboardSpec'}" href="#" (click)='getDashboardSpec()'>
             Get Dashboard Spec
+          </a>
+          <a class="nav-link" href="#" (click)='updateModuleDefinitions($event)'>
+            Update Module Definitions
           </a>
           <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'ClearDirtyState'}" href="#" (click)='clearDirtyState()'>
             Clear Dashboard Dirty State
