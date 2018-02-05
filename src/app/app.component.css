@@ -1,6 +1,6 @@
 
 .iframeContainer {
-  height: 800px; /* temp solution */  /*height: 95%;*/
+  height: 700px; /* temp solution */  /*height: 95%;*/
   display: flex;
   flex-direction: column;
 }
