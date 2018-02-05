@@ -57,14 +57,9 @@ export class DdeApiService {
           });
     this.api._node.hidden = false;
 
-   //  try {
-   //   var test = await this.api.initialize();
-   //   test;
-   // }
-   // catch (e) {
-   //   return 'in here';
-   // }
-
+     // TODO: as confirmed with Jim, use event handler instead of try/catch to catch 'invalid session' errors, waiting for
+     // events to be added by Jim
+     // https://bajazz05.canlab.ibm.com:9750/ccm/web/projects/Business%20Intelligence#action=com.ibm.team.workitem.viewWorkItem&id=217618
       await this.api.initialize();
 
       console.log('API created successfully.');
@@ -275,7 +270,7 @@ export class DdeApiService {
     console.log(JSON.stringify(spec));
   }
 
-
+  // update the boolean that is used for the onDirty events
   clearDirtyState() {
       this.dashboardAPI.clearDirty();
   }
