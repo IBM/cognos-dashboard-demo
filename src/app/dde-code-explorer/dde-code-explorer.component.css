@@ -12,16 +12,10 @@
   overflow: scroll;
 }
 
-code {
-  color: #eaeaea;
-  display: inline-block;
-  margin-top: 40px;
+.code-snippet {
+  margin-top: 1.5em;
+  width: 100%;
 }
-
-pre {
-  height: 100%;
-}
-
 .explorer-bar {
   background-color: #000;
   width: 100%;
@@ -49,16 +43,6 @@ pre {
 
 .button:hover {
   color: #c0bfc0;
-}
-
-.column-left {
-    width: 8%;
-    background-color: #343334;
-}
-
-.column-right {
-    width: 92%;
-    margin-left: -1.5em;
 }
 
 .panel-info {

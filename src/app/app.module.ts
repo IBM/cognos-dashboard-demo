@@ -26,6 +26,7 @@ import { CodeSnippetsRepoService } from './services/code-snippets-repo.service';
 import { DdeDialogComponent } from './dde-dialog/dde-dialog.component';
 import { DdeReferencesComponent } from './dde-references/dde-references.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { DdeCodeSnippetComponent } from './dde-code-snippet/dde-code-snippet.component';
 
 
 /*
@@ -51,7 +52,8 @@ const ROUTES = [
     DdeDashboardComponent,
     DdeToasterComponent,
     DdeDialogComponent,
-    DdeReferencesComponent
+    DdeReferencesComponent,
+    DdeCodeSnippetComponent
   ],
   imports: [
     BrowserModule,
