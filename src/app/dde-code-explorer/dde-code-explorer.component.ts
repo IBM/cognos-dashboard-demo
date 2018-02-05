@@ -91,6 +91,9 @@ export class DdeCodeExplorerComponent implements OnInit {
       else if (this.codeSnippet.selection === CodeSnippetEnum.GetDashboardSpec) {
         this.ddeApiService.getDashboardSpec();
       }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.UpdateModuleDefinitions) {
+        this.ddeApiService.updateModuleDefinitions();
+      }
       else if (this.codeSnippet.selection === CodeSnippetEnum.ClearDirtyState) {
         this.ddeApiService.clearDirtyState();
       }

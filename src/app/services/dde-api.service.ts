@@ -270,6 +270,60 @@ export class DdeApiService {
     console.log(JSON.stringify(spec));
   }
 
+  async updateModuleDefinitions() {
+    /*
+    // Clone our test spec since we don't want this example to change it
+    var dbSpec = JSON.parse(JSON.stringify(sampleSpec));
+
+    var getNewModulesCallback = function(ids) {
+        var newModules = [];
+        ids.forEach(function(id) {
+            newModules.push({
+                id: id,
+                module: {
+                    newModuleDefinition: true
+                },
+                name: 'newModuleName',
+            });
+        });
+        return Promise.resolve(newModules);
+    };
+
+    // Log the before
+    console.log(dbSpec.dataSources.sources);
+
+    window.api.updateModuleDefinitions(dbSpec, getNewModulesCallback).then(function(newDBSpec) {
+        console.log(newDBSpec.dataSources.sources);
+    });
+    */
+
+    //var dbSpec = JSON.parse(JSON.stringify(this.sample_db_spec));
+    await this.getDashboardSampleSpec();
+    var dbSpec = JSON.parse(JSON.stringify(this.sample_db_spec));
+
+    var getNewModulesCallback = function(ids) {
+        var newModules = [];
+        ids.forEach(function(id) {
+            newModules.push({
+                id: id,
+                module: {
+                    newModuleDefinition: true
+                },
+                name: 'newModuleName',
+            });
+        });
+        return Promise.resolve(newModules);
+    };
+
+    // Log the before
+    console.log("before update:");
+    console.log(dbSpec.dataSources.sources);
+
+    console.log("after update:");
+    const newDBSpec = await this.api.updateModuleDefinitions(dbSpec, getNewModulesCallback);
+    console.log(newDBSpec.dataSources.sources);
+  }
+
   // update the boolean that is used for the onDirty events
   clearDirtyState() {
       this.dashboardAPI.clearDirty();

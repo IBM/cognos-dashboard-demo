@@ -27,6 +27,7 @@ export class CodeSnippetsRepoService {
     this.snippets.set(CodeSnippetEnum.UndoLastAction, new CodeSnippet(CodeSnippetEnum.UndoLastAction, 'large'));
     this.snippets.set(CodeSnippetEnum.RedoLastAction, new CodeSnippet(CodeSnippetEnum.RedoLastAction, 'large'));
     this.snippets.set(CodeSnippetEnum.GetDashboardSpec, new CodeSnippet(CodeSnippetEnum.GetDashboardSpec, 'large'));
+    this.snippets.set(CodeSnippetEnum.UpdateModuleDefinitions, new CodeSnippet(CodeSnippetEnum.UpdateModuleDefinitions, 'large'));
     this.snippets.set(CodeSnippetEnum.ClearDirtyState, new CodeSnippet(CodeSnippetEnum.ClearDirtyState, 'large'));
   }
 

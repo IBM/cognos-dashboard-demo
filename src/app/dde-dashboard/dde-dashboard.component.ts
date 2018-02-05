@@ -77,41 +77,7 @@ export class DdeDashboardComponent implements OnInit {
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
 
-  updateModuleDefinitions() {
-    // console.log("in update module definitions");
-    //
-    // var dbSpec = JSON.parse(JSON.stringify(this.sample_db_spec));
-    // console.log(dbSpec);
-    //
-    // var getNewModulesCallback = function(ids) {
-    //     var newModules = [];
-    //     ids.forEach(function(id) {
-    //         newModules.push({
-    //             id: id,
-    //             module: {
-    //                 newModuleDefinition: true
-    //             },
-    //             name: 'newModuleName',
-    //         });
-    //     });
-    //     return Promise.resolve(newModules);
-    // };
-    //
-    // /* Log the before */
-    // console.log("before:");
-    // console.log(dbSpec.dataSources.sources);
-    //
-    // let self = this;
-    // this.api.updateModuleDefinitions(dbSpec, getNewModulesCallback).then(function(newDBSpec) {
-    //     self.updated_db_spec = JSON.stringify(newDBSpec);
-    //     //console.log("updated dbspec:" + self.updated_db_spec);
-    //     console.log("after:");
-    //     console.log(newDBSpec.dataSources.sources);
-    //     self.moduleDefinitionUpdated.emit("test");
-    // });
-    //
-    //
-     }
+
 
 
   displayCreateDashboardCode() {
@@ -158,6 +124,44 @@ export class DdeDashboardComponent implements OnInit {
     this.currentSelection = CodeSnippetEnum.GetDashboardSpec;
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
+
+  updateModuleDefinitions() {
+    this.currentSelection = CodeSnippetEnum.UpdateModuleDefinitions;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+    // console.log("in update module definitions");
+    //
+    // var dbSpec = JSON.parse(JSON.stringify(this.sample_db_spec));
+    // console.log(dbSpec);
+    //
+    // var getNewModulesCallback = function(ids) {
+    //     var newModules = [];
+    //     ids.forEach(function(id) {
+    //         newModules.push({
+    //             id: id,
+    //             module: {
+    //                 newModuleDefinition: true
+    //             },
+    //             name: 'newModuleName',
+    //         });
+    //     });
+    //     return Promise.resolve(newModules);
+    // };
+    //
+    // /* Log the before */
+    // console.log("before:");
+    // console.log(dbSpec.dataSources.sources);
+    //
+    // let self = this;
+    // this.api.updateModuleDefinitions(dbSpec, getNewModulesCallback).then(function(newDBSpec) {
+    //     self.updated_db_spec = JSON.stringify(newDBSpec);
+    //     //console.log("updated dbspec:" + self.updated_db_spec);
+    //     console.log("after:");
+    //     console.log(newDBSpec.dataSources.sources);
+    //     self.moduleDefinitionUpdated.emit("test");
+    // });
+    //
+    //
+     }
 
   clearDirtyState() {
     this.currentSelection = CodeSnippetEnum.ClearDirtyState;

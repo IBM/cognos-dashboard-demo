@@ -127,6 +127,23 @@
   </code>
 </pre>
 
+<pre *ngIf="codeType === 'UpdateModuleDefinitions'"  class="line-numbers">
+  <code class="language-javascript">
+    await this.getDashboardSampleSpec();
+    var dbSpec = JSON.parse(JSON.stringify(this.sample_db_spec));
+
+    // TODO
+
+    // Log the before
+    console.log("before update:");
+    console.log(dbSpec.dataSources.sources);
+
+    console.log("after update:");
+    const newDBSpec = await this.api.updateModuleDefinitions(dbSpec, getNewModulesCallback);
+    console.log(newDBSpec.dataSources.sources);
+  </code>
+</pre>
+
 <pre *ngIf="codeType === 'ClearDirtyState'"  class="line-numbers">
   <code class="language-javascript">
     this.dashboardAPI.clearDirty();

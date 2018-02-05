@@ -16,6 +16,7 @@ export enum CodeSnippetEnum {
   UndoLastAction = 'UndoLastAction',
   RedoLastAction = 'RedoLastAction',
   GetDashboardSpec = 'GetDashboardSpec',
+  UpdateModuleDefinitions = 'UpdateModuleDefinitions',
   ClearDirtyState = 'ClearDirtyState'
 }
 
