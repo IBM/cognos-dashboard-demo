@@ -35,12 +35,11 @@
 }
 
 .steps-icons {
-  width: 5em;
+  width: 12em;
 }
 
 .steps-copy {
   font-family: "Helv Neue Roman";
-  font-size: 12px;
 }
 
 @media (max-width: 1200px) {
