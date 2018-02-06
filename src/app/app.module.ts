@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { DdeCodeExplorerComponent } from './dde-code-explorer/dde-code-explorer.component';
 import { DdeDashboardComponent } from './dde-dashboard/dde-dashboard.component';
@@ -63,7 +64,8 @@ const ROUTES = [
     ModalModule.forRoot(),
     FormsModule,
     HttpClientModule,
-    AngularSvgIconModule
+    AngularSvgIconModule,
+    TooltipModule.forRoot()
     //RouterModule.forRoot(ROUTES), // Add routes to the app
     //AngularFireModule.initializeApp(environment.firebase),
     //AngularFireDatabaseModule,

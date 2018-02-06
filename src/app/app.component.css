@@ -27,7 +27,7 @@
   display: grid;
   grid-template-columns: auto auto auto;
   text-align: center;
-  margin-top: 22em;
+  margin-top: 15em;
 }
 
 .grid-item {
