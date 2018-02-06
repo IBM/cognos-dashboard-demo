@@ -25,7 +25,6 @@ export class DdeDashboardComponent implements OnInit {
 
   public client_id : string;
   public client_secret: string;
-  //public sample_db_spec : string;
   public updated_db_spec : string;
   public code_samples: string;
   private collapsed: boolean = true;
@@ -77,9 +76,6 @@ export class DdeDashboardComponent implements OnInit {
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
 
-
-
-
   displayCreateDashboardCode() {
     this.currentSelection = CodeSnippetEnum.CreateDashboard;
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
@@ -100,16 +96,6 @@ export class DdeDashboardComponent implements OnInit {
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
 
-/*
-  setDashboardViewMode() {
-    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.DashboardViewMode));
-  }
-
-  setDashboardEditGroupMode() {
-    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.DashboardEditGroupMode));
-  }
-*/
-
   undoLastAction() {
     this.currentSelection = CodeSnippetEnum.UndoLastAction;
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
@@ -128,43 +114,16 @@ export class DdeDashboardComponent implements OnInit {
   updateModuleDefinitions() {
     this.currentSelection = CodeSnippetEnum.UpdateModuleDefinitions;
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
-    // console.log("in update module definitions");
-    //
-    // var dbSpec = JSON.parse(JSON.stringify(this.sample_db_spec));
-    // console.log(dbSpec);
-    //
-    // var getNewModulesCallback = function(ids) {
-    //     var newModules = [];
-    //     ids.forEach(function(id) {
-    //         newModules.push({
-    //             id: id,
-    //             module: {
-    //                 newModuleDefinition: true
-    //             },
-    //             name: 'newModuleName',
-    //         });
-    //     });
-    //     return Promise.resolve(newModules);
-    // };
-    //
-    // /* Log the before */
-    // console.log("before:");
-    // console.log(dbSpec.dataSources.sources);
-    //
-    // let self = this;
-    // this.api.updateModuleDefinitions(dbSpec, getNewModulesCallback).then(function(newDBSpec) {
-    //     self.updated_db_spec = JSON.stringify(newDBSpec);
-    //     //console.log("updated dbspec:" + self.updated_db_spec);
-    //     console.log("after:");
-    //     console.log(newDBSpec.dataSources.sources);
-    //     self.moduleDefinitionUpdated.emit("test");
-    // });
-    //
-    //
      }
 
   clearDirtyState() {
     this.currentSelection = CodeSnippetEnum.ClearDirtyState;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  // TODO: refactor, take in CodeSnippetEnum value and make these methods generic when firing the codeToRun event
+  togglePropertiesPane() {
+    this.currentSelection = CodeSnippetEnum.TogglePropertiesPane;
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
 }

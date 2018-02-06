@@ -132,7 +132,19 @@
     await this.getDashboardSampleSpec();
     var dbSpec = JSON.parse(JSON.stringify(this.sample_db_spec));
 
-    // TODO
+    var getNewModulesCallback = function(ids) {{ '{' }}
+      var newModules = [];
+      ids.forEach(function(id) {{ '{' }}
+        newModules.push({{ '{' }}
+          id: id,
+          module: {{ '{' }}
+            newModuleDefinition: true
+          },
+          name: 'newModuleName',
+        });
+      });
+      return Promise.resolve(newModules);
+    };
 
     // Log the before
     console.log("before update:");
@@ -147,5 +159,11 @@
 <pre *ngIf="codeType === 'ClearDirtyState'"  class="line-numbers">
   <code class="language-javascript">
     this.dashboardAPI.clearDirty();
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'TogglePropertiesPane'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.toggleProperties();
   </code>
 </pre>

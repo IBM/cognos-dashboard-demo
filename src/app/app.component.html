@@ -18,10 +18,10 @@
       </div>
 
       <div *ngIf=showPanel class="col-md-3">
-           <dde-code-explorer [codeSnippet]="code_snippet" (session)="sessionInfo($event)" (apiId)="getAPIId($event)"
-            (dashboardApi)="getDashboardApi($event)">
-           </dde-code-explorer>
-        </div>
+        <dde-code-explorer [codeSnippet]="code_snippet" (session)="sessionInfo($event)" (apiId)="getAPIId($event)"
+          (dashboardApi)="getDashboardApi($event)" (dashboardSpec)="getDashboardSpec($event)">
+        </dde-code-explorer>
+      </div>
 
         <div [ngClass]="colSize">
            <dde-toaster></dde-toaster>

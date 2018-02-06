@@ -29,6 +29,7 @@ export class CodeSnippetsRepoService {
     this.snippets.set(CodeSnippetEnum.GetDashboardSpec, new CodeSnippet(CodeSnippetEnum.GetDashboardSpec, 'large'));
     this.snippets.set(CodeSnippetEnum.UpdateModuleDefinitions, new CodeSnippet(CodeSnippetEnum.UpdateModuleDefinitions, 'large'));
     this.snippets.set(CodeSnippetEnum.ClearDirtyState, new CodeSnippet(CodeSnippetEnum.ClearDirtyState, 'large'));
+    this.snippets.set(CodeSnippetEnum.TogglePropertiesPane, new CodeSnippet(CodeSnippetEnum.TogglePropertiesPane, 'large'));
   }
 
   getSnippet(name) : CodeSnippet {

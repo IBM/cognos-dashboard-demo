@@ -16,6 +16,7 @@ export class DdeCodeExplorerComponent implements OnInit {
   @Output() session: EventEmitter<Session> = new EventEmitter<Session>();
   @Output() apiId: EventEmitter<string> = new EventEmitter<string>();
   @Output() dashboardApi: EventEmitter<string> = new EventEmitter<string>();
+  @Output() dashboardSpec: EventEmitter<void> = new EventEmitter<void>();
   @Input() codeSnippet : CodeSnippet;
   dataSources = [CSVDataSource, ProtectedCSVDataSource, /*DB2DataSource, ProtectedDB2DataSource,*/ BikeShareWeatherCSVSource, BikeShareRidesDemographCSVSource ];
   dashboardModes = [DashboardMode.EditMode, DashboardMode.ViewMode, DashboardMode.EditGroupMode];
@@ -89,13 +90,17 @@ export class DdeCodeExplorerComponent implements OnInit {
         this.ddeApiService.redoLastAction();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.GetDashboardSpec) {
-        this.ddeApiService.getDashboardSpec();
+        await this.ddeApiService.getDashboardSpec();
+        this.dashboardSpec.emit();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.UpdateModuleDefinitions) {
         this.ddeApiService.updateModuleDefinitions();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.ClearDirtyState) {
         this.ddeApiService.clearDirtyState();
+      }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.TogglePropertiesPane) {
+        this.ddeApiService.togglePropertiesPane();
       }
     }
     catch(e) {
