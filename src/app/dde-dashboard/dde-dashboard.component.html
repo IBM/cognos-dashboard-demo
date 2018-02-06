@@ -1,6 +1,6 @@
 <accordion-group [isOpen]="isFirstOpen" panelClass="bg-light">
   <div accordion-heading class="navbar-brand">
-    1. Set up an API framework
+    1. Set the API framework
   </div>
   <div class="col-md-12">
        <div class="row">
@@ -8,11 +8,11 @@
            <li>
              <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateSession'}" href="#" (click)='displayNewSessionCode()'>
                <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateSession'"></i>
-               Create a session for the API
+               Create a session
              </a>
              <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateAPIFramework'}" href="#" (click)='displayInitApiFrameworkCode()'>
                <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateAPIFramework'"></i>
-               Create & Init API framework
+               Initialize the API framework
              </a>
            </li>
          </ul>
@@ -22,7 +22,7 @@
 
 <accordion-group [isOpen]="nextStepToProcess() === 'CreateDashboard'" panelClass="bg-light">
   <div accordion-heading class="navbar-brand">
-    2. Open or Create Dashboard
+    2. Open or create dashboard
   </div>
 
   <div class="col-md-12">
@@ -31,10 +31,10 @@
            <li>
              <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'OpenDashboard'}" href="#" (click)='displayOpenDashboardCode()'>
                <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateDashboard'"></i>
-               Open Dashboard
+               Open dashboard
              </a>
              <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateDashboard'}" href="#" (click)='displayCreateDashboardCode()'>
-               Create Dashboard
+               Create dashboard
              </a>
            </li>
          </ul>
@@ -44,39 +44,51 @@
 
 <accordion-group [isOpen]="nextStepToProcess() === 'AddCSVSource'" panelClass="bg-light">
   <div accordion-heading class="navbar-brand">
-    3. Interact with Dashboard
+    3. Dashboard interactions
   </div>
   <div class="col-md-12">
     <div class="row">
       <ul class="navbar-nav">
-
         <li>
           <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'AddCSVSource'}" href="#" (click)='addSourcesToDashboard()'>
-            Add sources to dashboard
+            Add data source
           </a>
           <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'DashboardEditMode'}" href="#" (click)='setDashboardEditMode()'>
-            Set Dashboard Mode
+            Set dashboard mode
           </a>
           <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UndoLastAction'}" href="#" (click)='undoLastAction()'>
-            Undo Last Action
+            Undo last change
           </a>
           <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'RedoLastAction'}" href="#" (click)='redoLastAction()'>
-            Redo Last Action
+            Redo last change
           </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</accordion-group>
+
+<accordion-group panelClass="bg-light">
+  <div accordion-heading class="navbar-brand">
+    4. Support APIs
+  </div>
+  <div class="col-md-12">
+    <div class="row">
+      <ul class="navbar-nav">
+        <li>
           <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'GetDashboardSpec'}" href="#" (click)='getDashboardSpec()'>
-            Get Dashboard Spec
-          </a>
-          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UpdateModuleDefinitions'}" href="#" (click)='updateModuleDefinitions()'>
-            Update Module Definitions
+            Get dashboard specification
           </a>
           <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'ClearDirtyState'}" href="#" (click)='clearDirtyState()'>
-            Clear Dashboard Dirty State
+            Clear dashboard dirty state
+          </a>
+          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UpdateModuleDefinitions'}" href="#" (click)='updateModuleDefinitions()'>
+            Update data source definition
           </a>
           <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'TogglePropertiesPane'}" href="#" (click)='togglePropertiesPane()'>
             Toggle Properties Pane
           </a>
         </li>
-
       </ul>
     </div>
   </div>
