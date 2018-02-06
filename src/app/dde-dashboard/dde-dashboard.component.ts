@@ -114,7 +114,7 @@ export class DdeDashboardComponent implements OnInit {
   updateModuleDefinitions() {
     this.currentSelection = CodeSnippetEnum.UpdateModuleDefinitions;
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
-     }
+  }
 
   clearDirtyState() {
     this.currentSelection = CodeSnippetEnum.ClearDirtyState;
