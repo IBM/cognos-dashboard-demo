@@ -17,7 +17,8 @@ export enum CodeSnippetEnum {
   RedoLastAction = 'RedoLastAction',
   GetDashboardSpec = 'GetDashboardSpec',
   UpdateModuleDefinitions = 'UpdateModuleDefinitions',
-  ClearDirtyState = 'ClearDirtyState'
+  ClearDirtyState = 'ClearDirtyState',
+  TogglePropertiesPane = 'TogglePropertiesPane'
 }
 
 export class CodeSnippet {

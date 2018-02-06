@@ -329,4 +329,8 @@ export class DdeApiService {
       this.dashboardAPI.clearDirty();
   }
 
+  togglePropertiesPane() {
+      this.dashboardAPI.toggleProperties();
+  }
+
 }

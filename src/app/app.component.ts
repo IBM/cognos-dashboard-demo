@@ -88,6 +88,11 @@ export class AppComponent implements OnInit {
     }
   }
 
+  getDashboardSpec(event) {
+    this.message = 'Dashboard spec retrieved successfully. See console for details.';
+    this.setToaster(this.message, 'success', true);
+  }
+
   // set the code snippt to what was fired over
   getCodeSnippet(event) {
     this.code_snippet = event;
