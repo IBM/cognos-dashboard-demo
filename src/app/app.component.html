@@ -14,7 +14,7 @@
               </dde-dashboard>
             </accordion>
           </div>
-          <dde-references></dde-references>
+          <dde-references (isShowVideo)=showVideo()></dde-references>
       </div>
 
       <div *ngIf=showPanel class="col-md-3">
@@ -25,9 +25,8 @@
       </div>
 
         <div [ngClass]="colSize">
-           <dde-toaster></dde-toaster>
-
            <div class="iframeContainer" id="containerDivId3">
+             <dde-toaster class="toaster"></dde-toaster>
              <div class="grid-container">
                <div class="grid-item">
                  <img class="steps-icons" src="../assets/images/exploreApi.png"/>

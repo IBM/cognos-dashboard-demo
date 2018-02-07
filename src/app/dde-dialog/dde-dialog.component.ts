@@ -9,7 +9,6 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 export class DdeDialogComponent implements AfterViewInit {
   @ViewChild('lgModal') public lgModal: ModalDirective;
   @ViewChild('ddeVideo') ddeVideo: any;
-  isChecked: boolean;
 
   constructor() {
   }
@@ -23,6 +22,7 @@ export class DdeDialogComponent implements AfterViewInit {
   }
 
   showModal() {
+    this.ddeVideo.nativeElement.load();
     this.lgModal.show();
   }
 
