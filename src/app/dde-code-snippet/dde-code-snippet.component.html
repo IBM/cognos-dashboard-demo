@@ -150,6 +150,7 @@
     console.log("before update:");
     console.log(dbSpec.dataSources.sources);
 
+    // Log the after
     console.log("after update:");
     const newDBSpec = await this.api.updateModuleDefinitions(dbSpec, getNewModulesCallback);
     console.log(newDBSpec.dataSources.sources);

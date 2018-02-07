@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
 
   private apiId: string = '';
   private dashboardApi: any = null;
-  public parent_update_module_def_info: string;
   private code_snippet: CodeSnippet;
   private session : Session = null;
   private toaster: Toaster;
@@ -97,6 +96,16 @@ export class AppComponent implements OnInit {
 
   getDashboardSpec(event) {
     this.message = 'Dashboard spec retrieved successfully. See console for details.';
+    this.setToaster(this.message, 'success', true);
+  }
+
+  updateModuleDefinitions(event) {
+    this.message = 'Module Definitions updated successfully. See console for details.';
+    this.setToaster(this.message, 'success', true);
+  }
+
+  clearDirtyState(event) {
+    this.message = 'Dirty State cleared successfully. See console for details.';
     this.setToaster(this.message, 'success', true);
   }
 
