@@ -62,6 +62,9 @@
           <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'RedoLastAction'}" href="#" (click)='redoLastAction()'>
             Redo last change
           </a>
+          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'TogglePropertiesPane'}" href="#" (click)='togglePropertiesPane()'>
+            Toggle Properties Pane
+          </a>
         </li>
       </ul>
     </div>
@@ -85,8 +88,11 @@
           <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UpdateModuleDefinitions'}" href="#" (click)='updateModuleDefinitions()'>
             Update data source definition
           </a>
-          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'TogglePropertiesPane'}" href="#" (click)='togglePropertiesPane()'>
-            Toggle Properties Pane
+          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'registerCallback'}" href="#" (click)='registerCallback()'>
+            Register callback to dashboard event
+          </a>
+          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'unregisterCallback'}" href="#" (click)='unregisterCallback()'>
+            Unregister callback to dashboard event
           </a>
         </li>
       </ul>

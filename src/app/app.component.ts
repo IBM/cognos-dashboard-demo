@@ -102,6 +102,16 @@ export class AppComponent implements OnInit {
     this.setToaster(this.message, 'success', true);
   }
 
+  registerCallback(event) {
+    this.message = 'Callback registered successfully. See console for details.';
+    this.setToaster(this.message, 'success', true);
+  }
+
+  unregisterCallback(event) {
+    this.message = 'Callback unregistered successfully. See console for details.';
+    this.setToaster(this.message, 'success', true);
+  }
+
   // set the code snippt to what was fired over
   getCodeSnippet(event) {
     this.code_snippet = event;

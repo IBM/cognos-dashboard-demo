@@ -40,10 +40,14 @@ export class DdeApiService {
     }
 
     let options = new RequestOptions({headers: contentHeaders});
+
     const response = await this.http.post('/api/dde/session', options).toPromise();
-    this.session.code = response.json().sessionCode;
-    this.session.id = response.json().sessionId;
-    this.session.keys = response.json().keys.map(k => new SessionKey(k));
+
+    const data = response.json();
+    console.log(data);
+    this.session.code = data.sessionCode;
+    this.session.id = data.sessionId;
+    this.session.keys = data.keys.map(k => new SessionKey(k));
     return this.session;
   }
 
@@ -84,11 +88,6 @@ export class DdeApiService {
     );*/
     console.log("in create dashboard");
     this.dashboardAPI = await this.api.dashboard.createNew();
-
-    // TODO: move to seperate call
-    this.dashboardAPI.on(this.dashboardAPI.EVENTS.DIRTY, function(event) {
-        console.log('onDirty:' + JSON.stringify(event));
-    });
 
     console.log('Dashboard created successfully.');
     console.log(this.dashboardAPI);
@@ -260,6 +259,10 @@ export class DdeApiService {
     this.dashboardAPI.redo();
   }
 
+  togglePropertiesPane() {
+      this.dashboardAPI.toggleProperties();
+  }
+
   async getDashboardSpec() {
     /*
     dashboardAPI.getSpec().then(function(spec){
@@ -315,10 +318,11 @@ export class DdeApiService {
         return Promise.resolve(newModules);
     };
 
-    // Log the before
+    // log the before
     console.log("before update:");
     console.log(dbSpec.dataSources.sources);
 
+    // log the after
     console.log("after update:");
     const newDBSpec = await this.api.updateModuleDefinitions(dbSpec, getNewModulesCallback);
     console.log(newDBSpec.dataSources.sources);
@@ -329,8 +333,29 @@ export class DdeApiService {
       this.dashboardAPI.clearDirty();
   }
 
-  togglePropertiesPane() {
-      this.dashboardAPI.toggleProperties();
+  // handle the event when the dashboard is modified
+  onModified(event) {
+
+    // if not dirty, JSON.stringify(event) would be {"value":false}
+    if (event != null && event.value == true) {
+      console.log('dashboard has been modified: ');
+    }
+    console.log(JSON.stringify(event));
   }
+
+  // register the event handler
+  registerCallback() {
+    this.dashboardAPI.on(this.dashboardAPI.EVENTS.DIRTY, this.onModified);
+/*
+    this.dashboardAPI.on(this.dashboardAPI.EVENTS.DIRTY, function(event) {
+        console.log('onDirty:' + JSON.stringify(event));
+    });
+*/
+  }
+
+  unregisterCallback() {
+    this.dashboardAPI.off(this.dashboardAPI.EVENTS.DIRTY, this.onModified);
+  }
+
 
 }

@@ -15,10 +15,12 @@ export enum CodeSnippetEnum {
   DashboardEditGroupMode = 'DashboardEditGroupMode',
   UndoLastAction = 'UndoLastAction',
   RedoLastAction = 'RedoLastAction',
+  TogglePropertiesPane = 'TogglePropertiesPane',
   GetDashboardSpec = 'GetDashboardSpec',
   UpdateModuleDefinitions = 'UpdateModuleDefinitions',
   ClearDirtyState = 'ClearDirtyState',
-  TogglePropertiesPane = 'TogglePropertiesPane'
+  RegisterCallback = 'RegisterCallback',
+  UnregisterCallback = 'UnregisterCallback'
 }
 
 export class CodeSnippet {

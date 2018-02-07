@@ -66,6 +66,8 @@ export class DdeDashboardComponent implements OnInit {
     );
   }
 
+  // TODO: refactor, take in CodeSnippetEnum value and make these methods generic when firing the codeToRun event
+
   displayNewSessionCode() {
     this.currentSelection = CodeSnippetEnum.CreateSession;
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
@@ -106,6 +108,11 @@ export class DdeDashboardComponent implements OnInit {
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
 
+  togglePropertiesPane() {
+    this.currentSelection = CodeSnippetEnum.TogglePropertiesPane;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
   getDashboardSpec() {
     this.currentSelection = CodeSnippetEnum.GetDashboardSpec;
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
@@ -121,9 +128,14 @@ export class DdeDashboardComponent implements OnInit {
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
 
-  // TODO: refactor, take in CodeSnippetEnum value and make these methods generic when firing the codeToRun event
-  togglePropertiesPane() {
-    this.currentSelection = CodeSnippetEnum.TogglePropertiesPane;
+  registerCallback() {
+    this.currentSelection = CodeSnippetEnum.RegisterCallback;
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
+
+  unregisterCallback() {
+    this.currentSelection = CodeSnippetEnum.UnregisterCallback;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
 }

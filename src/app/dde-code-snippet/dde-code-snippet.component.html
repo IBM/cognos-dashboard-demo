@@ -146,11 +146,11 @@
       return Promise.resolve(newModules);
     };
 
-    // Log the before
+    // log the before
     console.log("before update:");
     console.log(dbSpec.dataSources.sources);
 
-    // Log the after
+    // log the after
     console.log("after update:");
     const newDBSpec = await this.api.updateModuleDefinitions(dbSpec, getNewModulesCallback);
     console.log(newDBSpec.dataSources.sources);
@@ -166,5 +166,17 @@
 <pre *ngIf="codeType === 'TogglePropertiesPane'"  class="line-numbers">
   <code class="language-javascript">
     this.dashboardAPI.toggleProperties();
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'RegisterCallback'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.on(this.dashboardAPI.EVENTS.DIRTY, this.onModified);
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'UnregisterCallback'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.off(this.dashboardAPI.EVENTS.DIRTY, this.onModified);
   </code>
 </pre>

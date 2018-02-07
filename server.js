@@ -47,7 +47,6 @@ app.get("/api/dde/credentials", function(request, response) {
 * }
 */
 app.post("/api/dde/session", function(request, response) {
-  console.log("in api/dde/session");
   console.log(dde_client_id);
 
   var options = {
@@ -76,7 +75,7 @@ app.post("/api/dde/session", function(request, response) {
       .catch(function (err) {
           // POST failed...
           console.log("post failed!");
-            console.log(JSON.stringify(err));
+          console.log(JSON.stringify(err));
           response.send(err);
       });
 
