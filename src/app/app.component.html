@@ -24,12 +24,12 @@
       </div>
 
         <div [ngClass]="colSize">
-           <dde-toaster></dde-toaster>
            <div *ngIf="parent_update_module_def_info" class="alert alert-success box-msg" role="alert">
              <strong>Module definition updated!</strong> see console log for before vs after
            </div>
 
            <div class="iframeContainer" id="containerDivId3">
+             <dde-toaster class="toaster"></dde-toaster>
              <div class="grid-container">
                <div class="grid-item">
                  <img class="steps-icons" src="../assets/images/exploreApi.png"/>

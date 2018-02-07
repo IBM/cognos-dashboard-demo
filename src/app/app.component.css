@@ -27,7 +27,7 @@
   display: grid;
   grid-template-columns: auto auto auto;
   text-align: center;
-  margin-top: 15em;
+  margin-top: 12em;
 }
 
 .grid-item {
@@ -40,6 +40,10 @@
 
 .steps-copy {
   font-family: "Helv Neue Roman";
+}
+
+dde-toaster {
+  min-height: 50px;
 }
 
 @media (max-width: 1200px) {
