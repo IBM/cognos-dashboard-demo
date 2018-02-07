@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { CodeSnippetEnum, CodeSnippet } from '../model/code-snippet';
 import { Session } from '../model/session';
 import { Toaster } from '../model/toaster';
@@ -6,6 +6,7 @@ import { CodeSnippetsRepoService } from './services/code-snippets-repo.service';
 import { DdeToasterComponent } from './dde-toaster/dde-toaster.component';
 import { DdeDashboardComponent } from './dde-dashboard/dde-dashboard.component';
 import { environment } from '../environments/environment';
+import { DdeDialogComponent } from './dde-dialog/dde-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ import { environment } from '../environments/environment';
 export class AppComponent implements OnInit {
   @ViewChild(DdeToasterComponent) private toasterComp: DdeToasterComponent;
   @ViewChild(DdeDashboardComponent) private dashBoardComp: DdeDashboardComponent;
+  @ViewChild(DdeDialogComponent) private dialogComp: DdeDialogComponent;
 
   title = 'app';
 
@@ -27,6 +29,7 @@ export class AppComponent implements OnInit {
   private message : string;
   private showPanel: boolean;
   private colSize: string = 'col-md-6';
+  private showVideo: boolean;
 
   constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
@@ -42,6 +45,10 @@ export class AppComponent implements OnInit {
   showPanels(event) {
     this.showPanel = event;
     this.colSize = event ? 'col-md-6' : 'col-md-12';
+  }
+
+  showVideo() {
+    this.dialogComp.showModal();
   }
 
   sessionInfo(event) {
