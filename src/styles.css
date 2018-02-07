@@ -127,7 +127,7 @@ select {
   font-size: 15px;
 }
 
-.fa {
+a, .fa {
   cursor: pointer;
 }
 
