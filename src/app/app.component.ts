@@ -27,8 +27,7 @@ export class AppComponent implements OnInit {
   private toaster: Toaster;
   private message : string;
   private showPanel: boolean;
-  private colSize: string = 'col-md-6';
-  private showVideo: boolean;
+  private colSize: string = 'col-md-6';  
 
   constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
