@@ -42,8 +42,8 @@
   font-family: "Helv Neue Roman";
 }
 
-dde-toaster {
-  min-height: 50px;
+dde-toaster {  
+  position: absolute;
 }
 
 @media (max-width: 1200px) {
