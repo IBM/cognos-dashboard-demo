@@ -17,7 +17,7 @@
           <dde-references (isShowVideo)=showVideo()></dde-references>
       </div>
 
-      <div *ngIf=showPanel class="col-md-3">
+      <div *ngIf=showPanel class="col-md-3 bg-light">
         <dde-code-explorer [codeSnippet]="code_snippet" (session)="sessionInfo($event)" (apiId)="getAPIId($event)"
           (dashboardApi)="getDashboardApi($event)" (dashboardSpec)="getDashboardSpec($event)"
           (updateModuleDefinitions)="updateModuleDefinitions($event)" (clearDirtyState)="clearDirtyState($event)"
@@ -25,7 +25,7 @@
         </dde-code-explorer>
       </div>
 
-        <div [ngClass]="colSize">
+        <div [ngClass]="colSize" class="bg-light">
            <dde-toaster class="toaster"></dde-toaster>
            <div class="iframeContainer" id="containerDivId3">
              <div class="grid-container">
