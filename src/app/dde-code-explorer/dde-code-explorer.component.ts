@@ -57,10 +57,6 @@ export class DdeCodeExplorerComponent implements OnInit {
       else if (this.codeSnippet.selection === CodeSnippetEnum.CreateDashboard) {
         this.dashboardApi.emit(await this.ddeApiService.createDashboard());
         this.enableDashboardInteractionRunButton();
-        this.enableRunButton(CodeSnippetEnum.GetDashboardSpec);
-        this.enableRunButton(CodeSnippetEnum.ClearDirtyState);
-        this.enableRunButton(CodeSnippetEnum.RegisterCallback);
-        this.enableRunButton(CodeSnippetEnum.UnregisterCallback);
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.OpenDashboard) {
         this.dashboardApi.emit(await this.ddeApiService.openDashboard());
@@ -68,19 +64,15 @@ export class DdeCodeExplorerComponent implements OnInit {
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddCSVSource) {
         this.ddeApiService.addCSVSampleSource();
-        this.enableRunButton(CodeSnippetEnum.UpdateModuleDefinitions);
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddProtectedCSVSource) {
         this.ddeApiService.addProtectedCSVSampleSource();
-        this.enableRunButton(CodeSnippetEnum.UpdateModuleDefinitions);
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddBikeShareRidesDemographCSVSource) {
         this.ddeApiService.addBikeShareRidesDemographCSVSampleSource();
-        this.enableRunButton(CodeSnippetEnum.UpdateModuleDefinitions);
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddBikeShareWeatherCSVSource) {
         this.ddeApiService.addBikeShareWeatherCSVSampleSource();
-        this.enableRunButton(CodeSnippetEnum.UpdateModuleDefinitions);
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.DashboardEditMode) {
         this.ddeApiService.setDashboardMode_Edit();
@@ -140,6 +132,10 @@ export class DdeCodeExplorerComponent implements OnInit {
     this.enableRunButton(CodeSnippetEnum.UndoLastAction);
     this.enableRunButton(CodeSnippetEnum.RedoLastAction);
     this.enableRunButton(CodeSnippetEnum.TogglePropertiesPane);
+    this.enableRunButton(CodeSnippetEnum.GetDashboardSpec);
+    this.enableRunButton(CodeSnippetEnum.ClearDirtyState);
+    this.enableRunButton(CodeSnippetEnum.RegisterCallback);
+    this.enableRunButton(CodeSnippetEnum.UnregisterCallback);
   }
 
   enableRunButton(type: CodeSnippetEnum) {
