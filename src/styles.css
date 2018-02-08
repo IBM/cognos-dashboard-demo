@@ -63,6 +63,8 @@ select {
 .container-fluid {
   padding-left: 0px;
   padding-right: 0px;
+  overflow: hidden;
+  position: relative;
 }
 
 /* remove default row margins */
@@ -117,6 +119,10 @@ select {
     float: right;
 }
 
+.bg-dark {
+  background-color: #272822 !important;
+}
+
 .panel .navbar-brand:after {
   font-family: 'FontAwesome';
   content: "\f067";
@@ -132,7 +138,7 @@ a, .fa {
 }
 
 .nav-link {
-  color: #000!important;
+  color: #000 !important;
 }
 
 .nav-link:hover {
