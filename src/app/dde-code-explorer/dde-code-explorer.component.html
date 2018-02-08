@@ -1,5 +1,5 @@
 <div class="explorer-bar">
-  <div class="button" (click)="runCode($event)">
+  <div class="button" [ngClass]="onDisableRunButton()" (click)="runCode($event)">
     <svg-icon class="play-image" src="../assets/images/play_16.svg"></svg-icon>
     <span>
       Run

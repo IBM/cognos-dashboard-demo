@@ -12,6 +12,16 @@
   overflow: scroll;
 }
 
+.disabled {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.enabled {
+  cursor: pointer;
+  opacity: 1;
+}
+
 .code-snippet {
   margin-top: 1.5em;
   width: 100%;
@@ -35,10 +45,6 @@
   color: #fff;
   width: 75px;
   float: right;
-}
-
-.button > span {
-  cursor: pointer;
 }
 
 .button:hover {
