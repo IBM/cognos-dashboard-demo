@@ -24,6 +24,6 @@ export enum CodeSnippetEnum {
 }
 
 export class CodeSnippet {
-   constructor(public selection: CodeSnippetEnum, public size: string) {
+   constructor(public selection: CodeSnippetEnum, public size: string, public disableRun: boolean) {
    }
 }

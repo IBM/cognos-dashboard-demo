@@ -46,37 +46,41 @@ export class DdeCodeExplorerComponent implements OnInit {
       if (this.codeSnippet.selection === CodeSnippetEnum.CreateSession) {
         this.sessionObject = await this.ddeApiService.createNewSession();
         this.session.emit(this.sessionObject);
+        this.resetAllRunButtons();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.CreateAPIFramework) {
         this.apiId.emit(await this.ddeApiService.createAndInitApiFramework());
+        this.resetAllRunButtons();
+        this.enableRunButton(CodeSnippetEnum.CreateDashboard);
+        this.enableRunButton(CodeSnippetEnum.OpenDashboard);
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.CreateDashboard) {
         this.dashboardApi.emit(await this.ddeApiService.createDashboard());
+        this.enableDashboardInteractionRunButton();
+        this.enableRunButton(CodeSnippetEnum.GetDashboardSpec);
+        this.enableRunButton(CodeSnippetEnum.ClearDirtyState);
+        this.enableRunButton(CodeSnippetEnum.RegisterCallback);
+        this.enableRunButton(CodeSnippetEnum.UnregisterCallback);
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.OpenDashboard) {
         this.dashboardApi.emit(await this.ddeApiService.openDashboard());
+        this.enableDashboardInteractionRunButton();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddCSVSource) {
         this.ddeApiService.addCSVSampleSource();
+        this.enableRunButton(CodeSnippetEnum.UpdateModuleDefinitions);
       }
-      /*
-      else if (this.codeSnippet.selection === CodeSnippetEnum.AddDB2Source) {
-        this.ddeApiService.addDb2SampleSource();
-      }
-      */
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddProtectedCSVSource) {
         this.ddeApiService.addProtectedCSVSampleSource();
+        this.enableRunButton(CodeSnippetEnum.UpdateModuleDefinitions);
       }
-      /*
-      else if (this.codeSnippet.selection === CodeSnippetEnum.AddProtectedDB2Source) {
-        this.ddeApiService.addProtectedDB2SampleSource();
-      }
-      */
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddBikeShareRidesDemographCSVSource) {
         this.ddeApiService.addBikeShareRidesDemographCSVSampleSource();
+        this.enableRunButton(CodeSnippetEnum.UpdateModuleDefinitions);
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddBikeShareWeatherCSVSource) {
         this.ddeApiService.addBikeShareWeatherCSVSampleSource();
+        this.enableRunButton(CodeSnippetEnum.UpdateModuleDefinitions);
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.DashboardEditMode) {
         this.ddeApiService.setDashboardMode_Edit();
@@ -123,6 +127,39 @@ export class DdeCodeExplorerComponent implements OnInit {
       this.session.emit(null);
       this.apiId.emit('');
     }
+  }
+
+  enableDashboardInteractionRunButton() {
+    this.enableRunButton(CodeSnippetEnum.AddCSVSource);
+    this.enableRunButton(CodeSnippetEnum.AddProtectedCSVSource);
+    this.enableRunButton(CodeSnippetEnum.AddBikeShareRidesDemographCSVSource);
+    this.enableRunButton(CodeSnippetEnum.AddBikeShareWeatherCSVSource);
+    this.enableRunButton(CodeSnippetEnum.DashboardEditMode);
+    this.enableRunButton(CodeSnippetEnum.DashboardViewMode);
+    this.enableRunButton(CodeSnippetEnum.DashboardEditGroupMode);
+    this.enableRunButton(CodeSnippetEnum.UndoLastAction);
+    this.enableRunButton(CodeSnippetEnum.RedoLastAction);
+    this.enableRunButton(CodeSnippetEnum.TogglePropertiesPane);
+  }
+
+  enableRunButton(type: CodeSnippetEnum) {
+    let snippet = this.codeSnippetsRepoService.getSnippet(type);
+    snippet.disableRun = false;
+    this.codeSnippetsRepoService.setSnippet(type, snippet);
+  }
+
+  resetAllRunButtons() {
+    this.codeSnippetsRepoService.disableRunButton();
+    this.enableRunButton(CodeSnippetEnum.CreateAPIFramework);
+  }
+
+  onDisableRunButton() {
+    let disableButton = this.codeSnippet.disableRun;
+    let classes =  {
+        disabled: disableButton,
+        enabled: !disableButton
+    };
+    return classes;
   }
 
   onSelect(sourceValue) {
