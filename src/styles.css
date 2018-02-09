@@ -170,6 +170,18 @@ svg-icon {
   fill: #1f57a4;
 }
 
+.tooltip-inner {
+  background-color: #343334;
+  padding: 0.66em;
+  font-family: "Helv Neue Bold";
+}
+
+.tooltip-arrow:before,
+.tooltip-arrow {
+  border-left-color: #343334 !important;
+  border-right-color: #343334 !important;
+}
+
 /* Detect Mac Firefox 25 or newer */
 @supports (-moz-osx-font-smoothing:auto) {
   .line-numbers-rows {
