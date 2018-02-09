@@ -42,12 +42,12 @@
   font-family: "Helv Neue Roman";
 }
 
-dde-toaster {  
+dde-toaster {
   position: absolute;
 }
 
 @media (max-width: 1200px) {
   .col-md-3 {
-    min-width: 300px;
+    min-width: 320px;
   }
 }
