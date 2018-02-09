@@ -172,9 +172,9 @@ svg-icon {
 
 /* Detect Mac Firefox 25 or newer */
 @supports (-moz-osx-font-smoothing:auto) {
-  .mac, .firefox {
-    display:block;
-    }
+  .line-numbers-rows {
+    line-height: 1.67em;
+  }
 }
 
 /* Detect Chrome 22+ (and Safari 6.1+) */
@@ -184,15 +184,6 @@ svg-icon {
     line-height: 1.67em;
   }
 }
-
-/* Detect Chrome 28+ */
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @supports (background-attachment:local) {
-    .line-numbers-rows {
-      line-height: 1.67em;
-    }
-  }
-} 
 
 /* Detect Mac Safari 6.1 or newer, hide any straggling Chrome references */
 @media screen and (-webkit-max-device-pixel-ratio:1) and (min-color-index:0) {
