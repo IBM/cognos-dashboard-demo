@@ -170,11 +170,23 @@ svg-icon {
   fill: #1f57a4;
 }
 
+.tooltip-inner {
+  background-color: #343334;
+  padding: 0.66em;
+  font-family: "Helv Neue Bold";
+}
+
+.tooltip-arrow:before,
+.tooltip-arrow {
+  border-left-color: #343334 !important;
+  border-right-color: #343334 !important;
+}
+
 /* Detect Mac Firefox 25 or newer */
 @supports (-moz-osx-font-smoothing:auto) {
-  .mac, .firefox {
-    display:block;
-    }
+  .line-numbers-rows {
+    line-height: 1.67em;
+  }
 }
 
 /* Detect Chrome 22+ (and Safari 6.1+) */
@@ -184,15 +196,6 @@ svg-icon {
     line-height: 1.67em;
   }
 }
-
-/* Detect Chrome 28+ */
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @supports (background-attachment:local) {
-    .line-numbers-rows {
-      line-height: 1.67em;
-    }
-  }
-} 
 
 /* Detect Mac Safari 6.1 or newer, hide any straggling Chrome references */
 @media screen and (-webkit-max-device-pixel-ratio:1) and (min-color-index:0) {
