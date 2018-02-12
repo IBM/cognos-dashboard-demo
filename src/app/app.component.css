@@ -18,8 +18,9 @@
   padding: 0;
 }
 
-.col-md-3,
-.col-md-6 {
+.col-md-7,
+.col-md-6,
+.col-md-5 {
   padding: 0;
 }
 
@@ -44,6 +45,40 @@
 
 dde-toaster {
   position: absolute;
+}
+
+.fa-columns {
+  font-size: 20px;
+  margin-bottom: 0.4em;
+}
+
+.fa-columns:hover {
+  color: #fff;
+}
+
+.explorer-bar {
+  background-color: #d8d8d8;
+  padding: 0.5em;
+}
+
+.disabled {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.enabled {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.fa-columns {
+  font-size: 20px;
+  margin-bottom: 0.4em;
+  color: #000;
+}
+
+.fa-columns:hover {
+  color: #fff;
 }
 
 @media (max-width: 1200px) {

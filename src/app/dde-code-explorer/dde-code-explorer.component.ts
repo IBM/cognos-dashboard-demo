@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angu
 import { DdeApiService } from '../services/dde-api.service';
 import { Session } from '../../model/session';
 import { CodeSnippet, CodeSnippetEnum } from '../../model/code-snippet';
-import { CSVDataSource, ProtectedCSVDataSource, /*DB2DataSource, ProtectedDB2DataSource,*/ BikeShareWeatherCSVSource, BikeShareRidesDemographCSVSource } from '../../model/data-source';
+import { CSVDataSource, ProtectedCSVDataSource, BikeShareWeatherCSVSource, BikeShareRidesDemographCSVSource } from '../../model/data-source';
 import { CodeSnippetsRepoService } from '../services/code-snippets-repo.service';
 import * as DashboardMode from '../../model/dashboard-mode';
 declare var Prism: any;
@@ -22,7 +22,7 @@ export class DdeCodeExplorerComponent implements OnInit {
   @Output() registerCallback: EventEmitter<void> = new EventEmitter<void>();
   @Output() unregisterCallback: EventEmitter<void> = new EventEmitter<void>();
   @Input() codeSnippet : CodeSnippet;
-  dataSources = [CSVDataSource, ProtectedCSVDataSource, /*DB2DataSource, ProtectedDB2DataSource,*/ BikeShareWeatherCSVSource, BikeShareRidesDemographCSVSource ];
+  dataSources = [CSVDataSource, ProtectedCSVDataSource, BikeShareWeatherCSVSource, BikeShareRidesDemographCSVSource ];
   dashboardModes = [DashboardMode.EditMode, DashboardMode.ViewMode, DashboardMode.EditGroupMode];
   sampleModule : string;
   sessionObject = null;
@@ -41,7 +41,7 @@ export class DdeCodeExplorerComponent implements OnInit {
       return classes;
   }
 
-  async runCode(event) {
+  async runCode() {
     try {
       if (this.codeSnippet.selection === CodeSnippetEnum.CreateSession) {
         this.sessionObject = await this.ddeApiService.createNewSession();
@@ -149,15 +149,6 @@ export class DdeCodeExplorerComponent implements OnInit {
     this.enableRunButton(CodeSnippetEnum.CreateAPIFramework);
   }
 
-  onDisableRunButton() {
-    let disableButton = this.codeSnippet.disableRun;
-    let classes =  {
-        disabled: disableButton,
-        enabled: !disableButton
-    };
-    return classes;
-  }
-
   onSelect(sourceValue) {
     for (var i = 0; i < this.dataSources.length; i++) {
       if (this.dataSources[i].value === sourceValue) {
@@ -181,8 +172,6 @@ export class DdeCodeExplorerComponent implements OnInit {
   showSourcesDropDown() {
     return this.codeSnippet && (this.codeSnippet.selection === CodeSnippetEnum.AddCSVSource ||
           this.codeSnippet.selection === CodeSnippetEnum.AddProtectedCSVSource ||
-          //this.codeSnippet.selection === CodeSnippetEnum.AddDB2Source ||
-          //this.codeSnippet.selection === CodeSnippetEnum.AddProtectedDB2Source ||
           this.codeSnippet.selection === CodeSnippetEnum.AddBikeShareWeatherCSVSource ||
           this.codeSnippet.selection === CodeSnippetEnum.AddBikeShareRidesDemographCSVSource);
   }

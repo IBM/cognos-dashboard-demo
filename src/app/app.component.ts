@@ -5,8 +5,9 @@ import { Toaster } from '../model/toaster';
 import { CodeSnippetsRepoService } from './services/code-snippets-repo.service';
 import { DdeToasterComponent } from './dde-toaster/dde-toaster.component';
 import { DdeDashboardComponent } from './dde-dashboard/dde-dashboard.component';
+import { DdeDialogComponent } from './dde-dialog/dde-dialog.component'
+import { DdeCodeExplorerComponent } from './dde-code-explorer/dde-code-explorer.component';
 import { environment } from '../environments/environment';
-import { DdeDialogComponent } from './dde-dialog/dde-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit {
   @ViewChild(DdeToasterComponent) private toasterComp: DdeToasterComponent;
   @ViewChild(DdeDashboardComponent) private dashBoardComp: DdeDashboardComponent;
   @ViewChild(DdeDialogComponent) private dialogComp: DdeDialogComponent;
+  @ViewChild(DdeCodeExplorerComponent) private codeExplorerComp: DdeCodeExplorerComponent;
 
   title = 'app';
 
@@ -27,7 +29,7 @@ export class AppComponent implements OnInit {
   private toaster: Toaster;
   private message : string;
   private showPanel: boolean;
-  private colSize: string = 'col-md-6';  
+  private colSize: string = 'col-md-7';
 
   constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
@@ -42,7 +44,7 @@ export class AppComponent implements OnInit {
 
   showPanels(event) {
     this.showPanel = event;
-    this.colSize = event ? 'col-md-6' : 'col-md-12';
+    this.colSize = event ? 'col-md-7' : 'col-md-12';
   }
 
   showVideo() {
@@ -128,5 +130,17 @@ export class AppComponent implements OnInit {
     this.toasterComp.showToaster(this.toaster);
   }
 
+  runCode() {
+    this.codeExplorerComp.runCode();
+  }
+
+  onDisableRunButton() {
+    let disableButton = this.code_snippet ? this.code_snippet.disableRun : false;
+    let classes =  {
+        disabled: disableButton,
+        enabled: !disableButton
+    };
+    return classes;
+  }
 
 }

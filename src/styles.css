@@ -159,9 +159,12 @@ pre {
 }
 
 svg-icon {
-  width: 20px;
+  width: 14px;
   vertical-align: -webkit-baseline-middle;
-  float: left;
+}
+
+.row {
+  width: 100%;
 }
 
 .link-image {
@@ -180,6 +183,18 @@ svg-icon {
 .tooltip-arrow {
   border-left-color: #343334 !important;
   border-right-color: #343334 !important;
+}
+
+.button {
+  padding: 5px 10px;
+  color: #000;
+  width: 75px;
+  float: right;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: #fff;
 }
 
 /* Detect Mac Firefox 25 or newer */
