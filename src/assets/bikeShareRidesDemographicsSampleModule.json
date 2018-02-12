@@ -1,10 +1,10 @@
 {
-  "xsd": "https:\/\/ibm.com\/daas\/module\/1.0\/module.xsd",
+  "xsd": "https://ibm.com/daas/module/1.0/module.xsd",
   "source": {
     "id": "CSV_File",
     "srcUrl": {
-      "sourceUrl": "https:\/\/developer.ibm.com\/static\/site-id\/141\/bikeShareRidesDemographics.csv",
-      "mimeType": "text\/csv",
+      "sourceUrl": "https://developer.ibm.com/static/site-id/141/bikeShareRidesDemographics.csv",
+      "mimeType": "text/csv",
       "property": [
         {
           "name": "separator",
@@ -18,7 +18,7 @@
     }
   },
   "table": {
-    "name": "Bike Share Rides Demographics CSV file",
+    "name": "Bike Share Rides Demographics CSV",
     "description": "description of the table for visual hints",
     "column": [
       {
@@ -28,7 +28,8 @@
         "description": "Date",
         "label": "Date",
         "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "regularAggregate": "countDistinct",
+        "taxonomyFamily": "cDate"
       },
       {
         "name": "From_Community",
@@ -46,7 +47,8 @@
         "description": "Latitude",
         "label": "Latitude",
         "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "regularAggregate": "countDistinct",
+        "taxonomyFamily": "cLatitude"
       },
       {
         "name": "Longitude",
@@ -55,7 +57,8 @@
         "description": "Longitude",
         "label": "Longitude",
         "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "regularAggregate": "countDistinct",
+        "taxonomyFamily": "cLongitude"
       },
       {
         "name": "Year",
@@ -63,7 +66,8 @@
         "description": "Year",
         "label": "Year",
         "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "regularAggregate": "countDistinct",
+        "taxonomyFamily": "cYear"
       },
       {
         "name": "YearMonth",
@@ -72,7 +76,8 @@
         "description": "YearMonth",
         "label": "YearMonth",
         "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "regularAggregate": "countDistinct",
+        "taxonomyFamily": "cMonth"
       },
       {
         "name": "Month",
@@ -81,7 +86,8 @@
         "description": "Month",
         "label": "Month",
         "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "regularAggregate": "countDistinct",
+        "taxonomyFamily": "cMonth"
       },
       {
         "name": "MonthNameShort",
@@ -90,7 +96,8 @@
         "description": "MonthNameShort",
         "label": "MonthNameShort",
         "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "regularAggregate": "countDistinct",
+        "taxonomyFamily": "cMonth"
       },
       {
         "name": "MonthNameLong",
@@ -99,7 +106,8 @@
         "description": "MonthNameLong",
         "label": "MonthNameLong",
         "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "regularAggregate": "countDistinct",
+        "taxonomyFamily": "cMonth"
       },
       {
         "name": "Weekend",
@@ -117,7 +125,8 @@
         "description": "Day_of_Week",
         "label": "Day_of_Week",
         "usage": "attribute",
-        "regularAggregate": "countDistinct"
+        "regularAggregate": "countDistinct",
+        "taxonomyFamily": "cDay"
       },
       {
         "name": "Number_of_Rides",
@@ -182,8 +191,7 @@
         "usage": "fact",
         "regularAggregate": "average"
       }
-    ],
-    "name": "Bike Share Rides Demographics CSV"
+    ]
   },
   "label": "Module Name",
   "identifier": "moduleId"
