@@ -56,6 +56,10 @@
       "exclude": "**/node_modules/**"
     }
   ],
+  "test": {
+  
+    }
+  },
   "defaults": {
     "styleExt": "css",
     "component": {}
