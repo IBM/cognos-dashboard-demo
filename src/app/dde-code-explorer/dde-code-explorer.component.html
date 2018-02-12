@@ -1,8 +1,15 @@
 <div class="explorer-bar">
   <div class="button" [ngClass]="onDisableRunButton()" (click)="runCode($event)">
-    <svg-icon class="play-image" src="../assets/images/play_16.svg"></svg-icon>
+    <svg-icon class="explorer-image" src="../assets/images/play_16.svg"></svg-icon>
     <span>
       Run
+    </span>
+  </div>
+
+  <div id="copyButton" class="button copy-button">
+    <svg-icon class="explorer-image" src="../assets/images/copy_16.svg"></svg-icon>
+    <span>
+      Copy
     </span>
   </div>
 </div>

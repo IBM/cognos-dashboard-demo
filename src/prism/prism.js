@@ -636,7 +636,7 @@ Prism.languages.js = Prism.languages.javascript;
 	 * @type {String}
 	 */
 	var PLUGIN_NAME = 'line-numbers';
-	
+
 	/**
 	 * Regular expression used for determining line breaks
 	 * @type {RegExp}
@@ -750,7 +750,7 @@ Prism.languages.js = Prism.languages.javascript;
 		env.plugins = env.plugins || {};
 		env.plugins.lineNumbers = true;
 	});
-	
+
 	/**
 	 * Global exports
 	 */
@@ -852,8 +852,8 @@ Prism.languages.js = Prism.languages.javascript;
 		pre.classList.add('code-toolbar');
 
 		// Setup the toolbar
-		var toolbar = document.createElement('div');
-		toolbar.classList.add('toolbar');
+		//var toolbar = document.createElement('div');
+		//toolbar.classList.add('toolbar');
 
 		if (document.body.hasAttribute('data-toolbar-order')) {
 			callbacks = document.body.getAttribute('data-toolbar-order').split(',').map(function(key) {
@@ -868,15 +868,15 @@ Prism.languages.js = Prism.languages.javascript;
 				return;
 			}
 
-			var item = document.createElement('div');
-			item.classList.add('toolbar-item');
+			//var item = document.createElement('div');
+			//item.classList.add('toolbar-item');
 
-			item.appendChild(element);
-			toolbar.appendChild(item);
+			//item.appendChild(element);
+			//toolbar.appendChild(item);
 		});
 
 		// Add our toolbar to the <pre> tag
-		pre.appendChild(toolbar);
+		//pre.appendChild(toolbar);
 	};
 
 	registerButton('label', function(env) {
@@ -1195,8 +1195,10 @@ Prism.hooks.add('before-sanity-check', function (env) {
 	}
 
 	Prism.plugins.toolbar.registerButton('copy-to-clipboard', function (env) {
-		var linkCopy = document.createElement('a');
-		linkCopy.textContent = 'Copy';
+		var linkCopy = document.getElementById('copyButton');
+
+		//var linkCopy = document.createElement('a');
+		//linkCopy.textContent = 'Copy';
 
 		if (!Clipboard) {
 			callbacks.push(registerClipboard);
@@ -1214,12 +1216,12 @@ Prism.hooks.add('before-sanity-check', function (env) {
 			});
 
 			clip.on('success', function() {
-				linkCopy.textContent = 'Copied!';
+				linkCopy.children[1].innerText = 'Copied';
 
 				resetText();
 			});
 			clip.on('error', function () {
-				linkCopy.textContent = 'Press Ctrl+C to copy';
+				linkCopy.children[1].innerText = 'Press Ctrl+C to copy';
 
 				resetText();
 			});
@@ -1227,9 +1229,8 @@ Prism.hooks.add('before-sanity-check', function (env) {
 
 		function resetText() {
 			setTimeout(function () {
-				linkCopy.textContent = 'Copy';
-			}, 5000);
+				linkCopy.children[1].innerText = 'Copy';
+			}, 3000);
 		}
 	});
 })();
-
