@@ -10,7 +10,6 @@
     "startng": "ng serve",
     "start": "node server.js",
     "buildng": "ng build",
-    "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dist": "ng build",
