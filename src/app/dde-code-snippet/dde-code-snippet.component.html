@@ -45,44 +45,40 @@
 <pre *ngIf="codeType === 'AddCSVSource'"  class="line-numbers">
   <code class="language-javascript">
     this.dashboardAPI.addSources([{{ '{' }}
-      module: csv_sample_module,
+      module: sampleModule,
       name: 'Test CSV Source',
       id: 'myUniqueId789'
-    });
+    }]);
   </code>
 </pre>
 
 <pre *ngIf="codeType === 'AddProtectedCSVSource'"  class="line-numbers">
   <code class="language-javascript">
-    var protectedSampleModule =
-      this.getProtectedSampleModule(
-      this.csv_sample_module);
-
     this.dashboardAPI.addSources([{{ '{' }}
-      module: protectedSampleModule,
+      module: encryptedSampleModule,
       name: 'Protected CSV Source',
       id: 'myUniqueId987'
-    });
+    }]);
   </code>
 </pre>
 
 <pre *ngIf="codeType === 'AddBikeShareWeatherCSVSource'"  class="line-numbers">
   <code class="language-javascript">
     this.dashboardAPI.addSources([{{ '{' }}
-      module: bike_share_weather_csv_sample_module,
+      module: sampleBikeShareWeatherModule,
       name: 'Test Bike Share Weather Source',
       id: 'myUniqueId111'
-    });
+    }]);
   </code>
 </pre>
 
 <pre *ngIf="codeType === 'AddBikeShareRidesDemographCSVSource'"  class="line-numbers">
   <code class="language-javascript">
     this.dashboardAPI.addSources([{{ '{' }}
-      module: bike_share_rides_demograph_csv_sample_module,
+      module: sampleBikeShareRidesDemographModule,
       name: 'Test Bike Share Rides Demographics Source',
       id: 'myUniqueId222'
-    });
+    }]);
   </code>
 </pre>
 
