@@ -27,13 +27,7 @@
         "nullable": true,
         "description": "Date",
         "label": "Date",
-        "taxonomy": [
-            {
-              "domain": "cognos",
-              "family": "cDate",
-              "class": "cTime"
-            }
-          ],
+        "taxonomyFamily": "cDate",
         "usage": "attribute",
         "regularAggregate": "countDistinct"
       },
