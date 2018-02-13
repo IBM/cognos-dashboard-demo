@@ -27,8 +27,10 @@ export class AppComponent implements OnInit {
   private code_snippet: CodeSnippet;
   private session : Session = null;
   private toaster: Toaster;
-  private message : string;  
-  private colSize: string = 'col-md-7';
+  private message : string;
+  private dashboardColSize: string = 'col-md-6';
+  private dashboardBarColSize: string = 'dashboard-bar-min';
+  private explorerBarColSize: string = 'explorer-bar-max';
   private showPanel: boolean = true;
 
   constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
@@ -44,7 +46,9 @@ export class AppComponent implements OnInit {
 
   showPanels() {
     this.showPanel = !this.showPanel;
-    this.colSize = this.showPanel ? 'col-md-7' : 'col-md-12';
+    this.dashboardColSize = this.showPanel ? 'col-md-6' : 'col-md-12';
+    this.explorerBarColSize = this.showPanel ? 'explorer-bar-max' : 'explorer-bar-min';
+    this.dashboardBarColSize = this.showPanel ? 'dashboard-bar-min' : 'dashboard-bar-max';
   }
 
   showVideo() {
