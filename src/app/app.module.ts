@@ -28,6 +28,8 @@ import { DdeDialogComponent } from './dde-dialog/dde-dialog.component';
 import { DdeReferencesComponent } from './dde-references/dde-references.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { DdeCodeSnippetComponent } from './dde-code-snippet/dde-code-snippet.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { DDEAppComponent } from './dde-app/dde-app.component';
 
 
 /*
@@ -54,7 +56,8 @@ const ROUTES = [
     DdeToasterComponent,
     DdeDialogComponent,
     DdeReferencesComponent,
-    DdeCodeSnippetComponent
+    DdeCodeSnippetComponent,
+    DDEAppComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,8 @@ const ROUTES = [
     FormsModule,
     HttpClientModule,
     AngularSvgIconModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    AppRoutingModule
     //RouterModule.forRoot(ROUTES), // Add routes to the app
     //AngularFireModule.initializeApp(environment.firebase),
     //AngularFireDatabaseModule,

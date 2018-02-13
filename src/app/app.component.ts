@@ -1,13 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { CodeSnippetEnum, CodeSnippet } from '../model/code-snippet';
-import { Session } from '../model/session';
-import { Toaster } from '../model/toaster';
-import { CodeSnippetsRepoService } from './services/code-snippets-repo.service';
-import { DdeToasterComponent } from './dde-toaster/dde-toaster.component';
-import { DdeDashboardComponent } from './dde-dashboard/dde-dashboard.component';
-import { DdeDialogComponent } from './dde-dialog/dde-dialog.component'
-import { DdeCodeExplorerComponent } from './dde-code-explorer/dde-code-explorer.component';
-import { environment } from '../environments/environment';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -15,136 +6,11 @@ import { environment } from '../environments/environment';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  @ViewChild(DdeToasterComponent) private toasterComp: DdeToasterComponent;
-  @ViewChild(DdeDashboardComponent) private dashBoardComp: DdeDashboardComponent;
-  @ViewChild(DdeDialogComponent) private dialogComp: DdeDialogComponent;
-  @ViewChild(DdeCodeExplorerComponent) private codeExplorerComp: DdeCodeExplorerComponent;
 
-  title = 'app';
-
-  private apiId: string = '';
-  private dashboardApi: any = null;
-  private code_snippet: CodeSnippet;
-  private session : Session = null;
-  private toaster: Toaster;
-  private message : string;
-  private dashboardColSize: string = 'col-md-6';
-  private dashboardBarColSize: string = 'dashboard-bar-min';
-  private explorerBarColSize: string = 'explorer-bar-max';
-  private showPanel: boolean = true;
-
-  constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
+   constructor() {
   }
 
   ngOnInit() {
-    if (!environment.production) {
-      console.log('Development Mode');
-    } else {
-      console.log('Production Mode');
-    }
-  }
-
-  showPanels() {
-    this.showPanel = !this.showPanel;
-    this.dashboardColSize = this.showPanel ? 'col-md-6' : 'col-md-12';
-    this.explorerBarColSize = this.showPanel ? 'explorer-bar-max' : 'explorer-bar-min';
-    this.dashboardBarColSize = this.showPanel ? 'dashboard-bar-min' : 'dashboard-bar-max';
-  }
-
-  showVideo() {
-    this.dialogComp.showModal();
-  }
-
-  sessionInfo(event) {
-    this.session = event;
-
-    if (this.session !== null) {
-      this.message = 'Session created successfully. Next, create and initialize the API framework.';
-      this.setToaster(this.message, 'success', true);
-      this.dashBoardComp.nextStep = CodeSnippetEnum.CreateAPIFramework;
-    }
-    else {
-      this.message = 'An error has occured. Please check the console log for more details.';
-      this.setToaster(this.message, 'failure', true);
-    }
-  }
-
-  getAPIId(event) {
-    this.apiId = event;
-
-    if (this.apiId !== '') {
-      this.message = 'API created successfully. You can now create or open a dashboard.';
-      this.setToaster(this.message, 'success', true);
-      this.dashBoardComp.nextStep = CodeSnippetEnum.CreateDashboard;
-    }
-    else {
-      this.message = 'An error has occured. Please check the console log for more details.';
-      this.setToaster(this.message, 'failure', true);
-    }
-  }
-
-  getDashboardApi(event) {
-    this.dashboardApi = event;
-
-    if (this.dashboardApi !== '') {
-      this.dashBoardComp.nextStep = CodeSnippetEnum.AddCSVSource;
-      this.dashboardApi.on("addSource:clicked", () => {
-        this.dashBoardComp.currentSelection = CodeSnippetEnum.AddCSVSource;
-        this.code_snippet = this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.AddCSVSource);
-      });
-    }
-    else {
-      this.message = 'An error has occured. Please check the console log for more details.';
-      this.setToaster(this.message, 'failure', true);
-    }
-  }
-
-  getDashboardSpec(event) {
-    this.message = 'Dashboard spec retrieved successfully. See console for details.';
-    this.setToaster(this.message, 'success', true);
-  }
-
-  updateModuleDefinitions(event) {
-    this.message = 'Module Definitions updated successfully. See console for details.';
-    this.setToaster(this.message, 'success', true);
-  }
-
-  clearDirtyState(event) {
-    this.message = 'Dirty State cleared successfully. See console for details.';
-    this.setToaster(this.message, 'success', true);
-  }
-
-  registerCallback(event) {
-    this.message = 'Callback registered successfully. See console for details.';
-    this.setToaster(this.message, 'success', true);
-  }
-
-  unregisterCallback(event) {
-    this.message = 'Callback unregistered successfully. See console for details.';
-    this.setToaster(this.message, 'success', true);
-  }
-
-  // set the code snippt to what was fired over
-  getCodeSnippet(event) {
-    this.code_snippet = event;
-  }
-
-  setToaster(message: string, cssclass: string, showToaster: boolean) {
-    this.toaster = new Toaster(message, cssclass, showToaster);
-    this.toasterComp.showToaster(this.toaster);
-  }
-
-  runCode() {
-    this.codeExplorerComp.runCode();
-  }
-
-  onDisableRunButton() {
-    let disableButton = this.code_snippet ? this.code_snippet.disableRun : false;
-    let classes =  {
-        disabled: disableButton,
-        enabled: !disableButton
-    };
-    return classes;
-  }
+  }  
 
 }
