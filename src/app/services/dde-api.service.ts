@@ -12,6 +12,7 @@ contentHeaders.append('Accept', 'application/json');
 contentHeaders.append('Content-Type', 'application/json');
 
 
+
 @Injectable()
 export class DdeApiService {
 
@@ -41,7 +42,7 @@ export class DdeApiService {
 
     let options = new RequestOptions({
        headers: contentHeaders,
-       params: {'webDomain': environment.web_domain }
+       url: window.location.origin
      });
 
     const response = await this.http.post('/api/dde/session', options).toPromise();
