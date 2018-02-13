@@ -39,7 +39,10 @@ export class DdeApiService {
       this.api = null;
     }
 
-    let options = new RequestOptions({headers: contentHeaders});
+    let options = new RequestOptions({
+       headers: contentHeaders,
+       params: {'webDomain': environment.web_domain }
+     });
 
     const response = await this.http.post('/api/dde/session', options).toPromise();
 

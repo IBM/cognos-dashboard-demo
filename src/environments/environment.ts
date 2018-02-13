@@ -6,6 +6,7 @@
 export const environment = {
   production: false,
   cognos_api_js: 'https://jdcluster.us-south.containers.mybluemix.net/daas/CognosApi.js',
-  cognos_root_url: 'https://jdcluster.us-south.containers.mybluemix.net/daas/',
+  cognos_root_url: 'https://ddetest-us-south.analytics.ibm.com/daas/',
+  web_domain: 'http://dde-angnode-app-talkative-civet.stage1.mybluemix.net/',
   toaster_timer: 5000
 };
