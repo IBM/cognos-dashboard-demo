@@ -7,10 +7,6 @@ const routes: Routes = [
     {
         path: '',
         component: DDEAppComponent,
-    },
-    {
-        path: 'demo',
-        component: DDEAppComponent,
     }
 ];
 
