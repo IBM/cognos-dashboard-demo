@@ -10,12 +10,12 @@ contentHeaders.append('Accept', 'application/json');
 contentHeaders.append('Content-Type', 'application/json');
 
 @Component({
-  selector: 'dde-dashboard',
-  templateUrl: './dde-dashboard.component.html',
-  styleUrls: ['./dde-dashboard.component.css'],
+  selector: 'dde-menu',
+  templateUrl: './dde-menu.component.html',
+  styleUrls: ['./dde-menu.component.css'],
   providers: [ ScriptService]
 })
-export class DdeDashboardComponent implements OnInit {
+export class DdeMenuComponent implements OnInit {
   @Output()
   moduleDefinitionUpdated: EventEmitter<String> = new EventEmitter<String>();
   @Output()

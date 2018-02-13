@@ -18,7 +18,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { DdeCodeExplorerComponent } from './dde-code-explorer/dde-code-explorer.component';
-import { DdeDashboardComponent } from './dde-dashboard/dde-dashboard.component';
+import { DdeMenuComponent } from './dde-menu/dde-menu.component';
 import { DdeToasterComponent } from './dde-toaster/dde-toaster.component';
 
 import { DdeApiService } from './services/dde-api.service';
@@ -52,7 +52,7 @@ const ROUTES = [
     AppNavbarComponent,
     DdeListComponent,
     DdeCodeExplorerComponent,
-    DdeDashboardComponent,
+    DdeMenuComponent,
     DdeToasterComponent,
     DdeDialogComponent,
     DdeReferencesComponent,

@@ -36,8 +36,8 @@
         <div *ngIf=showPanel class="col-md-3 nav-bar navbar-expand-lg navbar-light bg-light">
             <div class="ngxAccordionCustomContainer list-group text-md-left">
               <accordion [closeOthers]=true class="ngxAccordionCustom">
-                <dde-dashboard (codeToRun)="getCodeSnippet($event)">
-                </dde-dashboard>
+                <dde-menu (codeToRun)="getCodeSnippet($event)">
+                </dde-menu>
               </accordion>
             </div>
             <dde-references (isShowVideo)=showVideo()></dde-references>

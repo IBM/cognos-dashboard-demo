@@ -4,7 +4,7 @@ import { Session } from '../../model/session';
 import { Toaster } from '../../model/toaster';
 import { CodeSnippetsRepoService } from '../services/code-snippets-repo.service';
 import { DdeToasterComponent } from '../dde-toaster/dde-toaster.component';
-import { DdeDashboardComponent } from '../dde-dashboard/dde-dashboard.component';
+import { DdeMenuComponent } from '../dde-menu/dde-menu.component';
 import { DdeDialogComponent } from '../dde-dialog/dde-dialog.component'
 import { DdeCodeExplorerComponent } from '../dde-code-explorer/dde-code-explorer.component';
 import { environment } from '../../environments/environment';
@@ -16,7 +16,7 @@ import { environment } from '../../environments/environment';
 })
 export class DDEAppComponent implements OnInit {
   @ViewChild(DdeToasterComponent) private toasterComp: DdeToasterComponent;
-  @ViewChild(DdeDashboardComponent) private dashBoardComp: DdeDashboardComponent;
+  @ViewChild(DdeMenuComponent) private menuComp: DdeMenuComponent;
   @ViewChild(DdeDialogComponent) private dialogComp: DdeDialogComponent;
   @ViewChild(DdeCodeExplorerComponent) private codeExplorerComp: DdeCodeExplorerComponent;
 
@@ -61,7 +61,7 @@ export class DDEAppComponent implements OnInit {
     if (this.session !== null) {
       this.message = 'Session created successfully. Next, create and initialize the API framework.';
       this.setToaster(this.message, 'success', true);
-      this.dashBoardComp.nextStep = CodeSnippetEnum.CreateAPIFramework;
+      this.menuComp.nextStep = CodeSnippetEnum.CreateAPIFramework;
     }
     else {
       this.message = 'An error has occured. Please check the console log for more details.';
@@ -75,7 +75,7 @@ export class DDEAppComponent implements OnInit {
     if (this.apiId !== '') {
       this.message = 'API created successfully. You can now create or open a dashboard.';
       this.setToaster(this.message, 'success', true);
-      this.dashBoardComp.nextStep = CodeSnippetEnum.CreateDashboard;
+      this.menuComp.nextStep = CodeSnippetEnum.CreateDashboard;
     }
     else {
       this.message = 'An error has occured. Please check the console log for more details.';
@@ -87,9 +87,9 @@ export class DDEAppComponent implements OnInit {
     this.dashboardApi = event;
 
     if (this.dashboardApi !== '') {
-      this.dashBoardComp.nextStep = CodeSnippetEnum.AddCSVSource;
+      this.menuComp.nextStep = CodeSnippetEnum.AddCSVSource;
       this.dashboardApi.on("addSource:clicked", () => {
-        this.dashBoardComp.currentSelection = CodeSnippetEnum.AddCSVSource;
+        this.menuComp.currentSelection = CodeSnippetEnum.AddCSVSource;
         this.code_snippet = this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.AddCSVSource);
       });
     }
