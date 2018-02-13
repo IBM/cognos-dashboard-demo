@@ -1,5 +1,5 @@
 <header>
-  <app-navbar (showPanels)=showPanels($event)></app-navbar>
+  <app-navbar></app-navbar>
 </header>
 
 <dde-dialog>
@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col-md-5">
       <div class="explorer-bar">
-        <span tooltip="Show/Hide Panels" placement="right">
+        <span (click)=showPanels() tooltip="Show/Hide Panels" placement="right">
           <i class="fa fa-columns" ></i>
         </span>
 

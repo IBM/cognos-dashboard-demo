@@ -27,9 +27,9 @@ export class AppComponent implements OnInit {
   private code_snippet: CodeSnippet;
   private session : Session = null;
   private toaster: Toaster;
-  private message : string;
-  private showPanel: boolean;
+  private message : string;  
   private colSize: string = 'col-md-7';
+  private showPanel: boolean = true;
 
   constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
@@ -42,9 +42,9 @@ export class AppComponent implements OnInit {
     }
   }
 
-  showPanels(event) {
-    this.showPanel = event;
-    this.colSize = event ? 'col-md-7' : 'col-md-12';
+  showPanels() {
+    this.showPanel = !this.showPanel;
+    this.colSize = this.showPanel ? 'col-md-7' : 'col-md-12';
   }
 
   showVideo() {

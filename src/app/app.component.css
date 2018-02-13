@@ -47,6 +47,10 @@ dde-toaster {
   position: absolute;
 }
 
+.copy-button {
+  width: 90px;
+}
+
 .fa-columns {
   font-size: 20px;
   margin-bottom: 0.4em;
