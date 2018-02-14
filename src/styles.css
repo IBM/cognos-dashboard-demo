@@ -146,7 +146,7 @@ pre {
 }
 
 svg-icon {
-  width: 14px;
+  width: 16px;
   vertical-align: -webkit-baseline-middle;
 }
 
@@ -171,8 +171,6 @@ svg-icon {
 .button {
   padding: 5px 10px;
   color: #000;
-  width: 75px;
-  float: right;
   cursor: pointer;
 }
 

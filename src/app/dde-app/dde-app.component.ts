@@ -28,9 +28,9 @@ export class DDEAppComponent implements OnInit {
   private session : Session = null;
   private toaster: Toaster;
   private message : string;
-  private dashboardColSize: string = 'col-md-6';
-  private dashboardBarColSize: string = 'dashboard-bar-min';
-  private explorerBarColSize: string = 'explorer-bar-max';
+  private dashboardColSize: string = 'col-md-6';  
+  private dashboardBarColSize: string = 'col-md-6';
+  private explorerBarColSize: string = 'col-md-6';
   private showPanel: boolean = true;
 
   constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
@@ -47,8 +47,8 @@ export class DDEAppComponent implements OnInit {
   showPanels() {
     this.showPanel = !this.showPanel;
     this.dashboardColSize = this.showPanel ? 'col-md-6' : 'col-md-12';
-    this.explorerBarColSize = this.showPanel ? 'explorer-bar-max' : 'explorer-bar-min';
-    this.dashboardBarColSize = this.showPanel ? 'dashboard-bar-min' : 'dashboard-bar-max';
+    this.explorerBarColSize = this.showPanel ? 'col-md-6' : 'col-md-1';
+    this.dashboardBarColSize = this.showPanel ? 'col-md-6' : 'col-md-11';
   }
 
   showVideo() {
