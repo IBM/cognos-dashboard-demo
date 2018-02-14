@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-//import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -30,21 +28,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { DdeCodeSnippetComponent } from './dde-code-snippet/dde-code-snippet.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { DDEAppComponent } from './dde-app/dde-app.component';
-
-
-/*
-// Define the routes
-const ROUTES = [
-  {
-    path: '',
-    redirectTo: 'dde',
-    pathMatch: 'full'
-  },
-  {
-    path: 'dde',
-    component: DdeListComponent
-  }
-];*/
+import { DdeDashboardComponent } from './dde-dashboard/dde-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +41,8 @@ const ROUTES = [
     DdeDialogComponent,
     DdeReferencesComponent,
     DdeCodeSnippetComponent,
-    DDEAppComponent
+    DDEAppComponent,
+    DdeDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -70,11 +55,6 @@ const ROUTES = [
     AngularSvgIconModule,
     TooltipModule.forRoot(),
     AppRoutingModule
-    //RouterModule.forRoot(ROUTES), // Add routes to the app
-    //AngularFireModule.initializeApp(environment.firebase),
-    //AngularFireDatabaseModule,
-    //AngularFireAuthModule,
-    //NgbModule.forRoot()
   ],
   providers: [
     DdeApiService,

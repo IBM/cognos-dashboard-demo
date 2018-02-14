@@ -2,7 +2,6 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import { CodeSnippet, CodeSnippetEnum } from '../../model/code-snippet'
 import { CodeSnippetsRepoService } from '../services/code-snippets-repo.service';
-import { ScriptService } from '../services/script.service';
 import { DdeApiService } from '../services/dde-api.service';
 
 export const contentHeaders = new Headers();
@@ -12,8 +11,7 @@ contentHeaders.append('Content-Type', 'application/json');
 @Component({
   selector: 'dde-menu',
   templateUrl: './dde-menu.component.html',
-  styleUrls: ['./dde-menu.component.css'],
-  providers: [ ScriptService]
+  styleUrls: ['./dde-menu.component.css']
 })
 export class DdeMenuComponent implements OnInit {
   @Output()
@@ -30,8 +28,8 @@ export class DdeMenuComponent implements OnInit {
   private collapsed: boolean = true;
   private isFirstOpen: boolean = true;
 
-  constructor(private http: Http, private script: ScriptService,
-              private ddeApiService: DdeApiService, private codeSnippetsRepoService: CodeSnippetsRepoService) {
+  constructor(private http: Http, private ddeApiService: DdeApiService,
+              private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
 
   ngOnInit() {
@@ -40,9 +38,6 @@ export class DdeMenuComponent implements OnInit {
   }
 
   ngAfterContentInit() {
-      this.script.load('cognosapijs').then(data => {
-      console.log('script loaded ', data);
-      }).catch(error => console.log(error));
   }
 
   nextStepToProcess() {

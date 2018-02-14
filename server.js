@@ -3,7 +3,6 @@ var app = express();
 var cfenv = require("cfenv");
 var bodyParser = require('body-parser');
 var rp = require('request-promise');
-var url = require('url');
 
 var env = process.env.NODE_ENV || 'dev';
 var conf = require('./config/config-'+env);

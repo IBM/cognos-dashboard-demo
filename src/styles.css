@@ -180,6 +180,32 @@ svg-icon {
   color: #fff;
 }
 
+
+.iframeContainer {
+  height: 900px; /* temp solution */  /*height: 95%;*/
+  display: flex;
+  flex-direction: column;
+}
+
+.iframeContainer pre {
+  display: flex;
+  font-size: medium;
+  white-space: pre-wrap;
+}
+
+.iframe {
+  flex-grow: 1;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 1440px) {
+  .iframeContainer {
+    height: 700px;
+  }
+}
+
 /* Detect Mac Firefox 25 or newer */
 @supports (-moz-osx-font-smoothing:auto) {
   .line-numbers-rows {
