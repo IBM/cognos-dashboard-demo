@@ -18,7 +18,7 @@ export class DdeDashboardComponent implements OnInit {
     try {
         await this.ddeApiService.createNewSession();
         await this.ddeApiService.createAndInitApiFramework();
-        await this.ddeApiService.createDashboard();
+        await this.ddeApiService.openDashboard();
     }
     catch(e) {
       console.log(e);
