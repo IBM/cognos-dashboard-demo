@@ -8,7 +8,7 @@
 <div class="container-fluid">
   <div class="row">
       <div class="explorer-bar" [ngClass]="explorerBarColSize">
-        <span (click)=showPanels() class="button float-left" tooltip="Show/Hide Panels" placement="right">
+        <span (click)=showPanels() class="button enabled float-left" tooltip="Show/Hide Panels" placement="right">
           <svg-icon class="explorer-image show-hide" src="../assets/images/hide-sidepane.svg"></svg-icon>
           <span>
             Show/Hide
@@ -22,7 +22,7 @@
           </span>
         </span>
 
-        <span *ngIf=showPanel id="copyButton" class="button copy-button float-right">
+        <span *ngIf=showPanel id="copyButton" class="button enabled copy-button float-right">
           <svg-icon class="explorer-image" src="../assets/images/copy_16.svg"></svg-icon>
           <span>
             Copy
@@ -30,8 +30,7 @@
         </span>
       </div>
 
-      <div class="dashboard-bar" [ngClass]="dashboardBarColSize">
-      </div>
+      <dde-dashboard-bar [ngClass]="dashboardBarColSize" [disableButtons]="disableDashboardBarButtons"></dde-dashboard-bar>
     </div>
 
     <div class="row">

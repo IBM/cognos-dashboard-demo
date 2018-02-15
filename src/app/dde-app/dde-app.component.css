@@ -2,6 +2,7 @@
 .col-md-3,
 .col-md-5,
 .col-md-6,
+.col-md-11,
 .col-md-12 {
   padding: 0;
 }
@@ -44,39 +45,7 @@ dde-toaster {
 
 .explorer-bar {
   background-color: #d8d8d8;
-  height: 30px
-}
-
-.explorer-bar-max {
-  width: 50%;
-}
-
-.explorer-bar-min {
-  width: 2%;
-}
-
-.dashboard-bar {
-  background-color: #a6a5a6;
-  width: 50%;
   height: 30px;
-}
-
-.dashboard-bar-max {
-  width: 98%;
-}
-
-.dashboard-bar-min {
-  width: 50%;
-}
-
-.disabled {
-  opacity: .5;
-  pointer-events: none;
-}
-
-.enabled {
-  cursor: pointer;
-  opacity: 1;
 }
 
 .fa-columns {

@@ -8,6 +8,7 @@ import { DdeApiService } from '../services/dde-api.service';
 })
 export class DdeDashboardComponent implements OnInit {
 
+  private disableDashboardBarButtons: boolean = true;
   constructor(private ddeApiService: DdeApiService) { }
 
   ngOnInit() {
@@ -19,6 +20,7 @@ export class DdeDashboardComponent implements OnInit {
         await this.ddeApiService.createNewSession();
         await this.ddeApiService.createAndInitApiFramework();
         await this.ddeApiService.openDashboard();
+        this.disableDashboardBarButtons = false;
     }
     catch(e) {
       console.log(e);

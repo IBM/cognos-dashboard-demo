@@ -28,10 +28,11 @@ export class DDEAppComponent implements OnInit {
   private session : Session = null;
   private toaster: Toaster;
   private message : string;
-  private dashboardColSize: string = 'col-md-6';  
+  private dashboardColSize: string = 'col-md-6';
   private dashboardBarColSize: string = 'col-md-6';
   private explorerBarColSize: string = 'col-md-6';
   private showPanel: boolean = true;
+  private disableDashboardBarButtons: boolean = true;
 
   constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
@@ -88,6 +89,7 @@ export class DDEAppComponent implements OnInit {
 
     if (this.dashboardApi !== '') {
       this.menuComp.nextStep = CodeSnippetEnum.AddCSVSource;
+      this.disableDashboardBarButtons = false;
       this.dashboardApi.on("addSource:clicked", () => {
         this.menuComp.currentSelection = CodeSnippetEnum.AddCSVSource;
         this.code_snippet = this.codeSnippetsRepoService.getSnippet(CodeSnippetEnum.AddCSVSource);

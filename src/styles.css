@@ -73,11 +73,6 @@ select {
   margin-right: 0px;
 }
 
-/* make sure list spans whole column height */
-.ngxAccordionCustomContainer .list-group {
-  /* height: 100%; */
-}
-
 /* accordion headers*/
 .ngxAccordionCustomContainer .navbar-brand {
     width: 100%;
@@ -169,15 +164,26 @@ svg-icon {
 }
 
 .button {
-  padding: 5px 10px;
   color: #000;
-  cursor: pointer;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
 }
 
 .button:hover {
   color: #fff;
 }
 
+.disabled {
+  opacity: .5;
+  pointer-events: none;
+  cursor: none;
+}
+
+.enabled {
+  cursor: pointer;
+  opacity: 1;
+}
 
 .iframeContainer {
   height: 900px; /* temp solution */  /*height: 95%;*/

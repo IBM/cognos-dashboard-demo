@@ -29,6 +29,7 @@ import { DdeCodeSnippetComponent } from './dde-code-snippet/dde-code-snippet.com
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { DDEAppComponent } from './dde-app/dde-app.component';
 import { DdeDashboardComponent } from './dde-dashboard/dde-dashboard.component';
+import { DdeDashboardBarComponent } from './dde-dashboard-bar/dde-dashboard-bar.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { DdeDashboardComponent } from './dde-dashboard/dde-dashboard.component';
     DdeReferencesComponent,
     DdeCodeSnippetComponent,
     DDEAppComponent,
-    DdeDashboardComponent
+    DdeDashboardComponent,
+    DdeDashboardBarComponent
   ],
   imports: [
     BrowserModule,
