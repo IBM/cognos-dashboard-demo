@@ -104,7 +104,7 @@ export class DdeApiService {
     }
 
     //get the sampleSepc json ready
-    const response = await this.http.get('/assets/ddeSampleSpec.json').toPromise();
+    const response = await this.http.get('/assets/dashboardspec.json').toPromise();
     this.sample_db_spec = response.json();
     //return this.sample_db_spec;
   }
