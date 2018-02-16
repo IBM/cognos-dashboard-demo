@@ -15,14 +15,14 @@
           </span>
         </span>
 
-        <span *ngIf=showPanel class="button float-right" (click)="runCode()" [ngClass]="onDisableRunButton()">
+        <span [ngClass]="showHideClass" class="button float-right" (click)="runCode()" [ngClass]="onDisableRunButton()">
           <svg-icon class="explorer-image" src="../assets/images/play_16.svg"></svg-icon>
           <span>
             Run
           </span>
         </span>
 
-        <span *ngIf=showPanel id="copyButton" class="button enabled copy-button float-right">
+        <span [ngClass]="showHideClass" id="copyButton" class="button enabled copy-button float-right">
           <svg-icon class="explorer-image" src="../assets/images/copy_16.svg"></svg-icon>
           <span>
             Copy
@@ -35,7 +35,7 @@
 
     <div class="row">
 
-        <div *ngIf=showPanel class="col-md-3 nav-bar navbar-expand-lg navbar-light bg-light">
+        <div [ngClass]="showHideClass" class="col-md-3 nav-bar navbar-expand-lg navbar-light bg-light">
             <div class="ngxAccordionCustomContainer list-group text-md-left">
               <accordion [closeOthers]=true class="ngxAccordionCustom">
                 <dde-menu (codeToRun)="getCodeSnippet($event)">
@@ -45,7 +45,7 @@
             <dde-references (isShowVideo)=showVideo()></dde-references>
         </div>
 
-        <div *ngIf=showPanel class="col-md-3 bg-light">
+        <div [ngClass]="showHideClass" class="col-md-3 bg-light">
           <dde-code-explorer [codeSnippet]="code_snippet" (session)="sessionInfo($event)" (apiId)="getAPIId($event)"
             (dashboardApi)="getDashboardApi($event)" (dashboardSpec)="getDashboardSpec($event)"
             (updateModuleDefinitions)="updateModuleDefinitions($event)" (clearDirtyState)="clearDirtyState($event)"

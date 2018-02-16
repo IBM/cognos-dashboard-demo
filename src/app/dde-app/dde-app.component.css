@@ -26,6 +26,14 @@
   font-family: "Helv Neue Roman";
 }
 
+.hide {
+  display: none;
+}
+
+.show {
+  display: inline-block;
+}
+
 dde-toaster {
   position: absolute;
 }
