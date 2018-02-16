@@ -49,7 +49,8 @@
           <dde-code-explorer [codeSnippet]="code_snippet" (session)="sessionInfo($event)" (apiId)="getAPIId($event)"
             (dashboardApi)="getDashboardApi($event)" (dashboardSpec)="getDashboardSpec($event)"
             (updateModuleDefinitions)="updateModuleDefinitions($event)" (clearDirtyState)="clearDirtyState($event)"
-            (registerCallback)="registerCallback($event)" (unregisterCallback)="unregisterCallback($event)">
+            (registerCallback)="registerCallback($event)" (unregisterCallback)="unregisterCallback($event)"
+            (lastActionOutput)=lastAction($event)>
           </dde-code-explorer>
         </div>
 

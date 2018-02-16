@@ -34,6 +34,7 @@ export class DDEAppComponent implements OnInit {
   private showPanel: boolean = true;
   private disableDashboardBarButtons: boolean = true;
 
+
   constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
 

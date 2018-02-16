@@ -1,4 +1,8 @@
 .dashboard-bar {
   background-color: #a6a5a6;
-  height: 30px;  
+  height: 30px;
+}
+
+.pressed {
+  background-color: #464646;
 }
