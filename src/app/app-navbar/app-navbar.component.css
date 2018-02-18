@@ -6,6 +6,10 @@ nav {
   padding-left: 1em;
 }
 
+.navbar {
+  text-transform: none;
+}
+
 .icon {
   width: 35px;
 }
