@@ -36,7 +36,7 @@ body {
   font-family: "Helv Neue Bold", serif;
  }
 
- a, span {
+ a, span, div .button {
    font-family: "Helv Neue Roman", serif;
  }
 
@@ -168,10 +168,17 @@ svg-icon {
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 5px;
+  height: 100%;
+  border: 0;
 }
 
 .button:hover {
   color: #fff;
+}
+
+.button-selected {
+  background-color: #464646;
+  border-bottom:2px solid #40d5bb;
 }
 
 .disabled {

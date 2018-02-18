@@ -34,7 +34,7 @@ export class DDEAppComponent implements OnInit {
   private showPanel: boolean = true;
   private disableDashboardBarButtons: boolean = true;
   private showHideClass : string = 'show';
-
+  private buttonState : string = '';
 
   constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
@@ -49,6 +49,7 @@ export class DDEAppComponent implements OnInit {
 
   showPanels() {
     this.showPanel = !this.showPanel;
+    this.buttonState = this.showPanel ? '' : 'button-selected';
     this.showHideClass = this.showPanel ? 'show' : 'hide';
     this.dashboardColSize = this.showPanel ? 'col-md-6' : 'col-md-12';
     this.explorerBarColSize = this.showPanel ? 'col-md-6' : 'col-md-1';

@@ -72,8 +72,7 @@ dde-toaster {
 }
 
 @media (max-width: 1200px) {
-  .col-md-3,
-  .explorer-bar-max {
+  .col-md-3 {
     min-width: 320px;
   }
 }

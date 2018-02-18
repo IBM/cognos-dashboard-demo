@@ -8,26 +8,20 @@
 <div class="container-fluid">
   <div class="row">
       <div class="explorer-bar" [ngClass]="explorerBarColSize">
-        <span (click)=showPanels() class="button enabled float-left" tooltip="Show/Hide Panels" placement="right">
+        <div (click)=showPanels() [ngClass]="buttonState" class="button enabled float-left" tooltip="Show/Hide Panels" placement="right">
           <svg-icon class="explorer-image show-hide" src="../assets/images/hide-sidepane.svg"></svg-icon>
-          <span>
-            Show/Hide
-          </span>
-        </span>
+          Show/Hide
+        </div>
 
-        <span [ngClass]="showHideClass" class="button float-right" (click)="runCode()" [ngClass]="onDisableRunButton()">
+        <div [ngClass]="showHideClass" class="button float-right" (click)="runCode()" [ngClass]="onDisableRunButton()">
           <svg-icon class="explorer-image" src="../assets/images/play_16.svg"></svg-icon>
-          <span>
             Run
-          </span>
-        </span>
+        </div>
 
-        <span [ngClass]="showHideClass" id="copyButton" class="button enabled copy-button float-right">
+        <div [ngClass]="showHideClass" id="copyButton" class="button enabled copy-button float-right">
           <svg-icon class="explorer-image" src="../assets/images/copy_16.svg"></svg-icon>
-          <span>
             Copy
-          </span>
-        </span>
+        </div>
       </div>
 
       <dde-dashboard-bar [ngClass]="dashboardBarColSize" [disableButtons]="disableDashboardBarButtons"></dde-dashboard-bar>
