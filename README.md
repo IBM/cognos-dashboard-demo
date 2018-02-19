@@ -50,8 +50,8 @@ Run ng serve for a dev server. Navigate to http://localhost:4200/. The app will 
 ## Resources
 
 * [DDE in Bluemix](https://console-regional.stage1.ng.bluemix.net/docs/services/dynamic-dashboard-embedded/index.html#overview-of-dynamic-dashboard-embedded)
-* [Sample app](https://jdcluster.us-south.containers.mybluemix.net/daas/DashboardAPI.html)
-* [Swagger](https://jdcluster.us-south.containers.mybluemix.net/api-docs)
+* [Sample app](https://ddetest-us-south.analytics.ibm.com/daas/DashboardAPI.html)
+* [Swagger](https://ddetest-us-south.analytics.ibm.com/api-docs)
 
 ## Deployment
 

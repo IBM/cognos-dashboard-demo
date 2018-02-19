@@ -158,21 +158,36 @@ export class DdeApiService {
   }
 */
 
-  async getCSVSampleModule(url) {
-  /*  // return if it was already fetched from before
-    if (this.csv_sample_module != null) {
-      return this.csv_sample_module;
-    }
-  */
+
+  async getCSVSampleModuleJson(url) {
     const response = await this.http.get(url).toPromise();
-    this.csv_sample_module = response.json();
+    return response.json();
+  }
+
+  async getCSVSampleModule() {
+    if (this.csv_sample_module == null) {
+      this.csv_sample_module = await this.getCSVSampleModuleJson('/assets/ddeCSVSampleModule.json');
+    }
     return this.csv_sample_module;
   }
 
+  async getBikeShareWeatherCSVSampleModule() {
+    if (this.bike_share_weather_csv_sample_module == null) {
+      this.bike_share_weather_csv_sample_module = await this.getCSVSampleModuleJson('/assets/bikeShareWeatherSampleModule.json');
+    }
+    return this.bike_share_weather_csv_sample_module;
+  }
+
+  async getBikeShareRidesDemographCSVSampleModule() {
+    if (this.bike_share_rides_demograph_csv_sample_module == null) {
+      this.bike_share_rides_demograph_csv_sample_module = await this.getCSVSampleModuleJson('/assets/bikeShareRidesDemographicsSampleModule.json');
+    }
+    return this.bike_share_rides_demograph_csv_sample_module;
+  }
+
+
   async addCSVSampleSource() {
-    const sampleModule = this.csv_sample_module != null ?
-      this.csv_sample_module :
-      await this.getCSVSampleModule('/assets/ddeCSVSampleModule.json');
+    const sampleModule = await this.getCSVSampleModule();
     this.dashboardAPI.addSources([{
       module: sampleModule,
       name: 'Test CSV Source',
@@ -196,9 +211,7 @@ export class DdeApiService {
 */
 
   async addProtectedCSVSampleSource() {
-    const sampleModule = this.csv_sample_module != null ?
-      this.csv_sample_module :
-      await this.getCSVSampleModule('/assets/ddeCSVSampleModule.json');
+    const sampleModule = await this.getCSVSampleModule();
     this.encryptService.setKey(this.session.keys[0]);
     const encryptedSampleModule = this.encryptService.encryptModuleInfo(sampleModule);
 
@@ -212,27 +225,22 @@ export class DdeApiService {
   }
 
   async addBikeShareWeatherCSVSampleSource() {
-    const sampleModule = this.bike_share_weather_csv_sample_module != null ?
-      this.bike_share_weather_csv_sample_module :
-      await this.getCSVSampleModule('/assets/bikeShareWeatherSampleModule.json');
+    const sampleBikeShareWeatherModule = await this.getBikeShareWeatherCSVSampleModule();
     this.dashboardAPI.addSources([{
-      module: sampleModule,
+      module: sampleBikeShareWeatherModule,
       name: 'Test Bike Share Weather Source',
       id: 'myUniqueId111'
     }]);
   }
 
   async addBikeShareRidesDemographCSVSampleSource() {
-    const sampleModule = this.bike_share_rides_demograph_csv_sample_module != null ?
-      this.bike_share_rides_demograph_csv_sample_module :
-      await this.getCSVSampleModule('/assets/bikeShareRidesDemographicsSampleModule.json');
+    const sampleBikeShareRidesDemographModule = await this.getBikeShareRidesDemographCSVSampleModule();
     this.dashboardAPI.addSources([{
-      module: sampleModule,
+      module: sampleBikeShareRidesDemographModule,
       name: 'Test Bike Share Rides Demographics Source',
       id: 'myUniqueId222'
     }]);
   }
-
 
 
   setDashboardMode_Edit() {

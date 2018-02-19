@@ -1,10 +1,10 @@
 {
-  "xsd": "https:\/\/ibm.com\/daas\/module\/1.0\/module.xsd",
+  "xsd": "https://ibm.com/daas/module/1.0/module.xsd",
   "source": {
     "id": "CSV_File",
     "srcUrl": {
-      "sourceUrl": "https:\/\/developer.ibm.com\/static\/site-id\/141\/bikeShareWeather.csv",
-      "mimeType": "text\/csv",
+      "sourceUrl": "https://developer.ibm.com/static/site-id/141/bikeShareWeather.csv",
+      "mimeType": "text/csv",
       "property": [
         {
           "name": "separator",
@@ -18,7 +18,7 @@
     }
   },
   "table": {
-    "name": "Bike Share Weather CSV file",
+    "name": "Bike Share Weather CSV",
     "description": "description of the table for visual hints",
     "column": [
       {
@@ -27,13 +27,7 @@
         "nullable": true,
         "description": "Date",
         "label": "Date",
-        "taxonomy": [
-            {
-              "domain": "cognos",
-              "family": "cDate",
-              "class": "cTime"
-            }
-          ],
+        "taxonomyFamily": "cDate",
         "usage": "attribute",
         "regularAggregate": "countDistinct"
       },
@@ -118,8 +112,7 @@
         "usage": "fact",
         "regularAggregate": "average"
       }
-    ],
-    "name": "Bike Share Weather CSV"
+    ]
   },
   "label": "Module Name",
   "identifier": "moduleId"
