@@ -1,0 +1,12 @@
+.current-selection {
+  font-family: "Helv Neue Bold", serif;
+}
+
+.info-icon {
+  width: 14px;
+  float: right;
+}
+
+.nav-link {
+  cursor: pointer;
+}

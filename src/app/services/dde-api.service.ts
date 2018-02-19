@@ -11,7 +11,6 @@ const contentHeaders = new Headers();
 contentHeaders.append('Accept', 'application/json');
 contentHeaders.append('Content-Type', 'application/json');
 
-
 @Injectable()
 export class DdeApiService {
 
@@ -39,7 +38,10 @@ export class DdeApiService {
       this.api = null;
     }
 
-    let options = new RequestOptions({headers: contentHeaders});
+    let options = new RequestOptions({
+       headers: contentHeaders,
+       url: window.location.origin
+     });
 
     const response = await this.http.post('/api/dde/session', options).toPromise();
 
@@ -57,7 +59,7 @@ export class DdeApiService {
     this.api = new CognosApi({
           cognosRootURL: environment.cognos_root_url,
           sessionCode: this.session.code,
-          node: document.getElementById('containerDivId3')
+          node: document.getElementById('ddeDashboard')
           });
     this.api._node.hidden = false;
 
@@ -102,7 +104,7 @@ export class DdeApiService {
     }
 
     //get the sampleSepc json ready
-    const response = await this.http.get('/assets/ddeSampleSpec.json').toPromise();
+    const response = await this.http.get('/assets/dashboardspec.json').toPromise();
     this.sample_db_spec = response.json();
     //return this.sample_db_spec;
   }

@@ -48,6 +48,8 @@ app.get("/api/dde/credentials", function(request, response) {
 */
 app.post("/api/dde/session", function(request, response) {
   console.log(dde_client_id);
+  var hostName = request.body.url;
+  console.log('URL ' + hostName);
 
   var options = {
       method: 'POST',
@@ -58,7 +60,7 @@ app.post("/api/dde/session", function(request, response) {
       },
       body: {
           "expiresIn": 3600,
-          webDomain: conf.web_domain
+          webDomain: hostName
           //"webDomain": "http://localhost:3000" // for local testing
           //"webDomain": "https://dde-angnode-app.stage1.mybluemix.net" // for deployment
       },

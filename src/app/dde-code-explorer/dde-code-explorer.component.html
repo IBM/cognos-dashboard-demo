@@ -1,20 +1,4 @@
-<div class="explorer-bar">
-  <div class="button" [ngClass]="onDisableRunButton()" (click)="runCode($event)">
-    <svg-icon class="explorer-image" src="../assets/images/play_16.svg"></svg-icon>
-    <span>
-      Run
-    </span>
-  </div>
-
-  <div id="copyButton" class="button copy-button">
-    <svg-icon class="explorer-image" src="../assets/images/copy_16.svg"></svg-icon>
-    <span>
-      Copy
-    </span>
-  </div>
-</div>
-
-<div class="row" [ngClass]="setExplorerDiv()">
+<div [ngClass]="setExplorerDiv()">
   <dde-code-snippet class="code-snippet" [codeType]="codeSnippet.selection"></dde-code-snippet>
 </div>
 
@@ -34,9 +18,8 @@
   </div>
 
   <div class="panel-link">
-    <a class="nav-link" href="#" target="_blank">
+    <a href="#" target="_blank">
       Learn more about creating a valid session
-      <svg-icon class="link-image" src="../assets/images/link_16.svg"></svg-icon>
     </a>
   </div>
 </div>
@@ -56,9 +39,8 @@
   </div>
 
   <div class="panel-link">
-    <a class="nav-link" href="#" target="_blank">
-      Learn to work with your own datasource
-      <svg-icon class="link-image" src="../assets/images/link_16.svg"></svg-icon>
+    <a href="#" target="_blank">
+      Learn how to work with your own datasource
     </a>
   </div>
 </div>

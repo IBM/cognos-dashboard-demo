@@ -36,13 +36,23 @@ body {
   font-family: "Helv Neue Bold", serif;
  }
 
- a, span {
-   font-family: "Helv Neue Roman", serif;
- }
+a {
+  padding: 0.5rem 1rem;
+  display: block;
+  color: #5392ff;
+}
 
- label {
-   color: #000;
- }
+a:hover {
+  color: #5392ff;
+}
+
+a, span, div .button {
+ font-family: "Helv Neue Roman", serif;
+}
+
+label {
+ color: #000;
+}
 
 input {
   width: 95%;
@@ -71,24 +81,6 @@ select {
 .container-fluid .row {
   margin-left: 0px;
   margin-right: 0px;
-}
-
-/* remove default paddings */
-.ngxAccordionCustomContainer {
-  /* padding-left: 0px;
-  padding-right: 0px;
-  /* min-width: 320px; */
-} */
-
-/* remove default paddings */
-/* .mainContentContainer {
-  padding-left: 0px;
-  padding-right: 0px;
-} */
-
-/* make sure list spans whole column height */
-.ngxAccordionCustomContainer .list-group {
-  height: 100%;
 }
 
 /* accordion headers*/
@@ -133,7 +125,7 @@ select {
   font-size: 15px;
 }
 
-a, .fa {
+.fa {
   cursor: pointer;
 }
 
@@ -159,9 +151,8 @@ pre {
 }
 
 svg-icon {
-  width: 20px;
+  width: 16px;
   vertical-align: -webkit-baseline-middle;
-  float: left;
 }
 
 .link-image {
@@ -180,6 +171,65 @@ svg-icon {
 .tooltip-arrow {
   border-left-color: #343334 !important;
   border-right-color: #343334 !important;
+}
+
+.button {
+  color: #000;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  height: 100%;
+  border: 0;
+}
+
+.button:hover {
+  color: #fff;
+}
+
+.button-selected {
+  background-color: #464646;
+  border-bottom:2px solid #40d5bb;
+  color: #d8d8d8;
+}
+
+.button svg-icon:hover {
+  fill: #fff;
+}
+
+.disabled {
+  opacity: .5;
+  pointer-events: none;
+  cursor: none;
+}
+
+.enabled {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.iframeContainer {
+  height: 900px; /* temp solution */  /*height: 95%;*/
+  display: flex;
+  flex-direction: column;
+}
+
+.iframeContainer pre {
+  display: flex;
+  font-size: medium;
+  white-space: pre-wrap;
+}
+
+.iframe {
+  flex-grow: 1;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 1440px) {
+  .iframeContainer {
+    height: 700px;
+  }
 }
 
 /* Detect Mac Firefox 25 or newer */

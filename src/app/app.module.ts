@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-//import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -18,31 +16,21 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { DdeCodeExplorerComponent } from './dde-code-explorer/dde-code-explorer.component';
-import { DdeDashboardComponent } from './dde-dashboard/dde-dashboard.component';
+import { DdeMenuComponent } from './dde-menu/dde-menu.component';
 import { DdeToasterComponent } from './dde-toaster/dde-toaster.component';
 
 import { DdeApiService } from './services/dde-api.service';
 import { EncryptService } from './services/encrypt.service';
+import { DdeActionService } from './services/dde-action.service';
 import { CodeSnippetsRepoService } from './services/code-snippets-repo.service';
 import { DdeDialogComponent } from './dde-dialog/dde-dialog.component';
 import { DdeReferencesComponent } from './dde-references/dde-references.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { DdeCodeSnippetComponent } from './dde-code-snippet/dde-code-snippet.component';
-
-
-/*
-// Define the routes
-const ROUTES = [
-  {
-    path: '',
-    redirectTo: 'dde',
-    pathMatch: 'full'
-  },
-  {
-    path: 'dde',
-    component: DdeListComponent
-  }
-];*/
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { DDEAppComponent } from './dde-app/dde-app.component';
+import { DdeDashboardComponent } from './dde-dashboard/dde-dashboard.component';
+import { DdeDashboardBarComponent } from './dde-dashboard-bar/dde-dashboard-bar.component';
 
 @NgModule({
   declarations: [
@@ -50,11 +38,14 @@ const ROUTES = [
     AppNavbarComponent,
     DdeListComponent,
     DdeCodeExplorerComponent,
-    DdeDashboardComponent,
+    DdeMenuComponent,
     DdeToasterComponent,
     DdeDialogComponent,
     DdeReferencesComponent,
-    DdeCodeSnippetComponent
+    DdeCodeSnippetComponent,
+    DDEAppComponent,
+    DdeDashboardComponent,
+    DdeDashboardBarComponent
   ],
   imports: [
     BrowserModule,
@@ -65,17 +56,14 @@ const ROUTES = [
     FormsModule,
     HttpClientModule,
     AngularSvgIconModule,
-    TooltipModule.forRoot()
-    //RouterModule.forRoot(ROUTES), // Add routes to the app
-    //AngularFireModule.initializeApp(environment.firebase),
-    //AngularFireDatabaseModule,
-    //AngularFireAuthModule,
-    //NgbModule.forRoot()
+    TooltipModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [
     DdeApiService,
     EncryptService,
-    CodeSnippetsRepoService
+    CodeSnippetsRepoService,
+    DdeActionService
   ],
   bootstrap: [AppComponent]
 })

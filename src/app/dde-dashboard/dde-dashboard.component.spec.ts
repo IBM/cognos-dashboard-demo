@@ -1,31 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DdeDashboardComponent } from './dde-dashboard.component';
+import { DdeDashbaordComponent } from './dde-dashbaord.component';
 
-import { DdeApiService } from '../dde-api.service';
-
-import { MockBackend } from '@angular/http/testing';
-import {Http, Response, RequestOptions, Headers} from '@angular/http';
-
-describe('DdeDashboardComponent', () => {
-  let component: DdeDashboardComponent;
-  let fixture: ComponentFixture<DdeDashboardComponent>;
-
+describe('DdeDashbaordComponent', () => {
+  let component: DdeDashbaordComponent;
+  let fixture: ComponentFixture<DdeDashbaordComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DdeDashboardComponent ],
-
-      providers: [
-        DdeApiService,
-        {provide: Http, deps: [MockBackend]}
-      ]
+      declarations: [ DdeDashbaordComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DdeDashboardComponent);
+    fixture = TestBed.createComponent(DdeDashbaordComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -33,5 +22,4 @@ describe('DdeDashboardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 });

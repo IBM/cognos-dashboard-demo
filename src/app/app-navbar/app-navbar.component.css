@@ -2,15 +2,14 @@ nav {
   height: 2em;
 }
 
-.fa-columns {
-  font-size: 20px;
-  margin-bottom: 0.4em;
-}
-
-.fa-columns:hover {
-  color: #fff;
-}
-
 .navbar-brand {
-  padding: 1em;
+  padding-left: 1em;
+}
+
+.navbar {
+  text-transform: none;
+}
+
+.icon {
+  width: 35px;
 }

@@ -1,125 +1,15 @@
-<accordion-group [isOpen]="isFirstOpen" panelClass="bg-light">
-  <div accordion-heading class="navbar-brand">
-    1. Set the API framework
+<header>
+  <app-navbar></app-navbar>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <dde-dashboard-bar class="col-md-12" [disableButtons]="disableDashboardBarButtons"></dde-dashboard-bar>
   </div>
-  <div class="col-md-12">
-       <div class="row">
-         <ul class="navbar-nav mr-auto">
-           <li>
-             <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateSession'}" href="#" (click)='displayNewSessionCode()'>
-               <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateSession'"></i>
-               Create a session
-               <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                  tooltip="A session is an authorized 60 minute window where unlimited dashboard interactions can take place"></svg-icon>
-             </a>
-             <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateAPIFramework'}" href="#" (click)='displayInitApiFrameworkCode()'>
-               <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateAPIFramework'"></i>
-               Initialize the API framework
-               <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                  tooltip="Initialization needs to occur within 60 seconds of session creation."></svg-icon>
-             </a>
-           </li>
-         </ul>
+  <div class="row">
+    <div class="col-md-12">
+       <div class="iframeContainer" id="ddeDashboard">
        </div>
-  </div>
-</accordion-group>
-
-<accordion-group [isOpen]="nextStepToProcess() === 'CreateDashboard'" panelClass="bg-light">
-  <div accordion-heading class="navbar-brand">
-    2. Open or create dashboard
-  </div>
-
-  <div class="col-md-12">
-       <div class="row">
-         <ul class="navbar-nav mr-auto">
-           <li>
-             <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'OpenDashboard'}" href="#" (click)='displayOpenDashboardCode()'>
-               <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateDashboard'"></i>
-               Open dashboard
-               <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                  tooltip="Dashboards that have been previously saved by your application can be loaded by this API."></svg-icon>
-             </a>
-             <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateDashboard'}" href="#" (click)='displayCreateDashboardCode()'>
-               Create dashboard
-               <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                  tooltip="Select from a variety of blank templates to construct a dashboard from your data sources."></svg-icon>
-             </a>
-           </li>
-         </ul>
-       </div>
-  </div>
-</accordion-group>
-
-<accordion-group [isOpen]="nextStepToProcess() === 'AddCSVSource'" panelClass="bg-light">
-  <div accordion-heading class="navbar-brand">
-    3. Dashboard interactions
-  </div>
-  <div class="col-md-12">
-    <div class="row">
-      <ul class="navbar-nav">
-        <li>
-          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'AddCSVSource'}" href="#" (click)='addSourcesToDashboard()'>
-            Add data source
-            <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-               tooltip="Required when you create a new dashboard and can be used to add more data to an existing dashboard."></svg-icon>
-          </a>
-          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'DashboardEditMode'}" href="#" (click)='setDashboardEditMode()'>
-            Set dashboard mode
-            <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-               tooltip="View / Edit mode allows your users a different level of access to a dashboard."></svg-icon>
-          </a>
-          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UndoLastAction'}" href="#" (click)='undoLastAction()'>
-            Undo last change
-          </a>
-          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'RedoLastAction'}" href="#" (click)='redoLastAction()'>
-            Redo last change
-            </a>
-          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'TogglePropertiesPane'}" href="#" (click)='togglePropertiesPane()'>
-            Toggle properties pane
-            <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-               tooltip="Customize a dashboards look and feel by accessing the properties pane."></svg-icon>
-          </a>
-        </li>
-      </ul>
     </div>
   </div>
-</accordion-group>
-
-<accordion-group panelClass="bg-light">
-  <div accordion-heading class="navbar-brand">
-    4. Support APIs
-  </div>
-  <div class="col-md-12">
-    <div class="row">
-      <ul class="navbar-nav">
-        <li>
-          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'GetDashboardSpec'}" href="#" (click)='getDashboardSpec()'>
-            Get dashboard specification
-            <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-               tooltip="Generates the dashboard specification that can be saved and later used to open the dashboard."></svg-icon>
-          </a>
-          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'ClearDirtyState'}" href="#" (click)='clearDirtyState()'>
-            Clear dashboard dirty state
-            <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-               tooltip="Clear this state in order to help keep track of the need to save dashboards."></svg-icon>
-          </a>
-          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UpdateModuleDefinitions'}" href="#" (click)='updateModuleDefinitions()'>
-            Update data source definition
-            <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-               tooltip="If your data source has changed since the last time your dashboard was opened, update the data source."></svg-icon>
-          </a>
-          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'registerCallback'}" href="#" (click)='registerCallback()'>
-            Register callback to dashboard event
-            <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-               tooltip="Provides the ability for your application to react to an add data button click and a change to a dirty state."></svg-icon>
-          </a>
-          <a class="nav-link" [ngClass]="{'current-selection': currentSelection === 'unregisterCallback'}" href="#" (click)='unregisterCallback()'>
-            Unregister callback to dashboard event
-            <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-               tooltip="Removes the callback from events add data button click and change to a dirty state."></svg-icon>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</accordion-group>
+</div>
