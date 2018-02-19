@@ -6,3 +6,7 @@
   width: 14px;
   float: right;
 }
+
+.nav-link {
+  cursor: pointer;
+}

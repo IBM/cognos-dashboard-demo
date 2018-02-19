@@ -36,13 +36,23 @@ body {
   font-family: "Helv Neue Bold", serif;
  }
 
- a, span, div .button {
-   font-family: "Helv Neue Roman", serif;
- }
+a {
+  padding: 0.5rem 1rem;
+  display: block;
+  color: #5392ff;
+}
 
- label {
-   color: #000;
- }
+a:hover {
+  color: #5392ff;
+}
+
+a, span, div .button {
+ font-family: "Helv Neue Roman", serif;
+}
+
+label {
+ color: #000;
+}
 
 input {
   width: 95%;
@@ -115,7 +125,7 @@ select {
   font-size: 15px;
 }
 
-a, .fa {
+.fa {
   cursor: pointer;
 }
 
