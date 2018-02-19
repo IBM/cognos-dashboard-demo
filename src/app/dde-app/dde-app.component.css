@@ -7,6 +7,10 @@
   padding: 0;
 }
 
+.row {
+  height: 100%;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -67,8 +71,34 @@ dde-toaster {
   color: #fff;
 }
 
-.show-hide {
+.show-hide-icon {
   margin-top: -0.2em;
+}
+
+.side-panels {
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.side-panels-show {
+  width: 50%;
+}
+
+.side-panels-hide {
+  width: 0;
+}
+
+.dashbaord-min {
+  transition: margin-left .5s;
+  margin-left: 50%;
+}
+
+.dashbaord-max {
+  transition: margin-left .5s;
+  margin-left: 0;
 }
 
 @media (max-width: 1200px) {

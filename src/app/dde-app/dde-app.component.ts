@@ -28,12 +28,13 @@ export class DDEAppComponent implements OnInit {
   private session : Session = null;
   private toaster: Toaster;
   private message : string;
-  private dashboardColSize: string = 'col-md-6';
+  private dashboardColSize: string = 'col-md-6 dashbaord-min';
   private dashboardBarColSize: string = 'col-md-6';
   private explorerBarColSize: string = 'col-md-6';
   private showPanel: boolean = true;
   private disableDashboardBarButtons: boolean = true;
-  private showHideClass : string = 'show';
+  //private showHideClass : string = 'show';
+  private showHideClass : string = 'side-panels-show';
   private buttonState : string = '';
 
   constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
@@ -50,8 +51,9 @@ export class DDEAppComponent implements OnInit {
   showPanels() {
     this.showPanel = !this.showPanel;
     this.buttonState = this.showPanel ? '' : 'button-selected';
-    this.showHideClass = this.showPanel ? 'show' : 'hide';
-    this.dashboardColSize = this.showPanel ? 'col-md-6' : 'col-md-12';
+    //this.showHideClass = this.showPanel ? 'show' : 'hide';
+    this.showHideClass = this.showPanel ? 'side-panels-show' : 'side-panels-hide';
+    this.dashboardColSize = this.showPanel ? 'col-md-6 dashbaord-min' : 'col-md-12 dashbaord-max';
     this.explorerBarColSize = this.showPanel ? 'col-md-6' : 'col-md-1';
     this.dashboardBarColSize = this.showPanel ? 'col-md-6' : 'col-md-11';
   }
