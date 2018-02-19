@@ -13,12 +13,12 @@
           Show/Hide
         </div>
 
-        <div [ngClass]="showHideClass" class="button float-right" (click)="runCode()" [ngClass]="onDisableRunButton()">
+        <div [ngClass]="onDisableRunButton()" class="button float-right" (click)="runCode()">
           <svg-icon class="explorer-image" src="../assets/images/play_16.svg"></svg-icon>
             Run
         </div>
 
-        <div [ngClass]="showHideClass" id="copyButton" class="button enabled copy-button float-right">
+        <div id="copyButton" class="button enabled copy-button float-right">
           <svg-icon class="explorer-image" src="../assets/images/copy_16.svg"></svg-icon>
             <span>Copy</span>
         </div>
