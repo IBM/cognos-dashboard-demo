@@ -101,6 +101,14 @@ dde-toaster {
   margin-left: 0;
 }
 
+.explorer-image {
+  fill: #000;
+}
+
+.button-selected .explorer-image {
+  fill: #d8d8d8;
+}
+
 @media (max-width: 1200px) {
   .col-md-3 {
     min-width: 320px;

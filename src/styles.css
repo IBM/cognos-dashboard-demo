@@ -189,6 +189,11 @@ svg-icon {
 .button-selected {
   background-color: #464646;
   border-bottom:2px solid #40d5bb;
+  color: #d8d8d8;
+}
+
+.button svg-icon:hover {
+  fill: #fff;
 }
 
 .disabled {
