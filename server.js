@@ -202,12 +202,16 @@ if (appEnv.services['dynamic-dashboard-embedded'] || appEnv.getService(/dynamic-
 
 
 
-
+/*
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
   res.sendFile(__dirname + '/dist/index.html');
 });
+*/
 
+app.get('*', (req, res) => {
+  res.sendFile('./dist/index.html');
+});
 
 var port = process.env.PORT || 3000
 app.listen(port, function() {
