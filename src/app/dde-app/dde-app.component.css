@@ -60,6 +60,22 @@ dde-toaster {
   height: 30px;
 }
 
+.explorer-bar-max {
+  width: 50%;
+}
+
+.explorer-bar-min {
+  width: 6.2%;
+}
+
+.dashboard-bar-max {
+  width: 93.8%;
+}
+
+.dashboard-bar-min {
+  width: 50%;
+}
+
 .fa-columns {
   font-size: 20px;
   margin-top: 0.3em;
@@ -91,12 +107,12 @@ dde-toaster {
   width: 0;
 }
 
-.dashbaord-min {
+.dashboard-min {
   transition: margin-left .5s;
   margin-left: 50%;
 }
 
-.dashbaord-max {
+.dashboard-max {
   transition: margin-left .5s;
   margin-left: 0;
 }
