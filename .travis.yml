@@ -2,6 +2,9 @@ language: node_js
 node_js:
   - "8"
 
+script:
+  - ng build --env=dev
+
 deploy:
   provider: cloudfoundry
   api: https://api.stage1.ng.bluemix.net
