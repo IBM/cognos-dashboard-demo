@@ -2,6 +2,10 @@ language: node_js
 node_js:
   - "8"
 
+branches:
+only:
+  - travisci-test
+
 deploy:
   provider: cloudfoundry
   api: https://api.stage1.ng.bluemix.net
