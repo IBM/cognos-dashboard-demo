@@ -11,6 +11,4 @@ deploy:
   space: $BLUEMIX_SPACE
   on:
     repo: GearBox/DDE-ang-node-test
-    branches:
-      only:
-        - travisci-test
+    branch: travisci-test
