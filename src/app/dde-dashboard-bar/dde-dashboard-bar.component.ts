@@ -10,7 +10,7 @@ import { CodeSnippetEnum } from '../../model/code-snippet';
 })
 export class DdeDashboardBarComponent implements OnInit {
   @Input() disableButtons : boolean;
-  private isEditMode : boolean = true;
+  private isEditMode : boolean = false;
   private toggleProperties : boolean = false;
   constructor(private ddeApiService: DdeApiService, private ddeActionService: DdeActionService) { }
 
@@ -22,12 +22,16 @@ export class DdeDashboardBarComponent implements OnInit {
     })
   }
 
-  onTogglePropertiesPaneDisableButtons() {
-    let classes =  {
-        disabled: this.disableButtons || !this.isEditMode,
-        enabled: !this.disableButtons && this.isEditMode
-    };
-    return classes;
+  // onTogglePropertiesPaneDisableButtons() {
+  //   let classes =  {
+  //       disabled: this.disableButtons || !this.isEditMode,
+  //       enabled: !this.disableButtons && this.isEditMode
+  //   };
+  //   return classes;
+  // }
+
+  isTogglePropertiesPaneDisabled() {
+    return this.disableButtons || !this.isEditMode;
   }
 
   onDisableButtons() {
@@ -83,16 +87,21 @@ export class DdeDashboardBarComponent implements OnInit {
   }
 
   togglePropertiesMode()  {
-    if (this.ddeActionService.shouldTogglePropertiesPane()) {
+    if (this.ddeActionService.shouldTogglePropertiesPane() && !this.isTogglePropertiesPaneDisabled()) {
       this.toggleProperties = !this.toggleProperties;
     }
   }
 
   shouldReset() {
-    if (this.ddeActionService.currentAction === CodeSnippetEnum.CreateDashboard ||
-        this.ddeActionService.currentAction === CodeSnippetEnum.OpenDashboard) {
-          this.isEditMode = true;
-          this.toggleProperties = false;
-        }
+    if (this.ddeActionService.currentAction === CodeSnippetEnum.CreateDashboard) {
+      this.isEditMode = true;
+      this.toggleProperties = false;
+    }
+
+    if (this.ddeActionService.currentAction === CodeSnippetEnum.OpenDashboard) {
+      this.isEditMode = false;
+      this.toggleProperties = false;
+    }
+
   }
 }
