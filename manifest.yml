@@ -1,5 +1,5 @@
 ---
 applications:
-- name: dde-angnode-app
+- name: dde-demo-test
   random-route: true
   memory: 256M
