@@ -151,9 +151,6 @@ pre {
 }
 
 svg {
-  /* width: 1em; */
-  /* height: 1em; */
-  /* height:auto; */
   vertical-align: middle;
   margin-top: -0.2em;
 }
@@ -189,6 +186,10 @@ svg {
   background-color: #464646;
   border-bottom:2px solid #40d5bb;
   color: #d8d8d8;
+}
+
+.button-selected svg-icon {
+  fill: #d8d8d8;
 }
 
 .enabled:hover svg path,
