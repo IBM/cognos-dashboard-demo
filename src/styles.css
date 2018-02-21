@@ -153,6 +153,7 @@ pre {
 svg-icon {
   width: 16px;
   vertical-align: -webkit-baseline-middle;
+  vertical-align: -moz-middle-with-baseline;
 }
 
 .link-image {
