@@ -151,9 +151,9 @@ pre {
 }
 
 svg-icon {
-  width: 16px;
-  vertical-align: -webkit-baseline-middle;
-  vertical-align: -moz-middle-with-baseline;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
 }
 
 .link-image {
@@ -176,7 +176,7 @@ svg-icon {
 
 .button {
   color: #000;
-  padding-left: 10px;
+  padding-left: 8px;
   padding-right: 10px;
   padding-top: 5px;
   height: 100%;
