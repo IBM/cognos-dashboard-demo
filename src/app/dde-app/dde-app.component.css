@@ -65,11 +65,11 @@ dde-toaster {
 }
 
 .explorer-bar-min {
-  width: 6.2%;
+  width: 8%;
 }
 
 .dashboard-bar-max {
-  width: 93.8%;
+  width: 92%;
 }
 
 .dashboard-bar-min {
@@ -85,10 +85,6 @@ dde-toaster {
 
 .fa-columns:hover {
   color: #fff;
-}
-
-.show-hide-icon {
-  margin-top: -0.2em;
 }
 
 .side-panels {
@@ -115,10 +111,6 @@ dde-toaster {
 .dashboard-max {
   transition: margin-left .5s;
   margin-left: 0;
-}
-
-.explorer-image {
-  fill: #000;
 }
 
 .button-selected .explorer-image {

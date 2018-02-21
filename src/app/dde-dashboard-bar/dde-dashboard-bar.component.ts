@@ -22,14 +22,6 @@ export class DdeDashboardBarComponent implements OnInit {
     })
   }
 
-  // onTogglePropertiesPaneDisableButtons() {
-  //   let classes =  {
-  //       disabled: this.disableButtons || !this.isEditMode,
-  //       enabled: !this.disableButtons && this.isEditMode
-  //   };
-  //   return classes;
-  // }
-
   isTogglePropertiesPaneDisabled() {
     return this.disableButtons || !this.isEditMode;
   }

@@ -150,10 +150,12 @@ pre {
     height: 100%;
 }
 
-svg-icon {
-  width: 1em;
-  height: 1em;
+svg {
+  /* width: 1em; */
+  /* height: 1em; */
+  /* height:auto; */
   vertical-align: middle;
+  margin-top: -0.2em;
 }
 
 .link-image {
