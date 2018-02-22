@@ -223,6 +223,10 @@ svg {
   padding: 0;
 }
 
+.card-body {
+  padding: 1.25rem 0 !important;
+}
+
 @media (max-width: 1440px) {
   .iframeContainer {
     height: 700px;
