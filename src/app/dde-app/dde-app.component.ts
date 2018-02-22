@@ -35,6 +35,7 @@ export class DDEAppComponent implements OnInit {
   private disableDashboardBarButtons: boolean = true;
   private showHideClass : string = 'side-panels-show';
   private buttonState : string = '';
+  private showHideText: string = 'Hide Panels';
 
   constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
@@ -49,9 +50,10 @@ export class DDEAppComponent implements OnInit {
 
   showPanels() {
     this.showPanel = !this.showPanel;
+    this.showHideText = this.showPanel ? 'Hide Panels' : 'Show Panels';
     this.buttonState = this.showPanel ? '' : 'button-selected';
     this.showHideClass = this.showPanel ? 'side-panels-show' : 'side-panels-hide';
-    this.dashboardColSize = this.showPanel ? 'col-md-6 dashboard-min' : 'col-md-12 dashboard-max';    
+    this.dashboardColSize = this.showPanel ? 'col-md-6 dashboard-min' : 'col-md-12 dashboard-max';
     this.explorerBarColSize = this.showPanel ? 'explorer-bar-max' : 'explorer-bar-min';
     this.dashboardBarColSize = this.showPanel ? 'dashboard-bar-min' : 'dashboard-bar-max';
   }

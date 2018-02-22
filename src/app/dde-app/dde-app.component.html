@@ -8,9 +8,9 @@
 <div class="container-fluid">
   <div class="row">
       <div class="explorer-bar" [ngClass]="explorerBarColSize">
-        <div (click)=showPanels() [ngClass]="buttonState" class="button enabled float-left" tooltip="Show/Hide Panels" placement="right">
+        <div (click)=showPanels() [ngClass]="buttonState" class="button enabled float-left">
           <svg-icon class="show-hide-icon" src="../assets/images/hide-sidepane.svg"></svg-icon>
-          Show/Hide
+          {{showHideText}}
         </div>
 
         <div [ngClass]="onDisableRunButton()" class="button float-right" (click)="runCode()">
