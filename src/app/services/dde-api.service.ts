@@ -38,10 +38,7 @@ export class DdeApiService {
       this.api = null;
     }
 
-    let options = new RequestOptions({
-       headers: contentHeaders,
-       url: window.location.origin
-     });
+    let options = new RequestOptions({headers: contentHeaders});
 
     const response = await this.http.post('/api/dde/session', options).toPromise();
 

@@ -150,9 +150,9 @@ pre {
     height: 100%;
 }
 
-svg-icon {
-  width: 16px;
-  vertical-align: -webkit-baseline-middle;
+svg {
+  vertical-align: middle;
+  margin-top: -0.2em;
 }
 
 .link-image {
@@ -175,15 +175,11 @@ svg-icon {
 
 .button {
   color: #000;
-  padding-left: 10px;
+  padding-left: 8px;
   padding-right: 10px;
   padding-top: 5px;
   height: 100%;
   border: 0;
-}
-
-.button:hover {
-  color: #fff;
 }
 
 .button-selected {
@@ -192,8 +188,14 @@ svg-icon {
   color: #d8d8d8;
 }
 
-.button svg-icon:hover {
+.button-selected svg-icon {
+  fill: #d8d8d8;
+}
+
+.enabled:hover svg path,
+.enabled:hover {
   fill: #fff;
+  color: #fff;
 }
 
 .disabled {
