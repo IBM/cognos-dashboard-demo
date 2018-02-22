@@ -1,3 +1,12 @@
+<pre *ngIf="codeType === 'None'">
+  <div class='none-state'>
+    <svg-icon class="steps-icons" src="../assets/images/table_128.svg"></svg-icon>
+    <span class="title">Missing: API code</span>
+    <span>Select an API and the code will appear here.</span>
+    <span>You can Run or Copy the code.</span>
+  </div>
+</pre>
+
 <pre *ngIf="codeType === 'CreateSession'" class="line-numbers">
   <code class="language-javascript">
     const response = await

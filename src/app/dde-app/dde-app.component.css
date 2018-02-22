@@ -13,9 +13,8 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto;
   text-align: center;
-  margin-top: 12em;
+  margin-top: 8em;
 }
 
 .grid-item {
@@ -23,7 +22,7 @@
 }
 
 .steps-icons {
-  width: 12em;
+  width: 25em;
 }
 
 .steps-copy {
