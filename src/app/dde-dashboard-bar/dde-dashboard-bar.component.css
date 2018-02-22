@@ -1,6 +1,7 @@
 .dashboard-bar {
-  background-color: #a6a5a6;
+  background-color: #d8d8d8;
   height: 30px;
+  border-left:2px solid #1a1a1a;
 }
 
 .button-selected svg-icon {
