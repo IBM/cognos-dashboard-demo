@@ -51,7 +51,7 @@ export class DDEAppComponent implements OnInit {
     this.showPanel = !this.showPanel;
     this.buttonState = this.showPanel ? '' : 'button-selected';
     this.showHideClass = this.showPanel ? 'side-panels-show' : 'side-panels-hide';
-    this.dashboardColSize = this.showPanel ? 'col-md-6 dashboard-min' : 'col-md-12 dashboard-max';    
+    this.dashboardColSize = this.showPanel ? 'col-md-6 dashboard-min' : 'col-md-12 dashboard-max';
     this.explorerBarColSize = this.showPanel ? 'explorer-bar-max' : 'explorer-bar-min';
     this.dashboardBarColSize = this.showPanel ? 'dashboard-bar-min' : 'dashboard-bar-max';
   }
@@ -127,6 +127,21 @@ export class DDEAppComponent implements OnInit {
 
   unregisterCallback(event) {
     this.message = 'Callback unregistered successfully. See console for details.';
+    this.setToaster(this.message, 'success', true);
+  }
+
+  registerApiCallback(event) {
+    this.message = 'API Callback registered successfully. See console for details.';
+    this.setToaster(this.message, 'success', true);
+  }
+
+  unregisterApiCallback(event) {
+    this.message = 'API Callback unregistered successfully. See console for details.';
+    this.setToaster(this.message, 'success', true);
+  }
+
+  closeApiFramework(event) {
+    this.message = 'API Framework closed successfully. See console for details.';
     this.setToaster(this.message, 'success', true);
   }
 
