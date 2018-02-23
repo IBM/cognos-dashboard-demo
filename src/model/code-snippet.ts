@@ -20,7 +20,10 @@ export enum CodeSnippetEnum {
   UpdateModuleDefinitions = 'UpdateModuleDefinitions',
   ClearDirtyState = 'ClearDirtyState',
   RegisterCallback = 'RegisterCallback',
-  UnregisterCallback = 'UnregisterCallback'
+  UnregisterCallback = 'UnregisterCallback',
+  RegisterApiCallback = 'RegisterApiCallback',
+  UnregisterApiCallback = 'UnregisterApiCallback',
+  CloseApiFramework = 'CloseApiFramework'
 }
 
 export class CodeSnippet {

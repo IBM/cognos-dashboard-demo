@@ -22,6 +22,9 @@ export class DdeCodeExplorerComponent implements OnInit {
   @Output() clearDirtyState: EventEmitter<void> = new EventEmitter<void>();
   @Output() registerCallback: EventEmitter<void> = new EventEmitter<void>();
   @Output() unregisterCallback: EventEmitter<void> = new EventEmitter<void>();
+  @Output() registerApiCallback: EventEmitter<void> = new EventEmitter<void>();
+  @Output() unregisterApiCallback: EventEmitter<void> = new EventEmitter<void>();
+  @Output() closeApiFramework: EventEmitter<void> = new EventEmitter<void>();
   @Input() codeSnippet : CodeSnippet;
   dataSources = [CSVDataSource, ProtectedCSVDataSource, BikeShareWeatherCSVSource, BikeShareRidesDemographCSVSource ];
   dashboardModes = [DashboardMode.EditMode, DashboardMode.ViewMode, DashboardMode.EditGroupMode];
@@ -125,6 +128,19 @@ export class DdeCodeExplorerComponent implements OnInit {
         this.ddeApiService.unregisterCallback();
         this.unregisterCallback.emit();
       }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.RegisterApiCallback) {
+        this.ddeApiService.registerApiCallback();
+        this.registerApiCallback.emit();
+      }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.UnregisterApiCallback) {
+        this.ddeApiService.unregisterApiCallback();
+        this.unregisterApiCallback.emit();
+      }
+      else if (this.codeSnippet.selection === CodeSnippetEnum.CloseApiFramework) {
+        this.ddeApiService.closeApiFramework();
+        this.closeApiFramework.emit();
+      }
+
 
       this.ddeActionService.hasActionChanged.next(true); ;
     }
@@ -150,6 +166,9 @@ export class DdeCodeExplorerComponent implements OnInit {
     this.enableRunButton(CodeSnippetEnum.ClearDirtyState);
     this.enableRunButton(CodeSnippetEnum.RegisterCallback);
     this.enableRunButton(CodeSnippetEnum.UnregisterCallback);
+    this.enableRunButton(CodeSnippetEnum.RegisterApiCallback);
+    this.enableRunButton(CodeSnippetEnum.UnregisterApiCallback);
+    this.enableRunButton(CodeSnippetEnum.CloseApiFramework);
   }
 
   enableRunButton(type: CodeSnippetEnum) {

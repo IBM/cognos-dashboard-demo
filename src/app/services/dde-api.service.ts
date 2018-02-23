@@ -350,19 +350,45 @@ export class DdeApiService {
     console.log(JSON.stringify(event));
   }
 
-  // register the event handler
   registerCallback() {
     this.dashboardAPI.on(this.dashboardAPI.EVENTS.DIRTY, this.onModified);
-/*
-    this.dashboardAPI.on(this.dashboardAPI.EVENTS.DIRTY, function(event) {
-        console.log('onDirty:' + JSON.stringify(event));
-    });
-*/
   }
 
   unregisterCallback() {
     this.dashboardAPI.off(this.dashboardAPI.EVENTS.DIRTY, this.onModified);
   }
 
+  // handle the event when the api returns an error
+  onError(event) {
+      console.log('onError:' + JSON.stringify(event));
+  }
+
+  /*
+    window.onError = function(event) {
+        console.log('onError:' + JSON.stringify(event));
+    };
+    window.api.on(CognosApi.EVENTS.REQUEST_ERROR, window.onError);
+  */
+  registerApiCallback() {
+    this.api.on(this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
+  }
+
+
+  /*
+  window.api.off(CognosApi.EVENTS.REQUEST_ERROR, window.onError);
+  */
+  unregisterApiCallback() {
+    this.api.off(this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
+  }
+
+  /*
+  window.api.close().then(function() {
+      console.log('API closed successfully.')
+  });
+  */
+  async closeApiFramework() {
+    await this.api.close();
+    console.log('API closed successfully.');
+  }
 
 }

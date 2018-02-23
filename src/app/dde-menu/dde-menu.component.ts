@@ -138,4 +138,19 @@ export class DdeMenuComponent implements OnInit {
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
 
+  registerApiCallback() {
+    this.currentSelection = CodeSnippetEnum.RegisterApiCallback;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  unregisterApiCallback() {
+    this.currentSelection = CodeSnippetEnum.UnregisterApiCallback;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  closeApiFramework() {
+    this.currentSelection = CodeSnippetEnum.CloseApiFramework;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
 }

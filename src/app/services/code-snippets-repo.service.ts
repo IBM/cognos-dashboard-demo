@@ -31,6 +31,9 @@ export class CodeSnippetsRepoService {
     this.snippets.set(CodeSnippetEnum.TogglePropertiesPane, new CodeSnippet(CodeSnippetEnum.TogglePropertiesPane, 'large', true));
     this.snippets.set(CodeSnippetEnum.RegisterCallback, new CodeSnippet(CodeSnippetEnum.RegisterCallback, 'large', true));
     this.snippets.set(CodeSnippetEnum.UnregisterCallback, new CodeSnippet(CodeSnippetEnum.UnregisterCallback, 'large', true));
+    this.snippets.set(CodeSnippetEnum.RegisterApiCallback, new CodeSnippet(CodeSnippetEnum.RegisterApiCallback, 'large', true));
+    this.snippets.set(CodeSnippetEnum.UnregisterApiCallback, new CodeSnippet(CodeSnippetEnum.UnregisterApiCallback, 'large', true));
+    this.snippets.set(CodeSnippetEnum.CloseApiFramework, new CodeSnippet(CodeSnippetEnum.CloseApiFramework, 'large', true));
   }
 
   getSnippet(name) : CodeSnippet {

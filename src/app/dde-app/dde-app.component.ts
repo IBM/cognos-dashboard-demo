@@ -132,6 +132,21 @@ export class DDEAppComponent implements OnInit {
     this.setToaster(this.message, 'success', true);
   }
 
+  registerApiCallback(event) {
+    this.message = 'API Callback registered successfully. See console for details.';
+    this.setToaster(this.message, 'success', true);
+  }
+
+  unregisterApiCallback(event) {
+    this.message = 'API Callback unregistered successfully. See console for details.';
+    this.setToaster(this.message, 'success', true);
+  }
+
+  closeApiFramework(event) {
+    this.message = 'API Framework closed successfully. See console for details.';
+    this.setToaster(this.message, 'success', true);
+  }
+
   // set the code snippt to what was fired over
   getCodeSnippet(event) {
     this.code_snippet = event;
