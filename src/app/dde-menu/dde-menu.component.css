@@ -1,5 +1,7 @@
 .current-selection {
   font-family: "Helv Neue Bold", serif;
+  border-left:2px solid #5392ff;
+  background: #e1ebf7;
 }
 
 .info-icon {

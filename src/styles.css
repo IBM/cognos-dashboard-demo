@@ -121,10 +121,6 @@ select {
   float: right;
 }
 
-.fa-arrow-right {
-  font-size: 15px;
-}
-
 .fa {
   cursor: pointer;
 }
@@ -224,6 +220,15 @@ svg {
 
 .card-body {
   padding: 1.25rem 0 !important;
+}
+
+.close-image {
+  float: right;
+  cursor: pointer;
+}
+
+.close-image:hover {
+  fill: #a6a5a6;
 }
 
 @media (max-width: 1440px) {
