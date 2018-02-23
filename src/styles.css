@@ -195,6 +195,18 @@ svg {
   color: #1f57a4;
 }
 
+.success-image svg {
+  fill: #00aa5e;
+}
+
+.error-image svg {
+  fill: #e62325;
+}
+
+.warning-image svg {
+  fill: #fe8500 !important;
+}
+
 .disabled {
   opacity: .3;
   pointer-events: none;
