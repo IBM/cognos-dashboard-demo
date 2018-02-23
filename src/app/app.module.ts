@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
-import { DdeListComponent } from './dde-list/dde-list.component';
 
 import { environment } from './../environments/environment';
 import { FormsModule } from '@angular/forms';
@@ -35,8 +34,7 @@ import { DdeDashboardBarComponent } from './dde-dashboard-bar/dde-dashboard-bar.
 @NgModule({
   declarations: [
     AppComponent,
-    AppNavbarComponent,
-    DdeListComponent,
+    AppNavbarComponent,    
     DdeCodeExplorerComponent,
     DdeMenuComponent,
     DdeToasterComponent,
