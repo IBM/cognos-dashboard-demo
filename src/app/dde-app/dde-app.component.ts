@@ -170,4 +170,14 @@ export class DDEAppComponent implements OnInit {
     return classes;
   }
 
+  onDisableCopyButton() {
+    let disableButton = this.code_snippet && this.code_snippet.selection === CodeSnippetEnum.None ?
+                        true : false;
+    let classes =  {
+        disabled: disableButton,
+        enabled: !disableButton
+    };
+    return classes;
+  }
+
 }
