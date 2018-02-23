@@ -11,6 +11,7 @@ export class CodeSnippetsRepoService {
     this.snippets = new Map<string, CodeSnippet>();
 
     // Add snippets as key-value pairs
+    this.snippets.set(CodeSnippetEnum.None, new CodeSnippet(CodeSnippetEnum.None, 'large', false));
     this.snippets.set(CodeSnippetEnum.CreateSession, new CodeSnippet(CodeSnippetEnum.CreateSession, 'large', false));
     this.snippets.set(CodeSnippetEnum.CreateAPIFramework, new CodeSnippet(CodeSnippetEnum.CreateAPIFramework, 'small', true));
     this.snippets.set(CodeSnippetEnum.CreateDashboard, new CodeSnippet(CodeSnippetEnum.CreateDashboard, 'large', true));

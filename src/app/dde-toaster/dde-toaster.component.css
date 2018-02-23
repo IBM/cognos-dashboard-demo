@@ -24,12 +24,3 @@
 .warning-image {
   fill: #fe8500;
 }
-
-.close-image {
-  float: right;
-  cursor: pointer;
-}
-
-.close-image:hover {
-  fill: #a6a5a6;
-}

@@ -9,13 +9,13 @@
              <ul class="navbar-nav mr-auto">
                <li>
                  <span class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateSession'}" (click)='displayNewSessionCode()'>
-                   <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateSession'"></i>
-                   Create a session
+                   <svg-icon class="faa-horizontal animated" src="../assets/images/forward_16.svg" *ngIf="nextStepToProcess() === 'CreateSession'"></svg-icon>
+                    Create a session
                    <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                       tooltip="A session is an authorized 60 minute window where unlimited dashboard interactions can take place"></svg-icon>
                  </span>
                  <span class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateAPIFramework'}" href="#" (click)='displayInitApiFrameworkCode()'>
-                   <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateAPIFramework'"></i>
+                   <svg-icon class="faa-horizontal animated" src="../assets/images/forward_16.svg" *ngIf="nextStepToProcess() === 'CreateAPIFramework'"></svg-icon>
                    Initialize the API framework
                    <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                       tooltip="Initialization needs to occur within 60 seconds of session creation."></svg-icon>
@@ -36,7 +36,7 @@
              <ul class="navbar-nav mr-auto">
                <li>
                  <span class="nav-link" [ngClass]="{'current-selection': currentSelection === 'OpenDashboard'}" href="#" (click)='displayOpenDashboardCode()'>
-                   <i class="fa fa-arrow-right faa-horizontal animated" *ngIf="nextStepToProcess() === 'CreateDashboard'"></i>
+                   <svg-icon class="faa-horizontal animated" src="../assets/images/forward_16.svg" *ngIf="nextStepToProcess() === 'CreateDashboard'"></svg-icon>
                    Open dashboard
                    <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                       tooltip="Dashboards that have been previously saved by your application can be loaded by this API."></svg-icon>

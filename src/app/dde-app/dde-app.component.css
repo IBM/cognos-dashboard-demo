@@ -1,21 +1,11 @@
-.col-md-1,
-.col-md-3,
-.col-md-5,
-.col-md-6,
-.col-md-11,
-.col-md-12 {
-  padding: 0;
-}
-
 .row {
   height: 100%;
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto;
   text-align: center;
-  margin-top: 12em;
+  margin-top: 8em;
 }
 
 .grid-item {
@@ -23,7 +13,7 @@
 }
 
 .steps-icons {
-  width: 12em;
+  width: 25em;
 }
 
 .steps-copy {
@@ -46,18 +36,10 @@ dde-toaster {
   width: 95px;
 }
 
-.fa-columns {
-  font-size: 20px;
-  margin-bottom: 0.4em;
-}
-
-.fa-columns:hover {
-  color: #fff;
-}
-
 .explorer-bar {
-  background-color: #d8d8d8;
+  background-color: #eaeaea;
   height: 30px;
+  color: #343334;
 }
 
 .explorer-bar-max {
@@ -65,11 +47,11 @@ dde-toaster {
 }
 
 .explorer-bar-min {
-  width: 8%;
+  width: 9%;
 }
 
 .dashboard-bar-max {
-  width: 92%;
+  width: 91%;
 }
 
 .dashboard-bar-min {
