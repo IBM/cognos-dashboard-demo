@@ -36,14 +36,11 @@ body {
   font-family: "Helv Neue Bold", serif;
  }
 
-a {
+a,
+a:hover {
   padding: 0.5rem 1rem;
   display: block;
-  color: #5392ff;
-}
-
-a:hover {
-  color: #5392ff;
+  color: #1f57a4;
 }
 
 a, span, div .button {
@@ -105,6 +102,15 @@ select {
     border-bottom: 0px;
 }
 
+.col-md-1,
+.col-md-3,
+.col-md-5,
+.col-md-6,
+.col-md-11,
+.col-md-12 {
+  padding: 0;
+}
+
 .panel-open .panel .navbar-brand:after {
     font-family: 'FontAwesome';
     content: "\f068";
@@ -112,7 +118,7 @@ select {
 }
 
 .bg-dark {
-  background-color: #272822 !important;
+  background-color: #343334 !important;
 }
 
 .panel .navbar-brand:after {
@@ -144,6 +150,7 @@ ul, li {
 svg {
   vertical-align: middle;
   margin-top: -0.2em;
+  fill: #595859;
 }
 
 .link-image {
@@ -165,7 +172,7 @@ svg {
 }
 
 .button {
-  color: #000;
+  color: #343334;
   padding-left: 8px;
   padding-right: 10px;
   padding-top: 5px;
@@ -174,24 +181,25 @@ svg {
 }
 
 .button-selected {
-  background-color: #464646;
+  background-color: #595859;
   color: #d8d8d8;
 }
 
-.button-selected svg-icon {
-  fill: #d8d8d8;
+.button-selected svg {
+  fill: #fff;
 }
 
 .enabled:hover svg path,
 .enabled:hover {
-  fill: #fff;
-  color: #fff;
+  fill: #1f57a4;
+  color: #1f57a4;
 }
 
 .disabled {
-  opacity: .5;
+  opacity: .3;
   pointer-events: none;
   cursor: none;
+  color: #595859;
 }
 
 .enabled {

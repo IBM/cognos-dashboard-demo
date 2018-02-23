@@ -1,7 +1,6 @@
-.current-selection {
-  font-family: "Helv Neue Bold", serif;
-  border-left:2px solid #5392ff;
-  background: #e1ebf7;
+.current-selection {  
+  border-left:2px solid #1f57a4;
+  background: rgba(21, 87, 164, 0.1);
 }
 
 .info-icon {
@@ -11,4 +10,14 @@
 
 .nav-link {
   cursor: pointer;
+  padding-left: 3em !important;
+}
+
+.nav-link:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #000 !important;
+}
+
+.navbar-brand {
+  color: #000 !important;
 }
