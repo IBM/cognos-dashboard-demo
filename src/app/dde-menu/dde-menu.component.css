@@ -1,4 +1,4 @@
-.current-selection {  
+.current-selection {
   border-left:2px solid #1f57a4;
   background: rgba(21, 87, 164, 0.1);
 }
@@ -6,6 +6,7 @@
 .info-icon {
   width: 14px;
   float: right;
+  margin-right: 1em;
 }
 
 .nav-link {
