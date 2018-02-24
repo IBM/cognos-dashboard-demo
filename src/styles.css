@@ -242,6 +242,15 @@ svg {
   padding: 1.25rem 0 !important;
 }
 
+.card-header {
+  background-color: #fff;
+  border: 1px solid #eaeaea !important;
+}
+
+.card {
+  border: none;
+}
+
 .close-image {
   float: right;
   cursor: pointer;
