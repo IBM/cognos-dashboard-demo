@@ -140,7 +140,9 @@ export class DdeCodeExplorerComponent implements OnInit {
         this.ddeApiService.closeApiFramework();
         this.closeApiFramework.emit();
       }
-
+      else {
+        throw new Error("Invalid code snippet selection");
+      }
 
       this.ddeActionService.hasActionChanged.next(true); ;
     }

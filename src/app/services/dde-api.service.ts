@@ -50,12 +50,17 @@ export class DdeApiService {
     return this.session;
   }
 
+
+
+ // initTimeout: initialization timeout (ms). Default 30000 ms.
+ // initTimeout allows for whatever latency you expect form your browser making the init() call to getting/loading DDE in the iFrame.
   async createAndInitApiFramework() {
     console.log("in create and init api framework");
     // Create an instance of the CognosApi
     this.api = new CognosApi({
           cognosRootURL: environment.cognos_root_url,
           sessionCode: this.session.code,
+          initTimeout: 10000,
           node: document.getElementById('ddeDashboard')
           });
     this.api._node.hidden = false;
@@ -68,7 +73,10 @@ export class DdeApiService {
       console.log('API created successfully.');
       console.log(this.api.dashboard);
 
-    return this.api.apiId;
+      //await this.api.close();
+      //console.log("closed API!!");
+
+      return this.api.apiId;
   }
 
   async createDashboard()  {
@@ -86,6 +94,7 @@ export class DdeApiService {
         }
     );*/
     console.log("in create dashboard");
+
     this.dashboardAPI = await this.api.dashboard.createNew();
 
     console.log('Dashboard created successfully.');
@@ -371,6 +380,7 @@ export class DdeApiService {
   */
   registerApiCallback() {
     this.api.on(this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
+    console.log("REQUEST_ERROR event callback registered.");
   }
 
 
@@ -379,6 +389,7 @@ export class DdeApiService {
   */
   unregisterApiCallback() {
     this.api.off(this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
+    console.log("REQUEST_ERROR event callback unregistered.");
   }
 
   /*
