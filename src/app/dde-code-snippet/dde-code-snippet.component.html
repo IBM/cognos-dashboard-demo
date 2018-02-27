@@ -189,18 +189,18 @@
 
 <pre *ngIf="codeType === 'RegisterApiCallback'"  class="line-numbers">
   <code class="language-javascript">
-    TODO code for Register API Callback
+    this.api.on(this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
   </code>
 </pre>
 
 <pre *ngIf="codeType === 'UnregisterApiCallback'"  class="line-numbers">
   <code class="language-javascript">
-    TODO code for Unregister API Callback
+    this.api.off(this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
   </code>
 </pre>
 
 <pre *ngIf="codeType === 'CloseApiFramework'"  class="line-numbers">
   <code class="language-javascript">
-    TODO close API framework
+    await this.api.close();
   </code>
 </pre>

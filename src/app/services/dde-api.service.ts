@@ -64,29 +64,16 @@ export class DdeApiService {
           });
     this.api._node.hidden = false;
 
-/*
-    window.api.initialize().then(function() {
-        console.log('API created successfully.');
-    }, function(err) {
-        console.log('Failed to create API. ' + err.message);
-    });
-*/
+    try {
+      await this.api.initialize();
+      console.log('API created successfully.');
+    } catch (e) {
+      console.log('Unable to initialize API instance: ' + e.message);
+      return null;
+    }
 
-
-      try {
-        await this.api.initialize();
-        console.log('API created successfully.');
-      } catch (e) {
-        console.log('Unable to initialize API instance: ' + e.message);
-        return null;
-      }
-
-      console.log(this.api.dashboard);
-
-      //await this.api.close();
-      //console.log("closed API!!");
-
-      return this.api.apiId;
+    console.log(this.api.dashboard);
+    return this.api.apiId;
   }
 
   async createDashboard()  {
