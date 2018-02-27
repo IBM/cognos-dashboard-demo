@@ -30,7 +30,6 @@ export class DdeApiService {
 
   async createNewSession() {
     this.session = new Session();
-    console.log("in create new session");
 
     if (this.api != null) {
       console.log("there was already an api object");
@@ -65,12 +64,23 @@ export class DdeApiService {
           });
     this.api._node.hidden = false;
 
-     // TODO: as confirmed with Jim, use event handler instead of try/catch to catch 'invalid session' errors, waiting for
-     // events to be added by Jim
-     // https://bajazz05.canlab.ibm.com:9750/ccm/web/projects/Business%20Intelligence#action=com.ibm.team.workitem.viewWorkItem&id=217618
-      await this.api.initialize();
+/*
+    window.api.initialize().then(function() {
+        console.log('API created successfully.');
+    }, function(err) {
+        console.log('Failed to create API. ' + err.message);
+    });
+*/
 
-      console.log('API created successfully.');
+
+      try {
+        await this.api.initialize();
+        console.log('API created successfully.');
+      } catch (e) {
+        console.log('Unable to initialize API instance: ' + e.message);
+        return null;
+      }
+
       console.log(this.api.dashboard);
 
       //await this.api.close();
@@ -80,21 +90,6 @@ export class DdeApiService {
   }
 
   async createDashboard()  {
-  /*  let self = this;
-    this.api.dashboard.createNew().then(
-        function(dashboardAPI) {
-            console.log('Dashboard created successfully.');
-          //  self.ddeApiService.dashboardAPI = dashboardAPI;
-           self.ddeApiService.setDashboardApi(dashboardAPI);
-          console.log(self.api.dashboard);
-        }
-    ).catch(
-        function(err) {
-            console.log('User hit cancel on the template picker page.');
-        }
-    );*/
-    console.log("in create dashboard");
-
     this.dashboardAPI = await this.api.dashboard.createNew();
 
     console.log('Dashboard created successfully.');
@@ -106,32 +101,15 @@ export class DdeApiService {
 
     // return if it was already fetched from before
     if (this.sample_db_spec != null) {
-      return; //this.sample_db_spec;
+      return;
     }
 
     //get the sampleSepc json ready
     const response = await this.http.get('/assets/dashboardspec.json').toPromise();
     this.sample_db_spec = response.json();
-    //return this.sample_db_spec;
   }
 
   async openDashboard() {
-    /*
-    window.api.dashboard.openDashboard({
-    dashboardSpec: sampleSpec
-    }).then(
-        function(dashboardAPI) {
-            console.log('Dashboard created successfully.');
-            window.dashboardAPI = dashboardAPI;
-        }
-    ).catch(
-        function(err) {
-            console.log(err);
-        }
-    );
-    */
-
-    console.log("in open dashboard");
     await this.getDashboardSampleSpec();
     console.log("got dashboard: " + this.sample_db_spec);
     this.dashboardAPI = await this.api.dashboard.openDashboard({
@@ -249,13 +227,13 @@ export class DdeApiService {
   }
 
 
+  /**
+  Available modes
+  dashboardAPI.MODES.EDIT (authoring mode)
+  dashboardAPI.MODES.VIEW (consumption mode)
+  dashboardAPI.MODES.EDIT_GROUP (event group mode)
+  */
   setDashboardMode_Edit() {
-    /**
-    Available modes
-    dashboardAPI.MODES.EDIT (authoring mode)
-    dashboardAPI.MODES.VIEW (consumption mode)
-    dashboardAPI.MODES.EDIT_GROUP (event group mode)
-    */
     this.dashboardAPI.setMode(this.dashboardAPI.MODES.EDIT);
   }
 
@@ -280,43 +258,11 @@ export class DdeApiService {
   }
 
   async getDashboardSpec() {
-    /*
-    dashboardAPI.getSpec().then(function(spec){
-      console.log(JSON.stringify(spec));
-    });
-    */
     const spec = await this.dashboardAPI.getSpec();
     console.log(JSON.stringify(spec));
   }
 
   async updateModuleDefinitions() {
-    /*
-    // Clone our test spec since we don't want this example to change it
-    var dbSpec = JSON.parse(JSON.stringify(sampleSpec));
-
-    var getNewModulesCallback = function(ids) {
-        var newModules = [];
-        ids.forEach(function(id) {
-            newModules.push({
-                id: id,
-                module: {
-                    newModuleDefinition: true
-                },
-                name: 'newModuleName',
-            });
-        });
-        return Promise.resolve(newModules);
-    };
-
-    // Log the before
-    console.log(dbSpec.dataSources.sources);
-
-    window.api.updateModuleDefinitions(dbSpec, getNewModulesCallback).then(function(newDBSpec) {
-        console.log(newDBSpec.dataSources.sources);
-    });
-    */
-
-    //var dbSpec = JSON.parse(JSON.stringify(this.sample_db_spec));
     await this.getDashboardSampleSpec();
     var dbSpec = JSON.parse(JSON.stringify(this.sample_db_spec));
 
@@ -372,31 +318,16 @@ export class DdeApiService {
       console.log('onError:' + JSON.stringify(event));
   }
 
-  /*
-    window.onError = function(event) {
-        console.log('onError:' + JSON.stringify(event));
-    };
-    window.api.on(CognosApi.EVENTS.REQUEST_ERROR, window.onError);
-  */
   registerApiCallback() {
     this.api.on(this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
     console.log("REQUEST_ERROR event callback registered.");
   }
 
-
-  /*
-  window.api.off(CognosApi.EVENTS.REQUEST_ERROR, window.onError);
-  */
   unregisterApiCallback() {
     this.api.off(this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
     console.log("REQUEST_ERROR event callback unregistered.");
   }
 
-  /*
-  window.api.close().then(function() {
-      console.log('API closed successfully.')
-  });
-  */
   async closeApiFramework() {
     await this.api.close();
     console.log('API closed successfully.');

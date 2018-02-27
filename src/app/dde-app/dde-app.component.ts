@@ -79,7 +79,7 @@ export class DDEAppComponent implements OnInit {
   getAPIId(event) {
     this.apiId = event;
 
-    if (this.apiId !== '') {
+    if (this.apiId !== null && this.apiId !== '') {
       this.message = 'API created successfully. You can now create or open a dashboard.';
       this.setToaster(this.message, 'success', true);
       this.menuComp.nextStep = CodeSnippetEnum.CreateDashboard;
