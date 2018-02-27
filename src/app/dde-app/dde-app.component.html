@@ -10,7 +10,7 @@
       <div class="explorer-bar" [ngClass]="explorerBarColSize">
         <div (click)=showPanels() [ngClass]="buttonState" class="button enabled float-left" tooltip="Show/Hide Panels" placement="right">
           <svg-icon class="explorer-image show-hide-icon" src="../assets/images/hide-sidepane.svg"></svg-icon>
-          Show/Hide Demo Test
+          Show?Hide Demo
         </div>
 
         <div [ngClass]="onDisableRunButton()" class="button float-right" (click)="runCode()">
@@ -20,7 +20,7 @@
 
         <div id="copyButton" class="button enabled copy-button float-right">
           <svg-icon class="explorer-image" src="../assets/images/copy_16.svg"></svg-icon>
-            <span>Copy</span>
+            <span>Copied</span>
         </div>
       </div>
 
