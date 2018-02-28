@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DdeAppComponent } from './dde-app.component';
+import { DDEAppComponent } from './dde-app.component';
 
-describe('DdeAppComponent', () => {
-  let component: DdeAppComponent;
-  let fixture: ComponentFixture<DdeAppComponent>;
+describe('DDEAppComponent', () => {
+  let component: DDEAppComponent;
+  let fixture: ComponentFixture<DDEAppComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DdeAppComponent ]
+      declarations: [ DDEAppComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DdeAppComponent);
+    fixture = TestBed.createComponent(DDEAppComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

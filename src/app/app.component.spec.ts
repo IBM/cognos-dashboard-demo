@@ -3,25 +3,21 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
-import { DdeSessionComponent } from './dde-session/dde-session.component';
 import { DdeDashboardComponent } from './dde-dashboard/dde-dashboard.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { AccordionModule } from 'ngx-bootstrap/accordion';
 
-import { DdeApiService } from './dde-api.service';
+import { DdeApiService } from './services/dde-api.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         HttpModule,
-        BsDropdownModule.forRoot(),
-        AccordionModule.forRoot()
+        BsDropdownModule.forRoot()
       ],
       declarations: [
         AppComponent,
         AppNavbarComponent,
-        DdeSessionComponent,
         DdeDashboardComponent
       ],
       providers: [
