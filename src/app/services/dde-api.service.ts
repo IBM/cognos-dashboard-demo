@@ -31,10 +31,11 @@ export class DdeApiService {
   async createNewSession() {
     this.session = new Session();
 
+
     if (this.api != null) {
       console.log("there was already an api object");
-      this.api._node.hidden = true;
-      this.api = null;
+      //this.api._node.hidden = true;
+      //this.api = null;
     }
 
     let options = new RequestOptions({headers: contentHeaders});
@@ -293,11 +294,15 @@ export class DdeApiService {
   }
 
   registerCallback() {
-    this.dashboardAPI.on(this.dashboardAPI.EVENTS.DIRTY, this.onModified);
+    this.dashboardAPI.on(
+      this.dashboardAPI.EVENTS.DIRTY, this.onModified);
+    console.log("DIRTY event callback registered.");
   }
 
   unregisterCallback() {
-    this.dashboardAPI.off(this.dashboardAPI.EVENTS.DIRTY, this.onModified);
+    this.dashboardAPI.off(
+      this.dashboardAPI.EVENTS.DIRTY, this.onModified);
+    console.log("DIRTY event callback unregistered.");
   }
 
   // handle the event when the api returns an error
@@ -306,12 +311,14 @@ export class DdeApiService {
   }
 
   registerApiCallback() {
-    this.api.on(this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
+    this.api.on(
+      this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
     console.log("REQUEST_ERROR event callback registered.");
   }
 
   unregisterApiCallback() {
-    this.api.off(this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
+    this.api.off(
+      this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
     console.log("REQUEST_ERROR event callback unregistered.");
   }
 

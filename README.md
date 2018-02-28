@@ -13,7 +13,7 @@ This repo shows a Angular 5.0.0 + Node.js app that demos the Bluemix DDE service
 
  * [Git](https://git-scm.com/downloads)
  * [IBM Cloud CLI](https://console.stage1.bluemix.net/docs/cli/reference/bluemix_cli/all_versions.html#bluemix-cli-installer-downloads)
-
+ * [Node v6.9.0 or higher](https://nodejs.org/en/)
 
 ## Repo setup
 
@@ -52,6 +52,7 @@ Run ng serve for a dev server. Navigate to http://localhost:4200/. The app will 
 * [DDE in Bluemix](https://console-regional.stage1.ng.bluemix.net/docs/services/dynamic-dashboard-embedded/index.html#overview-of-dynamic-dashboard-embedded)
 * [Sample app](https://ddetest-us-south.analytics.ibm.com/daas/DashboardAPI.html)
 * [Swagger](https://ddetest-us-south.analytics.ibm.com/api-docs)
+* [API Documentation](https://dde.us-south.containers.mybluemix.net/daas/jsdoc/cognos/api/index.html)
 
 ## Deployment
 
