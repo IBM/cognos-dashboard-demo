@@ -8,10 +8,10 @@
 <div class="container-fluid">
   <div class="row">
       <div class="explorer-bar" [ngClass]="explorerBarColSize">
-        <div (click)=showPanels() [ngClass]="buttonState" class="button enabled float-left">
+        <button (click)=showPanels() [ngClass]="buttonState" class="button enabled float-left">
           <svg-icon class="show-hide-icon" src="../assets/images/hide-sidepane.svg"></svg-icon>
           {{showHideText}}
-        </div>
+        </button>
 
         <div [ngClass]="onDisableRunButton()" class="button float-right" (click)="runCode()">
           <svg-icon src="../assets/images/play_16.svg"></svg-icon>
@@ -53,7 +53,7 @@
          <div class="iframeContainer" id="ddeDashboard">
            <div class="grid-container">
              <div class="grid-item">
-               <img class="steps-icons" src="../assets/images/dashboard_empty_state.png"/>
+               <img class="steps-icons" src="../assets/images/dashboard_empty_state.png" alt="Dashboard empty state"/>
                <div>
                  Missing: Dashboard
                </div>

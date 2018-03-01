@@ -3,7 +3,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title pull-left">Welcome</h4>
-        <svg-icon class="close-image" src="../assets/images/close_16.svg" (click)="hideModal()"></svg-icon>
+          <button [attr.tabindex]="0" (click)="hideModal()">
+            <svg-icon class="close-image" src="../assets/images/close_16.svg"></svg-icon>
+          </button>
       </div>
       <div class="modal-body">
         <video #ddeVideo autoplay controls class="embed-responsive-item">
