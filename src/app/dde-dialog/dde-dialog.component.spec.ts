@@ -1,4 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { DdeDialogComponent } from './dde-dialog.component';
 
@@ -8,6 +12,12 @@ describe('DdeDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        HttpModule,
+        HttpClientModule,
+        ModalModule.forRoot(),
+        AngularSvgIconModule,
+      ],
       declarations: [ DdeDialogComponent ]
     })
     .compileComponents();
@@ -19,7 +29,9 @@ describe('DdeDialogComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
+
 });
