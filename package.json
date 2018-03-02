@@ -1,5 +1,5 @@
 {
-  "name": "dde-demo-test",
+  "name": "dde-angnode-app",
   "main": "server.js",
   "version": "0.1.1",
   "engines": {
