@@ -27,25 +27,25 @@
     </accordion-group>
 
     <accordion-group [isOpen]="nextStepToProcess() === 'CreateDashboard'" panelClass="bg-light">
-      <div accordion-heading class="navbar-brand">
+      <button accordion-heading class="navbar-brand">
         2. Open or create dashboard
-      </div>
+      </button>
 
       <div class="col-md-12">
            <div class="row">
              <ul class="navbar-nav mr-auto">
                <li>
-                 <span class="nav-link" [ngClass]="{'current-selection': currentSelection === 'OpenDashboard'}" href="#" (click)='displayOpenDashboardCode()'>
+                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'OpenDashboard'}" href="#" (click)='displayOpenDashboardCode()'>
                    <svg-icon class="faa-horizontal animated" src="../assets/images/forward_16.svg" *ngIf="nextStepToProcess() === 'CreateDashboard'"></svg-icon>
-                   Open dashboard
+                    <span>Open dashboard</span>
                    <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                       tooltip="Dashboards that have been previously saved by your application can be loaded by this API."></svg-icon>
-                 </span>
-                 <span class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateDashboard'}" href="#" (click)='displayCreateDashboardCode()'>
-                   Create dashboard
+                 </button>
+                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateDashboard'}" href="#" (click)='displayCreateDashboardCode()'>
+                   <span>Create dashboard</span>
                    <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                       tooltip="Select from a variety of blank templates to construct a dashboard from your data sources."></svg-icon>
-                 </span>
+                 </button>
                </li>
              </ul>
            </div>
@@ -53,34 +53,34 @@
     </accordion-group>
 
     <accordion-group [isOpen]="nextStepToProcess() === 'AddCSVSource'" panelClass="bg-light">
-      <div accordion-heading class="navbar-brand">
+      <button accordion-heading class="navbar-brand">
         3. Dashboard interactions
-      </div>
+      </button>
       <div class="col-md-12">
         <div class="row">
           <ul class="navbar-nav">
             <li>
-              <span class="nav-link" [ngClass]="{'current-selection': currentSelection === 'AddCSVSource'}" href="#" (click)='addSourcesToDashboard()'>
-                Add data source
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'AddCSVSource'}" href="#" (click)='addSourcesToDashboard()'>
+                <span>Add data source</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip="Required when you create a new dashboard and can be used to add more data to an existing dashboard."></svg-icon>
-              </span>
-              <span class="nav-link" [ngClass]="{'current-selection': currentSelection === 'DashboardEditMode'}" href="#" (click)='setDashboardEditMode()'>
-                Set dashboard mode
+              </button>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'DashboardEditMode'}" href="#" (click)='setDashboardEditMode()'>
+                <span>Set dashboard mode</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip="View / Edit mode allows your users a different level of access to a dashboard."></svg-icon>
-              </span>
-              <span class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UndoLastAction'}" href="#" (click)='undoLastAction()'>
-                Undo last change
-              </span>
-              <span class="nav-link" [ngClass]="{'current-selection': currentSelection === 'RedoLastAction'}" href="#" (click)='redoLastAction()'>
-                Redo last change
-                </span>
-              <span class="nav-link" [ngClass]="{'current-selection': currentSelection === 'TogglePropertiesPane'}" href="#" (click)='togglePropertiesPane()'>
-                Toggle properties pane
+              </button>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UndoLastAction'}" href="#" (click)='undoLastAction()'>
+                <span>Undo last change</span>
+              </button>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'RedoLastAction'}" href="#" (click)='redoLastAction()'>
+                <span>Redo last change</span>
+              </button>
+              <button  class="nav-link" [ngClass]="{'current-selection': currentSelection === 'TogglePropertiesPane'}" href="#" (click)='togglePropertiesPane()'>
+                <span>Toggle properties pane</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip="Customize a dashboards look and feel by accessing the properties pane."></svg-icon>
-              </span>
+              </button>
             </li>
           </ul>
         </div>
@@ -88,53 +88,53 @@
     </accordion-group>
 
     <accordion-group panelClass="bg-light">
-      <div accordion-heading class="navbar-brand">
+      <button accordion-heading class="navbar-brand">
         4. Support APIs
-      </div>
+      </button>
       <div class="col-md-12">
         <div class="row">
           <ul class="navbar-nav">
             <li>
-              <span class="nav-link" [ngClass]="{'current-selection': currentSelection === 'GetDashboardSpec'}" href="#" (click)='getDashboardSpec()'>
-                Get dashboard specification
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'GetDashboardSpec'}" href="#" (click)='getDashboardSpec()'>
+                <span>Get dashboard specification</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip="Generates the dashboard specification that can be saved and later used to open the dashboard."></svg-icon>
-              </span>
-              <span class="nav-link" [ngClass]="{'current-selection': currentSelection === 'ClearDirtyState'}" href="#" (click)='clearDirtyState()'>
-                Clear dashboard dirty state
+              </button>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'ClearDirtyState'}" href="#" (click)='clearDirtyState()'>
+                <span>Clear dashboard dirty state</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip="Clear this state in order to help keep track of the need to save dashboards."></svg-icon>
-              </span>
-              <span class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UpdateModuleDefinitions'}" href="#" (click)='updateModuleDefinitions()'>
-                Update data source definition
+              </button>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UpdateModuleDefinitions'}" href="#" (click)='updateModuleDefinitions()'>
+                <span>Update data source definition</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip="If your data source has changed since the last time your dashboard was opened, update the data source."></svg-icon>
-              </span>
-              <span class="nav-link" [ngClass]="{'current-selection': currentSelection === 'registerCallback'}" href="#" (click)='registerCallback()'>
-                Register callback to dashboard event
+              </button>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'registerCallback'}" href="#" (click)='registerCallback()'>
+                <span>Register callback to dashboard event</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip="Provides the ability for your application to react to an add data button click and a change to a dirty state."></svg-icon>
-              </span>
-              <span class="nav-link" [ngClass]="{'current-selection': currentSelection === 'unregisterCallback'}" href="#" (click)='unregisterCallback()'>
-                Unregister callback to dashboard event
+              </button>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'unregisterCallback'}" href="#" (click)='unregisterCallback()'>
+                <span>Unregister callback to dashboard event</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip="Removes the callback from events add data button click and change to a dirty state."></svg-icon>
-              </span>
-              <span class="nav-link" [ngClass]="{'current-selection': currentSelection === 'registerApiCallback'}" href="#" (click)='registerApiCallback()'>
-                Register callback to API event
+              </button>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'registerApiCallback'}" href="#" (click)='registerApiCallback()'>
+                <span>Register callback to API event</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip="Register the callback from API events."></svg-icon>
-              </span>
-              <span class="nav-link" [ngClass]="{'current-selection': currentSelection === 'unregisterApiCallback'}" href="#" (click)='unregisterApiCallback()'>
-                Unregister callback to API event
+              </button>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'unregisterApiCallback'}" href="#" (click)='unregisterApiCallback()'>
+                <span>Unregister callback to API event</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip="Unregisters the callback from API api events."></svg-icon>
-              </span>
-              <span class="nav-link" [ngClass]="{'current-selection': currentSelection === 'closeApiFramework'}" href="#" (click)='closeApiFramework()'>
-                Close the API framework
+              </button>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'closeApiFramework'}" href="#" (click)='closeApiFramework()'>
+                <span>Close the API framework</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip="Close the API framework."></svg-icon>
-              </span>
+              </button>
 
             </li>
           </ul>

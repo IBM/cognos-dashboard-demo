@@ -13,15 +13,15 @@
           {{showHideText}}
         </button>
 
-        <div [ngClass]="onDisableRunButton()" class="button float-right" (click)="runCode()">
+        <button [ngClass]="onDisableRunButton()" class="button float-right" (click)="runCode()">
           <svg-icon src="../assets/images/play_16.svg"></svg-icon>
             Run
-        </div>
+        </button>
 
-        <div id="copyButton" class="button copy-button float-right" [ngClass]="onDisableCopyButton()">
+        <button id="copyButton" class="button copy-button float-right" [ngClass]="onDisableCopyButton()">
           <svg-icon src="../assets/images/copy_16.svg"></svg-icon>
-            <span>Copy</span>
-        </div>
+            Copy
+        </button>
       </div>
 
       <dde-dashboard-bar [ngClass]="dashboardBarColSize" [disableButtons]="disableDashboardBarButtons"></dde-dashboard-bar>
