@@ -1,9 +1,9 @@
-<div bsModal #lgModal="bs-modal" class="modal fade" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" [config]="{'backdrop':'static', 'keyboard': false}" >
+<div bsModal #lgModal="bs-modal" class="modal fade" role="dialog" aria-hidden="true" [config]="{'backdrop':'static', 'keyboard': false}" >
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title pull-left">Welcome</h4>
-          <button [attr.tabindex]="0" (click)="hideModal()" class="button">
+          <button (click)="hideModal()" class="button" aria-label="Close Intro Video">
             <svg-icon class="close-image" src="../assets/images/close_16.svg"></svg-icon>
           </button>
       </div>
@@ -11,7 +11,8 @@
         <video #ddeVideo autoplay controls class="embed-responsive-item">
           <source src="../../assets/DDE.mp4" type="video/mp4">
         </video>
-        <input class="checkbox" type="checkbox" (change)=toogleVideo($event)> Do not display again
+        <input class="checkbox" type="checkbox" (change)=toogleVideo($event) role="checkbox" aria-label="Do not display again">
+        Do not display again
       </div>
     </div>
   </div>
