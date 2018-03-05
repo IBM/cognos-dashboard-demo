@@ -5,9 +5,6 @@ node_js:
 script:
   - ng build --env=dev
 
-script:
-  - ng build --env=dev
-
 deploy:
   provider: cloudfoundry
   api: https://api.stage1.ng.bluemix.net
