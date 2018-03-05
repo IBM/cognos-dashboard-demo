@@ -178,6 +178,7 @@ svg {
   padding-top: 5px;
   height: 100%;
   border: 0;
+  background: transparent;
 }
 
 .button-selected {
