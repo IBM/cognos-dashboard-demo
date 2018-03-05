@@ -13,11 +13,11 @@
         this.http.post('/api/dde/session',
           options).toPromise();
 
-      this.session.code =
-        response.json().sessionCode;
-
-      this.session.id =
-        response.json().sessionId;
+      const data = response.json();
+      this.session.code = data.sessionCode;
+      this.session.id = data.sessionId;
+      this.session.keys = data.keys.map(
+        k => new SessionKey(k));
   </code>
 </pre>
 
@@ -26,8 +26,9 @@
     this.api = new CognosApi({{ '{' }}
       cognosRootURL: '{{ cognos_url }}',
       sessionCode: this.session.code,
+      initTimeout: 10000,
       node: document.getElementById(
-        'containerDivId3')
+        'ddeDashboard')
     });
 
     await this.api.initialize();
@@ -188,18 +189,18 @@
 
 <pre *ngIf="codeType === 'RegisterApiCallback'"  class="line-numbers">
   <code class="language-javascript">
-    TODO
+    this.api.on(this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
   </code>
 </pre>
 
 <pre *ngIf="codeType === 'UnregisterApiCallback'"  class="line-numbers">
   <code class="language-javascript">
-    TODO
+    this.api.off(this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
   </code>
 </pre>
 
-<pre *ngIf="codeType === 'closeApiFramework'"  class="line-numbers">
+<pre *ngIf="codeType === 'CloseApiFramework'"  class="line-numbers">
   <code class="language-javascript">
-    TODO
+    await this.api.close();
   </code>
 </pre>

@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 import { DdeToasterComponent } from './dde-toaster.component';
 
@@ -8,6 +9,10 @@ describe('DdeToasterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        AngularSvgIconModule,
+
+      ],
       declarations: [ DdeToasterComponent ]
     })
     .compileComponents();
@@ -19,7 +24,9 @@ describe('DdeToasterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
+
 });
