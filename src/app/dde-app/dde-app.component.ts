@@ -28,14 +28,14 @@ export class DDEAppComponent implements OnInit {
   private session : Session = null;
   private toaster: Toaster;
   private message : string;
-  private dashboardColSize: string = 'col-md-6 dashbaord-min';
-  private dashboardBarColSize: string = 'col-md-6';
-  private explorerBarColSize: string = 'col-md-6';
+  private dashboardColSize: string = 'col-md-6 dashboard-min';
+  private dashboardBarColSize: string = 'dashboard-bar-min';
+  private explorerBarColSize: string = 'explorer-bar-max';
   private showPanel: boolean = true;
   private disableDashboardBarButtons: boolean = true;
-  //private showHideClass : string = 'show';
   private showHideClass : string = 'side-panels-show';
   private buttonState : string = '';
+  private showHideText: string = 'Hide Panels';
 
   constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
   }
@@ -50,12 +50,12 @@ export class DDEAppComponent implements OnInit {
 
   showPanels() {
     this.showPanel = !this.showPanel;
+    this.showHideText = this.showPanel ? 'Hide Panels' : 'Show Panels';
     this.buttonState = this.showPanel ? '' : 'button-selected';
-    //this.showHideClass = this.showPanel ? 'show' : 'hide';
     this.showHideClass = this.showPanel ? 'side-panels-show' : 'side-panels-hide';
-    this.dashboardColSize = this.showPanel ? 'col-md-6 dashbaord-min' : 'col-md-12 dashbaord-max';
-    this.explorerBarColSize = this.showPanel ? 'col-md-6' : 'col-md-1';
-    this.dashboardBarColSize = this.showPanel ? 'col-md-6' : 'col-md-11';
+    this.dashboardColSize = this.showPanel ? 'col-md-6 dashboard-min' : 'col-md-12 dashboard-max';
+    this.explorerBarColSize = this.showPanel ? 'explorer-bar-max' : 'explorer-bar-min';
+    this.dashboardBarColSize = this.showPanel ? 'dashboard-bar-min' : 'dashboard-bar-max';
   }
 
   showVideo() {
@@ -79,7 +79,7 @@ export class DDEAppComponent implements OnInit {
   getAPIId(event) {
     this.apiId = event;
 
-    if (this.apiId !== '') {
+    if (this.apiId !== null && this.apiId !== '') {
       this.message = 'API created successfully. You can now create or open a dashboard.';
       this.setToaster(this.message, 'success', true);
       this.menuComp.nextStep = CodeSnippetEnum.CreateDashboard;
@@ -132,6 +132,21 @@ export class DDEAppComponent implements OnInit {
     this.setToaster(this.message, 'success', true);
   }
 
+  registerApiCallback(event) {
+    this.message = 'API Callback registered successfully. See console for details.';
+    this.setToaster(this.message, 'success', true);
+  }
+
+  unregisterApiCallback(event) {
+    this.message = 'API Callback unregistered successfully. See console for details.';
+    this.setToaster(this.message, 'success', true);
+  }
+
+  closeApiFramework(event) {
+    this.message = 'API Framework closed successfully. See console for details.';
+    this.setToaster(this.message, 'success', true);
+  }
+
   // set the code snippt to what was fired over
   getCodeSnippet(event) {
     this.code_snippet = event;
@@ -148,6 +163,16 @@ export class DDEAppComponent implements OnInit {
 
   onDisableRunButton() {
     let disableButton = this.code_snippet ? this.code_snippet.disableRun : false;
+    let classes =  {
+        disabled: disableButton,
+        enabled: !disableButton
+    };
+    return classes;
+  }
+
+  onDisableCopyButton() {
+    let disableButton = this.code_snippet && this.code_snippet.selection === CodeSnippetEnum.None ?
+                        true : false;
     let classes =  {
         disabled: disableButton,
         enabled: !disableButton

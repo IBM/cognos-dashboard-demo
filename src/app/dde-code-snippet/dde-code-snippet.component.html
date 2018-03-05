@@ -1,14 +1,23 @@
+<pre *ngIf="codeType === 'None'">
+  <div class='none-state'>
+    <svg-icon class="steps-icons" src="../assets/images/table_128.svg"></svg-icon>
+    <span class="title">Missing: API code</span>
+    <span>Select an API and the code will appear here.</span>
+    <span>You can Run or Copy the code.</span>
+  </div>
+</pre>
+
 <pre *ngIf="codeType === 'CreateSession'" class="line-numbers">
   <code class="language-javascript">
     const response = await
         this.http.post('/api/dde/session',
           options).toPromise();
 
-      this.session.code =
-        response.json().sessionCode;
-
-      this.session.id =
-        response.json().sessionId;
+      const data = response.json();
+      this.session.code = data.sessionCode;
+      this.session.id = data.sessionId;
+      this.session.keys = data.keys.map(
+        k => new SessionKey(k));
   </code>
 </pre>
 
@@ -17,8 +26,9 @@
     this.api = new CognosApi({{ '{' }}
       cognosRootURL: '{{ cognos_url }}',
       sessionCode: this.session.code,
+      initTimeout: 10000,
       node: document.getElementById(
-        'containerDivId3')
+        'ddeDashboard')
     });
 
     await this.api.initialize();
@@ -174,5 +184,23 @@
 <pre *ngIf="codeType === 'UnregisterCallback'"  class="line-numbers">
   <code class="language-javascript">
     this.dashboardAPI.off(this.dashboardAPI.EVENTS.DIRTY, this.onModified);
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'RegisterApiCallback'"  class="line-numbers">
+  <code class="language-javascript">
+    this.api.on(this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'UnregisterApiCallback'"  class="line-numbers">
+  <code class="language-javascript">
+    this.api.off(this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
+  </code>
+</pre>
+
+<pre *ngIf="codeType === 'CloseApiFramework'"  class="line-numbers">
+  <code class="language-javascript">
+    await this.api.close();
   </code>
 </pre>

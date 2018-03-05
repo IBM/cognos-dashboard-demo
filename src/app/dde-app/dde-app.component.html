@@ -8,19 +8,19 @@
 <div class="container-fluid">
   <div class="row">
       <div class="explorer-bar" [ngClass]="explorerBarColSize">
-        <div (click)=showPanels() [ngClass]="buttonState" class="button enabled float-left" tooltip="Show/Hide Panels" placement="right">
-          <svg-icon class="explorer-image show-hide-icon" src="../assets/images/hide-sidepane.svg"></svg-icon>
-          Show?Hide Demo
+        <div (click)=showPanels() [ngClass]="buttonState" class="button enabled float-left">
+          <svg-icon class="show-hide-icon" src="../assets/images/hide-sidepane.svg"></svg-icon>
+          {{showHideText}}
         </div>
 
         <div [ngClass]="onDisableRunButton()" class="button float-right" (click)="runCode()">
-          <svg-icon class="explorer-image" src="../assets/images/play_16.svg"></svg-icon>
+          <svg-icon src="../assets/images/play_16.svg"></svg-icon>
             Run
         </div>
 
-        <div id="copyButton" class="button enabled copy-button float-right">
-          <svg-icon class="explorer-image" src="../assets/images/copy_16.svg"></svg-icon>
-            <span>Copied</span>
+        <div id="copyButton" class="button copy-button float-right" [ngClass]="onDisableCopyButton()">
+          <svg-icon src="../assets/images/copy_16.svg"></svg-icon>
+            <span>Copy</span>
         </div>
       </div>
 
@@ -40,6 +40,8 @@
               (dashboardApi)="getDashboardApi($event)" (dashboardSpec)="getDashboardSpec($event)"
               (updateModuleDefinitions)="updateModuleDefinitions($event)" (clearDirtyState)="clearDirtyState($event)"
               (registerCallback)="registerCallback($event)" (unregisterCallback)="unregisterCallback($event)"
+              (registerApiCallback)="registerApiCallback($event)" (unregisterApiCallback)="unregisterApiCallback($event)"
+              (closeApiFramework)="closeApiFramework($event)"
               (lastActionOutput)=lastAction($event)>
             </dde-code-explorer>
           </div>
@@ -51,32 +53,14 @@
          <div class="iframeContainer" id="ddeDashboard">
            <div class="grid-container">
              <div class="grid-item">
-               <img class="steps-icons" src="../assets/images/exploreApi.png"/>
+               <img class="steps-icons" src="../assets/images/dashboard_empty_state.png"/>
                <div>
-                 Explore Available APIs
+                 Missing: Dashboard
                </div>
                <div class="steps-copy">
-                 Follow the arrow to see a pre-populated dashboard.  You can also create a new dashboard with sample data.
-               </div>
-             </div>
+                 Follow the arrow <svg-icon src="../assets/images/forward_16.svg"></svg-icon> for quick access to a pre-configured dashboard.
 
-             <div class="grid-item">
-               <img class="steps-icons" src="../assets/images/bind.png"/>
-               <div class="steps-title">
-                 Bind APIs to buttons
-               </div>
-               <div class="steps-copy">
-                 Allow users to undo, redo, properties, set view/edit mode, show/hide pane of a dashboard through button interactions.
-               </div>
-             </div>
-
-             <div class="grid-item">
-               <img class="steps-icons" src="../assets/images/search.png"/>
-               <div class="steps-title">
-                 Ready to Learn More?
-               </div>
-               <div class="steps-copy">
-                 Check out the resource links to create your own instance, getting started docs, Github repo, and more.
+                 Once you have a dashboard, explore the interaction and support APIs.
                </div>
              </div>
            </div>

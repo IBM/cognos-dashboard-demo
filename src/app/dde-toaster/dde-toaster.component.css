@@ -12,24 +12,3 @@
   padding-left: 10px;
   color: #000;
 }
-
-.success-image {
-  fill: #00aa5e;
-}
-
-.error-image {
-  fill: #e62325;
-}
-
-.warning-image {
-  fill: #fe8500;
-}
-
-.close-image {
-  float: right;
-  cursor: pointer;
-}
-
-.close-image:hover {
-  fill: #a6a5a6;
-}
