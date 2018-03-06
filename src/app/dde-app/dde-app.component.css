@@ -1,21 +1,11 @@
-.col-md-1,
-.col-md-3,
-.col-md-5,
-.col-md-6,
-.col-md-11,
-.col-md-12 {
-  padding: 0;
-}
-
 .row {
   height: 100%;
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto;
   text-align: center;
-  margin-top: 12em;
+  margin-top: 8em;
 }
 
 .grid-item {
@@ -23,7 +13,7 @@
 }
 
 .steps-icons {
-  width: 12em;
+  width: 25em;
 }
 
 .steps-copy {
@@ -46,18 +36,27 @@ dde-toaster {
   width: 95px;
 }
 
-.fa-columns {
-  font-size: 20px;
-  margin-bottom: 0.4em;
-}
-
-.fa-columns:hover {
-  color: #fff;
-}
-
 .explorer-bar {
-  background-color: #d8d8d8;
+  background-color: #eaeaea;
   height: 30px;
+  color: #343334;
+  border-right:2px solid #000;
+}
+
+.explorer-bar-max {
+  width: 50%;
+}
+
+.explorer-bar-min {
+  width: 9.1%;
+}
+
+.dashboard-bar-max {
+  width: 90.9%;
+}
+
+.dashboard-bar-min {
+  width: 50%;
 }
 
 .fa-columns {
@@ -69,10 +68,6 @@ dde-toaster {
 
 .fa-columns:hover {
   color: #fff;
-}
-
-.show-hide-icon {
-  margin-top: -0.2em;
 }
 
 .side-panels {
@@ -91,22 +86,14 @@ dde-toaster {
   width: 0;
 }
 
-.dashbaord-min {
+.dashboard-min {
   transition: margin-left .5s;
   margin-left: 50%;
 }
 
-.dashbaord-max {
+.dashboard-max {
   transition: margin-left .5s;
   margin-left: 0;
-}
-
-.explorer-image {
-  fill: #000;
-}
-
-.button-selected .explorer-image {
-  fill: #d8d8d8;
 }
 
 @media (max-width: 1200px) {

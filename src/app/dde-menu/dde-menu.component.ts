@@ -34,7 +34,7 @@ export class DdeMenuComponent implements OnInit {
 
   ngOnInit() {
     this.nextStep = CodeSnippetEnum.CreateSession;
-    this.displayNewSessionCode();
+    this.displayDefaultState();
   }
 
   ngAfterContentInit() {
@@ -62,6 +62,11 @@ export class DdeMenuComponent implements OnInit {
   }
 
   // TODO: refactor, take in CodeSnippetEnum value and make these methods generic when firing the codeToRun event
+
+  displayDefaultState() {
+    this.currentSelection = CodeSnippetEnum.None;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
 
   displayNewSessionCode() {
     this.currentSelection = CodeSnippetEnum.CreateSession;
@@ -130,6 +135,21 @@ export class DdeMenuComponent implements OnInit {
 
   unregisterCallback() {
     this.currentSelection = CodeSnippetEnum.UnregisterCallback;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  registerApiCallback() {
+    this.currentSelection = CodeSnippetEnum.RegisterApiCallback;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  unregisterApiCallback() {
+    this.currentSelection = CodeSnippetEnum.UnregisterApiCallback;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  closeApiFramework() {
+    this.currentSelection = CodeSnippetEnum.CloseApiFramework;
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
 

@@ -1,6 +1,9 @@
 language: node_js
 node_js:
-  - "8"
+  - "7"
+
+script:
+  - ng build --env=dev
 
 deploy:
   provider: cloudfoundry
@@ -11,3 +14,4 @@ deploy:
   space: $BLUEMIX_SPACE
   on:
     repo: GearBox/DDE-ang-node-test
+    branch: master

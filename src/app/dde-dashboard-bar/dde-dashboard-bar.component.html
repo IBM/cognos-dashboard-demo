@@ -1,6 +1,6 @@
 <div class="dashboard-bar">
   <div class="button float-right" [ngClass]="{'button-selected': isEditMode && toggleProperties}" (click)=togglePropertiesPane() tooltip="Toggle properties pane" placement="left">
-    <svg-icon src="../assets/images/configure_32.svg" [ngClass]="onTogglePropertiesPaneDisableButtons()"></svg-icon>
+    <svg-icon src="../assets/images/configure_32.svg" [ngClass]="{'disabled': isTogglePropertiesPaneDisabled(), 'enabled': !isTogglePropertiesPaneDisabled()}"></svg-icon>
   </div>
   <div class="button float-right" (click)=redoLastAction() tooltip="Redo last change" placement="left">
     <svg-icon src="../assets/images/refresh_16.svg" [ngClass]="onDisableButtons()"></svg-icon>

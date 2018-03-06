@@ -2,3 +2,21 @@ pre[class*="language-"] {
   border-radius: 0;
   margin: 0;
 }
+
+pre {
+    width: 100%;
+    height: 100%;
+    background: #343334;
+    margin-bottom: 0;
+}
+
+.none-state {
+  color: #fff;
+  padding-top: 50%;
+  text-align: center;
+  font-family: "Helv Neue Roman", serif;
+}
+
+.title {
+    font-family: "Helv Neue Bold", serif;
+}

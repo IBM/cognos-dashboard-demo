@@ -11,6 +11,7 @@ export class CodeSnippetsRepoService {
     this.snippets = new Map<string, CodeSnippet>();
 
     // Add snippets as key-value pairs
+    this.snippets.set(CodeSnippetEnum.None, new CodeSnippet(CodeSnippetEnum.None, 'large', true));
     this.snippets.set(CodeSnippetEnum.CreateSession, new CodeSnippet(CodeSnippetEnum.CreateSession, 'large', false));
     this.snippets.set(CodeSnippetEnum.CreateAPIFramework, new CodeSnippet(CodeSnippetEnum.CreateAPIFramework, 'small', true));
     this.snippets.set(CodeSnippetEnum.CreateDashboard, new CodeSnippet(CodeSnippetEnum.CreateDashboard, 'large', true));
@@ -30,6 +31,9 @@ export class CodeSnippetsRepoService {
     this.snippets.set(CodeSnippetEnum.TogglePropertiesPane, new CodeSnippet(CodeSnippetEnum.TogglePropertiesPane, 'large', true));
     this.snippets.set(CodeSnippetEnum.RegisterCallback, new CodeSnippet(CodeSnippetEnum.RegisterCallback, 'large', true));
     this.snippets.set(CodeSnippetEnum.UnregisterCallback, new CodeSnippet(CodeSnippetEnum.UnregisterCallback, 'large', true));
+    this.snippets.set(CodeSnippetEnum.RegisterApiCallback, new CodeSnippet(CodeSnippetEnum.RegisterApiCallback, 'large', true));
+    this.snippets.set(CodeSnippetEnum.UnregisterApiCallback, new CodeSnippet(CodeSnippetEnum.UnregisterApiCallback, 'large', true));
+    this.snippets.set(CodeSnippetEnum.CloseApiFramework, new CodeSnippet(CodeSnippetEnum.CloseApiFramework, 'large', true));
   }
 
   getSnippet(name) : CodeSnippet {

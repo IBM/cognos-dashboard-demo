@@ -16,6 +16,22 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+// Enable reverse proxy support in Express.
+app.enable('trust proxy');
+
+// Add a handler to inspect the req.secure flag, this allows us 
+// to know whether the request was via http or https.
+app.use (function (req, res, next) {
+        if (req.secure) {
+                // request was via https, so do no special handling
+                next();
+        } else {
+                // request was via http, so redirect to https
+                res.redirect('https://' + req.headers.host + req.url);
+        }
+});
+
+
 // Point static path to dist
 app.use(express.static(__dirname + '/dist'));
 
@@ -48,8 +64,6 @@ app.get("/api/dde/credentials", function(request, response) {
 */
 app.post("/api/dde/session", function(request, response) {
   console.log(dde_client_id);
-  var hostName = request.body.url;
-  console.log('URL ' + hostName);
 
   var options = {
       method: 'POST',
@@ -60,7 +74,7 @@ app.post("/api/dde/session", function(request, response) {
       },
       body: {
           "expiresIn": 3600,
-          webDomain: hostName
+          webDomain: conf.web_domain
           //"webDomain": "http://localhost:3000" // for local testing
           //"webDomain": "https://dde-angnode-app.stage1.mybluemix.net" // for deployment
       },
@@ -82,59 +96,6 @@ app.post("/api/dde/session", function(request, response) {
       });
 
 });
-
-/* Endpoint to greet and add a new visitor to database.
-* Send a POST request to localhost:3000/api/visitors with body
-* {
-* 	"name": "Bob"
-* }
-*/
-app.post("/api/visitors", function (request, response) {
-  var userName = request.body.name;
-  if(!mydb) {
-    console.log("No database.");
-    response.send("Hello " + userName + "!");
-    return;
-  }
-  // insert the username as a document
-  mydb.insert({ "name" : userName }, function(err, body, header) {
-    if (err) {
-      return console.log('[mydb.insert] ', err.message);
-    }
-    response.send("Hello " + userName + "! I added you to the database.");
-  });
-});
-
-/**
- * Endpoint to get a JSON array of all the visitors in the database
- * REST API example:
- * <code>
- * GET http://localhost:3000/api/visitors
- * </code>
- *
- * Response:
- * [ "Bob", "Jane" ]
- * @return An array of all the visitor names
- */
-app.get("/api/visitors", function (request, response) {
-  console.log("called api/visitors");
-  var names = [];
-  if(!mydb) {
-    response.json(names);
-    return;
-  }
-
-  mydb.list({ include_docs: true }, function(err, body) {
-    if (!err) {
-      body.rows.forEach(function(row) {
-        if(row.doc.name)
-          names.push(row.doc.name);
-      });
-      response.json(names);
-    }
-  });
-});
-
 
 // load local VCAP configuration  and service credentials
 var vcapLocal;
@@ -193,13 +154,6 @@ if (appEnv.services['dynamic-dashboard-embedded'] || appEnv.getService(/dynamic-
   console.log('dde credentials - client_id: ' + dde_client_id);
   console.log('dde credentials- client_secret:' + dde_client_secret);
 }
-
-
-
-
-
-
-
 
 
 
