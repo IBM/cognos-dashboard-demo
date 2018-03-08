@@ -42,6 +42,7 @@
     "jsrsasign": "^8.0.4",
     "ngx-bootstrap": "^2.0.2",
     "popper.js": "^1.12.9",
+	"request": "^2.83.0",
     "request-promise": "^4.2.2",
     "zone.js": "^0.8.19"
   },
