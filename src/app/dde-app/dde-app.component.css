@@ -40,6 +40,7 @@ dde-toaster {
   background-color: #eaeaea;
   height: 30px;
   color: #343334;
+  border-right:2px solid #000;
 }
 
 .explorer-bar-max {
@@ -47,11 +48,11 @@ dde-toaster {
 }
 
 .explorer-bar-min {
-  width: 9%;
+  width: 9.1%;
 }
 
 .dashboard-bar-max {
-  width: 91%;
+  width: 90.9%;
 }
 
 .dashboard-bar-min {
