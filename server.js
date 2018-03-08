@@ -7,8 +7,6 @@ var rp = require('request-promise');
 var env = process.env.NODE_ENV || 'dev';
 var conf = require('./config/config-'+env);
 
-// Get our API routes
-const api = require('./server/routes/api');
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -16,10 +14,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+
 // Enable reverse proxy support in Express.
 app.enable('trust proxy');
 
-// Add a handler to inspect the req.secure flag, this allows us 
+// Add a handler to inspect the req.secure flag, this allows us
 // to know whether the request was via http or https.
 app.use (function (req, res, next) {
         if (req.secure) {
@@ -35,21 +34,10 @@ app.use (function (req, res, next) {
 // Point static path to dist
 app.use(express.static(__dirname + '/dist'));
 
-// Set our api routes
-app.use('/api', api);
-
 var dde_client_id;
 var dde_client_secret;
 
 console.log('ENVIROMENT: '+env);
-
-app.get("/api/dde/credentials", function(request, response) {
-  console.log("in api/dde/credentials");
-  console.log(dde_client_id);
-  //response.send(dde_client_id);
-  response.json({ "client_id": dde_client_id });
-  //response.json({ "client_id": dde_client_id, "client_secret":dde_client_secret });
-});
 
 
 /* Endpoint to create a new DDE session.
