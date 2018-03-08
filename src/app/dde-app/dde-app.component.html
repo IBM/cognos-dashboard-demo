@@ -13,12 +13,12 @@
           {{showHideText}}
         </button>
 
-        <button [ngClass]="onDisableRunButton()" class="button float-right" (click)="runCode()" aria-label="Run">
+        <button [ngClass]="onDisableRunButton()" [attr.aria-disabled]="isRunButtonDisabledAria()" class="button float-right" (click)="runCode()" aria-label="Run">
           <svg-icon src="../assets/images/play_16.svg"></svg-icon>
             Run
         </button>
 
-        <button id="copyButton" class="button copy-button float-right" [ngClass]="onDisableCopyButton()">
+        <button id="copyButton" class="button copy-button float-right" [attr.aria-disabled]="isCopyButtonDisabledAria()" [ngClass]="onDisableCopyButton()">
           <svg-icon src="../assets/images/copy_16.svg"></svg-icon>
             Copy
         </button>
