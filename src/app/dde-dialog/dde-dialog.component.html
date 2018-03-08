@@ -1,4 +1,4 @@
-<div bsModal #lgModal="bs-modal" class="modal fade" role="dialog" aria-hidden="true" [config]="{'backdrop':'static', 'keyboard': false}" >
+<div bsModal #lgModal="bs-modal" class="modal fade" role="dialog" aria-hidden="true" aria-label="Intro video pop up window" [config]="{'backdrop':'static', 'keyboard': false}" >
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -10,8 +10,9 @@
       <div class="modal-body">
         <video #ddeVideo autoplay controls class="embed-responsive-item">
           <source src="../../assets/DDE.mp4" type="video/mp4">
+          <track kind="captions" srclang="en">
         </video>
-        <input class="checkbox" type="checkbox" (change)=toogleVideo($event) role="checkbox" aria-label="Do not display again">
+        <input class="checkbox" type="checkbox" (change)=toogleVideo($event) role="checkbox" [attr.aria-checked]="isCheckboxChecked ? 'true' : 'false'" aria-label="Do not display again">
         Do not display again
       </div>
     </div>

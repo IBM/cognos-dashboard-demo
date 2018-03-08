@@ -7,13 +7,13 @@
 
 <div class="container-fluid">
   <div class="row">
-      <div class="explorer-bar" [ngClass]="explorerBarColSize">
-        <button (click)=showPanels() [ngClass]="buttonState" class="button enabled float-left">
+      <div class="explorer-bar" [ngClass]="explorerBarColSize"  role="region" aria-label="header buttons">
+          <button (click)=showPanels() [ngClass]="buttonState" class="button enabled float-left">
           <svg-icon class="show-hide-icon" src="../assets/images/hide-sidepane.svg"></svg-icon>
           {{showHideText}}
         </button>
 
-        <button [ngClass]="onDisableRunButton()" class="button float-right" (click)="runCode()">
+        <button [ngClass]="onDisableRunButton()" class="button float-right" (click)="runCode()" aria-label="Run">
           <svg-icon src="../assets/images/play_16.svg"></svg-icon>
             Run
         </button>
