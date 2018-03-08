@@ -13,9 +13,30 @@ import { DdeApiService } from '../services/dde-api.service';
 import { EncryptService } from '../services/encrypt.service';
 import { DdeActionService } from '../services/dde-action.service';
 
-describe('DdeDashboardComponent', () => {
+import { Session, SessionKey } from '../../model/session';
+
+class MockDdeApiService {
+  session = null;
+  dashboardAPI = null;
+
+  async createNewSession() {
+    return this.session;
+  }
+
+  async createAndInitApiFramework() {
+    return "mocked api id";
+  }
+
+  async openDashboard() {;
+    return this.dashboardAPI;
+  }
+}
+
+
+describe('DdeDashboardComponent', async () => {
   let component: DdeDashboardComponent;
   let fixture: ComponentFixture<DdeDashboardComponent>;
+  let testDdeApiService: MockDdeApiService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -31,11 +52,15 @@ describe('DdeDashboardComponent', () => {
         DdeDialogComponent,
         DdeDashboardBarComponent,
       ],
+
       providers: [
-        DdeApiService,
+        {provide: DdeApiService, useClass: MockDdeApiService},
         EncryptService,
         DdeActionService,
       ],
+
+
+
     })
     .compileComponents();
   }));
@@ -43,11 +68,27 @@ describe('DdeDashboardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(DdeDashboardComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+
+    // UserService provided to the TestBed
+   testDdeApiService = TestBed.get(DdeApiService);
+
   });
 
+  afterEach(() => {
+     testDdeApiService = null;
+     component = null;
+   });
 
-  it('should create', () => {
+  it('should have a property \'disableDashboardBarButtons\' with the value \'false\'',
+    async(() => {
+       fixture.detectChanges();
+       fixture.whenStable().then(() => {
+        fixture.detectChanges();
+         expect(component.disableDashboardBarButtons).toEqual(false);
+      });
+   }));
+
+  it('should create', async () => {
     expect(component).toBeTruthy();
   });
 
