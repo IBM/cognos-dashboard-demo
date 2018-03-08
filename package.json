@@ -7,11 +7,11 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dist": "ng build",
+    "start": "node server.js",
     "dist-prod": "ng build --env=prod",
     "build": "ng build --env=dev && set NODE_ENV=dev&& node server.js",
     "build-prod": "ng build --env=prod && set NODE_ENV=production&& node server.js",
