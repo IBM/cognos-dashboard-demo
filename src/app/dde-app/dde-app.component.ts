@@ -9,6 +9,7 @@ import { DdeDialogComponent } from '../dde-dialog/dde-dialog.component'
 import { DdeCodeExplorerComponent } from '../dde-code-explorer/dde-code-explorer.component';
 import { environment } from '../../environments/environment';
 
+
 @Component({
   selector: 'dde-app',
   templateUrl: './dde-app.component.html',
@@ -93,7 +94,7 @@ export class DDEAppComponent implements OnInit {
   getDashboardApi(event) {
     this.dashboardApi = event;
 
-    if (this.dashboardApi !== '') {
+    if (this.dashboardApi.apiId !== '' && this.dashboardApi.apiId !== null) {
       this.menuComp.nextStep = CodeSnippetEnum.AddCSVSource;
       this.disableDashboardBarButtons = false;
       this.dashboardApi.on("addSource:clicked", () => {
