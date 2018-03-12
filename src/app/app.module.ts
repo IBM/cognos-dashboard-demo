@@ -22,6 +22,7 @@ import { DdeApiService } from './services/dde-api.service';
 import { EncryptService } from './services/encrypt.service';
 import { DdeActionService } from './services/dde-action.service';
 import { CodeSnippetsRepoService } from './services/code-snippets-repo.service';
+import { AnalyticsService } from '../instrumentation/analytics';
 import { DdeDialogComponent } from './dde-dialog/dde-dialog.component';
 import { DdeReferencesComponent } from './dde-references/dde-references.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
@@ -34,7 +35,7 @@ import { DdeDashboardBarComponent } from './dde-dashboard-bar/dde-dashboard-bar.
 @NgModule({
   declarations: [
     AppComponent,
-    AppNavbarComponent,    
+    AppNavbarComponent,
     DdeCodeExplorerComponent,
     DdeMenuComponent,
     DdeToasterComponent,
@@ -61,7 +62,8 @@ import { DdeDashboardBarComponent } from './dde-dashboard-bar/dde-dashboard-bar.
     DdeApiService,
     EncryptService,
     CodeSnippetsRepoService,
-    DdeActionService
+    DdeActionService,
+    AnalyticsService
   ],
   bootstrap: [AppComponent]
 })
