@@ -9,6 +9,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 export class DdeDialogComponent implements AfterViewInit {
   @ViewChild('lgModal') public lgModal: ModalDirective;
   @ViewChild('ddeVideo') ddeVideo: any;
+  private isCheckboxChecked: boolean = false;
 
   constructor() {
   }
@@ -29,7 +30,9 @@ export class DdeDialogComponent implements AfterViewInit {
   toogleVideo(event) {
     let showVideo = event.target.checked ? 'false' : 'true';
     localStorage.setItem('showVideo', showVideo);
+    this.isCheckboxChecked = event.target.checked;
   }
+
 
   hideModal() {
     this.lgModal.hide();

@@ -8,7 +8,7 @@ import { DdeApiService } from '../services/dde-api.service';
 })
 export class DdeDashboardComponent implements OnInit {
 
-  private disableDashboardBarButtons: boolean = true;
+  public disableDashboardBarButtons: boolean = true;
   constructor(private ddeApiService: DdeApiService) { }
 
   ngOnInit() {

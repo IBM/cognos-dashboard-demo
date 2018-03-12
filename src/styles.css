@@ -66,6 +66,10 @@ select {
   display: block;
 }
 
+button:focus, video:focus, input:focus, a:focus{
+  outline: 2px auto #95c4f3;
+}
+
 /* remove default container paddings */
 .container-fluid {
   padding-left: 0px;

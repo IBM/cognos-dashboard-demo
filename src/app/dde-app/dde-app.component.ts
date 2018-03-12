@@ -171,6 +171,11 @@ export class DDEAppComponent implements OnInit {
     return classes;
   }
 
+  isRunButtonDisabledAria(){
+    let disableButton = this.code_snippet ? this.code_snippet.disableRun : false;
+    return disableButton;
+  }
+
   onDisableCopyButton() {
     let disableButton = this.code_snippet && this.code_snippet.selection === CodeSnippetEnum.None ?
                         true : false;
@@ -179,6 +184,12 @@ export class DDEAppComponent implements OnInit {
         enabled: !disableButton
     };
     return classes;
+  }
+
+  isCopyButtonDisabledAria() {
+    let disableButton = this.code_snippet && this.code_snippet.selection === CodeSnippetEnum.None ?
+                        true : false;
+    return disableButton;
   }
 
 }
