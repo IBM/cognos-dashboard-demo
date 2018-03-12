@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import * as segment from './segment';
-import * as analyticsUtil from './analyticsUtil';
 import { CommonTraits } from '../model/commonTraits';
 import { DashboardInteractionTraits } from '../model/dashboardInteractionTraits';
 
@@ -9,14 +8,23 @@ import { DashboardInteractionTraits } from '../model/dashboardInteractionTraits'
 export class AnalyticsService {
   private sessionId: string;
   private sessionCode: string;
+  private productTitle : string = 'DDE Demo';
+
+  public events = {
+    APIFramework: 'API Framework',
+    DashboardFactory: 'Dashboard Factory',
+    DashboardAPI: 'Dashboard APIs',
+    SupportAPI: 'Support APIs',
+    Documentation: 'Documentation'
+  };
 
   constructor() {
   }
 
-  addCommonOptions(options: any) {
-    options.categoryValue = analyticsUtil.pageName(),
-    options.productTitle = analyticsUtil.productTitle();
-  }
+  // addCommonOptions(options: any) {
+  //   options.categoryValue = analyticsUtil.pageName(),
+  //   options.productTitle = analyticsUtil.productTitle();
+  // }
 
   //  createOptions = function(name: string, sessionId: string, sessionCode: string,
   //                             result: string, message: string) {
@@ -53,27 +61,28 @@ export class AnalyticsService {
   }
 
   // realm, uniqueSecurityName and IAMID are added automatically by the bluemix lib
-  identify() {
-    segment.identify(
-      {
-        createdAt: analyticsUtil.createdAt(),
-        uiVersion: analyticsUtil.uiVersion(),
-        language: analyticsUtil.language()
-      }
-    );
-  }
+  // identify() {
+  //   segment.identify(
+  //     {
+  //       createdAt: analyticsUtil.createdAt(),
+  //       uiVersion: analyticsUtil.uiVersion(),
+  //       language: analyticsUtil.language()
+  //     }
+  //   );
+  // }
 
   loadPage(pageName: string) {
-    //segment.page()
+    segment.page(pageName, {name: pageName, title: pageName, productTitle: this.productTitle,
+                            categoryValue: pageName})
   }
 
-  trackAPIAndDashboard(action: string, result: string, message: string) {
+  trackAPIAndDashboard(name: string, action: string, result: string, message: string) {
     let traits: CommonTraits = { action: action, sessionId: this.sessionId, sessionCode: this.sessionCode,
                                           result: result, message: message };
-    segment.track(traits.action, traits);
+    segment.track(name, traits);
   }
 
-  trackDashboardInteraction(action: string, result: string, message: string, dataSource: string, uiElement: string) {
+  trackDashboardInteraction(name: string, action: string, result: string, message: string, dataSource: string, uiElement: string) {
     let traits: DashboardInteractionTraits
 
     if (dataSource !== null) {
@@ -84,6 +93,6 @@ export class AnalyticsService {
       traits = { action: action, sessionId: this.sessionId, sessionCode: this.sessionCode,
                                             result: result, message: message, uiElement: uiElement }
     }
-    segment.track(traits.action, traits);
+    segment.track(name, traits);
   }
 }
