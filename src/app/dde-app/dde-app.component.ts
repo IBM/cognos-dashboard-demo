@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CodeSnippetEnum, CodeSnippet } from '../../model/code-snippet';
 import { Session } from '../../model/session';
 import { Toaster } from '../../model/toaster';

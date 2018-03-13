@@ -22,8 +22,8 @@ export class AnalyticsService {
   constructor() {
   }
 
-  setupSegment(key: string) {
-    segment.setUp(
+  async setupSegment(key: string) {
+    await segment.setUp(
       {
         'segment_key' : key,
         'coremetrics' : false,
@@ -43,8 +43,7 @@ export class AnalyticsService {
   }
 
   loadPage(pageName: string) {
-    segment.page(pageName, {name: pageName, title: pageName, productTitle: this.productTitle,
-                            categoryValue: pageName})
+    segment.page(pageName, {name: pageName, title: pageName, productTitle: this.productTitle, categoryValue: pageName});
   }
 
   trackAPIAndDashboard(name: string, action: string, result: string, message: string) {
