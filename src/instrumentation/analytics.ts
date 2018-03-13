@@ -21,25 +21,6 @@ export class AnalyticsService {
   constructor() {
   }
 
-  // addCommonOptions(options: any) {
-  //   options.categoryValue = analyticsUtil.pageName(),
-  //   options.productTitle = analyticsUtil.productTitle();
-  // }
-
-  //  createOptions = function(name: string, sessionId: string, sessionCode: string,
-  //                             result: string, message: string) {
-  //   var options = {
-  //     action: name,
-  //     sessionId: sessionId,
-  //     sessionCode: sessionCode,
-  //     result: result,
-  //     message: message
-  //   };
-  //
-  //   addCommonOptions(options);
-  //   return options;
-  // };
-
   setupSegment(key: string) {
     segment.setUp(
       {
@@ -59,17 +40,6 @@ export class AnalyticsService {
     this.sessionId = sessionId;
     this.sessionCode = sessionCode;
   }
-
-  // realm, uniqueSecurityName and IAMID are added automatically by the bluemix lib
-  // identify() {
-  //   segment.identify(
-  //     {
-  //       createdAt: analyticsUtil.createdAt(),
-  //       uiVersion: analyticsUtil.uiVersion(),
-  //       language: analyticsUtil.language()
-  //     }
-  //   );
-  // }
 
   loadPage(pageName: string) {
     segment.page(pageName, {name: pageName, title: pageName, productTitle: this.productTitle,
