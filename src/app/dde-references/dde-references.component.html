@@ -1,20 +1,20 @@
 <div class="references" role="region" aria-label="Helpful links">
-  <a href="https://console.bluemix.net/catalog/services/dynamic-dashboard-embedded" target="_blank">
+  <a href="https://console.bluemix.net/catalog/services/dynamic-dashboard-embedded" target="_blank" (click)="createInstance($event)">
   Create your instance
   </a>
-  <a href="https://console.bluemix.net/docs/services/dynamic-dashboard-embedded/dde_getting_started.html#getting-started-tutorial-dynamic-dashboard-embedded" target="_blank">
+  <a href="https://console.bluemix.net/docs/services/dynamic-dashboard-embedded/dde_getting_started.html#getting-started-tutorial-dynamic-dashboard-embedded" target="_blank" (click)=getDoc($event)>
     Getting started documentation
   </a>
-  <a href="https://developer.ibm.com/data/dynamic-dashboards/" target="_blank">
+  <a href="https://developer.ibm.com/data/dynamic-dashboards/" target="_blank" (click)="joinDevWorks($event)">
     Join the DevWorks Community
   </a>
-  <a href="https://github.ibm.com/GearBox/DDE-ang-node-test" target="_blank">
+  <a href="https://github.ibm.com/GearBox/DDE-ang-node-test" target="_blank" (click)="viewGitHub($event)">
     View demo on Github
   </a>
-  <a href="#" (click)="showVideo()">
+  <a href="#" (click)="showVideo($event)">
     Watch end-user experience
   </a>
-  <a href="https://www.ibm.com/legal/ca/en/" target="_blank">
+  <a href="https://www.ibm.com/legal/ca/en/" target="_blank" (click)="termsOfUse($event)">
     Terms of use
   </a>
 </div>

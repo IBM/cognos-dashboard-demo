@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import * as segment from './segment';
-import { CommonTraits } from '../model/commonTraits';
-import { DashboardInteractionTraits } from '../model/dashboardInteractionTraits';
+import { APIAndDashboardTraits } from '../interfaces/apiAndDashboardTraits';
+import { DashboardInteractionTraits } from '../interfaces/dashboardInteractionTraits';
+import { DocumentationTraits } from '../interfaces/documentationTraits';
 
 
 @Injectable()
@@ -47,7 +48,7 @@ export class AnalyticsService {
   }
 
   trackAPIAndDashboard(name: string, action: string, result: string, message: string) {
-    let traits: CommonTraits = { action: action, sessionId: this.sessionId, sessionCode: this.sessionCode,
+    let traits: APIAndDashboardTraits = { action: action, sessionId: this.sessionId, sessionCode: this.sessionCode,
                                           result: result, message: message };
     segment.track(name, traits);
   }
@@ -64,5 +65,11 @@ export class AnalyticsService {
                                             result: result, message: message, uiElement: uiElement }
     }
     segment.track(name, traits);
+  }
+
+  trackDocumentation(document: string, url: string) {
+    let traits: DocumentationTraits = { action: 'Clicked Help Resource', sessionId: this.sessionId, sessionCode: this.sessionCode,
+                                          targetUrl: url, document: document};
+    segment.track(this.events.Documentation, traits);
   }
 }
