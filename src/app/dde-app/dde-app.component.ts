@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CodeSnippetEnum, CodeSnippet } from '../../model/code-snippet';
 import { Session } from '../../model/session';
 import { Toaster } from '../../model/toaster';
@@ -8,6 +8,7 @@ import { DdeMenuComponent } from '../dde-menu/dde-menu.component';
 import { DdeDialogComponent } from '../dde-dialog/dde-dialog.component'
 import { DdeCodeExplorerComponent } from '../dde-code-explorer/dde-code-explorer.component';
 import { environment } from '../../environments/environment';
+import { AnalyticsService } from '../../instrumentation/analytics';
 
 
 @Component({
@@ -38,10 +39,12 @@ export class DDEAppComponent implements OnInit {
   private buttonState : string = '';
   private showHideText: string = 'Hide Panels';
 
-  constructor(private codeSnippetsRepoService: CodeSnippetsRepoService) {
+  constructor(private codeSnippetsRepoService: CodeSnippetsRepoService, private analyticsService: AnalyticsService) {
   }
 
   ngOnInit() {
+    this.analyticsService.loadPage("DDE Dev Experience");
+
     if (!environment.production) {
       console.log('Development Mode');
     } else {

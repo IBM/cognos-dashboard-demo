@@ -6,3 +6,7 @@ video {
   display: inline;
   width: 2%;
 }
+
+.modal-title {
+  font-size: 20px;
+}
