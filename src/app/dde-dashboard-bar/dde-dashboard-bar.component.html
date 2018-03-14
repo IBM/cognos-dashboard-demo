@@ -1,14 +1,14 @@
 <div class="dashboard-bar">
-  <div class="button float-right dashboard-button" [ngClass]="{'button-selected': isEditMode && toggleProperties}" (click)=togglePropertiesPane() tooltip="Toggle properties pane" placement="left" tabindex="0" aria-label="Toggle properties pane" role="button" [attr.aria-disabled]="isTogglePropertiesPaneDisabled()">
+  <button class="button float-right dashboard-button" [ngClass]="{'button-selected': isEditMode && toggleProperties}" (click)=togglePropertiesPane() tooltip="Toggle properties pane" placement="left" tabindex="0" aria-label="Toggle properties pane" role="button" [attr.aria-disabled]="isTogglePropertiesPaneDisabled()">
     <svg-icon src="../assets/images/configure_32.svg" [ngClass]="{'disabled': isTogglePropertiesPaneDisabled(), 'enabled': !isTogglePropertiesPaneDisabled()}"></svg-icon>
-  </div>
-  <div class="button float-right dashboard-button" (click)=redoLastAction() tooltip="Redo last change" placement="left" tabindex="0" aria-label="Redo last change" role="button" [attr.aria-disabled]="disableButtons">
+  </button>
+  <button class="button float-right dashboard-button" (click)=redoLastAction() tooltip="Redo last change" placement="left" tabindex="0" aria-label="Redo last change" role="button" [attr.aria-disabled]="disableButtons">
     <svg-icon src="../assets/images/refresh_16.svg" [ngClass]="onDisableButtons()"></svg-icon>
-  </div>
-  <div class="button float-right dashboard-button" (click)=undoLastAction() tooltip="Undo last change" placement="left" tabindex="0" aria-label="Undo last change" role="button" [attr.aria-disabled]="disableButtons">
+  </button>
+  <button class="button float-right dashboard-button" (click)=undoLastAction() tooltip="Undo last change" placement="left" tabindex="0" aria-label="Undo last change" role="button" [attr.aria-disabled]="disableButtons">
     <svg-icon src="../assets/images/reset_16.svg" [ngClass]="onDisableButtons()"></svg-icon>
-  </div>
-  <div class="button float-right dashboard-button" [ngClass]="{'button-selected': isEditMode && !disableButtons}" (click)=editDashboard() tooltip="Edit dashboard mode" placement="left" tabindex="0" aria-label="Edit dashboard mode" role="button" [attr.aria-disabled]="disableButtons">
+  </button>
+  <button class="button float-right dashboard-button" [ngClass]="{'button-selected': isEditMode && !disableButtons}" (click)=editDashboard() tooltip="Edit dashboard mode" placement="left" tabindex="0" aria-label="Edit dashboard mode" role="button" [attr.aria-disabled]="disableButtons">
     <svg-icon src="../assets/images/edit_16.svg" [ngClass]="onDisableButtons()"></svg-icon>
-  </div>
+  </button>
 </div>
