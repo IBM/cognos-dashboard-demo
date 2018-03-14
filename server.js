@@ -90,8 +90,28 @@ try {
 } catch (e) { }
 
 const appEnvOpts = vcapLocal ? { vcap: vcapLocal} : {}
+console.log("appEnvOpts:" + JSON.stringify(appEnvOpts));
+console.log();
 
-const appEnv = cfenv.getAppEnv(appEnvOpts);
+var appEnv = cfenv.getAppEnv(appEnvOpts);
+console.log("appEnv:" + JSON.stringify(appEnv));
+console.log();
+
+console.log("appEnv services:" + JSON.stringify(appEnv.services['dynamic-dashboard-embedded']));
+console.log();
+
+// https://github.ibm.com/GearBox/DDE-ang-node-test/issues/62
+// temporary workaround: get credentials from vcap-local.json instead, until Bluemix Prod can allow a DDE instance to be bound to an app
+if (appEnv.services['dynamic-dashboard-embedded'] == null) {
+  console.log("retrieving appEnv services from vcap-local as workaround");
+  appEnv = vcapLocal;
+  console.log("appEnv from workaround: " + JSON.stringify(appEnv));
+  console.log();
+
+  console.log("appEnv services from workaround: " + JSON.stringify(appEnv.services['dynamic-dashboard-embedded']));
+  console.log();
+}
+// end of workaround, remove above once issue 62 is resolved
 
 if (appEnv.services['dynamic-dashboard-embedded'] || appEnv.getService(/dynamic-dashboard-embedded/)) {
 
