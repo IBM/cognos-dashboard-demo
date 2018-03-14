@@ -9,6 +9,7 @@ import { DdeDialogComponent } from '../dde-dialog/dde-dialog.component'
 import { DdeCodeExplorerComponent } from '../dde-code-explorer/dde-code-explorer.component';
 import { environment } from '../../environments/environment';
 import { AnalyticsService } from '../../instrumentation/analytics';
+import * as resources from '../../assets/resources/resources.json';
 
 
 @Component({
@@ -43,7 +44,7 @@ export class DDEAppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.analyticsService.loadPage("DDE Dev Experience");
+    this.analyticsService.loadPage((<any>resources).devPageName);
 
     if (!environment.production) {
       console.log('Development Mode');
@@ -70,13 +71,11 @@ export class DDEAppComponent implements OnInit {
     this.session = event;
 
     if (this.session !== null) {
-      this.message = 'Session created successfully. Next, create and initialize the API framework.';
-      this.setToaster(this.message, 'success', true);
+      this.setToaster((<any>resources).actions.createdSession.message, 'success', true);
       this.menuComp.nextStep = CodeSnippetEnum.CreateAPIFramework;
     }
     else {
-      this.message = 'An error has occured. Please check the console log for more details.';
-      this.setToaster(this.message, 'failure', true);
+      this.setToaster((<any>resources).errorMessage, 'failure', true);
     }
   }
 
@@ -84,13 +83,11 @@ export class DDEAppComponent implements OnInit {
     this.apiId = event;
 
     if (this.apiId !== null && this.apiId !== '') {
-      this.message = 'API created successfully. You can now create or open a dashboard.';
-      this.setToaster(this.message, 'success', true);
+      this.setToaster((<any>resources).actions.initializedSession.message, 'success', true);
       this.menuComp.nextStep = CodeSnippetEnum.CreateDashboard;
     }
     else {
-      this.message = 'An error has occured. Please check the console log for more details.';
-      this.setToaster(this.message, 'failure', true);
+      this.setToaster((<any>resources).errorMessage, 'failure', true);
     }
   }
 
@@ -106,49 +103,40 @@ export class DDEAppComponent implements OnInit {
       });
     }
     else {
-      this.message = 'An error has occured. Please check the console log for more details.';
-      this.setToaster(this.message, 'failure', true);
+      this.setToaster((<any>resources).errorMessage, 'failure', true);
     }
   }
 
   getDashboardSpec(event) {
-    this.message = 'Dashboard spec retrieved successfully. See console for details.';
-    this.setToaster(this.message, 'success', true);
+    this.setToaster((<any>resources).actions.getSpecs.message, 'success', true);
   }
 
   updateModuleDefinitions(event) {
-    this.message = 'Module Definitions updated successfully. See console for details.';
-    this.setToaster(this.message, 'success', true);
+    this.setToaster((<any>resources).actions.updateDataDefinition.message, 'success', true);
   }
 
   clearDirtyState(event) {
-    this.message = 'Dirty State cleared successfully. See console for details.';
-    this.setToaster(this.message, 'success', true);
+    this.setToaster((<any>resources).actions.clearDirtyState.message, 'success', true);
   }
 
   registerCallback(event) {
-    this.message = 'Callback registered successfully. See console for details.';
-    this.setToaster(this.message, 'success', true);
+    this.setToaster((<any>resources).actions.registerDashboardCallback.message, 'success', true);
   }
 
   unregisterCallback(event) {
-    this.message = 'Callback unregistered successfully. See console for details.';
-    this.setToaster(this.message, 'success', true);
+    this.setToaster((<any>resources).actions.unregisterDashboardCallback.message, 'success', true);
   }
 
   registerApiCallback(event) {
-    this.message = 'API Callback registered successfully. See console for details.';
-    this.setToaster(this.message, 'success', true);
+    this.setToaster((<any>resources).actions.registeredApiCallback.message, 'success', true);
   }
 
   unregisterApiCallback(event) {
-    this.message = 'API Callback unregistered successfully. See console for details.';
-    this.setToaster(this.message, 'success', true);
+    this.setToaster((<any>resources).actions.unregisteredApiCallback.message, 'success', true);
   }
 
   closeApiFramework(event) {
-    this.message = 'API Framework closed successfully. See console for details.';
-    this.setToaster(this.message, 'success', true);
+    this.setToaster((<any>resources).actions.closedAPIFramework.message, 'success', true);
   }
 
   // set the code snippt to what was fired over

@@ -20,6 +20,19 @@
                    <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                       tooltip="Initialization needs to occur within 60 seconds of session creation."></svg-icon>
                  </button>
+                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'RegisterApiCallback'}" href="#" (click)='registerApiCallback()'>
+                   <span>Register callback to API event</span>
+                   <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
+                      tooltip="Provides the ability for your application to handle an error in the framework."></svg-icon>
+                 </button>
+                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UnregisterApiCallback'}" href="#" (click)='unregisterApiCallback()'>
+                   <span>Unregister callback to API event</span>
+                   <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
+                      tooltip="Removes the callback for handling errors."></svg-icon>
+                 </button>
+                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CloseApiFramework'}" href="#" (click)='closeApiFramework()'>
+                   <span>Close the API framework</span>
+                 </button>
                </li>
              </ul>
            </div>
@@ -120,22 +133,6 @@
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip="Removes the callback from events add data button click and change to a dirty state."></svg-icon>
               </button>
-              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'RegisterApiCallback'}" href="#" (click)='registerApiCallback()'>
-                <span>Register callback to API event</span>
-                <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                   tooltip="Register the callback from API events."></svg-icon>
-              </button>
-              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UnregisterApiCallback'}" href="#" (click)='unregisterApiCallback()'>
-                <span>Unregister callback to API event</span>
-                <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                   tooltip="Unregisters the callback from API api events."></svg-icon>
-              </button>
-              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CloseApiFramework'}" href="#" (click)='closeApiFramework()'>
-                <span>Close the API framework</span>
-                <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                   tooltip="Close the API framework."></svg-icon>
-              </button>
-
             </li>
           </ul>
         </div>

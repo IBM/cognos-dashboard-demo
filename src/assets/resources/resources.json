@@ -1,0 +1,127 @@
+{
+  "actions": {
+    "createdSession": {
+      "name": "Created Session",
+      "message": "Session created successfully. Next, create and initialize the API framework.",
+      "eventName": "APIFramework"
+    },
+    "initializedSession": {
+      "name": "Initialized Session",
+      "message": "API created successfully. You can now create or open a dashboard.",
+      "eventName": "APIFramework"
+    },
+    "registeredApiCallback": {
+      "name": "Registered Api Callback",
+      "message": "API Callback registered successfully. See console for details.",
+      "eventName": "APIFramework"
+    },
+    "unregisteredApiCallback": {
+      "name": "Unregistered Api Callback",
+      "message": "API Callback unregistered successfully. See console for details.",
+      "eventName": "APIFramework"
+    },
+    "closedAPIFramework": {
+      "name": "Closed API Framework",
+      "message": "API Framework closed successfully. See console for details.",
+      "eventName": "APIFramework"
+    },
+    "opened": {
+      "name": "Opened",
+      "message": "Successfully opened a dashboard.",
+      "eventName": "DashboardFactory"
+    },
+    "createdNew": {
+      "name": "Created New",
+      "message": "Successfully created a new dashboard.",
+      "eventName": "DashboardFactory"
+    },
+    "addSource": {
+      "name": "Add source",
+      "message": "Successfully added a source",
+      "eventName": "DashboardAPI"
+    },
+    "editMode": {
+      "name": "Edit mode",
+      "message": "Successfully changed modes",
+      "eventName": "DashboardAPI"
+    },
+    "viewMode": {
+      "name": "View mode",
+      "message": "Successfully changed modes",
+      "eventName": "DashboardAPI"
+    },
+    "groupEditMode": {
+      "name": "Group Edit Mode",
+      "message": "Successfully changed modes",
+      "eventName": "DashboardAPI"
+    },
+    "undo": {
+      "name": "Undo",
+      "message": "Successfully called undo",
+      "eventName": "DashboardAPI"
+    },
+    "redo": {
+      "name": "Redo",
+      "message": "Successfully called redo",
+      "eventName": "DashboardAPI"
+    },
+    "toggleProperties": {
+      "name": "Toggle Properties",
+      "message": "Successfully toggled properties pane",
+      "eventName": "DashboardAPI"
+    },
+    "getSpecs": {
+      "name": "Get dashboard specs",
+      "message": "Dashboard spec retrieved successfully. See console for details.",
+      "eventName": "SupportAPI"
+    },
+    "clearDirtyState": {
+      "name": "Clear dirty state",
+      "message": "Dirty State cleared successfully. See console for details.",
+      "eventName": "SupportAPI"
+    },
+    "updateDataDefinition":{
+      "name": "Update data source definitions",
+      "message": "Module Definitions updated successfully. See console for details.",
+      "eventName": "SupportAPI"
+    },
+    "registerDashboardCallback": {
+      "name": "Register dashboard callback",
+      "message": "Dashboard callback registered successfully. See console for details.",
+      "eventName": "SupportAPI"
+    },
+    "unregisterDashboardCallback": {
+      "name": "Unregister dashboard callback",
+      "message": "Dashboard callback unregistered successfully. See console for details.",
+      "eventName": "SupportAPI"
+    },
+    "clickedHelpResource": {
+      "name": "Clicked help resource",
+      "message": "Successfully clicked a help resource link",
+      "eventName": "Documentation"
+    },
+    "videoClose": {
+      "name": "Close",
+      "message": "Successfully closed the video",
+      "eventName": "Video"
+    }
+  },
+  "documents": {
+    "createInstance": "Create Your Own Instance",
+    "gettingStartedDocs": "Getting Started Docs",
+    "video": "Overview Video",
+    "devworks": "DevWorks Community",
+    "github": "Github Demo",
+    "termsOfUse": "Terms of Use",
+    "workWithDatasource": "Work with Your Own Datasource",
+    "creatingValidSession": "Creating a valid session"
+  },
+  "errorMessage": "An error has occured. Please check the console log for more details.",
+  "invalidCodeSnippet": "Invalid code snippet selection",
+  "runButton": "Run Button",
+  "actionButton": "Action Button",
+  "devPageName": "DDE Dev Experience",
+  "endUserPageName": "DDE End-User Experience",
+  "categoryValue": "Offering Interface",
+  "productTitle": "Dynamic Dashboard Embedded"
+}

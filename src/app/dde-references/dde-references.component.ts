@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AnalyticsService } from '../../instrumentation/analytics';
+import * as resources from '../../assets/resources/resources.json';
 
 @Component({
   selector: 'dde-references',
@@ -15,26 +16,26 @@ export class DdeReferencesComponent implements OnInit {
 
   showVideo(event) {
     this.isShowVideo.emit(true);
-    this.analyticsService.trackDocumentation('Overview Video', event.currentTarget.href);
+    this.analyticsService.trackDocumentation((<any>resources).documents.video, event.currentTarget.href);
   }
 
   createInstance(event) {
-    this.analyticsService.trackDocumentation('Create Your Instance', event.currentTarget.href);
+    this.analyticsService.trackDocumentation((<any>resources).documents.createInstance, event.currentTarget.href);
   }
 
   getDoc(event) {
-    this.analyticsService.trackDocumentation('Getting Started Docs', event.currentTarget.href);
+    this.analyticsService.trackDocumentation((<any>resources).documents.gettingStartedDocs, event.currentTarget.href);
   }
 
   joinDevWorks(event) {
-    this.analyticsService.trackDocumentation('DevWorks Community', event.currentTarget.href);
+    this.analyticsService.trackDocumentation((<any>resources).documents.devworks, event.currentTarget.href);
   }
 
   viewGitHub(event) {
-    this.analyticsService.trackDocumentation('GitHub Demo Code', event.currentTarget.href);
+    this.analyticsService.trackDocumentation((<any>resources).documents.github, event.currentTarget.href);
   }
 
   termsOfUse(event) {
-    this.analyticsService.trackDocumentation('Terms of Use', event.currentTarget.href);
+    this.analyticsService.trackDocumentation((<any>resources).documents.termsOfUse, event.currentTarget.href);
   }
 }
