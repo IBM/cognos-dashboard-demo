@@ -116,9 +116,10 @@ button:focus, video:focus, input:focus, a:focus{
 }
 
 .panel-open .panel .navbar-brand:after {
-    font-family: 'FontAwesome';
-    content: "\f068";
+    content: url(assets/images/chevron-up_16.svg);
     float: right;
+    /* position: absolute;
+    right: 6%; */
 }
 
 .bg-dark {
@@ -126,9 +127,10 @@ button:focus, video:focus, input:focus, a:focus{
 }
 
 .panel .navbar-brand:after {
-  font-family: 'FontAwesome';
-  content: "\f067";
+  content: url(assets/images/chevron-down_16.svg);
   float: right;
+  /* position: absolute;
+  right: 6%;*/
 }
 
 .fa {
