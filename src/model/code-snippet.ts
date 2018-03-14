@@ -8,8 +8,6 @@ export enum CodeSnippetEnum {
   AddProtectedCSVSource = 'AddProtectedCSVSource',
   AddBikeShareWeatherCSVSource = 'AddBikeShareWeatherCSVSource',
   AddBikeShareRidesDemographCSVSource = 'AddBikeShareRidesDemographCSVSource',
-  //AddDB2Source = 'AddDB2Source',
-  //AddProtectedDB2Source = 'AddProtectedDB2Source',
   DashboardEditMode = 'DashboardEditMode',
   DashboardViewMode = 'DashboardViewMode',
   DashboardEditGroupMode = 'DashboardEditGroupMode',

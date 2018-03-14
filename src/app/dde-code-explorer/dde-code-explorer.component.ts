@@ -6,6 +6,7 @@ import { CodeSnippet, CodeSnippetEnum } from '../../model/code-snippet';
 import { CSVDataSource, ProtectedCSVDataSource, BikeShareWeatherCSVSource, BikeShareRidesDemographCSVSource } from '../../model/data-source';
 import { CodeSnippetsRepoService } from '../services/code-snippets-repo.service';
 import * as DashboardMode from '../../model/dashboard-mode';
+import { AnalyticsService } from '../../instrumentation/analytics';
 declare var Prism: any;
 
 @Component({
@@ -32,7 +33,7 @@ export class DdeCodeExplorerComponent implements OnInit {
   sessionObject = null;
 
   constructor(private ddeApiService: DdeApiService, private codeSnippetsRepoService: CodeSnippetsRepoService,
-              private ddeActionService: DdeActionService) { }
+              private ddeActionService: DdeActionService, private analyticsService: AnalyticsService) { }
 
   ngOnInit() {
   }
@@ -47,8 +48,9 @@ export class DdeCodeExplorerComponent implements OnInit {
   }
 
   async runCode() {
-    try {
+    let dataSource: string = '';
 
+    try {
       this.ddeActionService.previousAction = this.ddeActionService.currentAction;
       this.ddeActionService.currentAction = this.codeSnippet.selection;
 
@@ -56,6 +58,7 @@ export class DdeCodeExplorerComponent implements OnInit {
         this.sessionObject = await this.ddeApiService.createNewSession();
         this.session.emit(this.sessionObject);
         this.resetAllRunButtons();
+        this.analyticsService.setSession(this.sessionObject.id, this.sessionObject.code);
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.CreateAPIFramework) {
         this.apiId.emit(await this.ddeApiService.createAndInitApiFramework());
@@ -72,19 +75,19 @@ export class DdeCodeExplorerComponent implements OnInit {
         this.enableDashboardInteractionRunButton();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddCSVSource) {
-        this.ddeApiService.addCSVSampleSource();
+        dataSource = await this.ddeApiService.addCSVSampleSource();
         this.ddeActionService.isAddingDataSourceLastUpdateToDashboard = true;
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddProtectedCSVSource) {
-        this.ddeApiService.addProtectedCSVSampleSource();
+        dataSource = await this.ddeApiService.addProtectedCSVSampleSource();
         this.ddeActionService.isAddingDataSourceLastUpdateToDashboard = true ;
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddBikeShareRidesDemographCSVSource) {
-        this.ddeApiService.addBikeShareRidesDemographCSVSampleSource();
+        dataSource = await this.ddeApiService.addBikeShareRidesDemographCSVSampleSource();
         this.ddeActionService.isAddingDataSourceLastUpdateToDashboard = true ;
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddBikeShareWeatherCSVSource) {
-        this.ddeApiService.addBikeShareWeatherCSVSampleSource();
+        dataSource = await this.ddeApiService.addBikeShareWeatherCSVSampleSource();
         this.ddeActionService.isAddingDataSourceLastUpdateToDashboard = true ;
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.DashboardEditMode) {
@@ -144,12 +147,14 @@ export class DdeCodeExplorerComponent implements OnInit {
         throw new Error("Invalid code snippet selection");
       }
 
+      this.createTraits(true, dataSource, 'Successfully ' + this.codeSnippet.selection);
       this.ddeActionService.hasActionChanged.next(true); ;
     }
     catch(e) {
       console.log(e);
       this.session.emit(null);
       this.apiId.emit('');
+      this.createTraits(false, dataSource, e.message);
     }
   }
 
@@ -171,6 +176,45 @@ export class DdeCodeExplorerComponent implements OnInit {
     this.enableRunButton(CodeSnippetEnum.RegisterApiCallback);
     this.enableRunButton(CodeSnippetEnum.UnregisterApiCallback);
     this.enableRunButton(CodeSnippetEnum.CloseApiFramework);
+  }
+
+  createTraits(isSuccess: boolean, dataSource: string, message: string) {
+    let result = isSuccess ? 'success' : 'error';
+
+    switch(this.codeSnippet.selection) {
+      case CodeSnippetEnum.CreateSession:
+      case CodeSnippetEnum.CreateAPIFramework:
+      case CodeSnippetEnum.OpenDashboard:
+      case CodeSnippetEnum.CreateDashboard:
+      case CodeSnippetEnum.ClearDirtyState:
+      case CodeSnippetEnum.RegisterCallback:
+      case CodeSnippetEnum.UnregisterCallback:
+      case CodeSnippetEnum.RegisterApiCallback:
+      case CodeSnippetEnum.UnregisterApiCallback:
+      case CodeSnippetEnum.CloseApiFramework: {
+        this.analyticsService.trackAPIAndDashboard(this.codeSnippet.selection, result, message);
+        break;
+      }
+      case CodeSnippetEnum.UndoLastAction:
+      case CodeSnippetEnum.RedoLastAction:
+      case CodeSnippetEnum.TogglePropertiesPane:
+      case CodeSnippetEnum.DashboardEditMode:
+      case CodeSnippetEnum.DashboardViewMode:
+      case CodeSnippetEnum.DashboardEditGroupMode: {
+        this.analyticsService.trackDashboardInteraction(this.codeSnippet.selection, result, message, null, 'Run Button');
+        break;
+      }
+      case CodeSnippetEnum.AddCSVSource:
+      case CodeSnippetEnum.AddProtectedCSVSource:
+      case CodeSnippetEnum.AddBikeShareRidesDemographCSVSource:
+      case CodeSnippetEnum.AddBikeShareWeatherCSVSource:
+      case CodeSnippetEnum.AddBikeShareRidesDemographCSVSource:
+      case CodeSnippetEnum.AddBikeShareWeatherCSVSource:
+      case CodeSnippetEnum.GetDashboardSpec: {
+        this.analyticsService.trackDashboardInteraction(this.codeSnippet.selection, result, message, dataSource, 'Run Button');
+        break;
+      }
+    }
   }
 
   enableRunButton(type: CodeSnippetEnum) {
