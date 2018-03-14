@@ -3,22 +3,14 @@ import * as segment from './segment';
 import { APIAndDashboardTraits } from '../interfaces/apiAndDashboardTraits';
 import { DashboardInteractionTraits } from '../interfaces/dashboardInteractionTraits';
 import { DocumentationTraits } from '../interfaces/documentationTraits';
+import { VideoTraits } from '../interfaces/videoTraits';
 import { environment } from '../environments/environment';
+import * as resources from '../assets/resources/resources.json';
 
 
 @Injectable()
 export class AnalyticsService {
   private sessionId: string;
-  private productTitle : string = 'DDE Demo';
-  private categoryValue : string = 'Offering Interface';
-
-  public events = {
-    APIFramework: 'API Framework',
-    DashboardFactory: 'Dashboard Factory',
-    DashboardAPI: 'Dashboard APIs',
-    SupportAPI: 'Support APIs',
-    Documentation: 'Documentation'
-  };
 
   constructor() {
   }
@@ -43,12 +35,12 @@ export class AnalyticsService {
   }
 
   loadPage(pageName: string) {
-    segment.page(pageName, {name: pageName, title: pageName, productTitle: this.productTitle, categoryValue: this.categoryValue, version: environment.version});
+    segment.page(pageName, {name: pageName, title: pageName, productTitle: (<any>resources).productTitle, categoryValue: (<any>resources).categoryValue, version: environment.version});
   }
 
   trackAPIAndDashboard(eventName: string, action: string, result: string, message: string) {
     let traits: APIAndDashboardTraits = { action: action, sessionId: this.sessionId, result_value: result,
-                                        message: message, productTitle: this.productTitle, version: environment.version};
+                                        message: message, productTitle: (<any>resources).productTitle, version: environment.version};
 
     segment.track(eventName, traits);
   }
@@ -58,18 +50,23 @@ export class AnalyticsService {
 
     if (dataSource !== null) {
       traits = { action: action, sessionId: this.sessionId, result_value: result, message: message, dataSource: dataSource,
-                uiElement: uiElement, productTitle: this.productTitle, version: environment.version};
+                uiElement: uiElement, productTitle: (<any>resources).productTitle, version: environment.version};
     }
     else {
       traits = { action: action, sessionId: this.sessionId, result_value: result, message: message, uiElement: uiElement,
-                productTitle: this.productTitle, version: environment.version};
+                productTitle: (<any>resources).productTitle, version: environment.version};
     }
     segment.track(eventName, traits);
   }
 
   trackDocumentation(document: string, url: string) {
-    let traits: DocumentationTraits = { action: 'Clicked Help Resource', sessionId: this.sessionId, targetUrl: url, document: document,
-                                        productTitle: this.productTitle, version: environment.version};
-    segment.track(this.events.Documentation, traits);
+    let traits: DocumentationTraits = { action: (<any>resources).actions.clickedHelpResource.name, sessionId: this.sessionId, targetUrl: url, document: document,
+                                        productTitle: (<any>resources).productTitle, version: environment.version};
+    segment.track((<any>resources).actions.clickedHelpResource.eventName, traits);
+  }
+
+  trackVideo(action: string, time: string) {
+    let traits: VideoTraits = {action: action, timeLength_viewed: time}
+    segment.track((<any>resources).actions.videoClose.eventName, traits);
   }
 }

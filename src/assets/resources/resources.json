@@ -35,7 +35,6 @@
       "message": "Successfully created a new dashboard.",
       "eventName": "DashboardFactory"
     },
-
     "addSource": {
       "name": "Add source",
       "message": "Successfully added a source",
@@ -100,6 +99,11 @@
       "name": "Clicked help resource",
       "message": "Successfully clicked a help resource link",
       "eventName": "Documentation"
+    },
+    "videoClose": {
+      "name": "Close",
+      "message": "Successfully closed the video",
+      "eventName": "Video"
     }
   },
   "documents": {
@@ -117,5 +121,7 @@
   "runButton": "Run Button",
   "actionButton": "Action Button",
   "devPageName": "DDE Dev Experience",
-  "endUserPageName": "DDE End-User Experience"
+  "endUserPageName": "DDE End-User Experience",
+  "categoryValue": "Offering Interface",
+  "productTitle": "Dynamic Dashboard Embedded"
 }
