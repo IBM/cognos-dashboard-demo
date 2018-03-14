@@ -1,4 +1,4 @@
 export interface MessageTraits {
-  result: string
+  result: string;
   message : string;
 }
