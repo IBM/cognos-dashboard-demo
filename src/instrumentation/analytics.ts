@@ -9,7 +9,6 @@ import { environment } from '../environments/environment';
 @Injectable()
 export class AnalyticsService {
   private sessionId: string;
-  private sessionCode: string;
   private productTitle : string = 'DDE Demo';
   private categoryValue : string = 'Offering Interface';
 
@@ -39,41 +38,38 @@ export class AnalyticsService {
     );
   }
 
-  setSession(sessionId: string, sessionCode: string) {
+  setSession(sessionId: string) {
     this.sessionId = sessionId;
-    this.sessionCode = sessionCode;
   }
 
   loadPage(pageName: string) {
     segment.page(pageName, {name: pageName, title: pageName, productTitle: this.productTitle, categoryValue: this.categoryValue, version: environment.version});
   }
 
-  trackAPIAndDashboard(name: string, action: string, result: string, message: string) {
-    let traits: APIAndDashboardTraits = { action: action, sessionId: this.sessionId, sessionCode: this.sessionCode,
-                                          result: result, message: message, productTitle: this.productTitle, version: environment.version};
+  trackAPIAndDashboard(eventName: string, action: string, result: string, message: string) {
+    let traits: APIAndDashboardTraits = { action: action, sessionId: this.sessionId, result_value: result,
+                                        message: message, productTitle: this.productTitle, version: environment.version};
 
-    segment.track(name, traits);
+    segment.track(eventName, traits);
   }
 
-  trackDashboardInteraction(name: string, action: string, result: string, message: string, dataSource: string, uiElement: string) {
+  trackDashboardInteraction(eventName: string, action: string, result: string, message: string, dataSource: string, uiElement: string) {
     let traits: DashboardInteractionTraits
 
     if (dataSource !== null) {
-      traits = { action: action, sessionId: this.sessionId, sessionCode: this.sessionCode,
-                                            result: result, message: message, dataSource: dataSource, uiElement: uiElement,
-                                            productTitle: this.productTitle, version: environment.version};
+      traits = { action: action, sessionId: this.sessionId, result_value: result, message: message, dataSource: dataSource,
+                uiElement: uiElement, productTitle: this.productTitle, version: environment.version};
     }
     else {
-      traits = { action: action, sessionId: this.sessionId, sessionCode: this.sessionCode,
-                                            result: result, message: message, uiElement: uiElement,
-                                          productTitle: this.productTitle, version: environment.version};
+      traits = { action: action, sessionId: this.sessionId, result_value: result, message: message, uiElement: uiElement,
+                productTitle: this.productTitle, version: environment.version};
     }
-    segment.track(name, traits);
+    segment.track(eventName, traits);
   }
 
   trackDocumentation(document: string, url: string) {
-    let traits: DocumentationTraits = { action: 'Clicked Help Resource', sessionId: this.sessionId, sessionCode: this.sessionCode,
-                                          targetUrl: url, document: document, productTitle: this.productTitle, version: environment.version};
+    let traits: DocumentationTraits = { action: 'Clicked Help Resource', sessionId: this.sessionId, targetUrl: url, document: document,
+                                        productTitle: this.productTitle, version: environment.version};
     segment.track(this.events.Documentation, traits);
   }
 }

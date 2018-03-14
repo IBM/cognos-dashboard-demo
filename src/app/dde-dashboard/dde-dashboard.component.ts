@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DdeApiService } from '../services/dde-api.service';
 import { AnalyticsService } from '../../instrumentation/analytics';
+import * as resources from '../../assets/resources/resources.json';
 
 @Component({
   selector: 'dde-dashboard',
@@ -14,7 +15,7 @@ export class DdeDashboardComponent implements OnInit {
 
   ngOnInit() {
     this.loadDasboard();
-    this.analyticsService.loadPage("DDE End-User Experience");
+    this.analyticsService.loadPage((<any>resources).endUserPageName);
   }
 
   async loadDasboard() {
