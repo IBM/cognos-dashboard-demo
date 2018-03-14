@@ -7,7 +7,8 @@ module.exports = function (config) {
   config.set({
     proxies: {
       '/assets/ddeDb2SampleModule.json': 'http://localhost:9876/base/src/assets/ddeDb2SampleModule.json',
-      '/assets/ddeSampleSpec.json': 'http://localhost:9876/base/src/assets/ddeSampleSpec.json'
+      '/assets/ddeSampleSpec.json': 'http://localhost:9876/base/src/assets/ddeSampleSpec.json',
+      '/assets/images/': 'http://localhost:9876/base/src/assets/images/'
     },
     basePath: '',
     frameworks: ['jasmine', '@angular/cli'],

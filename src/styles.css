@@ -66,6 +66,10 @@ select {
   display: block;
 }
 
+button:focus, video:focus, input:focus, a:focus, .dashboard-button:focus{
+  outline: 2px auto #95c4f3;
+}
+
 /* remove default container paddings */
 .container-fluid {
   padding-left: 0px;
@@ -112,9 +116,10 @@ select {
 }
 
 .panel-open .panel .navbar-brand:after {
-    font-family: 'FontAwesome';
-    content: "\f068";
+    content: url(assets/images/chevron-up_16.svg);
     float: right;
+    /* position: absolute;
+    right: 6%; */
 }
 
 .bg-dark {
@@ -122,9 +127,10 @@ select {
 }
 
 .panel .navbar-brand:after {
-  font-family: 'FontAwesome';
-  content: "\f067";
+  content: url(assets/images/chevron-down_16.svg);
   float: right;
+  /* position: absolute;
+  right: 6%;*/
 }
 
 .fa {

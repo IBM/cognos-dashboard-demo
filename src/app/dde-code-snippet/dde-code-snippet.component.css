@@ -12,11 +12,16 @@ pre {
 
 .none-state {
   color: #fff;
-  padding-top: 50%;
+  margin-top: 7em;
   text-align: center;
   font-family: "Helv Neue Roman", serif;
 }
 
 .title {
-    font-family: "Helv Neue Bold", serif;
+  font-family: "Helv Neue Bold", serif;
+}
+
+.code-panel.title{
+  margin-top: 14px;
+  margin-bottom: -18px;
 }
