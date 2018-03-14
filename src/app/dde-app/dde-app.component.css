@@ -13,7 +13,11 @@
 }
 
 .steps-icons {
-  width: 25em;
+  width: 15em;
+}
+
+.empty-state-text{
+    margin-top: 16px;
 }
 
 .steps-copy {
