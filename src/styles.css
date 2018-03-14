@@ -66,8 +66,12 @@ select {
   display: block;
 }
 
-button:focus, video:focus, input:focus, a:focus{
+button:focus, video:focus, input:focus, a:focus, .dashboard-button:focus{
   outline: 2px auto #95c4f3;
+}
+
+.explorer-bar button:focus, .dashboard-button:focus{
+  outline-offset: -3px;
 }
 
 /* remove default container paddings */
