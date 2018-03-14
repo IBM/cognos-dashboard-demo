@@ -191,13 +191,13 @@
 
 <pre *ngIf="codeType === 'RegisterApiCallback'"  class="line-numbers">
   <code class="language-javascript">
-    this.api.on(this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
+    this.api.on(CognosApi.EVENTS.REQUEST_ERROR, this.onError);
   </code>
 </pre>
 
 <pre *ngIf="codeType === 'UnregisterApiCallback'"  class="line-numbers">
   <code class="language-javascript">
-    this.api.off(this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
+    this.api.off(CognosApi.EVENTS.REQUEST_ERROR, this.onError);
   </code>
 </pre>
 
