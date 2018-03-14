@@ -19,30 +19,17 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.analyticsService.setupSegment(environment.segment_key);
-    this.loadSegment();
+    this.loadScripts(environment.bluemixLib);
 
     this.loadCognosApi = new Promise((resolve) => {
-       this.loadCognosApiScript();
+       this.loadScripts(this.cognos_url);
          console.log('cognos script loaded');
    });
   }
 
-  loadSegment() {
-    this.loadBluemixAnalyticsScript();
-  }
-
-  loadCognosApiScript() {
+  loadScripts(source: string) {
     let node = document.createElement('script');
-    node.src =  this.cognos_url;
-    node.type = 'text/javascript';
-    node.async = true;
-    node.charset = 'utf-8';
-    document.getElementsByTagName('head')[0].appendChild(node);
-  }
-
-  loadBluemixAnalyticsScript() {
-    let node = document.createElement('script');
-    node.src =  'https://console.cdn.stage1.s-bluemix.net/analytics/build/bluemix-analytics.min.js';
+    node.src =  source;
     node.type = 'text/javascript';
     node.async = true;
     node.charset = 'utf-8';
