@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DdeApiService } from '../services/dde-api.service';
+import { AnalyticsService } from '../../instrumentation/analytics';
 
 @Component({
   selector: 'dde-dashboard',
@@ -9,10 +10,11 @@ import { DdeApiService } from '../services/dde-api.service';
 export class DdeDashboardComponent implements OnInit {
 
   public disableDashboardBarButtons: boolean = true;
-  constructor(private ddeApiService: DdeApiService) { }
+  constructor(private ddeApiService: DdeApiService, private analyticsService: AnalyticsService) { }
 
   ngOnInit() {
     this.loadDasboard();
+    this.analyticsService.loadPage("DDE End-User Experience");
   }
 
   async loadDasboard() {

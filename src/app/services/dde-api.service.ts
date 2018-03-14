@@ -63,6 +63,7 @@ export class DdeApiService {
           initTimeout: 10000,
           node: document.getElementById('ddeDashboard')
           });
+
     this.api._node.hidden = false;
 
     try {
@@ -70,7 +71,7 @@ export class DdeApiService {
       console.log('API created successfully.');
     } catch (e) {
       console.log('Unable to initialize API instance: ' + e.message);
-      return null;
+      throw e;
     }
 
     console.log(this.api.dashboard);
@@ -82,19 +83,21 @@ export class DdeApiService {
 
     console.log('Dashboard created successfully.');
     console.log(this.dashboardAPI);
+    this.dashboardAPI.state = 'Create';
     return this.dashboardAPI;
   }
 
-  async getDashboardSampleSpec(): Promise<void> {
-
+  async getDashboardSampleSpec(): Promise<string> {
+    let fileName = 'dashboardspec.json';
     // return if it was already fetched from before
     if (this.sample_db_spec != null) {
       return;
     }
 
     //get the sampleSepc json ready
-    const response = await this.http.get('/assets/dashboardspec.json').toPromise();
+    const response = await this.http.get('/assets/' + fileName).toPromise();
     this.sample_db_spec = response.json();
+    return fileName;
   }
 
   async openDashboard() {
@@ -103,87 +106,54 @@ export class DdeApiService {
     this.dashboardAPI = await this.api.dashboard.openDashboard({
       dashboardSpec: this.sample_db_spec
     });
+    this.dashboardAPI.state = 'Open'
     console.log('Dashboard opened successfully.');
     console.log(this.dashboardAPI);
     return this.dashboardAPI;
   }
-
-/*
-  async getDB2SampleModule() {
-    // return if it was already  fetched from before
-    if (this.db2_sample_module != null) {
-      return this.db2_sample_module;
-    }
-
-    const response = await this.http.get('/assets/ddeDb2SampleModule.json').toPromise();
-    this.db2_sample_module = response.json();
-    return this.db2_sample_module;
-  }
-
-  async addDb2SampleSource() {
-    const sampleModule = await this.getDB2SampleModule();
-    this.dashboardAPI.addSources([{
-      module: sampleModule,
-      name: 'Test DB2 Source',
-      id: 'myUniqueId123'
-    }]);
-  }
-*/
-
 
   async getCSVSampleModuleJson(url) {
     const response = await this.http.get(url).toPromise();
     return response.json();
   }
 
-  async getCSVSampleModule() {
+  async getCSVSampleModule(fileName: string) {
     if (this.csv_sample_module == null) {
-      this.csv_sample_module = await this.getCSVSampleModuleJson('/assets/ddeCSVSampleModule.json');
+      this.csv_sample_module = await this.getCSVSampleModuleJson('/assets/'+fileName);
     }
     return this.csv_sample_module;
   }
 
-  async getBikeShareWeatherCSVSampleModule() {
+  async getBikeShareWeatherCSVSampleModule(fileName: string) {
     if (this.bike_share_weather_csv_sample_module == null) {
-      this.bike_share_weather_csv_sample_module = await this.getCSVSampleModuleJson('/assets/bikeShareWeatherSampleModule.json');
+      this.bike_share_weather_csv_sample_module = await this.getCSVSampleModuleJson('/assets/'+fileName);
     }
     return this.bike_share_weather_csv_sample_module;
   }
 
-  async getBikeShareRidesDemographCSVSampleModule() {
+  async getBikeShareRidesDemographCSVSampleModule(fileName: string) {
     if (this.bike_share_rides_demograph_csv_sample_module == null) {
-      this.bike_share_rides_demograph_csv_sample_module = await this.getCSVSampleModuleJson('/assets/bikeShareRidesDemographicsSampleModule.json');
+      this.bike_share_rides_demograph_csv_sample_module = await this.getCSVSampleModuleJson('/assets/'+fileName);
     }
     return this.bike_share_rides_demograph_csv_sample_module;
   }
 
 
   async addCSVSampleSource() {
-    const sampleModule = await this.getCSVSampleModule();
+    let filename = 'ddeCSVSampleModule.json';
+    const sampleModule = await this.getCSVSampleModule(filename);
     this.dashboardAPI.addSources([{
       module: sampleModule,
       name: 'Test CSV Source',
       id: 'myUniqueId789'
     }]);
-  }
 
-/*
-  async addProtectedDB2SampleSource() {
-    const sampleModule = await this.getDB2SampleModule();
-    this.encryptService.setKey(this.session.keys[0]);
-    const encryptedSampleModule = this.encryptService.encryptModuleInfo(sampleModule);
-
-    console.log("protected DB2 sample module: " + encryptedSampleModule);
-    this.dashboardAPI.addSources([{
-      module: encryptedSampleModule,
-      name: 'Protected DB2 Source',
-      id: 'myUniqueId456'
-    }]);
+    return filename;
   }
-*/
 
   async addProtectedCSVSampleSource() {
-    const sampleModule = await this.getCSVSampleModule();
+    let fileName = 'ddeCSVSampleModule.json';
+    const sampleModule = await this.getCSVSampleModule(fileName);
     this.encryptService.setKey(this.session.keys[0]);
     const encryptedSampleModule = this.encryptService.encryptModuleInfo(sampleModule);
 
@@ -194,24 +164,32 @@ export class DdeApiService {
       name: 'Protected CSV Source',
       id: 'myUniqueId987'
     }]);
+
+    return fileName;
   }
 
   async addBikeShareWeatherCSVSampleSource() {
-    const sampleBikeShareWeatherModule = await this.getBikeShareWeatherCSVSampleModule();
+    let fileName = 'bikeShareWeatherSampleModule.json';
+    const sampleBikeShareWeatherModule = await this.getBikeShareWeatherCSVSampleModule(fileName);
     this.dashboardAPI.addSources([{
       module: sampleBikeShareWeatherModule,
       name: 'Test Bike Share Weather Source',
       id: 'myUniqueId111'
     }]);
+
+    return fileName;
   }
 
   async addBikeShareRidesDemographCSVSampleSource() {
-    const sampleBikeShareRidesDemographModule = await this.getBikeShareRidesDemographCSVSampleModule();
+    let fileName = 'bikeShareRidesDemographicsSampleModule.json';
+    const sampleBikeShareRidesDemographModule = await this.getBikeShareRidesDemographCSVSampleModule(fileName);
     this.dashboardAPI.addSources([{
       module: sampleBikeShareRidesDemographModule,
       name: 'Test Bike Share Rides Demographics Source',
       id: 'myUniqueId222'
     }]);
+
+    return fileName;
   }
 
 
