@@ -18,16 +18,17 @@ app.use(bodyParser.json())
 // Enable reverse proxy support in Express.
 app.enable('trust proxy');
 
-// Add a handler to inspect the req.secure flag, this allows us
+// Add a handler to inspect the req.secure flag or see if app is running on localhost, this allows us
 // to know whether the request was via http or https.
 app.use (function (req, res, next) {
-    if (req.secure) {
+    if (req.secure || req.hostname == 'localhost') {
       // request was via https, so do no special handling
       next();
     } else {
         // request was via http, so redirect to https
         res.redirect('https://' + req.headers.host + req.url);
     }
+
 });
 
 
