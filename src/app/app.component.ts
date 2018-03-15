@@ -11,25 +11,35 @@ import { AnalyticsService } from '../instrumentation/analytics';
 
 export class AppComponent implements OnInit {
   cognos_url: string;
+  bluemix_analytics_url: string;
   loadCognosApi: Promise<any>;
 
    constructor(private analyticsService: AnalyticsService) {
        this.cognos_url = environment.cognos_api_js;
+       this.bluemix_analytics_url = environment.bluemix_analytics_js;
   }
 
   ngOnInit() {
     this.analyticsService.setupSegment(environment.segment_key);
-    this.loadScripts(environment.bluemixLib);
+    this.loadBluemixAnalyticsScript();
 
     this.loadCognosApi = new Promise((resolve) => {
-       this.loadScripts(this.cognos_url);
-         console.log('cognos script loaded');
+      this.loadCognosApiScript();
+      console.log('cognos script loaded');
    });
   }
 
-  loadScripts(source: string) {
+  loadCognosApiScript() {
+    this.loadScript(this.cognos_url);
+  }
+
+  loadBluemixAnalyticsScript() {
+    this.loadScript(this.bluemix_analytics_url);
+  }
+
+  loadScript(srcUrl) {
     let node = document.createElement('script');
-    node.src =  source;
+    node.src =  srcUrl;
     node.type = 'text/javascript';
     node.async = true;
     node.charset = 'utf-8';

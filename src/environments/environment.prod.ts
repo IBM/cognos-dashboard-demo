@@ -5,5 +5,5 @@ export const environment = {
   toaster_timer: 5000,
   segment_key: 'SCgjbhK84jkys7zrdQnBS38hY90lys5b',
   version: '1.0.0',
-  bluemixLib: 'https://console.cdn.s-bluemix.net/analytics/build/bluemix-analytics.min.js'
+  bluemix_analytics_js: 'https://console.cdn.s-bluemix.net/analytics/build/bluemix-analytics.min.js'
 };
