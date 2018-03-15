@@ -65,8 +65,8 @@ export class AnalyticsService {
     segment.track((<any>resources).actions.clickedHelpResource.eventName, traits);
   }
 
-  trackVideo(action: string, time: string) {
-    let traits: VideoTraits = {action: action, timeLength_viewed: time}
+  trackVideo(action: string, time: string, doNotDisplayAgain: boolean) {
+    let traits: VideoTraits = {action: action, timeLength_viewed: time, doNotDisplayAgain: doNotDisplayAgain};
     segment.track((<any>resources).actions.videoClose.eventName, traits);
   }
 }
