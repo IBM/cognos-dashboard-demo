@@ -41,7 +41,7 @@ console.log('ENVIROMENT: '+env);
 
 
 /* Endpoint to create a new DDE session.
-* Send a POST request to https://jdcluster.us-south.containers.mybluemix.net/daas/v1/session with body
+* Send a POST request to https://dde-us-south.analytics.ibm.com/daas/v1/session with body
 * {
 * 	"expiresIn": 3600,
 *   "webDomain": "https://myportal.mybluemix.net"
@@ -61,7 +61,7 @@ app.post("/api/dde/session", function(request, response) {
           "expiresIn": 3600,
           webDomain: conf.web_domain
           //"webDomain": "http://localhost:3000" // for local testing
-          //"webDomain": "https://dde-angnode-app.stage1.mybluemix.net" // for deployment
+          //"webDomain": "https://{app-name}.mybluemix.net" // for deployment
       },
       json: true // Automatically stringifies the body to JSON
   };
