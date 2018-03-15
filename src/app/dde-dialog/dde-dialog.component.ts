@@ -43,7 +43,7 @@ export class DdeDialogComponent implements AfterViewInit {
       let timeElasped = '0:' + Math.floor(this.ddeVideo.nativeElement.currentTime);
       let totalTime = '0:' + Math.floor(this.ddeVideo.nativeElement.duration);
 
-      this.analyticsService.trackVideo((<any>resources).actions.videoClose.name, timeElasped + ' / ' + totalTime);
+      this.analyticsService.trackVideo((<any>resources).actions.videoClose.name, timeElasped + ' / ' + totalTime, this.isCheckboxChecked);
     }
   }
 }
