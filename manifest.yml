@@ -1,5 +1,5 @@
 ---
 applications:
-  - name: dynamic-dashboard-demo-test
+  - name: dynamic-dashboard-demo
     random-route: true
     memory: 256M
