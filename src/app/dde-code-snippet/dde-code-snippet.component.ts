@@ -25,4 +25,5 @@ export class DdeCodeSnippetComponent implements OnInit {
     setTimeout(function() {
       Prism.highlightAll();
     }, 0);
+  }
 }
