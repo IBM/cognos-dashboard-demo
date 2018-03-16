@@ -9,8 +9,6 @@ import * as DashboardMode from '../../model/dashboard-mode';
 import { AnalyticsService } from '../../instrumentation/analytics';
 import * as resources from '../../assets/resources/resources.json';
 
-declare var Prism: any;
-
 @Component({
   selector: 'dde-code-explorer',
   templateUrl: './dde-code-explorer.component.html',
@@ -41,7 +39,6 @@ export class DdeCodeExplorerComponent implements OnInit {
   }
 
   setExplorerDiv() {
-      Prism.highlightAll();
       let classes =  {
           divsmall: this.codeSnippet && this.codeSnippet.size === 'small',
           divlarge: !this.codeSnippet || this.codeSnippet.size === 'large'
