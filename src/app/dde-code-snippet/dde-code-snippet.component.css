@@ -12,7 +12,7 @@ pre {
 
 .none-state {
   color: #fff;
-  margin-top: 7em;
+  margin-top: 9.5em;
   text-align: center;
   font-family: "Helv Neue Roman", serif;
 }
@@ -22,6 +22,10 @@ pre {
 }
 
 .code-panel.title{
-  margin-top: 14px;
-  margin-bottom: -18px;
+  margin-top: -14px;
+  margin-bottom: -20px;
+}
+
+.no-code-text{
+  font-size: 1rem;
 }

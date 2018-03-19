@@ -1,39 +1,22 @@
 import { Injectable } from '@angular/core';
 import * as segment from './segment';
-import * as analyticsUtil from './analyticsUtil';
-import { CommonTraits } from '../model/commonTraits';
-import { DashboardInteractionTraits } from '../model/dashboardInteractionTraits';
+import { APIAndDashboardTraits } from '../interfaces/apiAndDashboardTraits';
+import { DashboardInteractionTraits } from '../interfaces/dashboardInteractionTraits';
+import { DocumentationTraits } from '../interfaces/documentationTraits';
+import { VideoTraits } from '../interfaces/videoTraits';
+import { environment } from '../environments/environment';
+import * as resources from '../assets/resources/resources.json';
 
 
 @Injectable()
 export class AnalyticsService {
   private sessionId: string;
-  private sessionCode: string;
 
   constructor() {
   }
 
-  addCommonOptions(options: any) {
-    options.categoryValue = analyticsUtil.pageName(),
-    options.productTitle = analyticsUtil.productTitle();
-  }
-
-  //  createOptions = function(name: string, sessionId: string, sessionCode: string,
-  //                             result: string, message: string) {
-  //   var options = {
-  //     action: name,
-  //     sessionId: sessionId,
-  //     sessionCode: sessionCode,
-  //     result: result,
-  //     message: message
-  //   };
-  //
-  //   addCommonOptions(options);
-  //   return options;
-  // };
-
-  setupSegment(key: string) {
-    segment.setUp(
+  async setupSegment(key: string) {
+    await segment.setUp(
       {
         'segment_key' : key,
         'coremetrics' : false,
@@ -47,43 +30,43 @@ export class AnalyticsService {
     );
   }
 
-  setSession(sessionId: string, sessionCode: string) {
+  setSession(sessionId: string) {
     this.sessionId = sessionId;
-    this.sessionCode = sessionCode;
-  }
-
-  // realm, uniqueSecurityName and IAMID are added automatically by the bluemix lib
-  identify() {
-    segment.identify(
-      {
-        createdAt: analyticsUtil.createdAt(),
-        uiVersion: analyticsUtil.uiVersion(),
-        language: analyticsUtil.language()
-      }
-    );
   }
 
   loadPage(pageName: string) {
-    //segment.page()
+    segment.page(pageName, {name: pageName, title: pageName, productTitle: (<any>resources).productTitle, categoryValue: (<any>resources).categoryValue, version: environment.version});
   }
 
-  trackAPIAndDashboard(action: string, result: string, message: string) {
-    let traits: CommonTraits = { action: action, sessionId: this.sessionId, sessionCode: this.sessionCode,
-                                          result: result, message: message };
-    segment.track(traits.action, traits);
+  trackAPIAndDashboard(eventName: string, action: string, result: string, message: string) {
+    let traits: APIAndDashboardTraits = { action: action, sessionId: this.sessionId, result_value: result,
+                                        message: message, productTitle: (<any>resources).productTitle, version: environment.version};
+
+    segment.track(eventName, traits);
   }
 
-  trackDashboardInteraction(action: string, result: string, message: string, dataSource: string, uiElement: string) {
+  trackDashboardInteraction(eventName: string, action: string, result: string, message: string, dataSource: string, uiElement: string) {
     let traits: DashboardInteractionTraits
 
     if (dataSource !== null) {
-      traits = { action: action, sessionId: this.sessionId, sessionCode: this.sessionCode,
-                                            result: result, message: message, dataSource: dataSource, uiElement: uiElement };
+      traits = { action: action, sessionId: this.sessionId, result_value: result, message: message, dataSource: dataSource,
+                uiElement: uiElement, productTitle: (<any>resources).productTitle, version: environment.version};
     }
     else {
-      traits = { action: action, sessionId: this.sessionId, sessionCode: this.sessionCode,
-                                            result: result, message: message, uiElement: uiElement }
+      traits = { action: action, sessionId: this.sessionId, result_value: result, message: message, uiElement: uiElement,
+                productTitle: (<any>resources).productTitle, version: environment.version};
     }
-    segment.track(traits.action, traits);
+    segment.track(eventName, traits);
+  }
+
+  trackDocumentation(document: string, url: string) {
+    let traits: DocumentationTraits = { action: (<any>resources).actions.clickedHelpResource.name, sessionId: this.sessionId, targetUrl: url, document: document,
+                                        productTitle: (<any>resources).productTitle, version: environment.version};
+    segment.track((<any>resources).actions.clickedHelpResource.eventName, traits);
+  }
+
+  trackVideo(action: string, time: string, doNotDisplayAgain: boolean) {
+    let traits: VideoTraits = {action: action, timeLength_viewed: time, doNotDisplayAgain: doNotDisplayAgain};
+    segment.track((<any>resources).actions.videoClose.eventName, traits);
   }
 }

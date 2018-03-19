@@ -1,5 +1,7 @@
 import { Component, ViewChild, AfterViewInit  } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { AnalyticsService } from '../../instrumentation/analytics';
+import * as resources from '../../assets/resources/resources.json';
 
 @Component({
   selector: 'dde-dialog',
@@ -11,7 +13,7 @@ export class DdeDialogComponent implements AfterViewInit {
   @ViewChild('ddeVideo') ddeVideo: any;
   private isCheckboxChecked: boolean = false;
 
-  constructor() {
+  constructor(private analyticsService: AnalyticsService) {
   }
 
   ngAfterViewInit() {
@@ -33,9 +35,15 @@ export class DdeDialogComponent implements AfterViewInit {
     this.isCheckboxChecked = event.target.checked;
   }
 
-
   hideModal() {
     this.lgModal.hide();
     this.ddeVideo.nativeElement.pause();
+
+    if (!Number.isNaN(this.ddeVideo.nativeElement.duration)) {
+      let timeElasped = '0:' + Math.floor(this.ddeVideo.nativeElement.currentTime);
+      let totalTime = '0:' + Math.floor(this.ddeVideo.nativeElement.duration);
+
+      this.analyticsService.trackVideo((<any>resources).actions.videoClose.name, timeElasped + ' / ' + totalTime, this.isCheckboxChecked);
+    }
   }
 }

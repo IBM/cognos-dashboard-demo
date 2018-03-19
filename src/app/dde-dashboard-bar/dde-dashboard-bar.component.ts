@@ -4,6 +4,7 @@ import { DdeActionService } from '../services/dde-action.service';
 import { CodeSnippetEnum } from '../../model/code-snippet';
 import * as DashboardMode from '../../model/dashboard-mode';
 import { AnalyticsService } from '../../instrumentation/analytics';
+import * as resources from '../../assets/resources/resources.json';
 
 @Component({
   selector: 'dde-dashboard-bar',
@@ -43,7 +44,7 @@ export class DdeDashboardBarComponent implements OnInit {
     this.ddeActionService.previousAction = this.ddeActionService.currentAction;
     this.ddeActionService.currentAction = CodeSnippetEnum.UndoLastAction;
     this.toggleDashboardMode();
-    this.analyticsService.trackDashboardInteraction(CodeSnippetEnum.UndoLastAction, 'success', 'Successfully ' + CodeSnippetEnum.UndoLastAction, null, 'Action Button');
+    this.analyticsService.trackDashboardInteraction((<any>resources).actions.undo.eventName, (<any>resources).actions.undo.name, 'success', (<any>resources).actions.undo.message, null, (<any>resources).actionButton);
   }
 
   redoLastAction() {
@@ -51,7 +52,7 @@ export class DdeDashboardBarComponent implements OnInit {
     this.ddeActionService.previousAction = this.ddeActionService.currentAction;
     this.ddeActionService.currentAction = CodeSnippetEnum.RedoLastAction;
     this.toggleDashboardMode();
-    this.analyticsService.trackDashboardInteraction(CodeSnippetEnum.RedoLastAction, 'success', 'Successfully ' + CodeSnippetEnum.RedoLastAction, null, 'Action Button');
+    this.analyticsService.trackDashboardInteraction((<any>resources).actions.redo.eventName, (<any>resources).actions.redo.name, 'success', (<any>resources).actions.redo.message, null, (<any>resources).actionButton);
   }
 
   togglePropertiesPane() {
@@ -59,7 +60,7 @@ export class DdeDashboardBarComponent implements OnInit {
     this.ddeActionService.currentAction = CodeSnippetEnum.TogglePropertiesPane;
     this.ddeApiService.togglePropertiesPane();
     this.togglePropertiesMode();
-    this.analyticsService.trackDashboardInteraction(CodeSnippetEnum.TogglePropertiesPane, 'success', 'Successfully ' + CodeSnippetEnum.TogglePropertiesPane, null, 'Action Button');
+    this.analyticsService.trackDashboardInteraction((<any>resources).actions.toggleProperties.eventName, (<any>resources).actions.toggleProperties.name, 'success', (<any>resources).actions.toggleProperties.message, null, (<any>resources).actionButton);
   }
 
   editDashboard() {
@@ -70,12 +71,12 @@ export class DdeDashboardBarComponent implements OnInit {
       this.ddeActionService.currentAction = CodeSnippetEnum.DashboardViewMode;
       this.ddeApiService.setDashboardMode_View();
       this.toggleProperties = false;
-      this.analyticsService.trackDashboardInteraction(CodeSnippetEnum.DashboardViewMode, 'success', 'Successfully ' + CodeSnippetEnum.DashboardViewMode, null, 'Action Button');
+      this.analyticsService.trackDashboardInteraction((<any>resources).actions.viewMode.eventName, (<any>resources).actions.viewMode.name, 'success', (<any>resources).actions.viewMode.message, null, (<any>resources).actionButton);
     }
     else {
       this.ddeActionService.currentAction = CodeSnippetEnum.DashboardEditMode;
       this.ddeApiService.setDashboardMode_Edit();
-      this.analyticsService.trackDashboardInteraction(CodeSnippetEnum.DashboardEditMode, 'success', 'Successfully ' + CodeSnippetEnum.DashboardEditMode, null, 'Action Button');
+      this.analyticsService.trackDashboardInteraction((<any>resources).actions.editMode.eventName, (<any>resources).actions.editMode.name, 'success', (<any>resources).actions.editMode.message, null, (<any>resources).actionButton);
     }
 
     this.toggleDashboardMode();

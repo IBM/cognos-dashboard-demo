@@ -290,13 +290,13 @@ export class DdeApiService {
 
   registerApiCallback() {
     this.api.on(
-      this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
+      CognosApi.EVENTS.REQUEST_ERROR, this.onError);
     console.log("REQUEST_ERROR event callback registered.");
   }
 
   unregisterApiCallback() {
     this.api.off(
-      this.dashboardAPI.EVENTS.REQUEST_ERROR, this.onError);
+      CognosApi.EVENTS.REQUEST_ERROR, this.onError);
     console.log("REQUEST_ERROR event callback unregistered.");
   }
 

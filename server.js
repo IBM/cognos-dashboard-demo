@@ -18,16 +18,17 @@ app.use(bodyParser.json())
 // Enable reverse proxy support in Express.
 app.enable('trust proxy');
 
-// Add a handler to inspect the req.secure flag, this allows us
+// Add a handler to inspect the req.secure flag or see if app is running on localhost, this allows us
 // to know whether the request was via http or https.
 app.use (function (req, res, next) {
-    if (req.secure) {
+    if (req.secure || req.hostname == 'localhost') {
       // request was via https, so do no special handling
       next();
     } else {
         // request was via http, so redirect to https
         res.redirect('https://' + req.headers.host + req.url);
     }
+
 });
 
 
@@ -41,7 +42,7 @@ console.log('ENVIROMENT: '+env);
 
 
 /* Endpoint to create a new DDE session.
-* Send a POST request to https://jdcluster.us-south.containers.mybluemix.net/daas/v1/session with body
+* Send a POST request to https://dde-us-south.analytics.ibm.com/daas/v1/session with body
 * {
 * 	"expiresIn": 3600,
 *   "webDomain": "https://myportal.mybluemix.net"
@@ -61,7 +62,7 @@ app.post("/api/dde/session", function(request, response) {
           "expiresIn": 3600,
           webDomain: conf.web_domain
           //"webDomain": "http://localhost:3000" // for local testing
-          //"webDomain": "https://dde-angnode-app.stage1.mybluemix.net" // for deployment
+          //"webDomain": "https://{app-name}.mybluemix.net" // for deployment
       },
       json: true // Automatically stringifies the body to JSON
   };
@@ -90,6 +91,10 @@ try {
 } catch (e) { }
 
 const appEnvOpts = vcapLocal ? { vcap: vcapLocal} : {}
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 console.log("appEnvOpts:" + JSON.stringify(appEnvOpts));
 console.log();
 

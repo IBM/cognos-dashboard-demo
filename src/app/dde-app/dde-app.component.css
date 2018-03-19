@@ -17,7 +17,7 @@
 }
 
 .empty-state-text{
-    margin-top: 16px;
+    margin-top: 28px;
 }
 
 .steps-copy {
@@ -37,12 +37,12 @@ dde-toaster {
 }
 
 .copy-button {
-  width: 95px;
+  /* width: 95px; */
 }
 
 .explorer-bar {
   background-color: #eaeaea;
-  height: 30px;
+  height: 40px;
   color: #343334;
   border-right:2px solid #000;
 }

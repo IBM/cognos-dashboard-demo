@@ -1,9 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 
-/* fonts and icons, to be switched over to IBMs fonts and icons */
-@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
-
 /* https://bootswatch.com/simplex/ */
 /*@import "https://bootswatch.com/4/simplex/bootstrap.css";*/
 
@@ -68,6 +65,10 @@ select {
 
 button:focus, video:focus, input:focus, a:focus, .dashboard-button:focus{
   outline: 2px auto #95c4f3;
+}
+
+.explorer-bar button:focus, .dashboard-button:focus{
+  outline-offset: -3px;
 }
 
 /* remove default container paddings */
@@ -246,7 +247,8 @@ svg {
 }
 
 .card-body {
-  padding: 1.25rem 0 !important;
+  padding: 0 !important;
+  background-color: #fff;
 }
 
 .card-header {
