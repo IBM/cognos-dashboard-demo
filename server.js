@@ -91,10 +91,7 @@ try {
 } catch (e) { }
 
 const appEnvOpts = vcapLocal ? { vcap: vcapLocal} : {}
-<<<<<<< HEAD
-=======
 
->>>>>>> master
 console.log("appEnvOpts:" + JSON.stringify(appEnvOpts));
 console.log();
 
