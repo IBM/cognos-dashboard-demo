@@ -1,11 +1,5 @@
 ---
 applications:
-<<<<<<< HEAD
 - name: dde-demo-test
   random-route: true
   memory: 256M
-=======
-  - name: dde-angnode-app
-    random-route: true
-    memory: 256M
->>>>>>> master
