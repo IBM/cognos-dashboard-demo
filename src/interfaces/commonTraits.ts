@@ -1,6 +1,7 @@
 export interface CommonTraits {
-   action: string;
+   processType: string;
    sessionId: string;
    productTitle: string;
-   version: string;
+   version?: string;
+   process: string
 }

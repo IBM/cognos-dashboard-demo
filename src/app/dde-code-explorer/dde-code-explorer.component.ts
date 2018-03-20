@@ -8,6 +8,8 @@ import { CodeSnippetsRepoService } from '../services/code-snippets-repo.service'
 import * as DashboardMode from '../../model/dashboard-mode';
 import { AnalyticsService } from '../../instrumentation/analytics';
 import * as resources from '../../assets/resources/resources.json';
+import { APIAndDashboardTraits } from '../../interfaces/apiAndDashboardTraits';
+import { DashboardInteractionTraits } from '../../interfaces/dashboardInteractionTraits';
 
 @Component({
   selector: 'dde-code-explorer',
@@ -172,14 +174,14 @@ export class DdeCodeExplorerComponent implements OnInit {
         throw new Error((<any>resources).invalidCodeSnippet);
       }
 
-      this.createTraits((<any>actionResource).eventName, (<any>actionResource).name, true, dataSource, (<any>actionResource).message);
+      this.createTraits((<any>actionResource).processType, (<any>actionResource).name, true, dataSource, (<any>actionResource).message);
       this.ddeActionService.hasActionChanged.next(true); ;
     }
     catch(e) {
       console.log(e);
       this.session.emit(null);
       this.apiId.emit('');
-      this.createTraits((<any>actionResource).eventName, (<any>actionResource).name, false, dataSource, e.message);
+      this.createTraits((<any>actionResource).processType, (<any>actionResource).name, false, dataSource, e.message);
     }
   }
 
@@ -200,8 +202,48 @@ export class DdeCodeExplorerComponent implements OnInit {
     this.enableRunButton(CodeSnippetEnum.UnregisterCallback);
   }
 
-  createTraits(eventName: string, action: string, isSuccess: boolean, dataSource: string, message: string) {
+  // createTraits(eventName: string, action: string, isSuccess: boolean, dataSource: string, message: string) {
+  //   let result = isSuccess ? 'success' : 'error';
+  //
+  //   switch(this.codeSnippet.selection) {
+  //     case CodeSnippetEnum.CreateSession:
+  //     case CodeSnippetEnum.CreateAPIFramework:
+  //     case CodeSnippetEnum.OpenDashboard:
+  //     case CodeSnippetEnum.CreateDashboard:
+  //     case CodeSnippetEnum.ClearDirtyState:
+  //     case CodeSnippetEnum.RegisterCallback:
+  //     case CodeSnippetEnum.UnregisterCallback:
+  //     case CodeSnippetEnum.RegisterApiCallback:
+  //     case CodeSnippetEnum.UnregisterApiCallback:
+  //     case CodeSnippetEnum.CloseApiFramework: {
+  //       this.analyticsService.trackAPIAndDashboard(eventName, action, result, message);
+  //       break;
+  //     }
+  //     case CodeSnippetEnum.UndoLastAction:
+  //     case CodeSnippetEnum.RedoLastAction:
+  //     case CodeSnippetEnum.TogglePropertiesPane:
+  //     case CodeSnippetEnum.DashboardEditMode:
+  //     case CodeSnippetEnum.DashboardViewMode:
+  //     case CodeSnippetEnum.DashboardEditGroupMode: {
+  //       this.analyticsService.trackDashboardInteraction(eventName, action, result, message, null, (<any>resources).runButton);
+  //       break;
+  //     }
+  //     case CodeSnippetEnum.AddCSVSource:
+  //     case CodeSnippetEnum.AddProtectedCSVSource:
+  //     case CodeSnippetEnum.AddBikeShareRidesDemographCSVSource:
+  //     case CodeSnippetEnum.AddBikeShareWeatherCSVSource:
+  //     case CodeSnippetEnum.AddBikeShareRidesDemographCSVSource:
+  //     case CodeSnippetEnum.AddBikeShareWeatherCSVSource:
+  //     case CodeSnippetEnum.GetDashboardSpec: {
+  //       this.analyticsService.trackDashboardInteraction(eventName, action, result, message, dataSource, (<any>resources).runButton);
+  //       break;
+  //     }
+  //   }
+  // }
+
+  createTraits(processType: string, process: string, isSuccess: boolean, dataSource: string, resultValue: string) {
     let result = isSuccess ? 'success' : 'error';
+    let traits : APIAndDashboardTraits | DashboardInteractionTraits;
 
     switch(this.codeSnippet.selection) {
       case CodeSnippetEnum.CreateSession:
@@ -214,7 +256,10 @@ export class DdeCodeExplorerComponent implements OnInit {
       case CodeSnippetEnum.RegisterApiCallback:
       case CodeSnippetEnum.UnregisterApiCallback:
       case CodeSnippetEnum.CloseApiFramework: {
-        this.analyticsService.trackAPIAndDashboard(eventName, action, result, message);
+        traits = {processType: processType, process: process, sessionId: this.analyticsService.sessionId, successFlag: result,
+                  resultValue: resultValue, productTitle: (<any>resources).productTitle, /*version: environment.version*/};
+
+        this.analyticsService.trackAPIAndDashboard((<any>resources).ranProcessTrack, traits);
         break;
       }
       case CodeSnippetEnum.UndoLastAction:
@@ -223,7 +268,10 @@ export class DdeCodeExplorerComponent implements OnInit {
       case CodeSnippetEnum.DashboardEditMode:
       case CodeSnippetEnum.DashboardViewMode:
       case CodeSnippetEnum.DashboardEditGroupMode: {
-        this.analyticsService.trackDashboardInteraction(eventName, action, result, message, null, (<any>resources).runButton);
+        traits = {processType: processType, process: process, sessionId: this.analyticsService.sessionId, successFlag: result,
+                  resultValue: resultValue, productTitle: (<any>resources).productTitle, /*version: environment.version,*/ uiElement: (<any>resources).runButton };
+
+        this.analyticsService.trackDashboardInteraction((<any>resources).ranProcessTrack, traits);
         break;
       }
       case CodeSnippetEnum.AddCSVSource:
@@ -233,7 +281,10 @@ export class DdeCodeExplorerComponent implements OnInit {
       case CodeSnippetEnum.AddBikeShareRidesDemographCSVSource:
       case CodeSnippetEnum.AddBikeShareWeatherCSVSource:
       case CodeSnippetEnum.GetDashboardSpec: {
-        this.analyticsService.trackDashboardInteraction(eventName, action, result, message, dataSource, (<any>resources).runButton);
+        traits = {processType: processType, process: process, sessionId: this.analyticsService.sessionId, successFlag: result,
+                  resultValue: resultValue, productTitle: (<any>resources).productTitle, /*version: environment.version,*/ customName1: 'dataSource',
+                  customValue1: dataSource, uiElement: (<any>resources).runButton};
+        this.analyticsService.trackDashboardInteraction((<any>resources).ranProcessTrack, traits);
         break;
       }
     }

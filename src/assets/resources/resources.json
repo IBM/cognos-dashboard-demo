@@ -1,109 +1,109 @@
 {
   "actions": {
     "createdSession": {
-      "name": "Created Session",
+      "name": "createdSession",
       "message": "Session created successfully. Next, create and initialize the API framework.",
-      "eventName": "APIFramework"
+      "processType": "API Framework"
     },
     "initializedSession": {
-      "name": "Initialized Session",
+      "name": "initializedSession",
       "message": "API created successfully. You can now create or open a dashboard.",
-      "eventName": "APIFramework"
+      "processType": "API Framework"
     },
     "registeredApiCallback": {
-      "name": "Registered Api Callback",
+      "name": "registeredApiCallback",
       "message": "API Callback registered successfully. See console for details.",
-      "eventName": "APIFramework"
+      "processType": "API Framework"
     },
     "unregisteredApiCallback": {
-      "name": "Unregistered Api Callback",
+      "name": "unregisteredApiCallback",
       "message": "API Callback unregistered successfully. See console for details.",
-      "eventName": "APIFramework"
+      "processType": "API Framework"
     },
     "closedAPIFramework": {
-      "name": "Closed API Framework",
+      "name": "closedAPIFramework",
       "message": "API Framework closed successfully. See console for details.",
-      "eventName": "APIFramework"
+      "processType": "API Framework"
     },
     "opened": {
-      "name": "Opened",
+      "name": "openedDashboard",
       "message": "Successfully opened a dashboard.",
-      "eventName": "DashboardFactory"
+      "processType": "Dashboard Factory"
     },
     "createdNew": {
-      "name": "Created New",
+      "name": "createdNewDashboard",
       "message": "Successfully created a new dashboard.",
-      "eventName": "DashboardFactory"
+      "processType": "Dashboard Factory"
     },
     "addSource": {
-      "name": "Add source",
+      "name": "addSource",
       "message": "Successfully added a source",
-      "eventName": "DashboardAPI"
+      "processType": "Dashboard API"
     },
     "editMode": {
-      "name": "Edit mode",
+      "name": "editMode",
       "message": "Successfully changed modes",
-      "eventName": "DashboardAPI"
+      "processType": "Dashboard API"
     },
     "viewMode": {
-      "name": "View mode",
+      "name": "viewMode",
       "message": "Successfully changed modes",
-      "eventName": "DashboardAPI"
+      "processType": "Dashboard API"
     },
     "groupEditMode": {
-      "name": "Group Edit Mode",
+      "name": "groupEditMode",
       "message": "Successfully changed modes",
-      "eventName": "DashboardAPI"
+      "processType": "Dashboard API"
     },
     "undo": {
-      "name": "Undo",
+      "name": "undo",
       "message": "Successfully called undo",
-      "eventName": "DashboardAPI"
+      "processType": "Dashboard API"
     },
     "redo": {
-      "name": "Redo",
+      "name": "redo",
       "message": "Successfully called redo",
-      "eventName": "DashboardAPI"
+      "processType": "Dashboard API"
     },
     "toggleProperties": {
       "name": "Toggle Properties",
       "message": "Successfully toggled properties pane",
-      "eventName": "DashboardAPI"
+      "processType": "Dashboard API"
     },
     "getSpecs": {
-      "name": "Get dashboard specs",
+      "name": "gotDashboardSpecs",
       "message": "Dashboard spec retrieved successfully. See console for details.",
-      "eventName": "SupportAPI"
+      "processType": "Support API"
     },
     "clearDirtyState": {
-      "name": "Clear dirty state",
+      "name": "clearedDirtyState",
       "message": "Dirty State cleared successfully. See console for details.",
-      "eventName": "SupportAPI"
+      "processType": "Support API"
     },
     "updateDataDefinition":{
-      "name": "Update data source definitions",
+      "name": "updatedDataSourceDefinitions",
       "message": "Module Definitions updated successfully. See console for details.",
-      "eventName": "SupportAPI"
+      "processType": "Support API"
     },
     "registerDashboardCallback": {
-      "name": "Register dashboard callback",
+      "name": "registerDashboardCallback",
       "message": "Dashboard callback registered successfully. See console for details.",
-      "eventName": "SupportAPI"
+      "processType": "Support API"
     },
     "unregisterDashboardCallback": {
-      "name": "Unregister dashboard callback",
+      "name": "unregisterDashboardCallback",
       "message": "Dashboard callback unregistered successfully. See console for details.",
-      "eventName": "SupportAPI"
+      "processType": "Support API"
     },
     "clickedHelpResource": {
-      "name": "Clicked help resource",
+      "name": "clickedHelpResource",
       "message": "Successfully clicked a help resource link",
-      "eventName": "Documentation"
+      "processType": "Documentation"
     },
     "videoClose": {
-      "name": "Close",
+      "name": "close",
       "message": "Successfully closed the video",
-      "eventName": "Video"
+      "processType": "Video"
     }
   },
   "documents": {
@@ -123,5 +123,6 @@
   "devPageName": "DDE Dev Experience",
   "endUserPageName": "DDE End-User Experience",
   "categoryValue": "Offering Interface",
-  "productTitle": "Dynamic Dashboard Embedded"
+  "productTitle": "Dynamic Dashboard Embedded",
+  "ranProcessTrack": "Ran Process"
 }
