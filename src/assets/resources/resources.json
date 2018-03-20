@@ -99,11 +99,6 @@
       "name": "clickedHelpResource",
       "message": "Successfully clicked a help resource link",
       "processType": "Documentation"
-    },
-    "videoClose": {
-      "name": "close",
-      "message": "Successfully closed the video",
-      "processType": "Video"
     }
   },
   "documents": {
@@ -124,5 +119,6 @@
   "endUserPageName": "DDE End-User Experience",
   "categoryValue": "Offering Interface",
   "productTitle": "Dynamic Dashboard Embedded",
-  "ranProcessTrack": "Ran Process"
+  "ranProcessTrack": "Ran Process",
+  "videoPlayback": "Video Playback Started/Completed"
 }

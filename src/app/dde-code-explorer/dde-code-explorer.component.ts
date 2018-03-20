@@ -202,45 +202,6 @@ export class DdeCodeExplorerComponent implements OnInit {
     this.enableRunButton(CodeSnippetEnum.UnregisterCallback);
   }
 
-  // createTraits(eventName: string, action: string, isSuccess: boolean, dataSource: string, message: string) {
-  //   let result = isSuccess ? 'success' : 'error';
-  //
-  //   switch(this.codeSnippet.selection) {
-  //     case CodeSnippetEnum.CreateSession:
-  //     case CodeSnippetEnum.CreateAPIFramework:
-  //     case CodeSnippetEnum.OpenDashboard:
-  //     case CodeSnippetEnum.CreateDashboard:
-  //     case CodeSnippetEnum.ClearDirtyState:
-  //     case CodeSnippetEnum.RegisterCallback:
-  //     case CodeSnippetEnum.UnregisterCallback:
-  //     case CodeSnippetEnum.RegisterApiCallback:
-  //     case CodeSnippetEnum.UnregisterApiCallback:
-  //     case CodeSnippetEnum.CloseApiFramework: {
-  //       this.analyticsService.trackAPIAndDashboard(eventName, action, result, message);
-  //       break;
-  //     }
-  //     case CodeSnippetEnum.UndoLastAction:
-  //     case CodeSnippetEnum.RedoLastAction:
-  //     case CodeSnippetEnum.TogglePropertiesPane:
-  //     case CodeSnippetEnum.DashboardEditMode:
-  //     case CodeSnippetEnum.DashboardViewMode:
-  //     case CodeSnippetEnum.DashboardEditGroupMode: {
-  //       this.analyticsService.trackDashboardInteraction(eventName, action, result, message, null, (<any>resources).runButton);
-  //       break;
-  //     }
-  //     case CodeSnippetEnum.AddCSVSource:
-  //     case CodeSnippetEnum.AddProtectedCSVSource:
-  //     case CodeSnippetEnum.AddBikeShareRidesDemographCSVSource:
-  //     case CodeSnippetEnum.AddBikeShareWeatherCSVSource:
-  //     case CodeSnippetEnum.AddBikeShareRidesDemographCSVSource:
-  //     case CodeSnippetEnum.AddBikeShareWeatherCSVSource:
-  //     case CodeSnippetEnum.GetDashboardSpec: {
-  //       this.analyticsService.trackDashboardInteraction(eventName, action, result, message, dataSource, (<any>resources).runButton);
-  //       break;
-  //     }
-  //   }
-  // }
-
   createTraits(processType: string, process: string, isSuccess: boolean, dataSource: string, resultValue: string) {
     let result = isSuccess ? 'success' : 'error';
     let traits : APIAndDashboardTraits | DashboardInteractionTraits;
@@ -259,7 +220,6 @@ export class DdeCodeExplorerComponent implements OnInit {
         traits = {processType: processType, process: process, sessionId: this.analyticsService.sessionId, successFlag: result,
                   resultValue: resultValue, productTitle: (<any>resources).productTitle, /*version: environment.version*/};
 
-        this.analyticsService.trackAPIAndDashboard((<any>resources).ranProcessTrack, traits);
         break;
       }
       case CodeSnippetEnum.UndoLastAction:
@@ -270,8 +230,6 @@ export class DdeCodeExplorerComponent implements OnInit {
       case CodeSnippetEnum.DashboardEditGroupMode: {
         traits = {processType: processType, process: process, sessionId: this.analyticsService.sessionId, successFlag: result,
                   resultValue: resultValue, productTitle: (<any>resources).productTitle, /*version: environment.version,*/ uiElement: (<any>resources).runButton };
-
-        this.analyticsService.trackDashboardInteraction((<any>resources).ranProcessTrack, traits);
         break;
       }
       case CodeSnippetEnum.AddCSVSource:
@@ -284,10 +242,11 @@ export class DdeCodeExplorerComponent implements OnInit {
         traits = {processType: processType, process: process, sessionId: this.analyticsService.sessionId, successFlag: result,
                   resultValue: resultValue, productTitle: (<any>resources).productTitle, /*version: environment.version,*/ customName1: 'dataSource',
                   customValue1: dataSource, uiElement: (<any>resources).runButton};
-        this.analyticsService.trackDashboardInteraction((<any>resources).ranProcessTrack, traits);
         break;
       }
     }
+
+    this.analyticsService.sendTrack((<any>resources).ranProcessTrack, traits);
   }
 
   enableRunButton(type: CodeSnippetEnum) {
@@ -335,10 +294,10 @@ export class DdeCodeExplorerComponent implements OnInit {
   }
 
   validSessionLink(event) {
-    this.analyticsService.trackDocumentation((<any>resources).documents.creatingValidSession, event.currentTarget.href);
+    // this.analyticsService.sendTrack((<any>resources).documents.creatingValidSession, event.currentTarget.href);
   }
 
   workWithDatasource(event) {
-    this.analyticsService.trackDocumentation((<any>resources).documents.workWithDatasource, event.currentTarget.href);
+    // this.analyticsService.sendTrack((<any>resources).documents.workWithDatasource, event.currentTarget.href);
   }
 }
