@@ -30,7 +30,7 @@ html, body {
 }
 
 body {
-  font-family: "Helv Neue Bold", serif;
+  font-family: "Helv Neue Bold", Arial, sans-serif;
  }
 
 a,
@@ -41,7 +41,7 @@ a:hover {
 }
 
 a, span, div .button {
- font-family: "Helv Neue Roman", serif;
+ font-family: "Helv Neue Roman", Arial, sans-serif;
 }
 
 label {
@@ -169,7 +169,7 @@ svg {
 .tooltip-inner {
   background-color: #343334;
   padding: 0.66em;
-  font-family: "Helv Neue Bold";
+  font-family: "Helv Neue Bold", Arial, sans-serif;
 }
 
 .tooltip-arrow:before,

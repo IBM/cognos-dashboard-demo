@@ -14,11 +14,11 @@ pre {
   color: #fff;
   margin-top: 9.5em;
   text-align: center;
-  font-family: "Helv Neue Roman", serif;
+  font-family: "Helv Neue Roman", Arial, sans-serif;
 }
 
 .title {
-  font-family: "Helv Neue Bold", serif;
+  font-family: "Helv Neue Bold", Arial, sans-serif;
 }
 
 .code-panel.title{
