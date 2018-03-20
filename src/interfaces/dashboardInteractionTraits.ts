@@ -1,6 +1,7 @@
 import { APIAndDashboardTraits } from './apiAndDashboardTraits'
 
 export interface DashboardInteractionTraits extends APIAndDashboardTraits {
-   dataSource?: string;
+   customName1?: string; // holds the "datasource" name
+   customValue1?: string; //holds the datasource value
    uiElement: string;
 }
