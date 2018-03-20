@@ -1,5 +1,8 @@
 export interface VideoTraits {
-  action: string;
-  timeLength_viewed : string;
-  doNotDisplayAgain: boolean;
+  productTitle: string;
+  sessionId: string;
+  position: string;
+  totalLength : string;
+  customName1?: string; // holds the "doNotDisplayAgain" name
+  customValue1?: boolean; //holds the doNotDisplayAgain value
 }

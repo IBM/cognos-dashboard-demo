@@ -50,7 +50,7 @@ export class DdeDashboardBarComponent implements OnInit {
     this.ddeActionService.previousAction = this.ddeActionService.currentAction;
     this.ddeActionService.currentAction = CodeSnippetEnum.UndoLastAction;
     this.toggleDashboardMode();
-    this.analyticsService.trackDashboardInteraction((<any>resources).ranProcessTrack, this.traits);
+    this.analyticsService.sendTrack((<any>resources).ranProcessTrack, this.traits);
   }
 
   redoLastAction() {
@@ -62,7 +62,7 @@ export class DdeDashboardBarComponent implements OnInit {
     this.ddeActionService.previousAction = this.ddeActionService.currentAction;
     this.ddeActionService.currentAction = CodeSnippetEnum.RedoLastAction;
     this.toggleDashboardMode();
-    this.analyticsService.trackDashboardInteraction((<any>resources).ranProcessTrack, this.traits);
+    this.analyticsService.sendTrack((<any>resources).ranProcessTrack, this.traits);
   }
 
   togglePropertiesPane() {
@@ -74,7 +74,7 @@ export class DdeDashboardBarComponent implements OnInit {
     this.ddeActionService.currentAction = CodeSnippetEnum.TogglePropertiesPane;
     this.ddeApiService.togglePropertiesPane();
     this.togglePropertiesMode();
-    this.analyticsService.trackDashboardInteraction((<any>resources).ranProcessTrack, this.traits);
+    this.analyticsService.sendTrack((<any>resources).ranProcessTrack, this.traits);
   }
 
   editDashboard() {
@@ -89,7 +89,7 @@ export class DdeDashboardBarComponent implements OnInit {
       this.ddeActionService.currentAction = CodeSnippetEnum.DashboardViewMode;
       this.ddeApiService.setDashboardMode_View();
       this.toggleProperties = false;
-      this.analyticsService.trackDashboardInteraction((<any>resources).ranProcessTrack, this.traits);
+      this.analyticsService.sendTrack((<any>resources).ranProcessTrack, this.traits);
     }
     else {
       this.traits = {processType: (<any>resources).actions.editMode.processType, process: (<any>resources).actions.editMode.name,
@@ -98,7 +98,7 @@ export class DdeDashboardBarComponent implements OnInit {
 
       this.ddeActionService.currentAction = CodeSnippetEnum.DashboardEditMode;
       this.ddeApiService.setDashboardMode_Edit();
-      this.analyticsService.trackDashboardInteraction((<any>resources).ranProcessTrack, this.traits);
+      this.analyticsService.sendTrack((<any>resources).ranProcessTrack, this.traits);
     }
 
     this.toggleDashboardMode();
