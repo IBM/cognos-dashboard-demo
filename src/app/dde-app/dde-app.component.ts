@@ -44,7 +44,7 @@ export class DDEAppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.analyticsService.loadPage((<any>resources).devPageName);
+  //  this.analyticsService.loadPage((<any>resources).devPageName);
 
     if (!environment.production) {
       console.log('Development Mode');
