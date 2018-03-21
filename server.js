@@ -35,8 +35,9 @@ app.use (function (req, res, next) {
 // Point static path to dist
 app.use(express.static(__dirname + '/dist'));
 
-var dde_client_id;
-var dde_client_secret;
+// default client_id/secret from environment variables. VCAP_SERVICES will override later if available
+var dde_client_id = process.env.DDE_CLIENT_ID;
+var dde_client_secret = process.env.DDE_SECRET;
 
 console.log('ENVIROMENT: '+env);
 
@@ -118,13 +119,13 @@ if (appEnv.services['dynamic-dashboard-embedded'] || appEnv.getService(/dynamic-
   dde_client_id = ddecred.client_id;
   dde_client_secret = ddecred.client_secret;
   console.log('dde credentials - client_id: ' + dde_client_id);
-  console.log('dde credentials- client_secret:' + dde_client_secret);
 }
 
-// Catch all other routes and return the index file
-app.get('*', (req, res) => {
-  res.sendFile(__dirname + '/dist/index.html');
-});
+// Any requests that reach this far can be proxied to daas server
+if (process.env.PROXY_DDE_REQUESTS && process.env.PROXY_DDE_REQUESTS == 'true') {
+  const daasProxy = require('./lib/daasProxy');
+  app.use(daasProxy(conf.dde_base_url));
+}
 
 var port = process.env.PORT || 3000
 app.listen(port, function() {
