@@ -127,6 +127,13 @@ if (process.env.PROXY_DDE_REQUESTS && process.env.PROXY_DDE_REQUESTS == "true") 
   app.use(daasProxy(conf.dde_base_url));
 }
 
+
+// Catch all other routes and return the index file
+app.get('*', (req, res) => {
+  res.sendFile(__dirname + '/dist/index.html');
+});
+
+
 var port = process.env.PORT || 3000
 app.listen(port, function() {
     console.log("To view your app, open this link in your browser: http://localhost:" + port);
