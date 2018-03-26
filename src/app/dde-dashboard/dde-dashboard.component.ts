@@ -15,7 +15,8 @@ export class DdeDashboardComponent implements OnInit {
 
   ngOnInit() {
     this.loadDasboard();
-    this.analyticsService.loadPage((<any>resources).endUserPageName);
+    this.analyticsService.loadPage((<any>resources).categoryValue, (<any>resources).endUserPageName);
+  //  window.bluemixAnalytics.pageEvent((<any>resources).categoryValue, name = (<any>resources).endUserPageName);
   }
 
   async loadDasboard() {
