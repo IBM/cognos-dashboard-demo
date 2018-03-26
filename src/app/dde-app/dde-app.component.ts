@@ -11,7 +11,6 @@ import { environment } from '../../environments/environment';
 import { AnalyticsService } from '../../instrumentation/analytics';
 import * as resources from '../../assets/resources/resources.json';
 
-
 @Component({
   selector: 'dde-app',
   templateUrl: './dde-app.component.html',
@@ -44,7 +43,8 @@ export class DDEAppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.analyticsService.loadPage((<any>resources).devPageName);
+  this.analyticsService.loadPage((<any>resources).categoryValue, (<any>resources).devPageName);
+  //window.bluemixAnalytics.pageEvent((<any>resources).categoryValue, (<any>resources).devPageName);
 
     if (!environment.production) {
       console.log('Development Mode');
