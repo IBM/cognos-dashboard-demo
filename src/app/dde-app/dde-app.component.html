@@ -9,10 +9,9 @@
   <div class="row">
       <div class="explorer-bar" [ngClass]="explorerBarColSize"  role="region" aria-label="header buttons">
           <button (click)=showPanels() [ngClass]="buttonState" class="button enabled float-left">
-          <svg-icon class="show-hide-icon" src="../assets/images/hide-sidepane.svg"></svg-icon>
-          {{showHideText}}
-        </button>
-
+            <svg-icon class="show-hide-icon" src="../assets/images/hide-sidepane.svg"></svg-icon>
+            {{showHideText}}
+          </button>
         <button [ngClass]="onDisableRunButton()" [attr.aria-disabled]="isRunButtonDisabledAria()" class="button float-right" (click)="runCode()" aria-label="Run">
           <svg-icon src="../assets/images/play_16.svg"></svg-icon>
             Run

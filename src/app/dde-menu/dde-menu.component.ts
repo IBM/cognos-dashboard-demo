@@ -3,6 +3,7 @@ import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import { CodeSnippet, CodeSnippetEnum } from '../../model/code-snippet'
 import { CodeSnippetsRepoService } from '../services/code-snippets-repo.service';
 import { DdeApiService } from '../services/dde-api.service';
+import * as menu_resource from '../../assets/resources/menu.json';
 
 export const contentHeaders = new Headers();
 contentHeaders.append('Accept', 'application/json');
@@ -20,6 +21,7 @@ export class DdeMenuComponent implements OnInit {
   codeToRun = new EventEmitter<CodeSnippet>();
   nextStep: CodeSnippetEnum;
   currentSelection: CodeSnippetEnum;
+  menu_resx = menu_resource;
 
   public client_id : string;
   public client_secret: string;

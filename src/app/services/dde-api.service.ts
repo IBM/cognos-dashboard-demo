@@ -28,6 +28,16 @@ export class DdeApiService {
   constructor(private http: Http, private encryptService: EncryptService) {
   }
 
+  async sleep(ms: number) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  async waitForCognosAPILoad() {
+    do {
+      await this.sleep(100);
+    } while (CognosApi === undefined)
+  }
+
   async createNewSession() {
     this.session = new Session();
 
@@ -56,6 +66,8 @@ export class DdeApiService {
  // initTimeout allows for whatever latency you expect form your browser making the init() call to getting/loading DDE in the iFrame.
   async createAndInitApiFramework() {
     console.log("in create and init api framework");
+
+    this.waitForCognosAPILoad();
     // Create an instance of the CognosApi
     this.api = new CognosApi({
           cognosRootURL: environment.cognos_root_url,

@@ -2,7 +2,7 @@
   <accordion [closeOthers]=true class="ngxAccordionCustom">
     <accordion-group [isOpen]="isFirstOpen" panelClass="bg-light">
       <button accordion-heading class="navbar-brand" [attr.tabindex]="0">
-        1. Set the API framework
+        {{menu_resx.setUpAPI}}
       </button>
       <div class="col-md-12">
            <div class="row">
@@ -10,28 +10,28 @@
                <li>
                  <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateSession'}" (click)='displayNewSessionCode()'>
                    <svg-icon class="faa-horizontal animated" src="../assets/images/forward_16.svg" *ngIf="nextStepToProcess() === 'CreateSession'"></svg-icon>
-                     <span>Create a session</span>
+                     <span>{{menu_resx.createSession}}</span>
                    <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                      tooltip="A session is an authorized 60 minute window where unlimited dashboard interactions can take place"></svg-icon>
+                      tooltip={{menu_resx.sessionTooltip}}></svg-icon>
                  </button>
                  <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateAPIFramework'}" href="#" (click)='displayInitApiFrameworkCode()'>
                    <svg-icon class="faa-horizontal animated" src="../assets/images/forward_16.svg" *ngIf="nextStepToProcess() === 'CreateAPIFramework'"></svg-icon>
-                      <span>Initialize the API framework</span>
+                      <span>{{menu_resx.initAPI}}</span>
                    <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                      tooltip="Initialization needs to occur within 60 seconds of session creation."></svg-icon>
+                      tooltip={{menu_resx.initAPITooltip}}></svg-icon>
                  </button>
                  <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'RegisterApiCallback'}" href="#" (click)='registerApiCallback()'>
-                   <span>Register callback to API event</span>
+                   <span>{{menu_resx.registerAPI}}</span>
                    <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                      tooltip="Provides the ability for your application to handle an error in the framework."></svg-icon>
+                      tooltip={{menu_resx.registerAPITooltip}}></svg-icon>
                  </button>
                  <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UnregisterApiCallback'}" href="#" (click)='unregisterApiCallback()'>
-                   <span>Unregister callback to API event</span>
+                   <span>{{menu_resx.unregisterAPI}}</span>
                    <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                      tooltip="Removes the callback for handling errors."></svg-icon>
+                      tooltip={{menu_resx.unregisterAPITooltip}}></svg-icon>
                  </button>
                  <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CloseApiFramework'}" href="#" (click)='closeApiFramework()'>
-                   <span>Close the API framework</span>
+                   <span>{{menu_resx.closeAPI}}</span>
                  </button>
                </li>
              </ul>
@@ -41,7 +41,7 @@
 
     <accordion-group [isOpen]="nextStepToProcess() === 'CreateDashboard'" panelClass="bg-light">
       <button accordion-heading class="navbar-brand">
-        2. Open or create dashboard
+        {{menu_resx.openCreateDashbaord}}
       </button>
 
       <div class="col-md-12">
@@ -50,14 +50,14 @@
                <li>
                  <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'OpenDashboard'}" href="#" (click)='displayOpenDashboardCode()'>
                    <svg-icon class="faa-horizontal animated" src="../assets/images/forward_16.svg" *ngIf="nextStepToProcess() === 'CreateDashboard'"></svg-icon>
-                    <span>Open dashboard</span>
+                    <span>{{menu_resx.openDashboard}}</span>
                    <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                      tooltip="Dashboards that have been previously saved by your application can be loaded by this API."></svg-icon>
+                      tooltip={{menu_resx.openDashboardTooltip}}></svg-icon>
                  </button>
                  <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateDashboard'}" href="#" (click)='displayCreateDashboardCode()'>
-                   <span>Create dashboard</span>
+                   <span>{{menu_resx.createDashboard}}</span>
                    <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                      tooltip="Select from a variety of blank templates to construct a dashboard from your data sources."></svg-icon>
+                      tooltip={{menu_resx.createDashboardTooltip}}></svg-icon>
                  </button>
                </li>
              </ul>
@@ -67,32 +67,32 @@
 
     <accordion-group [isOpen]="nextStepToProcess() === 'AddCSVSource'" panelClass="bg-light">
       <button accordion-heading class="navbar-brand">
-        3. Dashboard interactions
+        {{menu_resx.dashboardInteraction}}
       </button>
       <div class="col-md-12">
         <div class="row">
           <ul class="navbar-nav">
             <li>
               <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'AddCSVSource'}" href="#" (click)='addSourcesToDashboard()'>
-                <span>Add data source</span>
+                <span>{{menu_resx.addSource}}</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                   tooltip="Required when you create a new dashboard and can be used to add more data to an existing dashboard."></svg-icon>
+                   tooltip={{menu_resx.addSourceTooltip}}></svg-icon>
               </button>
               <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'DashboardEditMode'}" href="#" (click)='setDashboardEditMode()'>
-                <span>Set dashboard mode</span>
+                <span>{{menu_resx.setMode}}</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                   tooltip="View / Edit mode allows your users a different level of access to a dashboard."></svg-icon>
+                   tooltip={{menu_resx.setModeTooltip}}></svg-icon>
               </button>
               <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UndoLastAction'}" href="#" (click)='undoLastAction()'>
-                <span>Undo last change</span>
+                <span>{{menu_resx.undoLastChange}}</span>
               </button>
               <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'RedoLastAction'}" href="#" (click)='redoLastAction()'>
-                <span>Redo last change</span>
+                <span>{{menu_resx.redoLastChange}}</span>
               </button>
               <button  class="nav-link" [ngClass]="{'current-selection': currentSelection === 'TogglePropertiesPane'}" href="#" (click)='togglePropertiesPane()'>
-                <span>Toggle properties pane</span>
+                <span>{{menu_resx.toggleProperties}}</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                   tooltip="Customize a dashboards look and feel by accessing the properties pane."></svg-icon>
+                   tooltip={{menu_resx.toggleTooltip}}></svg-icon>
               </button>
             </li>
           </ul>
@@ -102,36 +102,36 @@
 
     <accordion-group panelClass="bg-light">
       <button accordion-heading class="navbar-brand">
-        4. Support APIs
+        {{menu_resx.supportAPI}}
       </button>
       <div class="col-md-12">
         <div class="row">
           <ul class="navbar-nav">
             <li>
               <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'GetDashboardSpec'}" href="#" (click)='getDashboardSpec()'>
-                <span>Get dashboard specification</span>
+                <span>{{menu_resx.getDashboardSpecs}}</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                   tooltip="Generates the dashboard specification that can be saved and later used to open the dashboard."></svg-icon>
+                   tooltip={{menu_resx.getDashboardSpecTooltip}}></svg-icon>
               </button>
               <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'ClearDirtyState'}" href="#" (click)='clearDirtyState()'>
-                <span>Clear dashboard dirty state</span>
+                <span>{{menu_resx.clearDirtyState}}</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                   tooltip="Clear this state in order to help keep track of the need to save dashboards."></svg-icon>
+                   tooltip={{menu_resx.clearDirtyTooltip}}></svg-icon>
               </button>
               <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UpdateModuleDefinitions'}" href="#" (click)='updateModuleDefinitions()'>
-                <span>Update data source definition</span>
+                <span>{{menu_resx.updateDataDefinition}}</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                   tooltip="If your data source has changed since the last time your dashboard was opened, update the data source."></svg-icon>
+                   tooltip={{menu_resx.updateDataDefinitionTooltip}}></svg-icon>
               </button>
               <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'RegisterCallback'}" href="#" (click)='registerCallback()'>
-                <span>Register callback to dashboard event</span>
+                <span>{{menu_resx.registerDashboard}}</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                   tooltip="Provides the ability for your application to react to an add data button click and a change to a dirty state."></svg-icon>
+                   tooltip={{menu_resx.registerDashboardTooltip}}></svg-icon>
               </button>
               <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UnregisterCallback'}" href="#" (click)='unregisterCallback()'>
-                <span>Unregister callback to dashboard event</span>
+                <span>{{menu_resx.unregisterDashboard}}</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
-                   tooltip="Removes the callback from events add data button click and change to a dirty state."></svg-icon>
+                   tooltip={{menu_resx.unregisterDashboardTooltip}}></svg-icon>
               </button>
             </li>
           </ul>
