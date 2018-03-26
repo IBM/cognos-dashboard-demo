@@ -9,3 +9,7 @@ nav {
 .navbar {
   text-transform: none;
 }
+
+.navbar-logo{
+  width: 3em;
+}
