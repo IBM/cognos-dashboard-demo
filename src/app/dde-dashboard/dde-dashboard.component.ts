@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DdeApiService } from '../services/dde-api.service';
 import { AnalyticsService } from '../../instrumentation/analytics';
 import * as resources from '../../assets/resources/resources.json';
+import { Toaster } from '../../model/toaster';
+import { DdeToasterComponent } from '../dde-toaster/dde-toaster.component';
 
 @Component({
   selector: 'dde-dashboard',
@@ -11,6 +13,8 @@ import * as resources from '../../assets/resources/resources.json';
 export class DdeDashboardComponent implements OnInit {
 
   public disableDashboardBarButtons: boolean = true;
+  @ViewChild(DdeToasterComponent) private toasterComp: DdeToasterComponent;
+
   constructor(private ddeApiService: DdeApiService, private analyticsService: AnalyticsService) { }
 
   ngOnInit() {
@@ -28,6 +32,7 @@ export class DdeDashboardComponent implements OnInit {
     }
     catch(e) {
       console.log(e);
+      this.toasterComp.showToaster(new Toaster((<any>resources).errorMessage, 'error', true));
     }
   }
 
