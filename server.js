@@ -121,17 +121,17 @@ if (appEnv.services["dynamic-dashboard-embedded"] || appEnv.getService(/dynamic-
   console.log("dde credentials - client_id: " + dde_client_id);
 }
 
+
+// Catch dashboard route and return the index file
+app.get('/dashboard', (req, res) => {
+  res.sendFile(__dirname + '/dist/index.html');
+});
+
 // Any requests that reach this far can be proxied to daas server
 if (process.env.PROXY_DDE_REQUESTS && process.env.PROXY_DDE_REQUESTS == "true") {
   const daasProxy = require("./lib/daasProxy");
   app.use(daasProxy(conf.dde_base_url));
 }
-
-
-// Catch all other routes and return the index file
-app.get('*', (req, res) => {
-  res.sendFile(__dirname + '/dist/index.html');
-});
 
 
 var port = process.env.PORT || 3000
