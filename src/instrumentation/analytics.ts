@@ -11,27 +11,28 @@ export class AnalyticsService {
   constructor() {
   }
 
-  async setupSegment(key: string) {
-    await segment.setUp(
-      {
-        'segment_key' : key,
-        'coremetrics' : false,
-        'optimizely' : false,
-        'googleAddServices': false,
-        'addRoll' : false,
-        'fullStory' : false,
-        'autoPageView': false,
-        'skipIdentify': false
-      }
-    );
-  }
+  // async setupSegment(key: string) {
+  //   await segment.setUp(
+  //     {
+  //       'segment_key' : key,
+  //       'coremetrics' : false,
+  //       'optimizely' : false,
+  //       'googleAddServices': false,
+  //       'addRoll' : false,
+  //       'fullStory' : false,
+  //       'autoPageView': false,
+  //       'skipIdentify': false
+  //     }
+  //   );
+  // }
 
   setSession(sessionId: string) {
     this.sessionId = sessionId;
   }
 
-  loadPage(pageName: string) {
-    segment.page(pageName, {name: pageName, title: pageName, productTitle: (<any>resources).productTitle, categoryValue: (<any>resources).categoryValue, version: environment.version});
+  loadPage(category: string, name: string) {
+    segment.page(category, name);
+    //segment.page(pageName, {name: pageName, title: pageName, productTitle: (<any>resources).productTitle, categoryValue: (<any>resources).categoryValue, version: environment.version});
   }
 
   sendTrack(eventName: string, traits: any) {
