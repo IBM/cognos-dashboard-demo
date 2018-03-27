@@ -12,7 +12,7 @@ before_script:
   - "./tests/test-yamllint.sh"
 
 script:
-  - envsub --env environment.prod.ts
+  - envsub environment.prod.ts
   - ng build --env=prod
 
 deploy:
