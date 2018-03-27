@@ -11,7 +11,7 @@ before_script:
   - "./tests/test-yamllint.sh"
 
 script:
-  - ng build --env=prod
+  - ng build --env=dev
 
 deploy:
   provider: cloudfoundry
@@ -22,4 +22,4 @@ deploy:
   space: $BLUEMIX_SPACE_PROD
   "on":
     repo: GearBox/DDE-ang-node-test
-    branch: production
+    branch: master
