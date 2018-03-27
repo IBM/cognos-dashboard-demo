@@ -15,11 +15,11 @@ script:
 
 deploy:
   provider: cloudfoundry
-  api: https://api.ng.bluemix.net
-  username: $BLUEMIX_USER_PROD
-  password: $BLUEMIX_PASS_PROD
-  organization: $BLUEMIX_ORGANIZATION_PROD
-  space: $BLUEMIX_SPACE_PROD
+  api: https://api.stage1.ng.bluemix.net
+  username: $BLUEMIX_USER
+  password: $BLUEMIX_PASS
+  organization: $BLUEMIX_ORGANIZATION
+  space: $BLUEMIX_SPACE
   "on":
     repo: GearBox/DDE-ang-node-test
     branch: master
