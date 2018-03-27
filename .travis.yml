@@ -6,6 +6,7 @@ node_js:
 before_install:
   - npm install -g @angular/cli
   - sudo pip install yamllint
+  - npm install -g envsub
 
 before_script:
   - "./tests/test-yamllint.sh"
