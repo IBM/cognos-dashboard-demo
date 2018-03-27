@@ -12,7 +12,7 @@ before_script:
 
 script:
   - ng build --env=prod
-  - envsub --env enviroment.prod.ts
+  - envsub --env environment.prod.ts
 
 deploy:
   provider: cloudfoundry
