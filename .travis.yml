@@ -12,8 +12,8 @@ before_script:
   - "./tests/test-yamllint.sh"
 
 script:
-  - ng build --env=prod
   - envsub --env environment.prod.ts
+  - ng build --env=prod
 
 deploy:
   provider: cloudfoundry
