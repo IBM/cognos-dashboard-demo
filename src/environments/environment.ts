@@ -12,7 +12,7 @@ export const environment = {
   //cognos_root_url: 'http://localhost:3000/daas/',
 
   toaster_timer: 5000,
-  segment_key: '<%= SEGMENT_KEY %>',
+  segment_key: "${SEGMENT_KEY}",
   version: '1.0.0',
   bluemix_analytics_js: 'https://console.cdn.stage1.s-bluemix.net/analytics/build/bluemix-analytics.min.js'
 };

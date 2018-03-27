@@ -12,7 +12,7 @@ before_script:
   - "./tests/test-yamllint.sh"
 
 script:
-  - envsub environment.prod.ts
+  - envsub --env SEGMENT_KEY=$SEGMENT_KEY ./src/environments/environment.prod.ts
   - ng build --env=prod
 
 deploy:
