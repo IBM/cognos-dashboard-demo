@@ -12,6 +12,7 @@ before_script:
 
 script:
   - ng build --env=prod
+  - envsub --env enviroment.prod.ts
 
 deploy:
   provider: cloudfoundry
@@ -22,4 +23,4 @@ deploy:
   space: $BLUEMIX_SPACE_PROD
   "on":
     repo: GearBox/DDE-ang-node-test
-    branch: production
+    branch: travisci-test
