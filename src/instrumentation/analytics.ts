@@ -11,20 +11,20 @@ export class AnalyticsService {
   constructor() {
   }
 
-  // async setupSegment(key: string) {
-  //   await segment.setUp(
-  //     {
-  //       'segment_key' : key,
-  //       'coremetrics' : false,
-  //       'optimizely' : false,
-  //       'googleAddServices': false,
-  //       'addRoll' : false,
-  //       'fullStory' : false,
-  //       'autoPageView': false,
-  //       'skipIdentify': false
-  //     }
-  //   );
-  // }
+  async setupSegment(key: string) {
+    await segment.setUp(
+      {
+        'segment_key' : key,
+        'coremetrics' : false,
+        'optimizely' : false,
+        'googleAddServices': false,
+        'addRoll' : false,
+        'fullStory' : false,
+        'autoPageView': false,
+        'skipIdentify': false
+      }
+    );
+  }
 
   setSession(sessionId: string) {
     this.sessionId = sessionId;
