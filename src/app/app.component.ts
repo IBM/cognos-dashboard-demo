@@ -20,8 +20,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-  //  this.analyticsService.setupSegment(environment.segment_key);
-    //this.loadBluemixAnalyticsScript();
+    this.loadScript('../assets/pageTracking.js');  
+    this.analyticsService.setupSegment(environment.segment_key);
+    this.loadBluemixAnalyticsScript();
 
     this.loadCognosApi = new Promise((resolve) => {
       this.loadCognosApiScript();
