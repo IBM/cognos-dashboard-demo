@@ -5,7 +5,6 @@
 
 export const environment = {
   production: false,
-
   cognos_api_js: 'https://ddetest-us-south.analytics.ibm.com/daas/CognosApi.js',
   cognos_root_url: 'https://ddetest-us-south.analytics.ibm.com/daas/',
   //For proxy mode
@@ -13,7 +12,7 @@ export const environment = {
   //cognos_root_url: 'http://localhost:3000/daas/',
 
   toaster_timer: 5000,
-  segment_key: 'SCgjbhK84jkys7zrdQnBS38hY90lys5b',
+  segment_key: "${SEGMENT_KEY}",
   version: '1.0.0',
   bluemix_analytics_js: 'https://console.cdn.stage1.s-bluemix.net/analytics/build/bluemix-analytics.min.js'
 };
