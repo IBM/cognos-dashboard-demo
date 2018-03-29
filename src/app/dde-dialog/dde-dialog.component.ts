@@ -21,14 +21,22 @@ export class DdeDialogComponent implements AfterViewInit {
   ngAfterViewInit() {
     if (JSON.parse(localStorage.getItem('showVideo')) ||
         JSON.parse(localStorage.getItem('showVideo')) === null)
-      this.showModal();
+      this.showModal(false);
     else
       this.hideModal();
   }
 
-  showModal() {
+  showModal(shouldTrack: boolean) {
+    let totalTime = '0:' + Math.floor(this.ddeVideo.nativeElement.duration);
     this.ddeVideo.nativeElement.load();
     this.lgModal.show();
+
+    if (shouldTrack) {
+      this.traits = { productTitle: (<any>resources).productTitle, sessionId: this.analyticsService.sessionId,
+                totalLength: totalTime, position: '0:00', customName1: 'doNotDisplayAgain', customValue1: this.isCheckboxChecked}
+
+      this.analyticsService.sendTrack((<any>resources).videoPlaybackStarted, this.traits);
+    }
   }
 
   toogleVideo(event) {
@@ -47,7 +55,7 @@ export class DdeDialogComponent implements AfterViewInit {
       this.traits = { productTitle: (<any>resources).productTitle, sessionId: this.analyticsService.sessionId,
                 totalLength: totalTime, position: timeElasped, customName1: 'doNotDisplayAgain', customValue1: this.isCheckboxChecked}
 
-      this.analyticsService.sendTrack((<any>resources).videoPlayback, this.traits);
+      this.analyticsService.sendTrack((<any>resources).videoPlaybackCompleted, this.traits);
     }
   }
 }

@@ -64,7 +64,7 @@ export class DDEAppComponent implements OnInit {
   }
 
   showVideo() {
-    this.dialogComp.showModal();
+    this.dialogComp.showModal(true);
   }
 
   sessionInfo(event) {
