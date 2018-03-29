@@ -67,7 +67,7 @@ export class DdeApiService {
   async createAndInitApiFramework() {
     console.log("in create and init api framework");
 
-    this.waitForCognosAPILoad();
+    await this.waitForCognosAPILoad();
     // Create an instance of the CognosApi
     this.api = new CognosApi({
           cognosRootURL: environment.cognos_root_url,
