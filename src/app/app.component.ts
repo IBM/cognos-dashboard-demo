@@ -20,14 +20,16 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadScript('../assets/pageTracking.js');
-    this.analyticsService.setupSegment(environment.segment_key);
-    this.loadBluemixAnalyticsScript();
-
     this.loadCognosApi = new Promise((resolve) => {
       this.loadCognosApiScript();
       console.log('cognos script loaded');
    });
+
+    if (environment.segment_key !== '${SEGMENT_KEY}') {
+      this.loadScript('../assets/pageTracking.js');
+      this.analyticsService.setupSegment(environment.segment_key);
+      this.loadBluemixAnalyticsScript();
+    }
   }
 
   loadCognosApiScript() {
@@ -42,7 +44,7 @@ export class AppComponent implements OnInit {
     let node = document.createElement('script');
     node.src =  srcUrl;
     node.type = 'text/javascript';
-    node.async = true;
+    node.async = false;
     node.charset = 'utf-8';
     document.getElementsByTagName('head')[0].appendChild(node);
   }

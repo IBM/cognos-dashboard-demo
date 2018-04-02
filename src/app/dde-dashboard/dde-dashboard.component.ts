@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { DdeApiService } from '../services/dde-api.service';
 import { AnalyticsService } from '../../instrumentation/analytics';
 import * as resources from '../../assets/resources/resources.json';
@@ -10,17 +10,16 @@ import { DdeToasterComponent } from '../dde-toaster/dde-toaster.component';
   templateUrl: './dde-dashboard.component.html',
   styleUrls: ['./dde-dashboard.component.css']
 })
-export class DdeDashboardComponent implements OnInit {
+export class DdeDashboardComponent implements AfterViewInit {
 
   public disableDashboardBarButtons: boolean = true;
   @ViewChild(DdeToasterComponent) private toasterComp: DdeToasterComponent;
 
   constructor(private ddeApiService: DdeApiService, private analyticsService: AnalyticsService) { }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.loadDasboard();
     this.analyticsService.loadPage((<any>resources).categoryValue, (<any>resources).endUserPageName);
-  //  window.bluemixAnalytics.pageEvent((<any>resources).categoryValue, name = (<any>resources).endUserPageName);
   }
 
   async loadDasboard() {
