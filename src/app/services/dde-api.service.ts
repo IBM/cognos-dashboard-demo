@@ -32,8 +32,6 @@ export class DdeApiService {
 
     if (this.api != null) {
       console.log("there was already an api object");
-      //this.api._node.hidden = true;
-      //this.api = null;
     }
 
     let options = new RequestOptions({headers: contentHeaders});
