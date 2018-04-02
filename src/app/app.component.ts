@@ -25,10 +25,11 @@ export class AppComponent implements OnInit {
       console.log('cognos script loaded');
    });
 
-    this.loadScript('../assets/pageTracking.js');
-    this.analyticsService.setupSegment(environment.segment_key);
-    this.loadBluemixAnalyticsScript();
-
+    if (environment.segment_key !== '${SEGMENT_KEY}') {
+      this.loadScript('../assets/pageTracking.js');
+      this.analyticsService.setupSegment(environment.segment_key);
+      this.loadBluemixAnalyticsScript();
+    }
   }
 
   loadCognosApiScript() {
