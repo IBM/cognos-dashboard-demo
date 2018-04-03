@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AnalyticsService } from '../../instrumentation/analytics';
-import * as resources from '../../assets/resources/resources.json';
+import * as ref_resource from '../../assets/resources/references.json';
 
 @Component({
   selector: 'dde-references',
@@ -9,6 +9,7 @@ import * as resources from '../../assets/resources/resources.json';
 })
 export class DdeReferencesComponent implements OnInit {
   @Output() isShowVideo: EventEmitter<boolean> = new EventEmitter<boolean>();
+  ref_resx = ref_resource;
   constructor(private analyticsService: AnalyticsService) { }
 
   ngOnInit() {
