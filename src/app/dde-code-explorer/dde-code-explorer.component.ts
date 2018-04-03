@@ -8,6 +8,7 @@ import { CodeSnippetsRepoService } from '../services/code-snippets-repo.service'
 import * as DashboardMode from '../../model/dashboard-mode';
 import { AnalyticsService } from '../../instrumentation/analytics';
 import * as resources from '../../assets/resources/resources.json';
+import * as codeExplorer_resource from '../../assets/resources/codeExplorer.json';
 import { APIAndDashboardTraits } from '../../interfaces/apiAndDashboardTraits';
 import { DashboardInteractionTraits } from '../../interfaces/dashboardInteractionTraits';
 
@@ -33,6 +34,7 @@ export class DdeCodeExplorerComponent implements OnInit {
   dashboardModes = [DashboardMode.EditMode, DashboardMode.ViewMode, DashboardMode.EditGroupMode];
   sampleModule : string;
   sessionObject = null;
+  codeExplorer_resx = codeExplorer_resource;
 
   constructor(private ddeApiService: DdeApiService, private codeSnippetsRepoService: CodeSnippetsRepoService,
               private ddeActionService: DdeActionService, private analyticsService: AnalyticsService) { }
