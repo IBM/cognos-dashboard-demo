@@ -11,11 +11,11 @@ before_install:
 
 before_script:
   - "./tests/test-yamllint.sh"
-  - chmod +x "./tests/test-csslint.sh"
-  - chmod +x "./tests/test-eslint.sh"
-  - chmod +x "./tests/test-html-lint.sh"
-  - chmod +x "./tests/test-shellcheck.sh"
-  - chmod +x "./tests/test-tslint.sh"
+  - bash "./tests/test-csslint.sh"
+  - bash "./tests/test-eslint.sh"
+  - bash "./tests/test-html-lint.sh"
+  - bash "./tests/test-shellcheck.sh"
+  - bash "./tests/test-tslint.sh"
 
 script:
   - envsub --env SEGMENT_KEY=$SEGMENT_KEY ./src/environments/environment.ts
