@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <div class="modal-title pull-left">Dashboarding Experience</div>
+        <div class="modal-title pull-left">{{dialog_resx.dashboardingExp}}</div>
           <button (click)="hideModal()" class="button" aria-label="Close Intro Video">
             <svg-icon class="close-image" src="../assets/images/close_16.svg"></svg-icon>
           </button>
@@ -13,7 +13,7 @@
           <track kind="captions" srclang="en" src="../assets/videoCaptions.vtt">
         </video>
         <input class="checkbox" type="checkbox" (change)=toogleVideo($event) role="checkbox" [attr.aria-checked]="isCheckboxChecked ? 'true' : 'false'" aria-label="Do not display again">
-        Do not display again
+        {{dialog_resx.doNotDisplayAgain}}
       </div>
     </div>
   </div>

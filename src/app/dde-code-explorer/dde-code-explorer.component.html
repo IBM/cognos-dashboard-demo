@@ -4,7 +4,7 @@
 
 <div class="secondary-panel" *ngIf="showSessionPanel()">
   <div class="header">
-    <label>Session Information</label>
+    <label>{{codeExplorer_resx.sessionInfo}}</label>
   </div>
 
   <div class="panel-info">
@@ -18,15 +18,15 @@
   </div>
 
   <div class="panel-link">
-    <a href="https://console.bluemix.net/docs/services/dynamic-dashboard-embedded/dde_getting_started.html#step-3-creating-a-dynamic-dashboard-embedded-session" target="_blank">
-      Learn more about creating a valid session
+    <a href="https://console.bluemix.net/docs/services/dynamic-dashboard-embedded/dde_getting_started.html#step-3-creating-a-dynamic-dashboard-embedded-session" target="_blank" (click)=validSessionLink($event)>
+      {{codeExplorer_resx.createValidSession}}
     </a>
   </div>
 </div>
 
 <div class="secondary-panel" *ngIf="showSourcesDropDown()">
   <div class="header">
-    <label>Data source configuration</label>
+    <label>{{codeExplorer_resx.dataSourceConfig}}</label>
   </div>
 
   <div class="panel-info">
@@ -39,15 +39,15 @@
   </div>
 
   <div class="panel-link">
-    <a href="https://console.bluemix.net/docs/services/dynamic-dashboard-embedded/working_with_datasources.html#working-with-data-sources" target="_blank">
-      Learn how to work with your own datasource
+    <a href="https://console.bluemix.net/docs/services/dynamic-dashboard-embedded/working_with_datasources.html#working-with-data-sources" target="_blank" (click)=workWithDatasource($event)>
+      {{codeExplorer_resx.workWithOwnDatasource}}
     </a>
   </div>
 </div>
 
 <div class="secondary-panel" *ngIf="showDashboardModesDropDown()">
   <div class="header">
-    <label>Dashboard Mode</label>
+    <label>{{codeExplorer_resx.dashboardMode}}</label>
   </div>
 
   <div class="panel-info">

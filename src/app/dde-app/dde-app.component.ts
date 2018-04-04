@@ -9,7 +9,7 @@ import { DdeDialogComponent } from '../dde-dialog/dde-dialog.component'
 import { DdeCodeExplorerComponent } from '../dde-code-explorer/dde-code-explorer.component';
 import { environment } from '../../environments/environment';
 import { AnalyticsService } from '../../instrumentation/analytics';
-import * as resources from '../../assets/resources/resources.json';
+import * as instrumentation from '../../assets/resources/instrumentation.json';
 
 @Component({
   selector: 'dde-app',
@@ -43,7 +43,7 @@ export class DDEAppComponent implements OnInit {
   }
 
   ngOnInit() {
-  this.analyticsService.loadPage((<any>resources).categoryValue, (<any>resources).devPageName);
+  this.analyticsService.loadPage((<any>instrumentation).categoryValue, (<any>instrumentation).devPageName);
   //window.bluemixAnalytics.pageEvent((<any>resources).categoryValue, (<any>resources).devPageName);
 
     if (!environment.production) {
@@ -71,11 +71,11 @@ export class DDEAppComponent implements OnInit {
     this.session = event;
 
     if (this.session !== null) {
-      this.setToaster((<any>resources).actions.createdSession.message, 'success', true);
+      this.setToaster((<any>instrumentation).actions.createdSession.message, 'success', true);
       this.menuComp.nextStep = CodeSnippetEnum.CreateAPIFramework;
     }
     else {
-      this.setToaster((<any>resources).errorMessage, 'failure', true);
+      this.setToaster((<any>instrumentation).errorMessage, 'failure', true);
     }
   }
 
@@ -83,11 +83,11 @@ export class DDEAppComponent implements OnInit {
     this.apiId = event;
 
     if (this.apiId !== null && this.apiId !== '') {
-      this.setToaster((<any>resources).actions.initializedSession.message, 'success', true);
+      this.setToaster((<any>instrumentation).actions.initializedSession.message, 'success', true);
       this.menuComp.nextStep = CodeSnippetEnum.CreateDashboard;
     }
     else {
-      this.setToaster((<any>resources).errorMessage, 'failure', true);
+      this.setToaster((<any>instrumentation).errorMessage, 'failure', true);
     }
   }
 
@@ -103,40 +103,40 @@ export class DDEAppComponent implements OnInit {
       });
     }
     else {
-      this.setToaster((<any>resources).errorMessage, 'failure', true);
+      this.setToaster((<any>instrumentation).errorMessage, 'failure', true);
     }
   }
 
   getDashboardSpec(event) {
-    this.setToaster((<any>resources).actions.getSpecs.message, 'success', true);
+    this.setToaster((<any>instrumentation).actions.getSpecs.message, 'success', true);
   }
 
   updateModuleDefinitions(event) {
-    this.setToaster((<any>resources).actions.updateDataDefinition.message, 'success', true);
+    this.setToaster((<any>instrumentation).actions.updateDataDefinition.message, 'success', true);
   }
 
   clearDirtyState(event) {
-    this.setToaster((<any>resources).actions.clearDirtyState.message, 'success', true);
+    this.setToaster((<any>instrumentation).actions.clearDirtyState.message, 'success', true);
   }
 
   registerCallback(event) {
-    this.setToaster((<any>resources).actions.registerDashboardCallback.message, 'success', true);
+    this.setToaster((<any>instrumentation).actions.registerDashboardCallback.message, 'success', true);
   }
 
   unregisterCallback(event) {
-    this.setToaster((<any>resources).actions.unregisterDashboardCallback.message, 'success', true);
+    this.setToaster((<any>instrumentation).actions.unregisterDashboardCallback.message, 'success', true);
   }
 
   registerApiCallback(event) {
-    this.setToaster((<any>resources).actions.registeredApiCallback.message, 'success', true);
+    this.setToaster((<any>instrumentation).actions.registeredApiCallback.message, 'success', true);
   }
 
   unregisterApiCallback(event) {
-    this.setToaster((<any>resources).actions.unregisteredApiCallback.message, 'success', true);
+    this.setToaster((<any>instrumentation).actions.unregisteredApiCallback.message, 'success', true);
   }
 
   closeApiFramework(event) {
-    this.setToaster((<any>resources).actions.closedAPIFramework.message, 'success', true);
+    this.setToaster((<any>instrumentation).actions.closedAPIFramework.message, 'success', true);
   }
 
   // set the code snippt to what was fired over

@@ -7,7 +7,8 @@ import { CSVDataSource, ProtectedCSVDataSource, BikeShareWeatherCSVSource, BikeS
 import { CodeSnippetsRepoService } from '../services/code-snippets-repo.service';
 import * as DashboardMode from '../../model/dashboard-mode';
 import { AnalyticsService } from '../../instrumentation/analytics';
-import * as resources from '../../assets/resources/resources.json';
+import * as instrumentation from '../../assets/resources/instrumentation.json';
+import * as codeExplorer_resource from '../../assets/resources/codeExplorer.json';
 import { APIAndDashboardTraits } from '../../interfaces/apiAndDashboardTraits';
 import { DashboardInteractionTraits } from '../../interfaces/dashboardInteractionTraits';
 
@@ -33,6 +34,7 @@ export class DdeCodeExplorerComponent implements OnInit {
   dashboardModes = [DashboardMode.EditMode, DashboardMode.ViewMode, DashboardMode.EditGroupMode];
   sampleModule : string;
   sessionObject = null;
+  codeExplorer_resx = codeExplorer_resource;
 
   constructor(private ddeApiService: DdeApiService, private codeSnippetsRepoService: CodeSnippetsRepoService,
               private ddeActionService: DdeActionService, private analyticsService: AnalyticsService) { }
@@ -57,14 +59,14 @@ export class DdeCodeExplorerComponent implements OnInit {
       this.ddeActionService.currentAction = this.codeSnippet.selection;
 
       if (this.codeSnippet.selection === CodeSnippetEnum.CreateSession) {
-        actionResource = (<any>resources).actions.createdSession;
+        actionResource = (<any>instrumentation).actions.createdSession;
         this.sessionObject = await this.ddeApiService.createNewSession();
         this.session.emit(this.sessionObject);
         this.resetAllRunButtons();
         this.analyticsService.setSession(this.sessionObject.id);
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.CreateAPIFramework) {
-        actionResource = (<any>resources).actions.initializedSession;
+        actionResource = (<any>instrumentation).actions.initializedSession;
         this.apiId.emit(await this.ddeApiService.createAndInitApiFramework());
         this.resetAllRunButtons();
         this.enableRunButton(CodeSnippetEnum.CreateDashboard);
@@ -74,104 +76,104 @@ export class DdeCodeExplorerComponent implements OnInit {
         this.enableRunButton(CodeSnippetEnum.CloseApiFramework);
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.RegisterApiCallback) {
-        actionResource = (<any>resources).actions.registeredApiCallback;
+        actionResource = (<any>instrumentation).actions.registeredApiCallback;
         this.ddeApiService.registerApiCallback();
         this.registerApiCallback.emit();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.UnregisterApiCallback) {
-        actionResource = (<any>resources).actions.unregisteredApiCallback;
+        actionResource = (<any>instrumentation).actions.unregisteredApiCallback;
         this.ddeApiService.unregisterApiCallback();
         this.unregisterApiCallback.emit();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.CloseApiFramework) {
-        actionResource = (<any>resources).actions.closedAPIFramework;
+        actionResource = (<any>instrumentation).actions.closedAPIFramework;
         this.ddeApiService.closeApiFramework();
         this.closeApiFramework.emit();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.CreateDashboard) {
-        actionResource = (<any>resources).actions.createdNew;
+        actionResource = (<any>instrumentation).actions.createdNew;
         this.dashboardApi.emit(await this.ddeApiService.createDashboard());
         this.enableDashboardInteractionRunButton();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.OpenDashboard) {
-        actionResource = (<any>resources).actions.opened;
+        actionResource = (<any>instrumentation).actions.opened;
         this.dashboardApi.emit(await this.ddeApiService.openDashboard());
         this.enableDashboardInteractionRunButton();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddCSVSource) {
-        actionResource = (<any>resources).actions.addSource;
+        actionResource = (<any>instrumentation).actions.addSource;
         dataSource = await this.ddeApiService.addCSVSampleSource();
         this.ddeActionService.isAddingDataSourceLastUpdateToDashboard = true;
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddProtectedCSVSource) {
-        actionResource = (<any>resources).actions.addSource;
+        actionResource = (<any>instrumentation).actions.addSource;
         dataSource = await this.ddeApiService.addProtectedCSVSampleSource();
         this.ddeActionService.isAddingDataSourceLastUpdateToDashboard = true ;
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddBikeShareRidesDemographCSVSource) {
-        actionResource = (<any>resources).actions.addSource;
+        actionResource = (<any>instrumentation).actions.addSource;
         dataSource = await this.ddeApiService.addBikeShareRidesDemographCSVSampleSource();
         this.ddeActionService.isAddingDataSourceLastUpdateToDashboard = true;
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.AddBikeShareWeatherCSVSource) {
-        actionResource = (<any>resources).actions.addSource;
+        actionResource = (<any>instrumentation).actions.addSource;
         dataSource = await this.ddeApiService.addBikeShareWeatherCSVSampleSource();
         this.ddeActionService.isAddingDataSourceLastUpdateToDashboard = true;
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.DashboardEditMode) {
-        actionResource = (<any>resources).actions.editMode;
+        actionResource = (<any>instrumentation).actions.editMode;
         this.ddeApiService.setDashboardMode_Edit();
         this.ddeActionService.isAddingDataSourceLastUpdateToDashboard = false;
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.DashboardViewMode) {
-        actionResource = (<any>resources).actions.viewMode;
+        actionResource = (<any>instrumentation).actions.viewMode;
         this.ddeApiService.setDashboardMode_View();
         this.ddeActionService.isAddingDataSourceLastUpdateToDashboard = false;
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.DashboardEditGroupMode) {
-        actionResource = (<any>resources).actions.groupEditMode;
+        actionResource = (<any>instrumentation).actions.groupEditMode;
         this.ddeApiService.setDashboardMode_EditGroup();
         this.ddeActionService.isAddingDataSourceLastUpdateToDashboard = false;
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.UndoLastAction) {
-        actionResource = (<any>resources).actions.undo;
+        actionResource = (<any>instrumentation).actions.undo;
         this.ddeApiService.undoLastAction();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.RedoLastAction) {
-        actionResource = (<any>resources).actions.redo;
+        actionResource = (<any>instrumentation).actions.redo;
         this.ddeApiService.redoLastAction();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.TogglePropertiesPane) {
-        actionResource = (<any>resources).actions.toggleProperties;
+        actionResource = (<any>instrumentation).actions.toggleProperties;
         this.ddeApiService.togglePropertiesPane();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.GetDashboardSpec) {
-        actionResource = (<any>resources).actions.getSpecs;
+        actionResource = (<any>instrumentation).actions.getSpecs;
         await this.ddeApiService.getDashboardSpec();
         this.dashboardSpec.emit();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.UpdateModuleDefinitions) {
-        actionResource = (<any>resources).actions.updateDataDefinition;
+        actionResource = (<any>instrumentation).actions.updateDataDefinition;
         this.ddeApiService.updateModuleDefinitions();
         this.updateModuleDefinitions.emit();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.ClearDirtyState) {
-        actionResource = (<any>resources).actions.clearDirtyState;
+        actionResource = (<any>instrumentation).actions.clearDirtyState;
         this.ddeApiService.clearDirtyState();
         this.clearDirtyState.emit();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.RegisterCallback) {
-        actionResource = (<any>resources).actions.registerDashboardCallback;
+        actionResource = (<any>instrumentation).actions.registerDashboardCallback;
         this.ddeApiService.registerCallback();
         this.registerCallback.emit();
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.UnregisterCallback) {
-        actionResource = (<any>resources).actions.unregisterDashboardCallback;
+        actionResource = (<any>instrumentation).actions.unregisterDashboardCallback;
         this.ddeApiService.unregisterCallback();
         this.unregisterCallback.emit();
       }
       else {
-        throw new Error((<any>resources).invalidCodeSnippet);
+        throw new Error((<any>instrumentation).invalidCodeSnippet);
       }
 
       this.createTraits((<any>actionResource).processType, (<any>actionResource).name, true, dataSource, (<any>actionResource).message);
@@ -218,7 +220,7 @@ export class DdeCodeExplorerComponent implements OnInit {
       case CodeSnippetEnum.UnregisterApiCallback:
       case CodeSnippetEnum.CloseApiFramework: {
         traits = {processType: processType, process: process, sessionId: this.analyticsService.sessionId, successFlag: result,
-                  resultValue: resultValue, productTitle: (<any>resources).productTitle, /*version: environment.version*/};
+                  resultValue: resultValue, productTitle: (<any>instrumentation).productTitle, /*version: environment.version*/};
 
         break;
       }
@@ -229,7 +231,7 @@ export class DdeCodeExplorerComponent implements OnInit {
       case CodeSnippetEnum.DashboardViewMode:
       case CodeSnippetEnum.DashboardEditGroupMode: {
         traits = {processType: processType, process: process, sessionId: this.analyticsService.sessionId, successFlag: result,
-                  resultValue: resultValue, productTitle: (<any>resources).productTitle, /*version: environment.version,*/ uiElement: (<any>resources).runButton };
+                  resultValue: resultValue, productTitle: (<any>instrumentation).productTitle, /*version: environment.version,*/ uiElement: (<any>instrumentation).runButton };
         break;
       }
       case CodeSnippetEnum.AddCSVSource:
@@ -240,13 +242,13 @@ export class DdeCodeExplorerComponent implements OnInit {
       case CodeSnippetEnum.AddBikeShareWeatherCSVSource:
       case CodeSnippetEnum.GetDashboardSpec: {
         traits = {processType: processType, process: process, sessionId: this.analyticsService.sessionId, successFlag: result,
-                  resultValue: resultValue, productTitle: (<any>resources).productTitle, /*version: environment.version,*/ customName1: 'dataSource',
-                  customValue1: dataSource, uiElement: (<any>resources).runButton};
+                  resultValue: resultValue, productTitle: (<any>instrumentation).productTitle, /*version: environment.version,*/ customName1: 'dataSource',
+                  customValue1: dataSource, uiElement: (<any>instrumentation).runButton};
         break;
       }
     }
 
-    this.analyticsService.sendTrack((<any>resources).ranProcessTrack, traits);
+    this.analyticsService.sendTrack((<any>instrumentation).ranProcessTrack, traits);
   }
 
   enableRunButton(type: CodeSnippetEnum) {

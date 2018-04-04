@@ -1,7 +1,7 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { DdeApiService } from '../services/dde-api.service';
 import { AnalyticsService } from '../../instrumentation/analytics';
-import * as resources from '../../assets/resources/resources.json';
+import * as instrumentation from '../../assets/resources/instrumentation.json';
 import { Toaster } from '../../model/toaster';
 import { DdeToasterComponent } from '../dde-toaster/dde-toaster.component';
 
@@ -19,7 +19,7 @@ export class DdeDashboardComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.loadDasboard();
-    this.analyticsService.loadPage((<any>resources).categoryValue, (<any>resources).endUserPageName);
+    this.analyticsService.loadPage((<any>instrumentation).categoryValue, (<any>instrumentation).endUserPageName);
   }
 
   async loadDasboard() {
@@ -31,7 +31,7 @@ export class DdeDashboardComponent implements AfterViewInit {
     }
     catch(e) {
       console.log(e);
-      this.toasterComp.showToaster(new Toaster((<any>resources).errorMessage, 'error', true));
+      this.toasterComp.showToaster(new Toaster((<any>instrumentation).errorMessage, 'error', true));
     }
   }
 
