@@ -5,17 +5,17 @@ node_js:
 
 before_install:
   - npm install -g @angular/cli
-  - npm install csslint eslint html-lint tslint
+  - npm install -g csslint eslint html-lint tslint
   - sudo pip install yamllint
   - npm install -g envsub
 
 before_script:
   - "./tests/test-yamllint.sh"
-  - chmod +x ./tests/test-csslint.sh
-  - chmod +x ./tests/test-eslint.sh
-  - chmod +x ./tests/test-html-lint.sh
-  - chmod +x ./tests/test-shellcheck.sh
-  - chmod +x ./tests/test-tslint.sh
+  - "./tests/test-csslint.sh"
+  - "./tests/test-eslint.sh"
+  - "./tests/test-html-lint.sh"
+  - "./tests/test-shellcheck.sh"
+  - "./tests/test-tslint.sh"
 
 script:
   - envsub --env SEGMENT_KEY=$SEGMENT_KEY ./src/environments/environment.prod.ts
