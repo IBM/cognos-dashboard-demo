@@ -117,7 +117,7 @@ button:focus, video:focus, input:focus, a:focus, .dashboard-button:focus{
 }
 
 .panel-open .panel .navbar-brand:after {
-    content: url(assets/images/chevron-up_16.svg);
+    content: url(/assets/images/chevron-up_16.svg);
     float: right;
     /* position: absolute;
     right: 6%; */
@@ -128,7 +128,7 @@ button:focus, video:focus, input:focus, a:focus, .dashboard-button:focus{
 }
 
 .panel .navbar-brand:after {
-  content: url(assets/images/chevron-down_16.svg);
+  content: url(/assets/images/chevron-down_16.svg);
   float: right;
   /* position: absolute;
   right: 6%;*/
@@ -276,27 +276,5 @@ svg {
 @media (max-width: 1440px) {
   .iframeContainer {
     height: 700px;
-  }
-}
-
-/* Detect Mac Firefox 25 or newer */
-@supports (-moz-osx-font-smoothing:auto) {
-  .line-numbers-rows {
-    line-height: 1.67em;
-  }
-}
-
-/* Detect Chrome 22+ (and Safari 6.1+) */
-@media screen and (-webkit-min-device-pixel-ratio:0)
-  and (min-resolution: .001dpcm), screen and(-webkit-min-device-pixel-ratio:0) {
-  .line-numbers-rows {
-    line-height: 1.67em;
-  }
-}
-
-/* Detect Mac Safari 6.1 or newer, hide any straggling Chrome references */
-@media screen and (-webkit-max-device-pixel-ratio:1) and (min-color-index:0) {
-  .line-numbers-rows {
-    line-height: 1.67em;
   }
 }
