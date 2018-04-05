@@ -4,24 +4,30 @@ node_js:
   - "7"
 
 before_install:
-  - npm install -g @angular/cli
+  - npm install @angular/cli
+  - npm install csslint eslint html-lint tslint
   - sudo pip install yamllint
   - npm install -g envsub
 
 before_script:
   - "./tests/test-yamllint.sh"
+  - bash "./tests/test-csslint.sh"
+  - bash "./tests/test-eslint.sh"
+  - bash "./tests/test-html-lint.sh"
+  - bash "./tests/test-shellcheck.sh"
+  - bash "./tests/test-tslint.sh"
 
 script:
-  - envsub --env SEGMENT_KEY=$SEGMENT_KEY ./src/environments/environment.prod.ts
-  - ng build --env=prod
+  - envsub --env SEGMENT_KEY=$SEGMENT_KEY ./src/environments/environment.ts
+  - ng build --env=dev
 
-deploy:
-  provider: cloudfoundry
-  api: https://api.stage1.ng.bluemix.net
-  username: $BLUEMIX_USER
-  password: $BLUEMIX_PASS
-  organization: $BLUEMIX_ORGANIZATION
-  space: $BLUEMIX_SPACE
-  "on":
-    repo: GearBox/Dynamic-dashboard-demo
-    branch: master
+# deploy:
+#   provider: cloudfoundry
+#   api: https://api.stage1.ng.bluemix.net
+#   username: $BLUEMIX_USER
+#   password: $BLUEMIX_PASS
+#   organization: $BLUEMIX_ORGANIZATION
+#   space: $BLUEMIX_SPACE
+#   "on":
+#     repo: GearBox/Dynamic-dashboard-demo
+#     branch: linting
