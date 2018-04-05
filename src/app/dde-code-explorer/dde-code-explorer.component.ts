@@ -288,12 +288,4 @@ export class DdeCodeExplorerComponent implements OnInit {
           this.codeSnippet.selection === CodeSnippetEnum.DashboardEditMode ||
           this.codeSnippet.selection === CodeSnippetEnum.DashboardEditGroupMode);
   }
-
-  validSessionLink(event) {
-    // this.analyticsService.sendTrack((<any>resources).documents.creatingValidSession, event.currentTarget.href);
-  }
-
-  workWithDatasource(event) {
-    // this.analyticsService.sendTrack((<any>resources).documents.workWithDatasource, event.currentTarget.href);
-  }
 }
