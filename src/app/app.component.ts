@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
    });
 
     if (environment.segment_key !== '${SEGMENT_KEY}') {
-      this.loadScript('../assets/pageTracking.js');
+      this.loadScript('../instrumentation/pageTracking.js');
       this.analyticsService.setupSegment(environment.segment_key);
       this.loadBluemixAnalyticsScript();
     }
