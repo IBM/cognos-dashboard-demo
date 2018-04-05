@@ -36,12 +36,7 @@
 
           <div class="col-md-6 bg-light">
             <dde-code-explorer [codeSnippet]="code_snippet" (session)="sessionInfo($event)" (apiId)="getAPIId($event)"
-              (dashboardApi)="getDashboardApi($event)" (dashboardSpec)="getDashboardSpec($event)"
-              (updateModuleDefinitions)="updateModuleDefinitions($event)" (clearDirtyState)="clearDirtyState($event)"
-              (registerCallback)="registerCallback($event)" (unregisterCallback)="unregisterCallback($event)"
-              (registerApiCallback)="registerApiCallback($event)" (unregisterApiCallback)="unregisterApiCallback($event)"
-              (closeApiFramework)="closeApiFramework($event)"
-              (lastActionOutput)=lastAction($event)>
+              (dashboardApi)="getDashboardApi($event)" (response)=responseMessage($event)>
             </dde-code-explorer>
           </div>
         </div>
