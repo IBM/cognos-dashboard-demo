@@ -3,9 +3,5 @@
   "createValidSession": "Learn more about creating a valid session",
   "dataSourceConfig": "Data source configuration",
   "workWithOwnDatasource": "Learn how to work with your own datasource",
-  "dashboardMode": "Dashboard Mode",
-  "mode": "Mode",
-  "sessionCode": "sessionCode",
-  "sessionId": "sessionId",
-  "dataSource": "Data Source"
+  "dashboardMode": "Dashboard Mode"
 }
