@@ -9,6 +9,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
+        "instrumentation",
         "favicon.ico",
         { "glob": "ddeSampleSpec.json", "input": "./", "output": "./assets/" },
         { "glob": "ddeCSVSampleModule.json", "input": "./", "output": "./assets/" },
