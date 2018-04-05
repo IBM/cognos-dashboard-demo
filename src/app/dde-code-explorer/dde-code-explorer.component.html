@@ -8,12 +8,12 @@
   </div>
 
   <div class="panel-info">
-    <label>sessionCode</label>
+    <label>{{codeExplorer_resx.sessionCode}}</label>
     <input type="text" readonly [ngModel]="sessionObject?.code"/>
   </div>
 
   <div class="panel-info">
-    <label>sessionId</label>
+    <label>{{codeExplorer_resx.sessionId}}</label>
     <input type="text" readonly [ngModel]="sessionObject?.id"/>
   </div>
 
@@ -30,7 +30,7 @@
   </div>
 
   <div class="panel-info">
-    <label>Data Source</label>
+    <label>{{codeExplorer_resx.dataSource}}</label>
     <select (change)="onSelect($event.target.value)">
       <option *ngFor="let dataSource of dataSources" value={{dataSource.value}}>
          {{dataSource.type}}
@@ -51,7 +51,7 @@
   </div>
 
   <div class="panel-info">
-    <label>Mode</label>
+    <label>{{codeExplorer_resx.mode}}</label>
     <select (change)="onSelectMode($event.target.value)">
       <option *ngFor="let mode of dashboardModes" value={{mode.value}}>
          {{mode.type}}
