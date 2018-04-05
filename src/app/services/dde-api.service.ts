@@ -84,14 +84,14 @@ export class DdeApiService {
   }
 
   async getDashboardSampleSpec(): Promise<string> {
-    let fileName = 'dashboardspec.json';
+    let fileName = 'dashboardSpec.json';
     // return if it was already fetched from before
     if (this.sample_db_spec != null) {
       return;
     }
 
     //get the sampleSepc json ready
-    const response = await this.http.get('/assets/' + fileName).toPromise();
+    const response = await this.http.get('/assets/data/' + fileName).toPromise();
     this.sample_db_spec = response.json();
     return fileName;
   }
@@ -115,21 +115,21 @@ export class DdeApiService {
 
   async getCSVSampleModule(fileName: string) {
     if (this.csv_sample_module == null) {
-      this.csv_sample_module = await this.getCSVSampleModuleJson('/assets/'+fileName);
+      this.csv_sample_module = await this.getCSVSampleModuleJson('/assets/data/'+fileName);
     }
     return this.csv_sample_module;
   }
 
   async getBikeShareWeatherCSVSampleModule(fileName: string) {
     if (this.bike_share_weather_csv_sample_module == null) {
-      this.bike_share_weather_csv_sample_module = await this.getCSVSampleModuleJson('/assets/'+fileName);
+      this.bike_share_weather_csv_sample_module = await this.getCSVSampleModuleJson('/assets/data/'+fileName);
     }
     return this.bike_share_weather_csv_sample_module;
   }
 
   async getBikeShareRidesDemographCSVSampleModule(fileName: string) {
     if (this.bike_share_rides_demograph_csv_sample_module == null) {
-      this.bike_share_rides_demograph_csv_sample_module = await this.getCSVSampleModuleJson('/assets/'+fileName);
+      this.bike_share_rides_demograph_csv_sample_module = await this.getCSVSampleModuleJson('/assets/data/'+fileName);
     }
     return this.bike_share_rides_demograph_csv_sample_module;
   }

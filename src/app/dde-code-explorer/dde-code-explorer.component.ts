@@ -21,14 +21,7 @@ export class DdeCodeExplorerComponent implements OnInit {
   @Output() session: EventEmitter<Session> = new EventEmitter<Session>();
   @Output() apiId: EventEmitter<string> = new EventEmitter<string>();
   @Output() dashboardApi: EventEmitter<string> = new EventEmitter<string>();
-  @Output() dashboardSpec: EventEmitter<void> = new EventEmitter<void>();
-  @Output() updateModuleDefinitions: EventEmitter<void> = new EventEmitter<void>();
-  @Output() clearDirtyState: EventEmitter<void> = new EventEmitter<void>();
-  @Output() registerCallback: EventEmitter<void> = new EventEmitter<void>();
-  @Output() unregisterCallback: EventEmitter<void> = new EventEmitter<void>();
-  @Output() registerApiCallback: EventEmitter<void> = new EventEmitter<void>();
-  @Output() unregisterApiCallback: EventEmitter<void> = new EventEmitter<void>();
-  @Output() closeApiFramework: EventEmitter<void> = new EventEmitter<void>();
+  @Output() response: EventEmitter<string> = new EventEmitter<string>();
   @Input() codeSnippet : CodeSnippet;
   dataSources = [CSVDataSource, ProtectedCSVDataSource, BikeShareWeatherCSVSource, BikeShareRidesDemographCSVSource ];
   dashboardModes = [DashboardMode.EditMode, DashboardMode.ViewMode, DashboardMode.EditGroupMode];
@@ -78,17 +71,17 @@ export class DdeCodeExplorerComponent implements OnInit {
       else if (this.codeSnippet.selection === CodeSnippetEnum.RegisterApiCallback) {
         actionResource = (<any>instrumentation).actions.registeredApiCallback;
         this.ddeApiService.registerApiCallback();
-        this.registerApiCallback.emit();
+        this.response.emit((<any>instrumentation).actions.registeredApiCallback.message);
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.UnregisterApiCallback) {
         actionResource = (<any>instrumentation).actions.unregisteredApiCallback;
         this.ddeApiService.unregisterApiCallback();
-        this.unregisterApiCallback.emit();
+        this.response.emit((<any>instrumentation).actions.unregisteredApiCallback.message);
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.CloseApiFramework) {
         actionResource = (<any>instrumentation).actions.closedAPIFramework;
         this.ddeApiService.closeApiFramework();
-        this.closeApiFramework.emit();
+        this.response.emit((<any>instrumentation).actions.closedAPIFramework.message);
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.CreateDashboard) {
         actionResource = (<any>instrumentation).actions.createdNew;
@@ -150,27 +143,27 @@ export class DdeCodeExplorerComponent implements OnInit {
       else if (this.codeSnippet.selection === CodeSnippetEnum.GetDashboardSpec) {
         actionResource = (<any>instrumentation).actions.getSpecs;
         await this.ddeApiService.getDashboardSpec();
-        this.dashboardSpec.emit();
+        this.response.emit((<any>instrumentation).actions.getSpecs.message);
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.UpdateModuleDefinitions) {
         actionResource = (<any>instrumentation).actions.updateDataDefinition;
         this.ddeApiService.updateModuleDefinitions();
-        this.updateModuleDefinitions.emit();
+        this.response.emit((<any>instrumentation).actions.updateDataDefinition.message);
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.ClearDirtyState) {
         actionResource = (<any>instrumentation).actions.clearDirtyState;
         this.ddeApiService.clearDirtyState();
-        this.clearDirtyState.emit();
+        this.response.emit((<any>instrumentation).actions.clearDirtyState.message);
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.RegisterCallback) {
         actionResource = (<any>instrumentation).actions.registerDashboardCallback;
         this.ddeApiService.registerCallback();
-        this.registerCallback.emit();
+        this.response.emit((<any>instrumentation).actions.registerDashboardCallback.message);
       }
       else if (this.codeSnippet.selection === CodeSnippetEnum.UnregisterCallback) {
         actionResource = (<any>instrumentation).actions.unregisterDashboardCallback;
         this.ddeApiService.unregisterCallback();
-        this.unregisterCallback.emit();
+        this.response.emit((<any>instrumentation).actions.unregisterDashboardCallback.message);
       }
       else {
         throw new Error((<any>instrumentation).invalidCodeSnippet);
@@ -200,6 +193,7 @@ export class DdeCodeExplorerComponent implements OnInit {
     this.enableRunButton(CodeSnippetEnum.TogglePropertiesPane);
     this.enableRunButton(CodeSnippetEnum.GetDashboardSpec);
     this.enableRunButton(CodeSnippetEnum.ClearDirtyState);
+    this.enableRunButton(CodeSnippetEnum.UpdateModuleDefinitions);
     this.enableRunButton(CodeSnippetEnum.RegisterCallback);
     this.enableRunButton(CodeSnippetEnum.UnregisterCallback);
   }
