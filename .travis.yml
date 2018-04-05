@@ -23,5 +23,5 @@ deploy:
   organization: $BLUEMIX_ORGANIZATION_PROD
   space: $BLUEMIX_SPACE_PROD
   "on":
-    repo: GearBox/DDE-ang-node-test
+    repo: GearBox/Dynamic-dashboard-demo
     branch: production

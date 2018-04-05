@@ -22,8 +22,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css",
-        "font-awesome-animation.min.css",
+        "assets/css/styles.css",
+        "assets/css/font-awesome-animation.min.css",
         "prism/prism.css"
       ],
       "scripts": [

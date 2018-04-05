@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as segment from './segment';
 import { environment } from '../environments/environment';
-import * as resources from '../assets/resources/resources.json';
-
 
 @Injectable()
 export class AnalyticsService {
@@ -31,8 +29,7 @@ export class AnalyticsService {
   }
 
   loadPage(category: string, name: string) {
-    segment.page(category, name);
-    //segment.page(pageName, {name: pageName, title: pageName, productTitle: (<any>resources).productTitle, categoryValue: (<any>resources).categoryValue, version: environment.version});
+    segment.page(category, name);    
   }
 
   sendTrack(eventName: string, traits: any) {
