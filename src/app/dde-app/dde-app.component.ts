@@ -43,8 +43,7 @@ export class DDEAppComponent implements OnInit {
   }
 
   ngOnInit() {
-  this.analyticsService.loadPage((<any>instrumentation).categoryValue, (<any>instrumentation).devPageName);
-  //window.bluemixAnalytics.pageEvent((<any>resources).categoryValue, (<any>resources).devPageName);
+  this.analyticsService.loadPage((<any>instrumentation).categoryValue, (<any>instrumentation).devPageName);  
 
     if (!environment.production) {
       console.log('Development Mode');
@@ -107,36 +106,8 @@ export class DDEAppComponent implements OnInit {
     }
   }
 
-  getDashboardSpec(event) {
-    this.setToaster((<any>instrumentation).actions.getSpecs.message, 'success', true);
-  }
-
-  updateModuleDefinitions(event) {
-    this.setToaster((<any>instrumentation).actions.updateDataDefinition.message, 'success', true);
-  }
-
-  clearDirtyState(event) {
-    this.setToaster((<any>instrumentation).actions.clearDirtyState.message, 'success', true);
-  }
-
-  registerCallback(event) {
-    this.setToaster((<any>instrumentation).actions.registerDashboardCallback.message, 'success', true);
-  }
-
-  unregisterCallback(event) {
-    this.setToaster((<any>instrumentation).actions.unregisterDashboardCallback.message, 'success', true);
-  }
-
-  registerApiCallback(event) {
-    this.setToaster((<any>instrumentation).actions.registeredApiCallback.message, 'success', true);
-  }
-
-  unregisterApiCallback(event) {
-    this.setToaster((<any>instrumentation).actions.unregisteredApiCallback.message, 'success', true);
-  }
-
-  closeApiFramework(event) {
-    this.setToaster((<any>instrumentation).actions.closedAPIFramework.message, 'success', true);
+  responseMessage(event) {
+    this.setToaster(event, 'success', true);
   }
 
   // set the code snippt to what was fired over
