@@ -39,7 +39,7 @@ app.use(express.static(__dirname + "/dist"));
 var dde_client_id = process.env.DDE_CLIENT_ID;
 var dde_client_secret = process.env.DDE_SECRET;
 
-//console.log("ENVIROMENT: "+env);
+console.log("ENVIROMENT: "+env);
 
 
 /* Endpoint to create a new DDE session.
@@ -50,8 +50,7 @@ var dde_client_secret = process.env.DDE_SECRET;
 * }
 */
 app.post("/api/dde/session", function(request, response) {
-  //console.log(dde_client_id);
-
+  console.log(dde_client_id);
   var options = {
     method: "POST",
     uri: conf.dde_session_uri,
@@ -89,31 +88,33 @@ var vcapLocal;
 try {
   vcapLocal = require("./vcap-local.json");
   console.log("Loaded local VCAP", vcapLocal);
-} catch (e) { }
+} catch (e) {
+  console.log("Local vcap not loaded");
+}
 
 const appEnvOpts = vcapLocal ? { vcap: vcapLocal} : {};
 
-//console.log("appEnvOpts:" + JSON.stringify(appEnvOpts));
+console.log("appEnvOpts:" + JSON.stringify(appEnvOpts));
 
 
 var appEnv = cfenv.getAppEnv(appEnvOpts);
-//console.log("appEnv:" + JSON.stringify(appEnv));
+console.log("appEnv:" + JSON.stringify(appEnv));
 
 
-//console.log("appEnv services:" + JSON.stringify(appEnv.services["dynamic-dashboard-embedded"]));
+console.log("appEnv services:" + JSON.stringify(appEnv.services["dynamic-dashboard-embedded"]));
 
 
 if (appEnv.services["dynamic-dashboard-embedded"] || appEnv.getService(/dynamic-dashboard-embedded/)) {
-
+  var ddecred;
   // fetch DDE credentials
   if (appEnv.services["dynamic-dashboard-embedded"]) {
     // CF service named "dynamic-dashboard-embedded"
-    var ddecred = appEnv.services["dynamic-dashboard-embedded"][0].credentials;
-    console.log("cf service dde credentials: " + JSON.stringify(ddecred));
+    ddecred = appEnv.services["dynamic-dashboard-embedded"][0].credentials;
+    //console.log("cf service dde credentials: " + JSON.stringify(ddecred));
   } else {
     // user-provided service with "dynamic-dashboard-embedded" in its name
-    var ddecred = appEnv.getService(/dynamic-dashboard-embedded/).credentials;
-    console.log("user provided service dde credentials: " + ddecred);
+    ddecred = appEnv.getService(/dynamic-dashboard-embedded/).credentials;
+    //console.log("user provided service dde credentials: " + ddecred);
   }
 
   dde_client_id = ddecred.client_id;
@@ -136,5 +137,5 @@ if (process.env.PROXY_DDE_REQUESTS && process.env.PROXY_DDE_REQUESTS == "true") 
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
-    console.log("To view your app, open this link in your browser: http://localhost:" + port);
+  console.log("To view your app, open this link in your browser: http://localhost:" + port);
 });
