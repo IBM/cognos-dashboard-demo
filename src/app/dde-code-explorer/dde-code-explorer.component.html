@@ -4,19 +4,17 @@
 
 <div class="secondary-panel" *ngIf="showSessionPanel()">
   <div class="header">
-    <label>{{codeExplorer_resx.sessionInfo}}</label>
+    <label for="session-info">{{codeExplorer_resx.sessionInfo}}</label>
   </div>
 
   <div class="panel-info">
-    <label>sessionCode
-      <input readonly [ngModel]="sessionObject?.code"/>
-    </label>
+    <label for="session-code">sessionCode</label>
+    <input readonly [ngModel]="sessionObject?.code"/>
   </div>
 
   <div class="panel-info">
-    <label>sessionId
-      <input readonly [ngModel]="sessionObject?.id"/>
-    </label>
+    <label for="session-id">sessionId</label>
+    <input readonly [ngModel]="sessionObject?.id"/>
   </div>
 
   <div class="panel-link">
@@ -28,7 +26,7 @@
 
 <div class="secondary-panel" *ngIf="showSourcesDropDown()">
   <div class="header">
-    <label>{{codeExplorer_resx.dataSourceConfig}}</label>
+    <label for="source-config">{{codeExplorer_resx.dataSourceConfig}}</label>
   </div>
 
   <div class="panel-info">
@@ -49,11 +47,11 @@
 
 <div class="secondary-panel" *ngIf="showDashboardModesDropDown()">
   <div class="header">
-    <label>{{codeExplorer_resx.dashboardMode}}</label>
+    <label for="dashboard-mode">{{codeExplorer_resx.dashboardMode}}</label>
   </div>
 
   <div class="panel-info">
-    <label>Mode</label>
+    <label for="mode">Mode</label>
     <select (change)="onSelectMode($event.target.value)">
       <option *ngFor="let mode of dashboardModes" value={{mode.value}}>
          {{mode.type}}
