@@ -62,3 +62,5 @@ Run ng serve for a dev server. Navigate to http://localhost:4200/. The app will 
 * [Sample app](https://dde-us-south.analytics.ibm.com/daas/DashboardAPI.html)
 * [Swagger](https://dde-us-south.analytics.ibm.com/api-docs)
 * [API Documentation](https://dde.us-south.containers.mybluemix.net/daas/jsdoc/cognos/api/index.html)
+
+![ibm](https://www.ibm.com/i/d/va924g7)
