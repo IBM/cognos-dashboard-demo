@@ -25,15 +25,15 @@ before_script:
 
 script:
   - envsub --env SEGMENT_KEY=$SEGMENT_KEY ./src/environments/environment.ts
-  - ng build --env=dev
+  - ng build --env=prod
 
-# deploy:
-#   provider: cloudfoundry
-#   api: https://api.stage1.ng.bluemix.net
-#   username: $BLUEMIX_USER
-#   password: $BLUEMIX_PASS
-#   organization: $BLUEMIX_ORGANIZATION
-#   space: $BLUEMIX_SPACE
-#   "on":
-#     repo: GearBox/Dynamic-dashboard-demo
-#     branch: linting
+deploy:
+  provider: cloudfoundry
+  api: https://api.stage1.ng.bluemix.net
+  username: $BLUEMIX_USER
+  password: $BLUEMIX_PASS
+  organization: $BLUEMIX_ORGANIZATION
+  space: $BLUEMIX_SPACE
+  "on":
+    repo: GearBox/Dynamic-dashboard-demo
+    branch: master
