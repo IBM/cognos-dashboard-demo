@@ -5,15 +5,13 @@ node_js:
 
 before_install:
   - npm install @angular/cli
-  - npm install csslint eslint html-lint tslint
+  - npm install eslint tslint
   - sudo pip install yamllint
   - npm install -g envsub
 
 before_script:
   - "./tests/test-yamllint.sh"
-  - bash "./tests/test-csslint.sh"
   - bash "./tests/test-eslint.sh"
-  - bash "./tests/test-html-lint.sh"
   - bash "./tests/test-shellcheck.sh"
   - bash "./tests/test-tslint.sh"
 
