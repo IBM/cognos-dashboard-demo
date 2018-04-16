@@ -12,8 +12,8 @@ before_script:
   - "./tests/test-yamllint.sh"
 
 script:
-  - envsub --env SEGMENT_KEY=$SEGMENT_KEY ./src/environments/environment.ts
-  - ng build --env=dev
+  - envsub --env SEGMENT_KEY=$SEGMENT_KEY ./src/environments/environment.prod.ts
+  - ng build --env=prod
 
 deploy:
   provider: cloudfoundry
@@ -24,4 +24,4 @@ deploy:
   space: $BLUEMIX_SPACE
   "on":
     repo: GearBox/Dynamic-dashboard-demo
-    branch: feature/frontend
+    branch: master
