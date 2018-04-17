@@ -2,10 +2,15 @@
 
 This repo shows a Angular 5.0.0 + Node.js app that demos the IBM Cloud DDE service.
 
+## Architecture (Create and Save new dashboard)
+![](doc/source/images/generic dde msc - Create and Save new dashboard.png)
+
+## Architecture (Open existing dashboard)
+![](doc/source/images/generic dde msc - Open existing dashboard.png)
 
  In order to deploy to IBM Cloud, you'll need an [IBM Cloud account](https://console.stage1.ng.bluemix.net/registration/). Once registered, you can automatically deploy the app using the following deploy to IBM Cloud button.
 
- [![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://console.bluemix.net/devops/setup/deploy?repository=https://github.ibm.com/GearBox/Dynamic-dashboard-demo&repository_token=a623cbb1534c9f30fb0199bc9ac57e8d3f91afa6&branch=master)
+ [![Deploy to IBM Cloud](https://github.com/IBM/container-journey-template/blob/master/images/button.png)](https://console.bluemix.net/devops/setup/deploy?repository=https://github.ibm.com/GearBox/Dynamic-dashboard-demo&repository_token=a623cbb1534c9f30fb0199bc9ac57e8d3f91afa6&branch=master)
 
  To run locally and deploy from the command line, follow the instructions below.
 
@@ -58,7 +63,7 @@ Run ng serve for a dev server. Navigate to http://localhost:4200/. The app will 
 
 ## Resources
 
-* [DDE in Bluemix](https://console-regional.ng.bluemix.net/docs/services/dynamic-dashboard-embedded/index.html#overview-of-dynamic-dashboard-embedded)
+* [DDE in IBM Cloud](https://console-regional.ng.bluemix.net/docs/services/dynamic-dashboard-embedded/index.html#overview-of-dynamic-dashboard-embedded)
 * [Sample app](https://dde-us-south.analytics.ibm.com/daas/DashboardAPI.html)
 * [Swagger](https://dde-us-south.analytics.ibm.com/api-docs)
 * [API Documentation](https://dde.us-south.containers.mybluemix.net/daas/jsdoc/cognos/api/index.html)
