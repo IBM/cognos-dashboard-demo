@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.ibm.com/GearBox/DDE-ang-node-test"
+    "url": "https://github.ibm.com/GearBox/Dynamic-dashboard-demo"
   },
   "private": false,
   "dependencies": {

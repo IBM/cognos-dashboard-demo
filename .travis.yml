@@ -2,14 +2,26 @@
 language: node_js
 node_js:
   - "7"
+sudo: required
+dist: precise
+
 
 before_install:
-  - npm install -g @angular/cli
+  # - curl -sSL "https://ftp-master.debian.org/keys/archive-key-7.0.asc" | sudo -E apt-key add -
+  # - echo "deb http://ftp.us.debian.org/debian unstable main contrib non-free" | sudo tee -a /etc/apt/sources.list > /dev/null
+  - echo "deb http://archive.ubuntu.com/ubuntu/ artful universe" | sudo tee -a /etc/apt/sources.list
+  - sudo apt-get update
+  - sudo apt-get install shellcheck
+  - npm install @angular/cli
+  - npm install eslint tslint
   - sudo pip install yamllint
   - npm install -g envsub
 
 before_script:
   - "./tests/test-yamllint.sh"
+  - bash "./tests/test-eslint.sh"
+  - bash "./tests/test-shellcheck.sh"
+  - bash "./tests/test-tslint.sh"
 
 script:
   - envsub --env SEGMENT_KEY=$SEGMENT_KEY_PROD ./src/environments/environment.prod.ts

@@ -21,13 +21,13 @@ app.enable("trust proxy");
 // Add a handler to inspect the req.secure flag or see if app is running on localhost, this allows us
 // to know whether the request was via http or https.
 app.use (function (req, res, next) {
-    if (req.secure || req.hostname == "localhost") {
-      // request was via https, so do no special handling
-      next();
-    } else {
-      // request was via http, so redirect to https
-      res.redirect("https://" + req.headers.host + req.url);
-    }
+  if (req.secure || req.hostname == "localhost") {
+    // request was via https, so do no special handling
+    next();
+  } else {
+    // request was via http, so redirect to https
+    res.redirect("https://" + req.headers.host + req.url);
+  }
 
 });
 
@@ -39,7 +39,7 @@ app.use(express.static(__dirname + "/dist"));
 var dde_client_id = process.env.DDE_CLIENT_ID;
 var dde_client_secret = process.env.DDE_SECRET;
 
-console.log('ENVIROMENT: '+env);
+console.log("ENVIROMENT: "+env);
 
 
 /* Endpoint to create a new DDE session.
@@ -51,36 +51,35 @@ console.log('ENVIROMENT: '+env);
 */
 app.post("/api/dde/session", function(request, response) {
   console.log(dde_client_id);
-
   var options = {
-      method: 'POST',
-      uri: conf.dde_session_uri,
-      headers: {
-        'Authorization': 'Basic ' + new Buffer(dde_client_id + ':' + dde_client_secret).toString('base64'),
-         'content-type': 'application/json'
-      },
-      body: {
-          "expiresIn": 3600,
-          webDomain: conf.web_domain
-          //"webDomain": "http://localhost:3000" // for local testing
-          //"webDomain": "https://{app-name}.mybluemix.net" // for deployment
-      },
-      json: true // Automatically stringifies the body to JSON
+    method: "POST",
+    uri: conf.dde_session_uri,
+    headers: {
+      "Authorization": "Basic " + new Buffer(dde_client_id + ":" + dde_client_secret).toString("base64"),
+      "content-type": "application/json"
+    },
+    body: {
+      "expiresIn": 3600,
+      webDomain: conf.web_domain
+      //"webDomain": "http://localhost:3000" // for local testing
+      //"webDomain": "https://{app-name}.mybluemix.net" // for deployment
+    },
+    json: true // Automatically stringifies the body to JSON
   };
 
   rp(options)
-      .then(function (parsedBody) {
-          // POST succeeded...
-          console.log("post suceeded");
-          console.log(JSON.stringify(parsedBody));
-          response.send(parsedBody);
-      })
-      .catch(function (err) {
-          // POST failed...
-          console.log("post failed!");
-          console.log(JSON.stringify(err));
-          response.send(err);
-      });
+    .then(function (parsedBody) {
+      // POST succeeded...
+      console.log("post suceeded");
+      console.log(JSON.stringify(parsedBody));
+      response.send(parsedBody);
+    })
+    .catch(function (err) {
+      // POST failed...
+      console.log("post failed!");
+      console.log(JSON.stringify(err));
+      response.send(err);
+    });
 
 });
 
@@ -89,9 +88,11 @@ var vcapLocal;
 try {
   vcapLocal = require("./vcap-local.json");
   console.log("Loaded local VCAP", vcapLocal);
-} catch (e) { }
+} catch (e) {
+  console.log("Local vcap not loaded");
+}
 
-const appEnvOpts = vcapLocal ? { vcap: vcapLocal} : {}
+const appEnvOpts = vcapLocal ? { vcap: vcapLocal} : {};
 
 console.log("appEnvOpts:" + JSON.stringify(appEnvOpts));
 
@@ -100,20 +101,20 @@ var appEnv = cfenv.getAppEnv(appEnvOpts);
 console.log("appEnv:" + JSON.stringify(appEnv));
 
 
-console.log("appEnv services:" + JSON.stringify(appEnv.services['dynamic-dashboard-embedded']));
+console.log("appEnv services:" + JSON.stringify(appEnv.services["dynamic-dashboard-embedded"]));
 
 
 if (appEnv.services["dynamic-dashboard-embedded"] || appEnv.getService(/dynamic-dashboard-embedded/)) {
-
+  var ddecred;
   // fetch DDE credentials
   if (appEnv.services["dynamic-dashboard-embedded"]) {
-     // CF service named 'dynamic-dashboard-embedded'
-     var ddecred = appEnv.services["dynamic-dashboard-embedded"][0].credentials;
-     console.log("cf service dde credentials: " + JSON.stringify(ddecred));
+    // CF service named "dynamic-dashboard-embedded"
+    ddecred = appEnv.services["dynamic-dashboard-embedded"][0].credentials;
+    //console.log("cf service dde credentials: " + JSON.stringify(ddecred));
   } else {
-     // user-provided service with 'dynamic-dashboard-embedded' in its name
-     var ddecred = appEnv.getService(/dynamic-dashboard-embedded/).credentials;
-     console.log("user provided service dde credentials: " + ddecred);
+    // user-provided service with "dynamic-dashboard-embedded" in its name
+    ddecred = appEnv.getService(/dynamic-dashboard-embedded/).credentials;
+    //console.log("user provided service dde credentials: " + ddecred);
   }
 
   dde_client_id = ddecred.client_id;
@@ -123,8 +124,8 @@ if (appEnv.services["dynamic-dashboard-embedded"] || appEnv.getService(/dynamic-
 
 
 // Catch dashboard route and return the index file
-app.get('/dashboard', (req, res) => {
-  res.sendFile(__dirname + '/dist/index.html');
+app.get("/dashboard", (req, res) => {
+  res.sendFile(__dirname + "/dist/index.html");
 });
 
 // Any requests that reach this far can be proxied to daas server
@@ -134,7 +135,7 @@ if (process.env.PROXY_DDE_REQUESTS && process.env.PROXY_DDE_REQUESTS == "true") 
 }
 
 
-var port = process.env.PORT || 3000
+var port = process.env.PORT || 3000;
 app.listen(port, function() {
-    console.log("To view your app, open this link in your browser: http://localhost:" + port);
+  console.log("To view your app, open this link in your browser: http://localhost:" + port);
 });
