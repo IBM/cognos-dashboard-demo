@@ -3,10 +3,10 @@
 This repo shows a Angular 5.0.0 + Node.js app that demos the IBM Cloud DDE service.
 
 ## Architecture (Create and Save new dashboard)
-![](doc/source/images/generic dde msc - Create and Save new dashboard.png)
+![](doc/source/images/dde-create-save-architecture.png)
 
 ## Architecture (Open existing dashboard)
-![](doc/source/images/generic dde msc - Open existing dashboard.png)
+![](doc/source/images/dde-open-architecture.png)
 
  In order to deploy to IBM Cloud, you'll need an [IBM Cloud account](https://console.stage1.ng.bluemix.net/registration/). Once registered, you can automatically deploy the app using the following deploy to IBM Cloud button.
 
