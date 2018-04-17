@@ -1,5 +1,5 @@
 ---
 applications:
-  - name: dynamic-dashboard-demo
+  - name: dde-angnode-app
     random-route: true
     memory: 256M
