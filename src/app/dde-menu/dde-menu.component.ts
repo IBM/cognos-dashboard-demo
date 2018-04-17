@@ -22,7 +22,6 @@ export class DdeMenuComponent implements OnInit {
   nextStep: CodeSnippetEnum;
   currentSelection: CodeSnippetEnum;
   menu_resx = menu_resource;
-  enumType = CodeSnippetEnum;
 
   public client_id : string;
   public client_secret: string;
@@ -37,7 +36,10 @@ export class DdeMenuComponent implements OnInit {
 
   ngOnInit() {
     this.nextStep = CodeSnippetEnum.CreateSession;
-    this.getCodeSnippet(CodeSnippetEnum.None);
+    this.displayDefaultState();
+  }
+
+  ngAfterContentInit() {
   }
 
   nextStepToProcess() {
@@ -48,8 +50,109 @@ export class DdeMenuComponent implements OnInit {
     this.collapsed = !this.collapsed;
   }
 
-  getCodeSnippet(codeSnippetEnum) {
-    this.currentSelection = codeSnippetEnum;
+  getDDECred() {
+    console.log("in get dde creds");
+
+    this.http.get('/api/dde/credentials').subscribe(
+            data => {
+              console.log("in dde-session getcred");
+              this.client_id = data.json().client_id;
+              this.client_secret = "****";
+              console.log(data.json());
+            }
+    );
+  }
+
+  // TODO: refactor, take in CodeSnippetEnum value and make these methods generic when firing the codeToRun event
+
+  displayDefaultState() {
+    this.currentSelection = CodeSnippetEnum.None;
     this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
   }
+
+  displayNewSessionCode() {
+    this.currentSelection = CodeSnippetEnum.CreateSession;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  displayInitApiFrameworkCode() {
+    this.currentSelection = CodeSnippetEnum.CreateAPIFramework;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  displayCreateDashboardCode() {
+    this.currentSelection = CodeSnippetEnum.CreateDashboard;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  displayOpenDashboardCode() {
+    this.currentSelection = CodeSnippetEnum.OpenDashboard;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  addSourcesToDashboard() {
+    this.currentSelection = CodeSnippetEnum.AddCSVSource;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  setDashboardEditMode() {
+    this.currentSelection = CodeSnippetEnum.DashboardEditMode;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  undoLastAction() {
+    this.currentSelection = CodeSnippetEnum.UndoLastAction;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  redoLastAction() {
+    this.currentSelection = CodeSnippetEnum.RedoLastAction;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  togglePropertiesPane() {
+    this.currentSelection = CodeSnippetEnum.TogglePropertiesPane;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  getDashboardSpec() {
+    this.currentSelection = CodeSnippetEnum.GetDashboardSpec;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  updateModuleDefinitions() {
+    this.currentSelection = CodeSnippetEnum.UpdateModuleDefinitions;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  clearDirtyState() {
+    this.currentSelection = CodeSnippetEnum.ClearDirtyState;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  registerCallback() {
+    this.currentSelection = CodeSnippetEnum.RegisterCallback;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  unregisterCallback() {
+    this.currentSelection = CodeSnippetEnum.UnregisterCallback;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  registerApiCallback() {
+    this.currentSelection = CodeSnippetEnum.RegisterApiCallback;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  unregisterApiCallback() {
+    this.currentSelection = CodeSnippetEnum.UnregisterApiCallback;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
+  closeApiFramework() {
+    this.currentSelection = CodeSnippetEnum.CloseApiFramework;
+    this.codeToRun.emit(this.codeSnippetsRepoService.getSnippet(this.currentSelection));
+  }
+
 }

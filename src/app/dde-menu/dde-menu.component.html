@@ -8,29 +8,29 @@
            <div class="row">
              <ul class="navbar-nav mr-auto">
                <li>
-                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.CreateSession}" (click)='getCodeSnippet(enumType.CreateSession)'>
-                   <svg-icon class="faa-horizontal animated" src="../assets/images/forward_16.svg" *ngIf="nextStepToProcess() === enumType.CreateSession"></svg-icon>
+                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateSession'}" (click)='displayNewSessionCode()'>
+                   <svg-icon class="faa-horizontal animated" src="../assets/images/forward_16.svg" *ngIf="nextStepToProcess() === 'CreateSession'"></svg-icon>
                      <span>{{menu_resx.createSession}}</span>
                    <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                       tooltip={{menu_resx.sessionTooltip}}></svg-icon>
                  </button>
-                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.CreateAPIFramework}" href="#" (click)='getCodeSnippet(enumType.CreateAPIFramework)'>
-                   <svg-icon class="faa-horizontal animated" src="../assets/images/forward_16.svg" *ngIf="nextStepToProcess() === enumType.CreateAPIFramework"></svg-icon>
+                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateAPIFramework'}" href="#" (click)='displayInitApiFrameworkCode()'>
+                   <svg-icon class="faa-horizontal animated" src="../assets/images/forward_16.svg" *ngIf="nextStepToProcess() === 'CreateAPIFramework'"></svg-icon>
                       <span>{{menu_resx.initAPI}}</span>
                    <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                       tooltip={{menu_resx.initAPITooltip}}></svg-icon>
                  </button>
-                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.RegisterApiCallback}" href="#" (click)='getCodeSnippet(enumType.RegisterApiCallback)'>
+                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'RegisterApiCallback'}" href="#" (click)='registerApiCallback()'>
                    <span>{{menu_resx.registerAPI}}</span>
                    <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                       tooltip={{menu_resx.registerAPITooltip}}></svg-icon>
                  </button>
-                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.UnregisterApiCallback}" href="#" (click)='getCodeSnippet(enumType.UnregisterApiCallback)'>
+                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UnregisterApiCallback'}" href="#" (click)='unregisterApiCallback()'>
                    <span>{{menu_resx.unregisterAPI}}</span>
                    <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                       tooltip={{menu_resx.unregisterAPITooltip}}></svg-icon>
                  </button>
-                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.CloseApiFramework}" href="#" (click)='getCodeSnippet(enumType.CloseApiFramework)'>
+                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CloseApiFramework'}" href="#" (click)='closeApiFramework()'>
                    <span>{{menu_resx.closeAPI}}</span>
                  </button>
                </li>
@@ -48,13 +48,13 @@
            <div class="row">
              <ul class="navbar-nav mr-auto">
                <li>
-                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.OpenDashboard}" href="#" (click)='getCodeSnippet(enumType.OpenDashboard)'>
-                   <svg-icon class="faa-horizontal animated" src="../assets/images/forward_16.svg" *ngIf="nextStepToProcess() === enumType.CreateDashboard"></svg-icon>
+                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'OpenDashboard'}" href="#" (click)='displayOpenDashboardCode()'>
+                   <svg-icon class="faa-horizontal animated" src="../assets/images/forward_16.svg" *ngIf="nextStepToProcess() === 'CreateDashboard'"></svg-icon>
                     <span>{{menu_resx.openDashboard}}</span>
                    <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                       tooltip={{menu_resx.openDashboardTooltip}}></svg-icon>
                  </button>
-                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.CreateDashboard}" href="#" (click)='getCodeSnippet(enumType.CreateDashboard)'>
+                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'CreateDashboard'}" href="#" (click)='displayCreateDashboardCode()'>
                    <span>{{menu_resx.createDashboard}}</span>
                    <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                       tooltip={{menu_resx.createDashboardTooltip}}></svg-icon>
@@ -73,23 +73,23 @@
         <div class="row">
           <ul class="navbar-nav">
             <li>
-              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.AddCSVSource}" href="#" (click)='getCodeSnippet(enumType.AddCSVSource)'>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'AddCSVSource'}" href="#" (click)='addSourcesToDashboard()'>
                 <span>{{menu_resx.addSource}}</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip={{menu_resx.addSourceTooltip}}></svg-icon>
               </button>
-              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.DashboardEditMode}" href="#" (click)='getCodeSnippet(enumType.DashboardEditMode)'>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'DashboardEditMode'}" href="#" (click)='setDashboardEditMode()'>
                 <span>{{menu_resx.setMode}}</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip={{menu_resx.setModeTooltip}}></svg-icon>
               </button>
-              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.UndoLastAction}" href="#" (click)='getCodeSnippet(enumType.UndoLastAction)'>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UndoLastAction'}" href="#" (click)='undoLastAction()'>
                 <span>{{menu_resx.undoLastChange}}</span>
               </button>
-              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.RedoLastAction}" href="#" (click)='getCodeSnippet(enumType.RedoLastAction)'>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'RedoLastAction'}" href="#" (click)='redoLastAction()'>
                 <span>{{menu_resx.redoLastChange}}</span>
               </button>
-              <button  class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.TogglePropertiesPane}" href="#" (click)='getCodeSnippet(enumType.TogglePropertiesPane)'>
+              <button  class="nav-link" [ngClass]="{'current-selection': currentSelection === 'TogglePropertiesPane'}" href="#" (click)='togglePropertiesPane()'>
                 <span>{{menu_resx.toggleProperties}}</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip={{menu_resx.toggleTooltip}}></svg-icon>
@@ -108,27 +108,27 @@
         <div class="row">
           <ul class="navbar-nav">
             <li>
-              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.GetDashboardSpec}" href="#" (click)='getCodeSnippet(enumType.GetDashboardSpec)'>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'GetDashboardSpec'}" href="#" (click)='getDashboardSpec()'>
                 <span>{{menu_resx.getDashboardSpecs}}</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip={{menu_resx.getDashboardSpecTooltip}}></svg-icon>
               </button>
-              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.ClearDirtyState}" href="#" (click)='getCodeSnippet(enumType.ClearDirtyState)'>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'ClearDirtyState'}" href="#" (click)='clearDirtyState()'>
                 <span>{{menu_resx.clearDirtyState}}</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip={{menu_resx.clearDirtyTooltip}}></svg-icon>
               </button>
-              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.UpdateModuleDefinitions}" href="#" (click)='getCodeSnippet(enumType.UpdateModuleDefinitions)'>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UpdateModuleDefinitions'}" href="#" (click)='updateModuleDefinitions()'>
                 <span>{{menu_resx.updateDataDefinition}}</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip={{menu_resx.updateDataDefinitionTooltip}}></svg-icon>
               </button>
-              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.RegisterCallback}" href="#" (click)='getCodeSnippet(enumType.RegisterCallback)'>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'RegisterCallback'}" href="#" (click)='registerCallback()'>
                 <span>{{menu_resx.registerDashboard}}</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip={{menu_resx.registerDashboardTooltip}}></svg-icon>
               </button>
-              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.UnregisterCallback}" href="#" (click)='getCodeSnippet(enumType.UnregisterCallback)'>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === 'UnregisterCallback'}" href="#" (click)='unregisterCallback()'>
                 <span>{{menu_resx.unregisterDashboard}}</span>
                 <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
                    tooltip={{menu_resx.unregisterDashboardTooltip}}></svg-icon>
