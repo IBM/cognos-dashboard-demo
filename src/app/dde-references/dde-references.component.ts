@@ -17,26 +17,5 @@ export class DdeReferencesComponent implements OnInit {
 
   showVideo(event) {
     this.isShowVideo.emit(true);
-    // this.analyticsService.sendTrack((<any>resources).documents.video, event.currentTarget.href);
-  }
-
-  createInstance(event) {
-    // this.analyticsService.sendTrack((<any>resources).documents.createInstance, event.currentTarget.href);
-  }
-
-  getDoc(event) {
-    // this.analyticsService.sendTrack((<any>resources).documents.gettingStartedDocs, event.currentTarget.href);
-  }
-
-  joinDevWorks(event) {
-    // this.analyticsService.sendTrack((<any>resources).documents.devworks, event.currentTarget.href);
-  }
-
-  viewGitHub(event) {
-    // this.analyticsService.sendTrack((<any>resources).documents.github, event.currentTarget.href);
-  }
-
-  termsOfUse(event) {
-    // this.analyticsService.sendTrack((<any>resources).documents.termsOfUse, event.currentTarget.href);
   }
 }
