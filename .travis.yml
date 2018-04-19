@@ -24,16 +24,16 @@ before_script:
   - bash "./tests/test-tslint.sh"
 
 script:
-  - envsub --env SEGMENT_KEY=$SEGMENT_KEY ./src/environments/environment.ts
+  - envsub --env SEGMENT_KEY=$SEGMENT_KEY_PROD ./src/environments/environment.prod.ts
   - ng build --env=prod
 
 deploy:
   provider: cloudfoundry
-  api: https://api.stage1.ng.bluemix.net
-  username: $BLUEMIX_USER
-  password: $BLUEMIX_PASS
-  organization: $BLUEMIX_ORGANIZATION
-  space: $BLUEMIX_SPACE
+  api: https://api.ng.bluemix.net
+  username: $BLUEMIX_USER_PROD
+  password: $BLUEMIX_PASS_PROD
+  organization: $BLUEMIX_ORGANIZATION_PROD
+  space: $BLUEMIX_SPACE_PROD
   "on":
     repo: GearBox/Dynamic-dashboard-demo
-    branch: master
+    branch: production
