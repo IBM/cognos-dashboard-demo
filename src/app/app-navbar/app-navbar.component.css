@@ -1,0 +1,15 @@
+header {
+  height: 48px;
+}
+
+.navbar-brand {
+  padding-left: 1em;
+}
+
+.navbar {
+  text-transform: none;
+}
+
+.navbar-logo{
+  width: 3em;
+}

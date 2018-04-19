@@ -1,0 +1,64 @@
+<header>
+  <app-navbar></app-navbar>
+</header>
+
+<dde-dialog>
+</dde-dialog>
+
+<div class="container-fluid">
+  <div class="row">
+      <div class="explorer-bar" [ngClass]="explorerBarColSize"  role="region" aria-label="header buttons">
+          <button (click)=showPanels() [ngClass]="buttonState" class="button enabled float-left">
+            <svg-icon class="show-hide-icon" src="../assets/images/hide-sidepane.svg"></svg-icon>
+            {{showHideText}}
+          </button>
+        <button [ngClass]="onDisableRunButton()" [attr.aria-disabled]="isRunButtonDisabledAria()" class="button float-right" (click)="runCode()" aria-label="Run">
+          <svg-icon src="../assets/images/play_16.svg"></svg-icon>
+            Run
+        </button>
+
+        <button id="copyButton" class="button copy-button float-right" [attr.aria-disabled]="isCopyButtonDisabledAria()" [ngClass]="onDisableCopyButton()">
+          <svg-icon src="../assets/images/copy_16.svg"></svg-icon>
+            <span>Copy</span>
+        </button>
+      </div>
+
+      <dde-dashboard-bar [ngClass]="dashboardBarColSize" [disableButtons]="disableDashboardBarButtons"></dde-dashboard-bar>
+    </div>
+
+    <div class="row">
+      <div [ngClass]="showHideClass" class="side-panels col-md-6">
+        <div class="row">
+          <div class="col-md-6 nav-bar navbar-expand-lg navbar-light bg-light">
+              <dde-menu (codeToRun)="getCodeSnippet($event)"></dde-menu>
+              <dde-references (isShowVideo)=showVideo()></dde-references>
+          </div>
+
+          <div class="col-md-6 bg-light">
+            <dde-code-explorer [codeSnippet]="code_snippet" (session)="sessionInfo($event)" (apiId)="getAPIId($event)"
+              (dashboardApi)="getDashboardApi($event)" (response)=responseMessage($event)>
+            </dde-code-explorer>
+          </div>
+        </div>
+      </div>
+
+      <div [ngClass]="dashboardColSize" class="bg-light">
+         <dde-toaster class="toaster"></dde-toaster>
+         <div class="iframeContainer" id="ddeDashboard">
+           <div class="grid-container">
+             <div class="grid-item">
+               <img class="steps-icons" src="../assets/images/dashboard_empty_state.svg" alt="Dashboard empty state"/>
+               <div class="empty-state-text">
+                 Missing: Dashboard
+               </div>
+               <div class="steps-copy">
+                 Follow the <svg-icon src="../assets/images/forward_16.svg"></svg-icon> arrow to view a pre-configured dashboard.
+
+                 Then explore the dashboard using the interaction and support APIs.
+               </div>
+             </div>
+           </div>
+         </div>
+      </div>
+    </div>
+</div>

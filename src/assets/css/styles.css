@@ -1,0 +1,280 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+/* https://bootswatch.com/simplex/ */
+/*@import "https://bootswatch.com/4/simplex/bootstrap.css";*/
+
+/* https://bootswatch.com/cosmo/ */
+/*@import "https://bootswatch.com/4/cosmo/bootstrap.css";*/
+
+/* https://bootswatch.com/cerulean/ */
+/* @import "https://bootswatch.com/4/cerulean/bootstrap.css"; */
+
+/* https://bootswatch.com/lux/ */
+@import "https://bootswatch.com/4/lux/bootstrap.css";
+
+@font-face {
+ font-family: "Helv Neue Bold";
+ src: url('/assets/fonts/HelvNeueBoldforIBM.otf'),
+      url('/assets/fonts/HelvNeueBoldforIBM.ttf');
+}
+
+@font-face {
+ font-family: "Helv Neue Roman";
+ src: url('/assets/fonts/HelvNeueRomanforIBM.otf'),
+      url('/assets/fonts/HelvNeueRomanforIBM.ttf');
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: "Helv Neue Bold", Arial, sans-serif;
+ }
+
+a,
+a:hover {
+  padding: 0.5rem 1rem;
+  display: block;
+  color: #1f57a4;
+}
+
+a, span, div .button {
+ font-family: "Helv Neue Roman", Arial, sans-serif;
+}
+
+label {
+ color: #000;
+}
+
+input {
+  width: 95%;
+  background-color: #eaeaea;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid #000;
+  padding: 5px 5px 5px 5px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+select {
+  display: block;
+}
+
+button:focus, video:focus, input:focus, a:focus, .dashboard-button:focus{
+  outline: 2px auto #95c4f3;
+}
+
+.explorer-bar button:focus, .dashboard-button:focus{
+  outline-offset: -3px;
+}
+
+/* remove default container paddings */
+.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* remove default row margins */
+.container-fluid .row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+/* accordion headers*/
+.ngxAccordionCustomContainer .navbar-brand {
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+/* accordian content*/
+.ngxAccordionCustomContainer .nav-link {
+    font-size: 0.8rem;
+}
+
+/* border radio to remove rounded corners for accordion card */
+.ngxAccordionCustomContainer .card {
+  border-radius: 0rem;
+
+}
+
+/* remove borders for accordion card header  */
+.ngxAccordionCustomContainer .card-header {
+    border-bottom: 0px;
+}
+
+.col-md-1,
+.col-md-3,
+.col-md-5,
+.col-md-6,
+.col-md-11,
+.col-md-12 {
+  padding: 0;
+}
+
+.panel-open .panel .navbar-brand:after {
+    content: url(/assets/images/chevron-up_16.svg);
+    float: right;
+    /* position: absolute;
+    right: 6%; */
+}
+
+.bg-dark {
+  background-color: #343334 !important;
+}
+
+.panel .navbar-brand:after {
+  content: url(/assets/images/chevron-down_16.svg);
+  float: right;
+  /* position: absolute;
+  right: 6%;*/
+}
+
+.fa {
+  cursor: pointer;
+}
+
+.nav-link {
+  color: #000 !important;
+}
+
+.nav-link:hover {
+  color: #c0bfc0 !important;
+}
+
+.card-header {
+  cursor: pointer;
+}
+
+ul, li {
+  width: 100%;
+}
+
+svg {
+  vertical-align: middle;
+  margin-top: -0.2em;
+  fill: #595859;
+}
+
+.link-image {
+  width: 15px;
+  float: right;
+  fill: #1f57a4;
+}
+
+.tooltip-inner {
+  background-color: #343334;
+  padding: 0.66em;
+  font-family: "Helv Neue Bold", Arial, sans-serif;
+}
+
+.tooltip-arrow:before,
+.tooltip-arrow {
+  border-left-color: #343334 !important;
+  border-right-color: #343334 !important;
+}
+
+.button {
+  color: #343334;
+  padding-left: 8px;
+  padding-right: 10px;
+  padding-top: 5px;
+  height: 100%;
+  border: 0;
+  background: transparent;
+}
+
+.button-selected {
+  background-color: #595859;
+  color: #d8d8d8;
+}
+
+.button-selected svg {
+  fill: #fff;
+}
+
+.enabled:hover svg path,
+.enabled:hover {
+  fill: #1f57a4;
+  color: #1f57a4;
+}
+
+.success-image svg {
+  fill: #00aa5e;
+}
+
+.error-image svg {
+  fill: #e62325;
+}
+
+.warning-image svg {
+  fill: #fe8500 !important;
+}
+
+.disabled {
+  opacity: .3;
+  pointer-events: none;
+  cursor: none;
+  color: #595859;
+}
+
+.enabled {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.iframeContainer {
+  height: 900px; /* temp solution */  /*height: 95%;*/
+  display: flex;
+  flex-direction: column;
+}
+
+.iframeContainer pre {
+  display: flex;
+  font-size: medium;
+  white-space: pre-wrap;
+}
+
+.iframe {
+  flex-grow: 1;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card-body {
+  padding: 0 !important;
+  background-color: #fff;
+}
+
+.card-header {
+  background-color: #fff;
+  border: 1px solid #eaeaea !important;
+}
+
+.card {
+  border: none;
+}
+
+.close-image {
+  float: right;
+  cursor: pointer;
+}
+
+.close-image:hover {
+  fill: #a6a5a6;
+}
+
+.faa-horizontal svg {
+  margin-left: -2em;
+}
+
+@media (max-width: 1440px) {
+  .iframeContainer {
+    height: 700px;
+  }
+}

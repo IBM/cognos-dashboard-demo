@@ -1,0 +1,208 @@
+<pre *ngIf="type === 'None'">
+  <div class='none-state'>
+    <img class="steps-icons" alt="Empty code snippet" src="../assets/images/table_128.svg"/>
+
+      <div class="code-panel title no-code-text">Missing: API code</div>
+      <span class="no-code-text">Select an API and the code will appear here.</span>
+      <span class="no-code-text">You can Run or Copy the code.</span>
+
+  </div>
+</pre>
+
+<pre *ngIf="type === 'CreateSession'" class="line-numbers">
+  <code class="language-javascript">
+    const response = await
+        this.http.post('/api/dde/session',
+          options).toPromise();
+
+      const data = response.json();
+      this.session.code = data.sessionCode;
+      this.session.id = data.sessionId;
+      this.session.keys = data.keys.map(
+        k => new SessionKey(k));
+  </code>
+</pre>
+
+<pre *ngIf="type === 'CreateAPIFramework'"  class="line-numbers">
+  <code class="language-javascript">
+    this.api = new CognosApi({{ '{' }}
+      cognosRootURL: '{{ cognos_url }}',
+      sessionCode: this.session.code,
+      initTimeout: 10000,
+      node: document.getElementById(
+        'ddeDashboard')
+    });
+
+    await this.api.initialize();
+  </code>
+</pre>
+
+<pre *ngIf="type === 'CreateDashboard'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI =
+      await this.api.dashboard.createNew();
+  </code>
+</pre>
+
+<pre *ngIf="type === 'OpenDashboard'"  class="line-numbers">
+  <code class="language-javascript">
+    await this.getDashboardSampleSpec();
+    this.dashboardAPI = await
+      this.api.dashboard.openDashboard({{ '{' }}
+        dashboardSpec: this.sample_db_spec
+    });
+  </code>
+</pre>
+
+<pre *ngIf="type === 'AddCSVSource'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.addSources([{{ '{' }}
+      module: sampleModule,
+      name: 'Sample CSV Source',
+      id: 'myUniqueId789'
+    }]);
+  </code>
+</pre>
+
+<pre *ngIf="type === 'AddProtectedCSVSource'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.addSources([{{ '{' }}
+      module: encryptedSampleModule,
+      name: 'Sample Protected CSV Source',
+      id: 'myUniqueId987'
+    }]);
+  </code>
+</pre>
+
+<pre *ngIf="type === 'AddBikeShareWeatherCSVSource'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.addSources([{{ '{' }}
+      module: sampleBikeShareWeatherModule,
+      name: 'Test Bike Share Weather Source',
+      id: 'myUniqueId111'
+    }]);
+  </code>
+</pre>
+
+<pre *ngIf="type === 'AddBikeShareRidesDemographCSVSource'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.addSources([{{ '{' }}
+      module: sampleBikeShareRidesDemographModule,
+      name: 'Test Bike Share Rides Demographics Source',
+      id: 'myUniqueId222'
+    }]);
+  </code>
+</pre>
+
+<pre *ngIf="type === 'DashboardEditMode'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.setMode(
+      this.dashboardAPI.MODES.EDIT);
+  </code>
+</pre>
+
+<pre *ngIf="type === 'DashboardViewMode'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.setMode(
+      this.dashboardAPI.MODES.VIEW);
+  </code>
+</pre>
+
+<pre *ngIf="type === 'DashboardEditGroupMode'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.setMode(
+      this.dashboardAPI.MODES.EDIT_GROUP);
+  </code>
+</pre>
+
+<pre *ngIf="type === 'UndoLastAction'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.undo();
+  </code>
+</pre>
+
+<pre *ngIf="type === 'RedoLastAction'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.redo();
+  </code>
+</pre>
+
+<pre *ngIf="type === 'GetDashboardSpec'"  class="line-numbers">
+  <code class="language-javascript">
+    const spec = await
+      this.dashboardAPI.getSpec();
+    console.log(JSON.stringify(spec));
+  </code>
+</pre>
+
+<pre *ngIf="type === 'UpdateModuleDefinitions'"  class="line-numbers">
+  <code class="language-javascript">
+    await this.getDashboardSampleSpec();
+    var dbSpec = JSON.parse(JSON.stringify(this.sample_db_spec));
+
+    var getNewModulesCallback = function(ids) {{ '{' }}
+      var newModules = [];
+      ids.forEach(function(id) {{ '{' }}
+        newModules.push({{ '{' }}
+          id: id,
+          module: {{ '{' }}
+            newModuleDefinition: true
+          },
+          name: 'newModuleName',
+        });
+      });
+      return Promise.resolve(newModules);
+    };
+
+    // log the before
+    console.log("before update:");
+    console.log(dbSpec.dataSources.sources);
+
+    // log the after
+    console.log("after update:");
+    const newDBSpec = await this.api.updateModuleDefinitions(dbSpec, getNewModulesCallback);
+    console.log(newDBSpec.dataSources.sources);
+  </code>
+</pre>
+
+<pre *ngIf="type === 'ClearDirtyState'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.clearDirty();
+  </code>
+</pre>
+
+<pre *ngIf="type === 'TogglePropertiesPane'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.toggleProperties();
+  </code>
+</pre>
+
+<pre *ngIf="type === 'RegisterCallback'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.on(this.dashboardAPI.EVENTS.DIRTY, this.onModified);
+  </code>
+</pre>
+
+<pre *ngIf="type === 'UnregisterCallback'"  class="line-numbers">
+  <code class="language-javascript">
+    this.dashboardAPI.off(this.dashboardAPI.EVENTS.DIRTY, this.onModified);
+  </code>
+</pre>
+
+<pre *ngIf="type === 'RegisterApiCallback'"  class="line-numbers">
+  <code class="language-javascript">
+    this.api.on(CognosApi.EVENTS.REQUEST_ERROR, this.onError);
+  </code>
+</pre>
+
+<pre *ngIf="type === 'UnregisterApiCallback'"  class="line-numbers">
+  <code class="language-javascript">
+    this.api.off(CognosApi.EVENTS.REQUEST_ERROR, this.onError);
+  </code>
+</pre>
+
+<pre *ngIf="type === 'CloseApiFramework'"  class="line-numbers">
+  <code class="language-javascript">
+    await this.api.close();
+  </code>
+</pre>

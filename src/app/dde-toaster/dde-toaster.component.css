@@ -1,0 +1,14 @@
+.toaster {
+  background-color: #fff;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0,0,0,.7);
+  width: 600px;
+  padding: 10px 10px 10px 10px;
+  text-align: center;
+  margin-left: 100px;
+}
+
+.toaster-message {
+  padding-left: 10px;
+  color: #000;
+}

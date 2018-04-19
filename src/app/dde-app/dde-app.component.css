@@ -1,0 +1,107 @@
+.row {
+  height: 100%;
+}
+
+.grid-container {
+  display: grid;
+  text-align: center;
+  margin-top: 8em;
+}
+
+.grid-item {
+  padding: 10px;
+}
+
+.steps-icons {
+  width: 15em;
+}
+
+.empty-state-text{
+    margin-top: 28px;
+}
+
+.steps-copy {
+  font-family: "Helv Neue Roman", Arial, sans-serif;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: inline-block;
+}
+
+dde-toaster {
+  position: absolute;
+}
+
+.copy-button {
+  /* width: 95px; */
+}
+
+.explorer-bar {
+  background-color: #eaeaea;
+  height: 40px;
+  color: #343334;
+  border-right:2px solid #000;
+}
+
+.explorer-bar-max {
+  width: 50%;
+}
+
+.explorer-bar-min {
+  width: 9.1%;
+}
+
+.dashboard-bar-max {
+  width: 90.9%;
+}
+
+.dashboard-bar-min {
+  width: 50%;
+}
+
+.fa-columns {
+  font-size: 20px;
+  margin-top: 0.3em;
+  margin-left: 0.3em;
+  color: #000;
+}
+
+.fa-columns:hover {
+  color: #fff;
+}
+
+.side-panels {
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.side-panels-show {
+  width: 50%;
+}
+
+.side-panels-hide {
+  width: 0;
+}
+
+.dashboard-min {
+  transition: margin-left .5s;
+  margin-left: 50%;
+}
+
+.dashboard-max {
+  transition: margin-left .5s;
+  margin-left: 0;
+}
+
+@media (max-width: 1200px) {
+  .col-md-3 {
+    min-width: 320px;
+  }
+}

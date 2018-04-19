@@ -1,0 +1,19 @@
+<header>
+  <app-navbar></app-navbar>
+</header>
+
+<dde-dialog>
+</dde-dialog>
+
+<div class="container-fluid">
+  <div class="row">
+    <dde-dashboard-bar class="col-md-12" [disableButtons]="disableDashboardBarButtons"></dde-dashboard-bar>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+       <dde-toaster class="toaster"></dde-toaster>
+       <div class="iframeContainer" id="ddeDashboard">
+       </div>
+    </div>
+  </div>
+</div>

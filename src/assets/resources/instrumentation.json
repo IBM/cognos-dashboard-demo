@@ -1,0 +1,125 @@
+{
+  "actions": {
+    "createdSession": {
+      "name": "createdSession",
+      "message": "Session created successfully. Next, create and initialize the API framework.",
+      "processType": "API Framework"
+    },
+    "initializedSession": {
+      "name": "initializedSession",
+      "message": "API created successfully. You can now create or open a dashboard.",
+      "processType": "API Framework"
+    },
+    "registeredApiCallback": {
+      "name": "registeredApiCallback",
+      "message": "API Callback registered successfully. See console for details.",
+      "processType": "API Framework"
+    },
+    "unregisteredApiCallback": {
+      "name": "unregisteredApiCallback",
+      "message": "API Callback unregistered successfully. See console for details.",
+      "processType": "API Framework"
+    },
+    "closedAPIFramework": {
+      "name": "closedAPIFramework",
+      "message": "API Framework closed successfully. See console for details.",
+      "processType": "API Framework"
+    },
+    "opened": {
+      "name": "openedDashboard",
+      "message": "Successfully opened a dashboard.",
+      "processType": "Dashboard Factory"
+    },
+    "createdNew": {
+      "name": "createdNewDashboard",
+      "message": "Successfully created a new dashboard.",
+      "processType": "Dashboard Factory"
+    },
+    "addSource": {
+      "name": "addSource",
+      "message": "Successfully added a source",
+      "processType": "Dashboard API"
+    },
+    "editMode": {
+      "name": "editMode",
+      "message": "Successfully changed modes",
+      "processType": "Dashboard API"
+    },
+    "viewMode": {
+      "name": "viewMode",
+      "message": "Successfully changed modes",
+      "processType": "Dashboard API"
+    },
+    "groupEditMode": {
+      "name": "groupEditMode",
+      "message": "Successfully changed modes",
+      "processType": "Dashboard API"
+    },
+    "undo": {
+      "name": "undo",
+      "message": "Successfully called undo",
+      "processType": "Dashboard API"
+    },
+    "redo": {
+      "name": "redo",
+      "message": "Successfully called redo",
+      "processType": "Dashboard API"
+    },
+    "toggleProperties": {
+      "name": "Toggle Properties",
+      "message": "Successfully toggled properties pane",
+      "processType": "Dashboard API"
+    },
+    "getSpecs": {
+      "name": "gotDashboardSpecs",
+      "message": "Dashboard spec retrieved successfully. See console for details.",
+      "processType": "Support API"
+    },
+    "clearDirtyState": {
+      "name": "clearedDirtyState",
+      "message": "Dirty State cleared successfully. See console for details.",
+      "processType": "Support API"
+    },
+    "updateDataDefinition":{
+      "name": "updatedDataSourceDefinitions",
+      "message": "Module Definitions updated successfully. See console for details.",
+      "processType": "Support API"
+    },
+    "registerDashboardCallback": {
+      "name": "registerDashboardCallback",
+      "message": "Dashboard callback registered successfully. See console for details.",
+      "processType": "Support API"
+    },
+    "unregisterDashboardCallback": {
+      "name": "unregisterDashboardCallback",
+      "message": "Dashboard callback unregistered successfully. See console for details.",
+      "processType": "Support API"
+    },
+    "clickedHelpResource": {
+      "name": "clickedHelpResource",
+      "message": "Successfully clicked a help resource link",
+      "processType": "Documentation"
+    }
+  },
+  "documents": {
+    "createInstance": "Create Your Own Instance",
+    "gettingStartedDocs": "Getting Started Docs",
+    "video": "Overview Video",
+    "devworks": "DevWorks Community",
+    "github": "Github Demo",
+    "termsOfUse": "Terms of Use",
+    "workWithDatasource": "Work with Your Own Datasource",
+    "creatingValidSession": "Creating a valid session"
+  },
+  "errorMessage": "An error has occured. Please check the console log for more details.",
+  "invalidCodeSnippet": "Invalid code snippet selection",
+  "runButton": "Run Button",
+  "actionButton": "Action Button",
+  "devPageName": "DDE Dev Experience",
+  "endUserPageName": "DDE End-User Experience",
+  "categoryValue": "Offering Interface",
+  "productTitle": "Dynamic Dashboard Embedded",
+  "ranProcessTrack": "Ran Process",
+  "videoPlaybackCompleted": "Video Playback Completed",
+  "videoPlaybackStarted": "Video Playback Started"
+}

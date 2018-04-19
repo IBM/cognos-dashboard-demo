@@ -1,0 +1,31 @@
+pre[class*="language-"] {
+  border-radius: 0;
+  margin: 0;
+}
+
+pre {
+    width: 100%;
+    height: 100%;
+    background: #343334;
+    margin-bottom: 0;
+}
+
+.none-state {
+  color: #fff;
+  margin-top: 9.5em;
+  text-align: center;
+  font-family: "Helv Neue Roman", Arial, sans-serif;
+}
+
+.title {
+  font-family: "Helv Neue Bold", Arial, sans-serif;
+}
+
+.code-panel.title{
+  margin-top: -14px;
+  margin-bottom: -20px;
+}
+
+.no-code-text{
+  font-size: 1rem;
+}

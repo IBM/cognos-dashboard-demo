@@ -1,0 +1,142 @@
+<div class="ngxAccordionCustomContainer list-group text-md-left" role="region" aria-label="API list">
+  <accordion [closeOthers]=true class="ngxAccordionCustom">
+    <accordion-group [isOpen]="isFirstOpen" panelClass="bg-light">
+      <button accordion-heading class="navbar-brand" [attr.tabindex]="0">
+        {{menu_resx.setUpAPI}}
+      </button>
+      <div class="col-md-12">
+           <div class="row">
+             <ul class="navbar-nav mr-auto">
+               <li>
+                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.CreateSession}" (click)='getCodeSnippet(enumType.CreateSession)'>
+                   <svg-icon class="faa-horizontal animated" src="../assets/images/forward_16.svg" *ngIf="nextStepToProcess() === enumType.CreateSession"></svg-icon>
+                     <span>{{menu_resx.createSession}}</span>
+                   <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
+                      tooltip={{menu_resx.sessionTooltip}}></svg-icon>
+                 </button>
+                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.CreateAPIFramework}" href="#" (click)='getCodeSnippet(enumType.CreateAPIFramework)'>
+                   <svg-icon class="faa-horizontal animated" src="../assets/images/forward_16.svg" *ngIf="nextStepToProcess() === enumType.CreateAPIFramework"></svg-icon>
+                      <span>{{menu_resx.initAPI}}</span>
+                   <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
+                      tooltip={{menu_resx.initAPITooltip}}></svg-icon>
+                 </button>
+                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.RegisterApiCallback}" href="#" (click)='getCodeSnippet(enumType.RegisterApiCallback)'>
+                   <span>{{menu_resx.registerAPI}}</span>
+                   <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
+                      tooltip={{menu_resx.registerAPITooltip}}></svg-icon>
+                 </button>
+                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.UnregisterApiCallback}" href="#" (click)='getCodeSnippet(enumType.UnregisterApiCallback)'>
+                   <span>{{menu_resx.unregisterAPI}}</span>
+                   <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
+                      tooltip={{menu_resx.unregisterAPITooltip}}></svg-icon>
+                 </button>
+                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.CloseApiFramework}" href="#" (click)='getCodeSnippet(enumType.CloseApiFramework)'>
+                   <span>{{menu_resx.closeAPI}}</span>
+                 </button>
+               </li>
+             </ul>
+           </div>
+      </div>
+    </accordion-group>
+
+    <accordion-group [isOpen]="nextStepToProcess() === 'CreateDashboard'" panelClass="bg-light">
+      <button accordion-heading class="navbar-brand">
+        {{menu_resx.openCreateDashbaord}}
+      </button>
+
+      <div class="col-md-12">
+           <div class="row">
+             <ul class="navbar-nav mr-auto">
+               <li>
+                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.OpenDashboard}" href="#" (click)='getCodeSnippet(enumType.OpenDashboard)'>
+                   <svg-icon class="faa-horizontal animated" src="../assets/images/forward_16.svg" *ngIf="nextStepToProcess() === enumType.CreateDashboard"></svg-icon>
+                    <span>{{menu_resx.openDashboard}}</span>
+                   <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
+                      tooltip={{menu_resx.openDashboardTooltip}}></svg-icon>
+                 </button>
+                 <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.CreateDashboard}" href="#" (click)='getCodeSnippet(enumType.CreateDashboard)'>
+                   <span>{{menu_resx.createDashboard}}</span>
+                   <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
+                      tooltip={{menu_resx.createDashboardTooltip}}></svg-icon>
+                 </button>
+               </li>
+             </ul>
+           </div>
+      </div>
+    </accordion-group>
+
+    <accordion-group [isOpen]="nextStepToProcess() === 'AddCSVSource'" panelClass="bg-light">
+      <button accordion-heading class="navbar-brand">
+        {{menu_resx.dashboardInteraction}}
+      </button>
+      <div class="col-md-12">
+        <div class="row">
+          <ul class="navbar-nav">
+            <li>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.AddCSVSource}" href="#" (click)='getCodeSnippet(enumType.AddCSVSource)'>
+                <span>{{menu_resx.addSource}}</span>
+                <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
+                   tooltip={{menu_resx.addSourceTooltip}}></svg-icon>
+              </button>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.DashboardEditMode}" href="#" (click)='getCodeSnippet(enumType.DashboardEditMode)'>
+                <span>{{menu_resx.setMode}}</span>
+                <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
+                   tooltip={{menu_resx.setModeTooltip}}></svg-icon>
+              </button>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.UndoLastAction}" href="#" (click)='getCodeSnippet(enumType.UndoLastAction)'>
+                <span>{{menu_resx.undoLastChange}}</span>
+              </button>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.RedoLastAction}" href="#" (click)='getCodeSnippet(enumType.RedoLastAction)'>
+                <span>{{menu_resx.redoLastChange}}</span>
+              </button>
+              <button  class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.TogglePropertiesPane}" href="#" (click)='getCodeSnippet(enumType.TogglePropertiesPane)'>
+                <span>{{menu_resx.toggleProperties}}</span>
+                <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
+                   tooltip={{menu_resx.toggleTooltip}}></svg-icon>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </accordion-group>
+
+    <accordion-group panelClass="bg-light">
+      <button accordion-heading class="navbar-brand">
+        {{menu_resx.supportAPI}}
+      </button>
+      <div class="col-md-12">
+        <div class="row">
+          <ul class="navbar-nav">
+            <li>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.GetDashboardSpec}" href="#" (click)='getCodeSnippet(enumType.GetDashboardSpec)'>
+                <span>{{menu_resx.getDashboardSpecs}}</span>
+                <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
+                   tooltip={{menu_resx.getDashboardSpecTooltip}}></svg-icon>
+              </button>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.ClearDirtyState}" href="#" (click)='getCodeSnippet(enumType.ClearDirtyState)'>
+                <span>{{menu_resx.clearDirtyState}}</span>
+                <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
+                   tooltip={{menu_resx.clearDirtyTooltip}}></svg-icon>
+              </button>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.UpdateModuleDefinitions}" href="#" (click)='getCodeSnippet(enumType.UpdateModuleDefinitions)'>
+                <span>{{menu_resx.updateDataDefinition}}</span>
+                <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
+                   tooltip={{menu_resx.updateDataDefinitionTooltip}}></svg-icon>
+              </button>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.RegisterCallback}" href="#" (click)='getCodeSnippet(enumType.RegisterCallback)'>
+                <span>{{menu_resx.registerDashboard}}</span>
+                <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
+                   tooltip={{menu_resx.registerDashboardTooltip}}></svg-icon>
+              </button>
+              <button class="nav-link" [ngClass]="{'current-selection': currentSelection === enumType.UnregisterCallback}" href="#" (click)='getCodeSnippet(enumType.UnregisterCallback)'>
+                <span>{{menu_resx.unregisterDashboard}}</span>
+                <svg-icon class="info-icon" src="../assets/images/get-information_16.svg" placement="left"
+                   tooltip={{menu_resx.unregisterDashboardTooltip}}></svg-icon>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </accordion-group>
+  </accordion>
+</div>

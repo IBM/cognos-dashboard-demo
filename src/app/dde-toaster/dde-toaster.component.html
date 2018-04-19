@@ -1,0 +1,7 @@
+<div *ngIf="toaster?.showToaster" class="toaster" role="alert">
+  <svg-icon *ngIf="toaster?.type === 'success'" class="success-image" src="../assets/images/confirm_16.svg"></svg-icon>
+  <svg-icon *ngIf="toaster?.type === 'failure'" class="error-image" src="../assets/images/error_16.svg"></svg-icon>
+  <svg-icon *ngIf="toaster?.type === 'warning'" class="warning-image" src="../assets/images/warn_32.svg"></svg-icon>
+  <span class="toaster-message" [innerHTML]="toaster?.message"></span>
+  <svg-icon class="close-image" src="../assets/images/close_16.svg" (click)="hideToaster()"></svg-icon>
+</div>

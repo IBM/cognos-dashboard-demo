@@ -1,0 +1,49 @@
+.divlarge {
+  height: 100%;
+}
+
+.divsmall {
+  height: 50%;
+}
+
+.code-block-div {
+  width:100%;
+	background-color:#595859;
+  overflow: scroll;
+}
+
+.code-snippet {
+  margin-top: 1.5em;
+  width: 100%;
+}
+
+.secondary-panel {
+  margin-left: 20px;
+}
+
+.header {
+  padding: 15px 5px 5px 0;
+}
+
+.panel-info {
+  font-size: 0.75em;
+}
+
+.panel-link {
+  margin-top: 3em;
+  margin-left: -1em;
+}
+
+@media (max-width: 1300px) {
+  .divlarge {
+    min-width: 320px;
+  }
+
+  .divsmall {
+    min-width: 320px;
+  }
+
+  .explorer-bar {
+    min-width: 320px;
+  }
+}

@@ -1,0 +1,12 @@
+video {
+  width: 100%;
+}
+
+.checkbox {
+  display: inline;
+  width: 2%;
+}
+
+.modal-title {
+  font-size: 20px;
+}
