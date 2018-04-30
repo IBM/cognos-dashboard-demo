@@ -22,7 +22,7 @@ In order to deploy to IBM Cloud, you'll need an [IBM Cloud account](https://cons
 ### Option 1:
 Automatically deploy the app using the following deploy to IBM Cloud button.
 
-[![Deploy to IBM Cloud](https://console.bluemix.net/devops/setup/deploy/button.png?lang=en-US)](https://console.bluemix.net/devops/setup/deploy?repository=https://github.com/IBM/dynamic-dashboard-demo&branch=deploy-ibmcloud)
+[![Deploy to IBM Cloud](https://console.bluemix.net/devops/setup/deploy/button.png?lang=en-US)](https://console.bluemix.net/devops/setup/deploy?repository=https://github.com/IBM/dynamic-dashboard-demo)
 
 
 ### Option 2:
