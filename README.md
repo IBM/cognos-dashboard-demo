@@ -8,19 +8,27 @@ This repo shows a Angular 5.0.0 + Node.js app that demos the IBM Cloud DDE servi
 ## Architecture (Open existing dashboard)
 ![](doc/source/images/dde-open-architecture.png)
 
- In order to deploy to IBM Cloud, you'll need an [IBM Cloud account](https://console.stage1.ng.bluemix.net/registration/). Once registered, you can automatically deploy the app using the following deploy to IBM Cloud button.
+## Prerequisites
 
- [![Deploy to IBM Cloud](https://github.com/IBM/container-journey-template/blob/master/images/button.png)](https://console.bluemix.net/devops/setup/deploy?repository=https://github.ibm.com/GearBox/Dynamic-dashboard-demo&repository_token=a623cbb1534c9f30fb0199bc9ac57e8d3f91afa6&branch=master)
+* [Git](https://git-scm.com/downloads)
+* [IBM Cloud CLI](https://console.bluemix.net/docs/cli/reference/bluemix_cli/all_versions.html#bluemix-cli-installer-downloads)
+* [Node v6.9.0 or higher](https://nodejs.org/en/)
 
- To run locally and deploy from the command line, follow the instructions below.
 
- ## Prerequisites
+## Deployment
 
- * [Git](https://git-scm.com/downloads)
- * [IBM Cloud CLI](https://console.bluemix.net/docs/cli/reference/bluemix_cli/all_versions.html#bluemix-cli-installer-downloads)
- * [Node v6.9.0 or higher](https://nodejs.org/en/)
+In order to deploy to IBM Cloud, you'll need an [IBM Cloud account](https://console.ng.bluemix.net/registration/). There are then 2 options to deploy.
 
-## Repo setup
+### Option 1:
+Automatically deploy the app using the following deploy to IBM Cloud button.
+
+[![Deploy to IBM Cloud](https://console.bluemix.net/devops/setup/deploy/button.png?lang=en-US)](https://console.bluemix.net/devops/setup/deploy?repository=https://github.com/IBM/dynamic-dashboard-demo&branch=deploy-ibmcloud)
+
+
+### Option 2:
+To run locally and deploy manually from the command line, follow the instructions below.
+
+#### Repo setup
 
 Getting started:
 
@@ -29,7 +37,7 @@ $ git clone
 $ npm install
 ```
 
-### Running
+#### Running
 
 Before running locally, please make sure to:
 1. Create a new DDE instance and service credentials in IBM Cloud
@@ -39,7 +47,7 @@ Before running locally, please make sure to:
 $ npm run build
 ```
 
-## Manual Deployment Steps
+#### Manual Deployment Steps
 
 Use the bx cli to deploy into IBM Cloud:
 1. Create a new Node.JS Cloud Foundry application in IBM Cloud (https://console.bluemix.net/)
@@ -61,7 +69,7 @@ Run ng build to build the project. The build artifacts will be stored in the dis
 
 Run ng serve for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
-## Resources
+# Resources
 
 * [DDE in IBM Cloud](https://console-regional.ng.bluemix.net/docs/services/dynamic-dashboard-embedded/index.html#overview-of-dynamic-dashboard-embedded)
 * [Sample app](https://dde-us-south.analytics.ibm.com/daas/DashboardAPI.html)

@@ -1,5 +1,11 @@
 ---
+declared-services:
+  sample-dde-demo-dde-service:
+    label:  dynamic-dashboard-embedded
+    plan: lite
 applications:
   - name: dde-angnode-app
-    random-route: true
+    random-route: false
     memory: 256M
+    services:
+    - sample-dde-demo-dde-service
