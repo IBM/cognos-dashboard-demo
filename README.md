@@ -2,11 +2,8 @@
 
 This repo shows a Angular 5.0.0 + Node.js app that demos the IBM Cloud DDE service.
 
-## Architecture (Create and Save new dashboard)
-![](doc/source/images/dde-create-save-architecture.png)
-
-## Architecture (Open existing dashboard)
-![](doc/source/images/dde-open-architecture.png)
+## Architecture
+![](doc/source/images/architecture.png)
 
 ## Prerequisites
 
