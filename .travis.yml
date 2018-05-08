@@ -29,7 +29,7 @@ script:
 
 deploy:
   provider: cloudfoundry
-  api: https://api.ng.bluemix.net
+  api: https://api.stage1.ng.bluemix.net
   username: $BLUEMIX_USER
   password: $BLUEMIX_PASS
   organization: $BLUEMIX_ORGANIZATION
