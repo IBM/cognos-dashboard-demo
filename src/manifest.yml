@@ -1,6 +1,0 @@
----
-applications:
-  - name: dde-ang-node-app
-    random-route: true
-    memory: 256M
-    buildpack: staticfile_buildpack

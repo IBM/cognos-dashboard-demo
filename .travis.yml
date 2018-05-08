@@ -36,4 +36,4 @@ deploy:
   space: $BLUEMIX_SPACE
   "on":
     repo: IBM/dynamic-dashboard-demo
-    branch: stage
+    branch: app-name-change
