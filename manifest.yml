@@ -4,7 +4,7 @@ declared-services:
     label: dynamic-dashboard-embedded
     plan: lite
 applications:
-  - name: dde-angnode-app
+  - name: dynamic-dashboard-demo
     random-route: false
     memory: 256M
     services:
