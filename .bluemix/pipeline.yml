@@ -1,6 +1,6 @@
 ---
 stages:
-  - name: Build
+- name: Build
   inputs:
   - type: git
     branch: master
