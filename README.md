@@ -1,6 +1,6 @@
-# Getting Started with DDE on IBM Cloud
+# Getting Started with CDE on IBM Cloud
 
-This repo shows a Angular 5.0.0 + Node.js app that demos the IBM Cloud DDE service.
+This repo shows a Angular 5.0.0 + Node.js app that demos the IBM Cloud CDE service.
 
 ## Architecture
 ![](doc/source/images/architecture.png)
@@ -37,8 +37,8 @@ $ npm install
 #### Running
 
 Before running locally, please make sure to:
-1. Create a new DDE instance and service credentials in IBM Cloud
-1. Ensure that vcap-local.json contains the DDE credentials
+1. Create a new CDE instance and service credentials in IBM Cloud
+1. Ensure that vcap-local.json contains the CDE credentials
 
 ```bash
 $ npm run build
@@ -60,15 +60,15 @@ Use the bx cli to deploy into IBM Cloud:
 ## Angular setup (front-end only)
 
 ### Build
-Run ng build to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run ```ng build``` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
 ### Development server
 
-Run ng serve for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Run ```ng serve``` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
 # Resources
 
-* [DDE in IBM Cloud](https://console-regional.ng.bluemix.net/docs/services/dynamic-dashboard-embedded/index.html#overview-of-dynamic-dashboard-embedded)
+* [CDE in IBM Cloud](https://console-regional.ng.bluemix.net/docs/services/dynamic-dashboard-embedded/index.html#overview-of-dynamic-dashboard-embedded)
 * [Sample app](https://dde-us-south.analytics.ibm.com/daas/DashboardAPI.html)
 * [Swagger](https://dde-us-south.analytics.ibm.com/api-docs)
 * [API Documentation](https://dde.us-south.containers.mybluemix.net/daas/jsdoc/cognos/api/index.html)
