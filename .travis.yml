@@ -24,16 +24,16 @@ before_script:
   - bash "./tests/test-tslint.sh"
 
 script:
-  - envsub --env SEGMENT_KEY=$SEGMENT_KEY ./src/environments/environment.prod.ts
-  - ng build --env=prod
+  - envsub --env SEGMENT_KEY=$SEGMENT_KEY ./src/environments/environment.ts
+  - ng build --env=dev
 
 deploy:
   provider: cloudfoundry
-  api: https://api.ng.bluemix.net
-  username: $BLUEMIX_USER_PROD
-  password: $BLUEMIX_PASS_PROD
-  organization: $BLUEMIX_ORGANIZATION_PROD
-  space: $BLUEMIX_SPACE_PROD
+  api: https://api.stage1.ng.bluemix.net
+  username: $BLUEMIX_USER
+  password: $BLUEMIX_PASS
+  organization: $BLUEMIX_ORGANIZATION
+  space: $BLUEMIX_SPACE
   "on":
     repo: IBM/cognos-dashboard-demo
     branch: segment-fix
