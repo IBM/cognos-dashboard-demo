@@ -1,7 +1,7 @@
 var digitalData = {
   page: {
     pageInfo: {
-      productTitle: "Dynamic Dashboard Embedded",
+      productTitle: "Cognos Dashboard Embedded",
       analytics: {
         category: "Offering Interface"
       }

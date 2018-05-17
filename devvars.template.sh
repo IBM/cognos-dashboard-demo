@@ -25,6 +25,6 @@ export PROXY_DDE_REQUESTS=false
 export DDE_BASE_URL=
 
 # Base URL where the application is running.
-#     Cloud demo app: https://dynamic-dashboard-demo.ng.bluemix.net/
+#     Cloud demo app: https://ibm-cognos-dashboard-demo.ng.bluemix.net/
 #     localhost: http://localhost:${PORT}
 export APP_BASE_URL=

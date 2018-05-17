@@ -24,8 +24,8 @@ before_script:
   - bash "./tests/test-tslint.sh"
 
 script:
-  - envsub --env SEGMENT_KEY=$SEGMENT_KEY ./src/environments/environment.ts
-  - ng build --env=prod
+  - envsub --env SEGMENT_KEY=$SEGMENT_KEY ./src/environments/environment.stage.ts
+  - ng build --env=stage
 
 deploy:
   provider: cloudfoundry
@@ -35,5 +35,5 @@ deploy:
   organization: $BLUEMIX_ORGANIZATION
   space: $BLUEMIX_SPACE
   "on":
-    repo: IBM/dynamic-dashboard-demo
-    branch: stage
+    repo: IBM/cognos-dashboard-demo
+    branch: app-name-change
