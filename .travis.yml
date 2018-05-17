@@ -24,8 +24,8 @@ before_script:
   - bash "./tests/test-tslint.sh"
 
 script:
-  - envsub --env SEGMENT_KEY=$SEGMENT_KEY ./src/environments/environment.ts
-  - ng build --env=dev
+  - envsub --env SEGMENT_KEY=$SEGMENT_KEY ./src/environments/environment.stage.ts
+  - ng build --env=stage
 
 deploy:
   provider: cloudfoundry
