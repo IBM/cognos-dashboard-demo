@@ -19,7 +19,7 @@ In order to deploy to IBM Cloud, you'll need an [IBM Cloud account](https://cons
 ### Option 1:
 Automatically deploy the app using the following deploy to IBM Cloud button.
 
-[![Deploy to IBM Cloud](https://console.bluemix.net/devops/setup/deploy/button.png?lang=en-US)](https://console.bluemix.net/devops/setup/deploy?repository=https://github.com/IBM/dynamic-dashboard-demo)
+[![Deploy to IBM Cloud](https://console.bluemix.net/devops/setup/deploy/button.png?lang=en-US)](https://console.bluemix.net/devops/setup/deploy?repository=https://github.com/IBM/cognos-dashboard-demo)
 
 
 ### Option 2:
@@ -68,9 +68,8 @@ Run ```ng serve``` for a dev server. Navigate to http://localhost:4200/. The app
 
 # Resources
 
-* [CDE in IBM Cloud](https://console-regional.ng.bluemix.net/docs/services/dynamic-dashboard-embedded/index.html#overview-of-dynamic-dashboard-embedded)
-* [Sample app](https://dde-us-south.analytics.ibm.com/daas/DashboardAPI.html)
-* [Swagger](https://dde-us-south.analytics.ibm.com/api-docs)
-* [API Documentation](https://dde.us-south.containers.mybluemix.net/daas/jsdoc/cognos/api/index.html)
+* [CDE in IBM Cloud](https://console.bluemix.net/docs/services/cognos-dashboard-embedded/index.html#overview-of-cognos-dashboard-embedded)
+* [Sample app](https://dde-us-south.analytics.ibm.com/daas/DashboardAPI.html)* [Swagger](https://dde-us-south.analytics.ibm.com/api-docs)
+* [API Documentation](https://dde-us-south.analytics.ibm.com/daas/jsdoc/cognos/api/CognosApi.html)
 
 ![ibm](https://www.ibm.com/i/d/va924g7)
