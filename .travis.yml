@@ -24,7 +24,7 @@ before_script:
   - bash "./tests/test-tslint.sh"
 
 script:
-  - envsub --env SEGMENT_KEY=$SEGMENT_KEY_PROD ./src/environments/environment.prod.ts
+  - envsub --env SEGMENT_KEY=$SEGMENT_KEY ./src/environments/environment.prod.ts
   - ng build --env=prod
 
 deploy:
@@ -35,5 +35,5 @@ deploy:
   organization: $BLUEMIX_ORGANIZATION_PROD
   space: $BLUEMIX_SPACE_PROD
   "on":
-    repo: IBM/dynamic-dashboard-demo
-    branch: master
+    repo: IBM/cognos-dashboard-demo
+    branch: segment-fix
