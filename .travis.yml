@@ -36,4 +36,4 @@ deploy:
   space: $BLUEMIX_SPACE
   "on":
     repo: IBM/cognos-dashboard-demo
-    branch: app-name-change
+    branch: stage
