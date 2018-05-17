@@ -35,5 +35,5 @@ deploy:
   organization: $BLUEMIX_ORGANIZATION_PROD
   space: $BLUEMIX_SPACE_PROD
   "on":
-    repo: IBM/dynamic-dashboard-demo
+    repo: IBM/cognos-dashboard-demo
     branch: master
