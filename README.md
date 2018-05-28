@@ -69,7 +69,8 @@ Run ```ng serve``` for a dev server. Navigate to http://localhost:4200/. The app
 # Resources
 
 * [CDE in IBM Cloud](https://console.bluemix.net/docs/services/cognos-dashboard-embedded/index.html#overview-of-cognos-dashboard-embedded)
-* [Sample app](https://dde-us-south.analytics.ibm.com/daas/DashboardAPI.html)* [Swagger](https://dde-us-south.analytics.ibm.com/api-docs)
+* [Sample app](https://dde-us-south.analytics.ibm.com/daas/DashboardAPI.html)
+* [Swagger](https://dde-us-south.analytics.ibm.com/api-docs)
 * [API Documentation](https://dde-us-south.analytics.ibm.com/daas/jsdoc/cognos/api/CognosApi.html)
 
 ![ibm](https://www.ibm.com/i/d/va924g7)
