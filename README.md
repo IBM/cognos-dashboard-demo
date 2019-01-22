@@ -8,18 +8,18 @@ This repo shows a Angular 5.0.0 + Node.js app that demos the IBM Cloud CDE servi
 ## Prerequisites
 
 * [Git](https://git-scm.com/downloads)
-* [IBM Cloud CLI](https://console.bluemix.net/docs/cli/reference/bluemix_cli/all_versions.html#bluemix-cli-installer-downloads)
+* [IBM Cloud CLI](https://cloud.ibm.com/docs/cli/reference/bluemix_cli/all_versions.html#bluemix-cli-installer-downloads)
 * [Node v6.9.0 or higher](https://nodejs.org/en/)
 
 
 ## Deployment
 
-In order to deploy to IBM Cloud, you'll need an [IBM Cloud account](https://console.ng.bluemix.net/registration/). There are then 2 options to deploy.
+In order to deploy to IBM Cloud, you'll need an [IBM Cloud account](https://cloud.ibm.com/registration/). There are then 2 options to deploy.
 
 ### Option 1:
 Automatically deploy the app using the following deploy to IBM Cloud button.
 
-[![Deploy to IBM Cloud](https://console.bluemix.net/devops/setup/deploy/button.png?lang=en-US)](https://console.bluemix.net/devops/setup/deploy?repository=https://github.com/IBM/cognos-dashboard-demo)
+[![Deploy to IBM Cloud](https://cloud.ibm.com/devops/setup/deploy/button.png?lang=en-US)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/IBM/cognos-dashboard-demo)
 
 
 ### Option 2:
@@ -47,7 +47,7 @@ $ npm run build
 #### Manual Deployment Steps
 
 Use the bx cli to deploy into IBM Cloud:
-1. Create a new Node.JS Cloud Foundry application in IBM Cloud (https://console.bluemix.net/)
+1. Create a new Node.JS Cloud Foundry application in IBM Cloud (https://cloud.ibm.com/)
 1. Update manifest.yml and environment / config values
 1. Build locally using ```npm run build``` or ```npm run build-prod```
 1. Navigate to the app folder
@@ -68,7 +68,7 @@ Run ```ng serve``` for a dev server. Navigate to http://localhost:4200/. The app
 
 # Resources
 
-* [CDE in IBM Cloud](https://console.bluemix.net/docs/services/cognos-dashboard-embedded/index.html#overview-of-cognos-dashboard-embedded)
+* [CDE in IBM Cloud](https://cloud.ibm.com/docs/services/cognos-dashboard-embedded/index.html#overview-of-cognos-dashboard-embedded)
 * [Sample app](https://dde-us-south.analytics.ibm.com/daas/DashboardAPI.html)
 * [Swagger](https://dde-us-south.analytics.ibm.com/api-docs)
 * [API Documentation](https://dde-us-south.analytics.ibm.com/daas/jsdoc/cognos/api/CognosApi.html)
@@ -77,6 +77,6 @@ Run ```ng serve``` for a dev server. Navigate to http://localhost:4200/. The app
 
 ## License
 
-This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](http://www.apache.org/licenses/LICENSE-2.0.txt).
+This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
 
-[Apache Software License (ASL) FAQ](http://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
+[Apache Software License (ASL) FAQ](https://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
