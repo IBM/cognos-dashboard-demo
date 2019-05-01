@@ -1,6 +1,6 @@
 ---
 declared-services:
-  sample-dde-demo-dde-service:
+  cdd-cognos-dashboard:
     label: dynamic-dashboard-embedded
     plan: lite
 applications:
@@ -8,4 +8,4 @@ applications:
     random-route: false
     memory: 256M
     services:
-      - sample-dde-demo-dde-service
+      - cdd-cognos-dashboard
