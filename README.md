@@ -39,6 +39,7 @@ $ npm install
 Before running locally, please make sure to:
 1. Create a new CDE instance and service credentials in IBM Cloud
 1. Ensure that vcap-local.json contains the CDE credentials
+1. Ensure you update the dde_base_url in config-{env}.js and point it to the correct DDE instance.
 
 ```bash
 $ npm run build
